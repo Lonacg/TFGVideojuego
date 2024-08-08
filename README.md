@@ -3,49 +3,71 @@ TFG - Laura Cano Gómez
 
 
 ## Cuerpo del juego
+Se desarrolla en una ciudad con diferentes comercios, vehiculos, peatones y animales.
+Al inicio de la partida, te preguntan el nombre y el lugar donde te gustaria vivir, y si eres niño, niña o marciano.
+A continuacion, apareces en un punto aleatorio de la ciudad, y aparece un dialogo para encargarte una mision.ç
+Por el camino, te encuentras minijuegos que saltan solos al ocurrir x cosa.
+Te dan puntos de bondad por cada mision completada.
 
-- Opciones: 
-    - Pequeñas pantallas que se recorren para llegar a una meta, con contador de tiempo. 3D visualmente pero movimiento en 2D.
-    - Estilo ciudad, el personaje se mueve y entra a la casa del minijuego que quiera jugar/ habla con x persona, algunos minijuegos son obligatorios, se los encuentra por el camino. Al comienzo de cada pantalla apareces en un punto de la ciudad, y se carga un dialogo de alguien pidiendote ir a x lugar para solucionar x cosa. Por el camino puedes entrar en las otras casas, pero debes 
-- Enemigos:
-    - Van surgiendo desafios/ minijuegos como enemigos
-        - Topo que sale del suelo al pisar una casilla en concreto 
-        - Lanzadores de objetos, si te dan entra el minijuego
-        - Tocas un objeto concreto
-        - Si el tiempo se esta agotando, entras en un desafio de contrareloj cada x segundos
-        - Tocar monedas de x forma/color
-    - Aparecen enemigos con forma de cuentas en la pantalla y hay que escribir el resultado para eliminarlos
+
+## Misiones posibles
+   - Banco: recoger 10 monedas porque no tienen cambio
+   - Peluqueria: encontrar unas tijeras perdidas
+   - Alimentacion: encontrar una llave perdida
+   - Peaton en frente de la Zapateria: encontrar un perro perdido
+   - Camion de la basura del Parque: recoger 5 cacas de perro
+   - Estudio de television: participar en un concurso de V/F
+   - Floristeria: encontrar 3 tulipanes blancos
+   - Ayuntamiento: buscar un anciano en el parque con el que jugar a las cartas -> Extra: el anciano le cuenta sus batallas y le pide resolver un minijuego extra: pares a la derecha e impares a la izq.
+   - Relax: se han completado todas las misiones
+
+
+## Minijuegos en la calle
+   - Pasar al lado de un coche amarillo: MJ de aparccamiento (aparcar en la sol correcta)
+   - Pasar al lado de un corredor: MJ de pasillos (entrar por el pasillo con la sol correcta)
+   - Pisar una interrogacion en el suelo: MJ de adivinar el signo de la operacion
+   - Pasar al lado de una bici aparcada en la acera: MJ carrera de bicis (cada operacion resuelta es un impulso)
+
+
+## Minijuegos de misiones
+   - MJ de adivinar parejas (operación y su resultado)
+   - MJ de pares e impares (pares a un lado, impares a otro), batir record de x
+   - MJ de V/F (varias operaciones con su solucion correcta o erronea, y con tiempo)
+
+
+## Dialogos
+   - Diálogo al comienzo del juego: (escrito directamente en la pantalla)
+            + Buenos dias, ¿cómo te llamas? (escribe tu nombre y pulsa Enter)
+            - *Nombre*
+            + Encantado *Nombre*. Dime, ¿cómo se llama el sitio donde te gustaría vivir? (escribe el lugar y pulsa Enter)
+            - *Ciudad*
+            + ¡Concedido! Por ultimo, ¿Eres un niño, una niña o un marciano? (selecciona la opcion que desees moviendote con las flechas y pulsa Enter)
+            - *ModeloGenero*
+            + Ya veo, ¡perfecto entonces! Puedes moverte por *Ciudad* pulsando las flechas de tu teclado. Para ir rápido como una bala, además de eso pulsa la tecla Shift. Para coger objetos, cruzar una puerta, o hablar con personas, sitúate cerca de ellos y pulsa Enter. Si se te olvida como hacerlo o tienes alguna duda, puedes pulsar el menú de Pausa situado en la esquina superior derecha de tu pantalla.
+            ¡Una última cosa! Por favor, dirígete a *SiguienteMision*, ¡te necesitan *Nombre*!
+
+    - Diálogo al terminar una misión: (Imagen 2D de la persona de la tienda)
+            + ¡Lo has conseguido! Muchas gracias *Nombre*, lo has hecho genial. Ahora que lo pienso... *SiguienteMision* también te necesita, ¡si puedes ve a ayudarle por favor!
+
+    - Diálogo ultima misión: 
+            + ¡Bien hecho! Eso es todo por hoy *Nombre*, gracias a ti *Ciudad* es un lugar mejor. Si quieres, puedes seguir disfrutando y pasear un rato más por la ciudad. ¡Nos vemos!
+
+
+## UI 
+Boton de pausa permanente en la esquina superior derecha. Se abre un menu con: 
+    - Mapa: entra a una imagen donde se visualiza la ciudad, con el nombre de cada comercio puesto + boton de continuar
+    - Mision actual: entra a una imagen con el mapa de la ciudad resaltando con un circulo rojo  donde tiene que ir (cada mision tiene su imagen) + boton de continuar
+    - Controles: entra imagen fija en la que sale explicado + boton de continuar
+    - Salir del juego: entra imagen "¿Seguro que quieres salir? No se guardará el progreso de esta partida, pero podrás empezar una nueva" + boton SI + boton NO.
     
 
-- ¿? Meta
-    - Conseguir el maximo numero de monedas/puntos
-    - Si resuelves varias peticiones (pantallas, tienes x2, x3, x4,...)
-
-- Las monedas se pueden gastar en:
-    - ¿? Cambios de vestimenta
-    - Tiempo extra para la pantalla
-    - Tiempo extra para un desafio
-
-- Enemigo final: te piden ir al colegio y resolver un super examen. ¿Mezcla frenetica de minijuegos muy rapidos estilo  rhythm paradise?
-
-- ¿? Seleccion de "nivel" de dificultad limitando los desafios o las operaciones en ellos:
-    - Sumas y restas
-    - Multiplicacion y Division
-    - Pares/ Impares
+## Mecanicas    
+   - Para superar un minijuego se debe responder bien 2 veces, si no, no se termina
+   - Al fallar una respuesta, debe mostrarse la solucion correcta, antes de pasar a la pregunta siguiente, para que el niñx aprenda el error.
+   - Al empezar, aparece en el punto mas alejado del mapa respecto a su mision (puntos concretos preseleccionados)
+   - Al acabar una mision, la persona le da la siguiente mision de la lista, siguiendo el orden, para que las misiones esten separadas unas de otras.
+   - El juego es infinito, el usuario es el que decide pararlo pulsando el boton Salir de la UI.
+   Opcional: contador de tiempo de juego visible en la pantalla
 
 
-## Posibles minijuegos:
-- Tipo marcianos, disparar con resultados a operaciones que van apareciendo (como minijuego o en la pantalla)
-- Carrera en la que cada operacion resuelta es un impulso (si ganas tienes un bonus extra de velocidad en la pantalla)
-- Verdadero o falso (apostando monedas para aumentar la cantidad)
-- Carrera de calculos (el personaje debe pasar por el pasillo correcto)
-- Contrareloj de calculos
-- Juego de cifras y letras, dados x numeros obtener otro 
-- Pilotar coche/ avion/ barco para llevarlo a la solucion correcta (penaliza chocar con otras cosas)
-- Juego de parejas en carta (la operacion y su resultado)
-- En x tiempo van saliendo numeros y hay que poner los pares a un lado y los impares al otro, cada vez van mas rapido
-- Tipo comecocos, hay que llegar a un punto con el resultado de la operacion
-
-## Modo relax
-- Resolver el recorrido de un grafo
 
