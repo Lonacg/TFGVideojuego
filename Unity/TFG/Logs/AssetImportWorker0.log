@@ -1,0 +1,1233 @@
+Using pre-set license
+Built from 'trunk' branch; Version is '6000.0.9f1 (1490908003ac) revision 1347728'; Using compiler version '193933523'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19045) 64bit Core' Language: 'es' Physical Memory: 8072 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\6000.0.9f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/Usuario/Documents/0-MIS DOCUMENTOS/0-Universidad/TFGVideojuego/Unity/TFG
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+54988
+-job-worker-count
+1
+-background-job-worker-count
+8
+-asset-garbage-collectors
+1
+Successfully changed project path to: C:/Users/Usuario/Documents/0-MIS DOCUMENTOS/0-Universidad/TFGVideojuego/Unity/TFG
+C:/Users/Usuario/Documents/0-MIS DOCUMENTOS/0-Universidad/TFGVideojuego/Unity/TFG
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [8240]  Target information:
+
+Player connection [8240]  * "[IP] 192.168.0.15 [Port] 0 [Flags] 2 [Guid] 2571937884 [EditorId] 2571937884 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-H0L38D2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+
+Player connection [8240] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [8240] Host joined alternative multi-casting on [225.0.0.222:34997]...
+JobSystem: Creating JobQueue using job-worker-count value 1
+Library Redirect Path: Library/
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+Refreshing native plugins compatible for Editor in 41.57 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 6000.0.9f1 (1490908003ac)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.0.9f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/Usuario/Documents/0-MIS DOCUMENTOS/0-Universidad/TFGVideojuego/Unity/TFG/Assets
+GfxDevice: creating device client; kGfxThreadingModeNonThreaded
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: AMD Radeon R7 M265 (ID=0x6900)
+    Vendor:   ATI
+    VRAM:     2035 MB
+    Driver:   15.200.1045.0
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.0.9f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.0.9f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.0.9f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56928
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.108369 seconds.
+- Loaded All Assemblies, in  1.301 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.040 seconds
+Domain Reload Profiling: 2332ms
+	BeginReloadAssembly (484ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (2ms)
+	RebuildCommonClasses (101ms)
+	RebuildNativeTypeToScriptingClass (48ms)
+	initialDomainReloadingComplete (274ms)
+	LoadAllAssembliesAndSetupDomain (385ms)
+		LoadAssemblies (459ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (378ms)
+			TypeCache.Refresh (376ms)
+				TypeCache.ScanAssembly (351ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (1041ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (919ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (76ms)
+			SetLoadedEditorAssemblies (12ms)
+			BeforeProcessingInitializeOnLoad (12ms)
+			ProcessInitializeOnLoadAttributes (334ms)
+			ProcessInitializeOnLoadMethodAttributes (486ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+========================================================================
+Worker process is ready to serve import requests
+Import Worker Mode flag is 0x00
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  4.598 seconds
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Refreshing native plugins compatible for Editor in 3.62 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Package Manager log level set to [2]
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  3.465 seconds
+Domain Reload Profiling: 8040ms
+	BeginReloadAssembly (2272ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (14ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (96ms)
+	RebuildCommonClasses (133ms)
+	RebuildNativeTypeToScriptingClass (49ms)
+	initialDomainReloadingComplete (150ms)
+	LoadAllAssembliesAndSetupDomain (1971ms)
+		LoadAssemblies (1411ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (896ms)
+			TypeCache.Refresh (691ms)
+				TypeCache.ScanAssembly (652ms)
+			BuildScriptInfoCaches (178ms)
+			ResolveRequiredComponents (18ms)
+	FinalizeReload (3466ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (2687ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (7ms)
+			SetLoadedEditorAssemblies (15ms)
+			BeforeProcessingInitializeOnLoad (196ms)
+			ProcessInitializeOnLoadAttributes (1920ms)
+			ProcessInitializeOnLoadMethodAttributes (527ms)
+			AfterProcessingInitializeOnLoad (22ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (18ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 4.29 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4132 unused Assets / (1.4 MB). Loaded Objects now: 4721.
+Memory consumption went from 111.6 MB to 110.2 MB.
+Total: 26.061700 ms (FindLiveObjects: 1.150900 ms CreateObjectMapping: 1.720500 ms MarkObjects: 18.599400 ms  DeleteObjects: 4.588000 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 365343.891429 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Trees_6A.prefab
+  artifactKey: Guid(9108c30404dabe24898918a21fb3f6ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Trees_6A.prefab using Guid(9108c30404dabe24898918a21fb3f6ec) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'f42b11bf28ed2b2c1a23f8d319f9c781') in 0.8830545 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000088 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Tree_7B.prefab
+  artifactKey: Guid(2665d0437ea360543bcc0a9608507809) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Tree_7B.prefab using Guid(2665d0437ea360543bcc0a9608507809) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'cd908b7487729f1c41c3e07abbd22a7e') in 0.0407664 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Barrel_3B.prefab
+  artifactKey: Guid(8bd17aeaec29eb847aaeecb7c2e00d10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Barrel_3B.prefab using Guid(8bd17aeaec29eb847aaeecb7c2e00d10) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '0ddd98a4b1cbdcc14500b3da634a988f') in 0.0325655 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Rock_Cluster_1C.prefab
+  artifactKey: Guid(401aa6fa1f294c54a915af5d306e5137) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Rock_Cluster_1C.prefab using Guid(401aa6fa1f294c54a915af5d306e5137) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '46b822308ab950685519e1db33798dac') in 0.0376312 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Pavement_2J_4X4.prefab
+  artifactKey: Guid(1461688c2734a404e9bac7e9d1fb40ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Pavement_2J_4X4.prefab using Guid(1461688c2734a404e9bac7e9d1fb40ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'ef39f633ecd85aeb5abb7dce40112c89') in 0.032092 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Car_14I.prefab
+  artifactKey: Guid(4fd286b338658f84db100ebd31338c7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Car_14I.prefab using Guid(4fd286b338658f84db100ebd31338c7e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '1f2822154b045dedf3e3918407c72ff6') in 0.0455176 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 32
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Parking_1B.prefab
+  artifactKey: Guid(50fbd2c5a4d114b4ebd7aa2fd7d173f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Parking_1B.prefab using Guid(50fbd2c5a4d114b4ebd7aa2fd7d173f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'ffc47de74461d70c7b0ad480570684d8') in 0.0353613 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000075 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Building_7B.prefab
+  artifactKey: Guid(14cbbc4aabee1584895f6723e09fbbec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Building_7B.prefab using Guid(14cbbc4aabee1584895f6723e09fbbec) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'b791c4228e4a5af91bb2d4b16574328b') in 0.0732762 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 20
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000056 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Streetsign_3D.prefab
+  artifactKey: Guid(dc8617f102ef1934dad37b706df47e8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Streetsign_3D.prefab using Guid(dc8617f102ef1934dad37b706df47e8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '288d50fe40916f2f8c90960d5e916f73') in 0.0302868 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Building_17E.prefab
+  artifactKey: Guid(750d143b1135e7c4994de3f2de8a1628) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Building_17E.prefab using Guid(750d143b1135e7c4994de3f2de8a1628) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '287767295380754c979b52c61a86cd1c') in 0.0402908 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 20
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Tree_7C.prefab
+  artifactKey: Guid(b5a3243d18d43d4489e81103fae5d5e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Tree_7C.prefab using Guid(b5a3243d18d43d4489e81103fae5d5e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'a39d1f9da236bb97094cc16017d19d89') in 0.0329889 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Tree_7D.prefab
+  artifactKey: Guid(89259a8f42c263445b95c40f917f798e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Tree_7D.prefab using Guid(89259a8f42c263445b95c40f917f798e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'b29aae9962c07f06d5fe2fe639a37681') in 0.0300391 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Pavement_2J_2X2.prefab
+  artifactKey: Guid(b3b30da2af31dfe44b078040b1ed3e5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Pavement_2J_2X2.prefab using Guid(b3b30da2af31dfe44b078040b1ed3e5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '1ee8d2da2e38dc005d77f6dfa82d3f11') in 0.0353737 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Road_3Y.prefab
+  artifactKey: Guid(e6ef01c18f3b9b647b9baaec4b8cb1a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Road_3Y.prefab using Guid(e6ef01c18f3b9b647b9baaec4b8cb1a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '7a32395bb59f62bab4ff9138563f5a87') in 0.0360003 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Rock_Cluster_1B.prefab
+  artifactKey: Guid(4bfd76daaa0019345a2683685787cf68) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Rock_Cluster_1B.prefab using Guid(4bfd76daaa0019345a2683685787cf68) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'b64423979fd69865adc7c36cc376f09f') in 0.0373418 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Barrel_1F.prefab
+  artifactKey: Guid(d6cda6cdccb84b3439d791e01c71339a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Barrel_1F.prefab using Guid(d6cda6cdccb84b3439d791e01c71339a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'e91be0abaccd0937e154a419a9f3e586') in 0.0339888 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Building_7C.prefab
+  artifactKey: Guid(ca33ebcd6009bea4e8fab1d5b1c34436) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Building_7C.prefab using Guid(ca33ebcd6009bea4e8fab1d5b1c34436) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'e86aade417a1fe832715795e2f0fbd69') in 0.046427 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 27
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000049 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Car_6G.prefab
+  artifactKey: Guid(8952388f882d347438563c4e45e6ce50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Car_6G.prefab using Guid(8952388f882d347438563c4e45e6ce50) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '631174eedec67b3d591d12c553fa4395') in 0.0357386 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 32
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Bilboard_1E.prefab
+  artifactKey: Guid(ea4757a70ebfed4468cd2ba937ce980a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Bilboard_1E.prefab using Guid(ea4757a70ebfed4468cd2ba937ce980a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '1c15c510e418b8ab435b5d4bee15cd2f') in 0.062221 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Road_1Z.prefab
+  artifactKey: Guid(a02b698ee02146848af3e1435a174126) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Road_1Z.prefab using Guid(a02b698ee02146848af3e1435a174126) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '3a56241f5c6e3a9d7c4ebfe7644a2ea7') in 0.0366147 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Pavement_Special_1A_12X12.prefab
+  artifactKey: Guid(6974bfebd354b4d4abbfc516d68a2774) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Pavement_Special_1A_12X12.prefab using Guid(6974bfebd354b4d4abbfc516d68a2774) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '4134bd2cb82b6aabff26ca4f0d36143a') in 0.033491 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Car_21A.prefab
+  artifactKey: Guid(416db31efad293d4da73c87b615cf55a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Car_21A.prefab using Guid(416db31efad293d4da73c87b615cf55a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'bdfd7bab054c56ccf5e7cd4af093e4f7') in 0.0465221 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 73
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Barrel_1G.prefab
+  artifactKey: Guid(fe8b0e285ec80f6408f9ac4b0060b46a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Barrel_1G.prefab using Guid(fe8b0e285ec80f6408f9ac4b0060b46a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '30ce87a122d1bf6b4ec896086fcd4a06') in 0.0323701 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Gas_Pump_1A.prefab
+  artifactKey: Guid(09e575d3fd166f4489c573635ce22f38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Gas_Pump_1A.prefab using Guid(09e575d3fd166f4489c573635ce22f38) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'a60d728f5e72445ce6402321aa6f8535') in 0.0787952 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Streetsign_2J.prefab
+  artifactKey: Guid(5d32668dd4a79d24ab029c5e75ccd9ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Streetsign_2J.prefab using Guid(5d32668dd4a79d24ab029c5e75ccd9ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'b3c27a23fe21c674fff728f5b9d9f10b') in 0.0414581 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000052 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Rock_Cluster_1A.prefab
+  artifactKey: Guid(bba84dffd74116f409ff2fdb22a8855d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Rock_Cluster_1A.prefab using Guid(bba84dffd74116f409ff2fdb22a8855d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '305d39e646a25917d14909c61d545e05') in 0.0358512 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Gas_Tank_1B.prefab
+  artifactKey: Guid(3c74099f6a446b143a65c0110db42427) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Gas_Tank_1B.prefab using Guid(3c74099f6a446b143a65c0110db42427) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'f71db7557c500382ff30ad3149873601') in 0.0297442 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Gas_Tank_2A.prefab
+  artifactKey: Guid(1923985024f6f81458e33b237f339aa8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Gas_Tank_2A.prefab using Guid(1923985024f6f81458e33b237f339aa8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'a3a541402c5af5fb2432cf7b2514223a') in 0.0425697 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Tree_6B.prefab
+  artifactKey: Guid(c2d0aff228303534ebf73d11faa6fbaf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Tree_6B.prefab using Guid(c2d0aff228303534ebf73d11faa6fbaf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '026c5cc33a98c45f6fc6a44c8ec31feb') in 0.0370622 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Tree_7F.prefab
+  artifactKey: Guid(92c4112ee51924f42b69ff579ab762bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Tree_7F.prefab using Guid(92c4112ee51924f42b69ff579ab762bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '12b66c51016f8abfa2546d6483cef220') in 0.0357147 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Tree_6A.prefab
+  artifactKey: Guid(82fdd33e0a72720488080e8864a1f4bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Tree_6A.prefab using Guid(82fdd33e0a72720488080e8864a1f4bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '2cb4d794bcc3c60f156b45460e623db9') in 0.0282167 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Tree_7A.prefab
+  artifactKey: Guid(2e13d51711ba7be49a2291044d249a56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Tree_7A.prefab using Guid(2e13d51711ba7be49a2291044d249a56) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'a625aa7500b3a6113fffd553c481df3b') in 0.0376808 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Gas_Station_2A.prefab
+  artifactKey: Guid(e32aaa936bc750a46baf1468a7e955a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Gas_Station_2A.prefab using Guid(e32aaa936bc750a46baf1468a7e955a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '31c0cc08ab2adef14f93b649d788b10f') in 0.0403556 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 37
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Road_3X.prefab
+  artifactKey: Guid(660eac0628c5a604393da34ac5f7932c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Road_3X.prefab using Guid(660eac0628c5a604393da34ac5f7932c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '75ca5fa4d4824c13acf2ca515eb01fe2') in 0.0346865 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Streetlight_1C.prefab
+  artifactKey: Guid(fa1171c4c28a81e40a4541222c24d8ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Streetlight_1C.prefab using Guid(fa1171c4c28a81e40a4541222c24d8ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '974da66b1aa27e51f84a2c1d34d9e557') in 0.0280622 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 15
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Car_18C.prefab
+  artifactKey: Guid(dec6e1dfe0585314386ba9c3b833424a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Car_18C.prefab using Guid(dec6e1dfe0585314386ba9c3b833424a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'a579e03877eec3ab25a188d63df5aec1') in 0.0368986 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 31
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Tree_6D.prefab
+  artifactKey: Guid(ad41226cf815d854487b83868699253e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Tree_6D.prefab using Guid(ad41226cf815d854487b83868699253e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'c40bb2e2fc4a93cd73eea6bbdbb10328') in 0.0303632 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Road_3W.prefab
+  artifactKey: Guid(210adf71097388940bcd0ef3997f3c6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Road_3W.prefab using Guid(210adf71097388940bcd0ef3997f3c6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'ea76e44314bbe39db4a25936ee97a5e5') in 0.0332549 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000072 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Gas_Station_1A.prefab
+  artifactKey: Guid(97e9c33c57ac8e943a1a1b8851b9ff21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Gas_Station_1A.prefab using Guid(97e9c33c57ac8e943a1a1b8851b9ff21) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '4a2b97aa004d7d504058d775c3bd80c4') in 0.0496012 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 36
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Pavement_Rounded_2E_8X8.prefab
+  artifactKey: Guid(eb833c28482ce2f459dfdf7aa225bb1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Pavement_Rounded_2E_8X8.prefab using Guid(eb833c28482ce2f459dfdf7aa225bb1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'b1c056d06b1bd11583380f0db53cf14b') in 0.0375069 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000090 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Tree_6C.prefab
+  artifactKey: Guid(0fcab555f304cd84d8d77e9af3b7e843) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Tree_6C.prefab using Guid(0fcab555f304cd84d8d77e9af3b7e843) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'a8f4a1226bd21c281dfd53021df3c43a') in 0.0272157 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000034 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Streetsign_3E.prefab
+  artifactKey: Guid(b6c857a625d992540a6520f3c0549972) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Streetsign_3E.prefab using Guid(b6c857a625d992540a6520f3c0549972) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '9773dbe7711a83048a58206d6236cd7b') in 0.0382537 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Tree_7E.prefab
+  artifactKey: Guid(f2e803525a1b9e14d9979fe774a35d4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Tree_7E.prefab using Guid(f2e803525a1b9e14d9979fe774a35d4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '894da5c5793571185794e13c965d2657') in 0.031009 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Tree_7G.prefab
+  artifactKey: Guid(e47eeb5d02201e849b057cf2b2bc3455) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Tree_7G.prefab using Guid(e47eeb5d02201e849b057cf2b2bc3455) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '2756de7f2ac69d99a783819341560b16') in 0.0420513 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Gas_Tank_1A.prefab
+  artifactKey: Guid(3f6845443ff1c26428a90cf51e082da2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Gas_Tank_1A.prefab using Guid(3f6845443ff1c26428a90cf51e082da2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'aeba745e2a21b112eeff1d6f318a8f8f') in 0.0296242 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Roundabout_2D.prefab
+  artifactKey: Guid(27b08e018f6e62c468a259c642ca2b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Roundabout_2D.prefab using Guid(27b08e018f6e62c468a259c642ca2b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '7a7ef5c0e37d14f72f77b1e5b2c0f910') in 0.037796 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 24
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Toon Gas Station/Prefabs/Road_1A.prefab
+  artifactKey: Guid(4fa7824a621d72c419d77f7c478045eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Prefabs/Road_1A.prefab using Guid(4fa7824a621d72c419d77f7c478045eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'dfa6de6c91fe0dd2b61774f87b8019b1') in 0.0331509 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 13
+
+========================================================================
+Received Import Request.
+  Time since last request: 149.246924 seconds.
+  path: Assets/Toon Gas Station/Models/Barrel_1F.fbx
+  artifactKey: Guid(4da680e590d711e4fb6ae1e90b6497f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Barrel_1F.fbx using Guid(4da680e590d711e4fb6ae1e90b6497f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'e9ded663fde980e472d5274e21004bb9') in 0.0898993 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Toon Gas Station/Models/Gas_Tank_1A.fbx
+  artifactKey: Guid(04d3300c24a5b764a9bcc872a9dc1af8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Gas_Tank_1A.fbx using Guid(04d3300c24a5b764a9bcc872a9dc1af8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '7b6e12ecc674cb2715fbbbbc3346f2d1') in 0.0433408 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Toon Gas Station/Models/Trees_6A.fbx
+  artifactKey: Guid(feaa2fb5acb574a42bdd05d8d919847d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Trees_6A.fbx using Guid(feaa2fb5acb574a42bdd05d8d919847d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '84ebd23dd5fcf14536bb5ed38b04eb5f') in 0.0466657 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Toon Gas Station/Models/Car_21A.fbx
+  artifactKey: Guid(0956088278b889348bef01895b1c80c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Car_21A.fbx using Guid(0956088278b889348bef01895b1c80c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'd5aa9d6ec26f636f6e3b6006214001a4') in 0.1794088 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 68
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Toon Gas Station/Models/Parking_1B.fbx
+  artifactKey: Guid(2276cfb46c53b724fb119ac20010302c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Parking_1B.fbx using Guid(2276cfb46c53b724fb119ac20010302c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '30a9a07c6179bfd263f1c46ef725b8ae') in 0.0421807 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000136 seconds.
+  path: Assets/Toon Gas Station/Models/Gas_Tank_1B.fbx
+  artifactKey: Guid(9db05f57824058347809113908df121a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Gas_Tank_1B.fbx using Guid(9db05f57824058347809113908df121a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'b4415b45bd9a8ca33dd753331f3ee329') in 0.038823 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000045 seconds.
+  path: Assets/Toon Gas Station/Models/Tree_7B.fbx
+  artifactKey: Guid(70f40ec1c5ab7444bbc25ab733461650) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Tree_7B.fbx using Guid(70f40ec1c5ab7444bbc25ab733461650) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'febd3bdbe2117f257d1a4bb7764b84a7') in 0.038855 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Toon Gas Station/Models/Streetsign_3E.fbx
+  artifactKey: Guid(6f91b78d7d005c24a95908d9be12bdb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Streetsign_3E.fbx using Guid(6f91b78d7d005c24a95908d9be12bdb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'eca8ce23af99294ba0d69f20412b0d4d') in 0.0400982 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Toon Gas Station/Models/Tree_7A.fbx
+  artifactKey: Guid(e3f8b6cdc58ee6a4781c400b50cc8a59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Tree_7A.fbx using Guid(e3f8b6cdc58ee6a4781c400b50cc8a59) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'cdf0e2bab8b9584b291b8e9d77e9cc95') in 0.0355498 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Toon Gas Station/Models/Building_7B.fbx
+  artifactKey: Guid(30ed3ff5c8264ad4d8466c22ebbdebe7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Building_7B.fbx using Guid(30ed3ff5c8264ad4d8466c22ebbdebe7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '8e039d0a71faf9affe99b724439dc973') in 0.0569546 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 16
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Toon Gas Station/Models/Gas_Station_2A.fbx
+  artifactKey: Guid(fbc41d202fa9fd94bb3b9147ccc3b861) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Gas_Station_2A.fbx using Guid(fbc41d202fa9fd94bb3b9147ccc3b861) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00525e1b13345a555ec209a526dbd9ca') in 0.0999565 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 28
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Toon Gas Station/Models/Pavement_Special_1A_12X12.fbx
+  artifactKey: Guid(9a178b351d0e332459ac66d25e364d08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Pavement_Special_1A_12X12.fbx using Guid(9a178b351d0e332459ac66d25e364d08) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '2b2787bcd59ab4583c78b7dd5eaab3d0') in 0.0363657 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/Toon Gas Station/Models/Tree_7D.fbx
+  artifactKey: Guid(709e1ea0a327e494181e654792052f79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Tree_7D.fbx using Guid(709e1ea0a327e494181e654792052f79) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '315749583928b52305f89b46b56b79fd') in 0.0417761 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Toon Gas Station/Models/Tree_6C.fbx
+  artifactKey: Guid(084225910f6fe6844b723535d702af6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Tree_6C.fbx using Guid(084225910f6fe6844b723535d702af6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'b74a0a35da090fb3f61cd2ba5a5a5f8c') in 0.0337048 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Toon Gas Station/Models/Streetsign_2J.fbx
+  artifactKey: Guid(1e75a60b1cd934842850141ac9ad879c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Streetsign_2J.fbx using Guid(1e75a60b1cd934842850141ac9ad879c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '5c166962668552d3be952d69a0dd379c') in 0.0342554 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Toon Gas Station/Models/Car_6G.fbx
+  artifactKey: Guid(e29524f3e15f50f40a84ba6ae5a5de10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Car_6G.fbx using Guid(e29524f3e15f50f40a84ba6ae5a5de10) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'd4c01a14479c5cbc331af12826526ffc') in 0.1194916 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 31
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Toon Gas Station/Models/Road_3X.fbx
+  artifactKey: Guid(debb5cf0b4233cc408c5721e6df29a7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Road_3X.fbx using Guid(debb5cf0b4233cc408c5721e6df29a7b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '514f1a19bad9cdf48a7f95f12a51bc77') in 0.0436123 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Toon Gas Station/Models/Rock_Cluster_1C.fbx
+  artifactKey: Guid(bfe8bae4cbffca0448679320360995d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Rock_Cluster_1C.fbx using Guid(bfe8bae4cbffca0448679320360995d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'd379891c4ee06912f1715448902883c5') in 0.0400548 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Toon Gas Station/Models/Tree_7C.fbx
+  artifactKey: Guid(b2ed135122c0adb42a4599ab021eeb17) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Tree_7C.fbx using Guid(b2ed135122c0adb42a4599ab021eeb17) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '8367b2d1df7878e0f95bba2c0aa3319b') in 0.0436432 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Toon Gas Station/Models/Gas_Station_1A.fbx
+  artifactKey: Guid(3d6d3d27bd2e2974cb4fe11aa1febd04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Gas_Station_1A.fbx using Guid(3d6d3d27bd2e2974cb4fe11aa1febd04) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'ae623d52f601212ae44e94cebe0a4e9f') in 0.1062675 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 28
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000068 seconds.
+  path: Assets/Toon Gas Station/Models/Tree_6A.fbx
+  artifactKey: Guid(b823b12a32852d74184ea84741978d46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Tree_6A.fbx using Guid(b823b12a32852d74184ea84741978d46) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '7b97080294785c5060444d546d47c032') in 0.0401008 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Toon Gas Station/Models/Streetlight_1C.fbx
+  artifactKey: Guid(e4c5085046b8cfe48a900f05e8e63e8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Streetlight_1C.fbx using Guid(e4c5085046b8cfe48a900f05e8e63e8a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '04122271b2cb75986141142d0b468c65') in 0.0406226 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Toon Gas Station/Models/Pavement_2J_2X2.fbx
+  artifactKey: Guid(ecf8cb1f1c1740047903f294e3378cad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Pavement_2J_2X2.fbx using Guid(ecf8cb1f1c1740047903f294e3378cad) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'b26d798e72eebf15fa03a4e64329747b') in 0.0479556 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Toon Gas Station/Models/Tree_7F.fbx
+  artifactKey: Guid(48abe579b846a624581d4139874c4016) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Tree_7F.fbx using Guid(48abe579b846a624581d4139874c4016) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'ec28bc64f1b31d28bcc863e844d75860') in 0.0380035 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/Toon Gas Station/Models/Tree_7E.fbx
+  artifactKey: Guid(0425ea4a0c5748d4589967ece3bfcb91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Tree_7E.fbx using Guid(0425ea4a0c5748d4589967ece3bfcb91) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '647a4a4ea79002cf15438636b28d0b32') in 0.0405073 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Toon Gas Station/Models/Rock_Cluster_1A.fbx
+  artifactKey: Guid(b975467450120c64e842890f1037f9e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Rock_Cluster_1A.fbx using Guid(b975467450120c64e842890f1037f9e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'ad4a65ee36201358bfda139b531a523b') in 0.0449794 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Toon Gas Station/Models/Roundabout_2D.fbx
+  artifactKey: Guid(3bf95aaf969194f46904707344286577) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Roundabout_2D.fbx using Guid(3bf95aaf969194f46904707344286577) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '975a9a968e7516d89187d9d7312b4c50') in 0.0556219 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 16
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Toon Gas Station/Models/Tree_6D.fbx
+  artifactKey: Guid(045280902dcb3ba49a7f452daa97607b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Tree_6D.fbx using Guid(045280902dcb3ba49a7f452daa97607b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '17db09291198bc753647e37c50a3f6cd') in 0.0348404 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Toon Gas Station/Models/Gas_Pump_1A.fbx
+  artifactKey: Guid(89d8c5b96bd715c4e8569910516adbf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Gas_Pump_1A.fbx using Guid(89d8c5b96bd715c4e8569910516adbf7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '69e99efc20426c08053bf2fb86fcd427') in 0.0397603 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/Toon Gas Station/Models/Tree_7G.fbx
+  artifactKey: Guid(4ec47309bc0a54f42894615d9a153523) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Tree_7G.fbx using Guid(4ec47309bc0a54f42894615d9a153523) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'd26127239007d05c1c05cf8f68ebed50') in 0.0403544 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Toon Gas Station/Models/Pavement_2J_4X4.fbx
+  artifactKey: Guid(6c0a9fa824af46247a29a8d7ca16be29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Pavement_2J_4X4.fbx using Guid(6c0a9fa824af46247a29a8d7ca16be29) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '7063ce0d2720e7392883f24f52730fa8') in 0.0322097 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000048 seconds.
+  path: Assets/Toon Gas Station/Models/Road_1A.fbx
+  artifactKey: Guid(5018cedd389aa8643a3951f684aec8f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Road_1A.fbx using Guid(5018cedd389aa8643a3951f684aec8f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '55505dfbeb5409106f399f209cd7eb7e') in 0.0377038 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Toon Gas Station/Models/Road_3W.fbx
+  artifactKey: Guid(00575f34657ddac41aab9802adcf5219) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Road_3W.fbx using Guid(00575f34657ddac41aab9802adcf5219) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '22bc5922b31b0d1ba74b933a8ea9abac') in 0.0372115 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Toon Gas Station/Models/Streetsign_3D.fbx
+  artifactKey: Guid(eb92fba294c92e449b630611e433070e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Streetsign_3D.fbx using Guid(eb92fba294c92e449b630611e433070e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'b94f7d4961c47fb919c1c8a812c48085') in 0.03732 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/Toon Gas Station/Models/Road_3Y.fbx
+  artifactKey: Guid(980d2403742ac794985812742cc8f2ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Road_3Y.fbx using Guid(980d2403742ac794985812742cc8f2ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '2c9958f99e50c1326b3f51e83e5bedd0') in 0.0373781 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Toon Gas Station/Models/Bilboard_1E.fbx
+  artifactKey: Guid(b5fad09f6acdfb74e9e58b7d7ebc6cf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Bilboard_1E.fbx using Guid(b5fad09f6acdfb74e9e58b7d7ebc6cf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '9bfdf4c7d045061e2d741f983978cb61') in 0.0658134 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 16
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/Toon Gas Station/Models/Car_18C.fbx
+  artifactKey: Guid(577bfc99767cb1b489b74d381e1a0e5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Car_18C.fbx using Guid(577bfc99767cb1b489b74d381e1a0e5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'c5ba5a3e8021677d88c2febda3d803ff') in 0.1536748 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 30
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000044 seconds.
+  path: Assets/Toon Gas Station/Models/Tree_6B.fbx
+  artifactKey: Guid(06efb7991cc97094f86be73aab9e2878) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Tree_6B.fbx using Guid(06efb7991cc97094f86be73aab9e2878) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'f8eba80238022e25eab4a6d0ea051967') in 0.0516346 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000053 seconds.
+  path: Assets/Toon Gas Station/Models/Pavement_Rounded_2E_8X8.fbx
+  artifactKey: Guid(41505389f5da2624ba5523cf266adcde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Pavement_Rounded_2E_8X8.fbx using Guid(41505389f5da2624ba5523cf266adcde) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '23f7947ef833c86ee1037316fd033b1c') in 0.0462794 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Toon Gas Station/Models/Barrel_1G.fbx
+  artifactKey: Guid(940f1d74b9e4ec84da524deec8d0878f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Barrel_1G.fbx using Guid(940f1d74b9e4ec84da524deec8d0878f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '18ebb18cd38cbb38b3ed08fc81e16339') in 0.0561881 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Toon Gas Station/Models/Gas_Tank_2A.fbx
+  artifactKey: Guid(2f0a0eaaa0b685547b1a6d12a950ac8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Gas_Tank_2A.fbx using Guid(2f0a0eaaa0b685547b1a6d12a950ac8e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '2e6fd2bfd267235ae44d860e7a756d56') in 0.0479701 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/Toon Gas Station/Models/Building_7C.fbx
+  artifactKey: Guid(a17fa7fd4bfd8ce429a57dde2fc1f3aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Building_7C.fbx using Guid(a17fa7fd4bfd8ce429a57dde2fc1f3aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '9ebdacdb0c983f3067fc04b8e4ecd573') in 0.1026723 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Toon Gas Station/Models/Rock_Cluster_1B.fbx
+  artifactKey: Guid(45ed2b099da3ecb4cb04e85fe5a16ea1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Rock_Cluster_1B.fbx using Guid(45ed2b099da3ecb4cb04e85fe5a16ea1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '8094e26f8c1e06bd1b9497dbae0450da') in 0.0444727 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/Toon Gas Station/Models/Building_17E.fbx
+  artifactKey: Guid(b3b6ed0d732bfb5499fc588276b29b9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Building_17E.fbx using Guid(b3b6ed0d732bfb5499fc588276b29b9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'f4ed2db279b358e073d9ad60ada36c08') in 0.0777745 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 18
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/Toon Gas Station/Models/Barrel_3B.fbx
+  artifactKey: Guid(5b9ebe0220700b045964d31ea56f5efa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Barrel_3B.fbx using Guid(5b9ebe0220700b045964d31ea56f5efa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '2858f5d3f1a5852e7ca42086dfd7f5cb') in 0.0439467 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000075 seconds.
+  path: Assets/Toon Gas Station/Models/Car_14I.fbx
+  artifactKey: Guid(3e536b21e16197d4c88495c3949a1a9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Car_14I.fbx using Guid(3e536b21e16197d4c88495c3949a1a9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'd1b78ccda62c8a19d6118319014e4b5b') in 0.1570945 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 31
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000058 seconds.
+  path: Assets/Toon Gas Station/Models/Road_1Z.fbx
+  artifactKey: Guid(8eaa77c43da0bb241a1d6b4b8bf458db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Toon Gas Station/Models/Road_1Z.fbx using Guid(8eaa77c43da0bb241a1d6b4b8bf458db) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '8fd2591559aceb45eedd3df21e97dccd') in 0.0475141 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 11
+
