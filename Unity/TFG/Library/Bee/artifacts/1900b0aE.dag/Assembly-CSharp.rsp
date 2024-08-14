@@ -403,13 +403,9 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.9f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.9f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.9f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
-"Assets/Input/MGParkingCarIModeInput/CarInput.cs"
 "Assets/Scriptables/Engine/EngineSO.cs"
+"Assets/Scripts/MGParkingCar/CarInstances.cs"
 "Assets/Scripts/MGParkingCar/CarMovement.cs"
-"Assets/Scripts/MGParkingCarModeInput/Car.cs"
-"Assets/Scripts/MGParkingCarModeInput/CarDriver.cs"
-"Assets/Scripts/MGParkingCarModeInput/CarEngine.cs"
-"Assets/Scripts/MGParkingCarModeInput/CarPlayerDriver.cs"
 -langversion:9.0
 /deterministic
 /optimize+
