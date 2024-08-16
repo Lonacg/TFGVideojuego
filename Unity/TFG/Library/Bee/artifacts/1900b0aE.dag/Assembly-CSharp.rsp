@@ -406,6 +406,7 @@
 "Assets/Scriptables/Engine/EngineSO.cs"
 "Assets/Scripts/MGParkingCar/CarInstances.cs"
 "Assets/Scripts/MGParkingCar/CarMovement.cs"
+"Assets/Scripts/MGParkingCar/ParkingTrigger.cs"
 -langversion:9.0
 /deterministic
 /optimize+

@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bf6717c977fbad84cad7564c9e5ba0c2, type: 3}
+      propertyPath: m_TagString
+      value: ImmobileCar
+      objectReference: {fileID: 0}
     - target: {fileID: 3164286642307905054, guid: bf6717c977fbad84cad7564c9e5ba0c2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
