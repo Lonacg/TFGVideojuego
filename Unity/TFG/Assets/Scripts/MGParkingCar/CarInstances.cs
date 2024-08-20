@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class CarInstances : MonoBehaviour
@@ -7,24 +8,29 @@ public class CarInstances : MonoBehaviour
 
     public GameObject[] cars;
 
+    private GameObject parkingLot;
+    string pLot = "ParkingLot";
     public List<GameObject> carPositions;
 
 
 
     public void intanciateCars(){
 
-    }
+        // Asignamos las posiciones a la lista por codigo
+        parkingLot = GameObject.Find(pLot);
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        // Instanciamos los vehiculos de atrezo
+        for (int i = 0 ; i < parkingLot.transform.childCount; i++ ){
+            carPositions.Add(parkingLot.transform.GetChild(i).gameObject); 
+        }
+
+        
+        // Instanciamos los prefabs
         foreach (var car in cars){
             // Lugar para instanciar
             int i = UnityEngine.Random.Range(0, carPositions.Count);
             GameObject placeToInstantiate = carPositions[i];
 
-            // Rotacion del vehiculo
+            // Rotacion del vehiculo prefab
             int j = UnityEngine.Random.Range(0,2);
             int rotChosen;
             if(j == 0){
@@ -36,20 +42,25 @@ public class CarInstances : MonoBehaviour
             // Instancia
             Instantiate(car, placeToInstantiate.transform.position, Quaternion.Euler(0, rotChosen, 0));
 
-            // Eliminamos la posicion ocupada de la lista
+            // Eliminamos el GameObject de esa posicion y la quitamos de la lista
             Destroy(carPositions[i]);
             carPositions.RemoveAt(i);
-
-
-
         }
-            
-
     }
 
-    // Update is called once per frame
+    void Awake()
+    {
+        // Instanciamos los vehiculos de atrezo
+        intanciateCars();
+    }
+
     void Update()
     {
-
+        
     }
+
+
+
+
+
 }

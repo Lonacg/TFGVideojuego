@@ -74,6 +74,6 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menu con:
 ## MEJORAS POSIBLES
 
 # MG Parking
-- Que la lista de ParkingLot se coja por codigo en vez de asignarlo en el inspector
+- HECHO: Que la lista de ParkingLot se coja por codigo en vez de asignarlo en el inspector 
 - Vehiculos pasando por la carretera en ambos sentidos
 - Los conos se mueven al ser empujados por player
