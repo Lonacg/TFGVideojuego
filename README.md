@@ -77,3 +77,6 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menu con:
 - HECHO: Que la lista de ParkingLot se coja por codigo en vez de asignarlo en el inspector 
 - Vehiculos pasando por la carretera en ambos sentidos
 - Los conos se mueven al ser empujados por player
+- Añadir una ayuda despues de un fallo, por ejemplo, operar los ultimos digitos de ambos numeros y dar la respuesta
+- Añadir que haya que aparcar 2 veces, primero una suma/resta y luego una multi/divi
+- Añadir 2 niveles de dificultad: modo facil solo 2 cifras y modo dificil 3

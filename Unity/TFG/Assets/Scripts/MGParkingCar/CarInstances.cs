@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,11 +33,11 @@ public class CarInstances : MonoBehaviour
         // Instanciamos los prefabs
         foreach (var car in cars){
             // Lugar random para instanciar
-            int i = UnityEngine.Random.Range(0, carPositions.Count);
+            int i = Random.Range(0, carPositions.Count);
             GameObject placeToInstantiate = carPositions[i];
 
             // Rotacion del vehiculo prefab
-            int j = UnityEngine.Random.Range(0,2);
+            int j = Random.Range(0,2);
             int rotChosen;
             if(j == 0){
                 rotChosen = 0;
