@@ -5342,7 +5342,7 @@ GameObject:
   - component: {fileID: 847325085}
   m_Layer: 0
   m_Name: ParkingNumbers
-  m_TagString: ParkedCorrectly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5385,6 +5385,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parkingNumber: {fileID: 847325083}
+  scriptCarInstances: {fileID: 1632591839}
+  numberFreeParkings: 0
   parkingNumbers: []
 --- !u!1001 &858531878
 PrefabInstance:
@@ -6399,9 +6401,9 @@ MonoBehaviour:
   - {fileID: 6993098923118154195, guid: f6cd865428b3ad944b28910645f1f3b3, type: 3}
   - {fileID: 5209155572462052216, guid: e78911d649d8b594392716edc08ecded, type: 3}
   - {fileID: 2493504247044083352, guid: 76ae12017df61194aad1184b9cc5a218, type: 3}
-  carPositions: []
   parkingLot: {fileID: 1632591837}
   parkingNumber: {fileID: 847325083}
+  carPositions: []
   pNumbers: []
 --- !u!4 &1683092105 stripped
 Transform:
