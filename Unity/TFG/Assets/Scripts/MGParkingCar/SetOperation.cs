@@ -12,6 +12,7 @@ public class SetOperation : MonoBehaviour
     public GameObject parkingNumber;
     //public GameObject[] parkingNumbers;
     public CarInstances scriptCarInstances;
+    public TextMeshProUGUI operationText;
 
     public int numberFreeParkings;
     public List<GameObject> parkingNumbers;
@@ -67,6 +68,8 @@ public class SetOperation : MonoBehaviour
         }
         textFirstTry = "Aparca en:\n " + firstNumber + symbol + secondNumber;
         textAfterFail = "Aparca en:\n     " + firstNumber + "\n  " + symbol + " " + secondNumber;
+
+        operationText.text = textFirstTry;
 
         Debug.Log(textFirstTry);        
         Debug.Log(textAfterFail);        
