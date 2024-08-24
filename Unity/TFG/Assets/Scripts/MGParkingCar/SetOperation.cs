@@ -21,6 +21,11 @@ public class SetOperation : MonoBehaviour
     private int sol;
     private int[] incorrectNumbers;
 
+    private string symbol;
+    private string textFirstTry;
+    private string textAfterFail;
+
+
 
     
 
@@ -33,6 +38,7 @@ public class SetOperation : MonoBehaviour
         parkingNumbers = scriptCarInstances.pNumbers;
 
         GenerateOperation();
+        // Llamar a la funcion que muestre la operacion
         ChangeNumberParking();
 
     }
@@ -48,17 +54,26 @@ public class SetOperation : MonoBehaviour
 
             sol = firstNumber + secondNumber;
 
+            symbol = "+";
+
         }
         else{               // Generamos una resta cuyo resultado tenga como maximo 3 cifras
             firstNumber = Random.Range(501, 999);
             secondNumber = Random.Range(0, firstNumber-50);
 
             sol = firstNumber - secondNumber;
-        }
 
-        Debug.Log("La operacion es: " + i + ". La operacion es " + firstNumber + " y " + secondNumber);        
+            symbol = "-";
+        }
+        textFirstTry = "Aparca en:\n " + firstNumber + symbol + secondNumber;
+        textAfterFail = "Aparca en:\n     " + firstNumber + "\n  " + symbol + " " + secondNumber;
+
+        Debug.Log(textFirstTry);        
+        Debug.Log(textAfterFail);        
         Debug.Log("El resultado es: " + sol);        
     }
+
+
 
     public void ChooseWrongAnswer(TextMeshPro ptext, int indexWrongN){
         int incorrectSol = Random.Range(sol - 12, sol +13);
@@ -79,14 +94,11 @@ public class SetOperation : MonoBehaviour
 
         // Generamos un numero aleatorio para elegir en que aparcamiento se coloca la solucion correcta
         int correctPlace = Random.Range(0, numberFreeParkings);
-        Debug.Log("El sitio correcto es: " + correctPlace);
 
         // Asignamos el tag ParkedCorrectly al aparcamiento con la solucion correcta y ParkedIncorrectly al resto
-        //parkingNumbers = new GameObject[numberFreeParkings];
         incorrectNumbers = new int[numberFreeParkings -1];
         int indexWrongN = 0;
         for (int i = 0 ; i < numberFreeParkings ; i++ ){
-            //parkingNumbers[i] = parkingNumber.transform.GetChild(i).gameObject;
 
             // Accedemos al numero de la plaza de aparcamiento para luego cambiarlo
             TextMeshPro ptext = parkingNumbers[i].GetComponentInChildren<TextMeshPro>();

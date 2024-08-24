@@ -26,6 +26,7 @@ public class CarMovement : MonoBehaviour
         x= Input.GetAxis("Horizontal");
         y= Input.GetAxis("Vertical");
 
+        // Actualizacion del movimiento
         transform.Rotate(0, x * Time.deltaTime * rotationSpeed, 0);
         transform.Translate(0,0, y * Time.deltaTime * runSpeed); 
 
@@ -35,7 +36,7 @@ public class CarMovement : MonoBehaviour
         if (x < 0) // Giro a la izquierda
             wheelTargetRotation = Quaternion.Euler(0, -30, 0);
         
-        if (x > 0)
+        if (x > 0) // Giro a la derecha
             wheelTargetRotation = Quaternion.Euler(0, 30, 0);
         
         foreach (var wheel in frontWheels)

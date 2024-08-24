@@ -8,6 +8,14 @@
     "C:\\Users\\Usuario\\Documents\\0-MIS DOCUMENTOS\\0-Universidad\\TFGVideojuego\\Unity\\TFG\\Packages\\packages-lock.json"
   ],
   "outputs": {
+    "com.unity.2d.sprite@1.0.0": {
+      "name": "com.unity.2d.sprite",
+      "resolvedPath": "C:\\Users\\Usuario\\Documents\\0-MIS DOCUMENTOS\\0-Universidad\\TFGVideojuego\\Unity\\TFG\\Library\\PackageCache\\com.unity.2d.sprite",
+      "fingerprint": "0e3cfd27a2b4d364334434d9dcc1bf1f6d795736",
+      "editorCompatibility": "2019.2.0a1",
+      "version": "1.0.0",
+      "source": "builtin"
+    },
     "com.unity.cinemachine@3.1.1": {
       "name": "com.unity.cinemachine",
       "resolvedPath": "C:\\Users\\Usuario\\Documents\\0-MIS DOCUMENTOS\\0-Universidad\\TFGVideojuego\\Unity\\TFG\\Library\\PackageCache\\com.unity.cinemachine",
