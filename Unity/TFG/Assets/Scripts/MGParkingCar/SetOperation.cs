@@ -10,16 +10,16 @@ public class SetOperation : MonoBehaviour
 {
 
     public GameObject parkingNumber;
-    //public GameObject[] parkingNumbers;
-    public CarInstances scriptCarInstances;
+    public Instances scriptInstances;
     public TextMeshProUGUI operationText;
 
-    public int numberFreeParkings;
     public List<GameObject> parkingNumbers;
+    public List<GameObject> parkingLots;
 
     private int firstNumber;
     private int secondNumber;
     private int sol;
+    private int numberFreeParkings;
     private int[] incorrectNumbers;
 
     private string symbol;
@@ -27,16 +27,26 @@ public class SetOperation : MonoBehaviour
     private string textAfterFail;
 
 
+    void OnEnable(){
+        ParkingTrigger.OnWrongParked += HandleOnWrongParked;
+    }
 
-    
+    void OnDisable(){
+        ParkingTrigger.OnWrongParked -= HandleOnWrongParked;
+    }
+
+
+
 
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {   
-        numberFreeParkings = scriptCarInstances.pNumbers.Count;
-        parkingNumbers = scriptCarInstances.pNumbers;
+        parkingNumbers = scriptInstances.pNumbers;
+        parkingLots = scriptInstances.pLots;
+        numberFreeParkings = parkingLots.Count;
+        
 
         GenerateOperation();
         // Llamar a la funcion que muestre la operacion
@@ -66,8 +76,8 @@ public class SetOperation : MonoBehaviour
 
             symbol = "-";
         }
-        textFirstTry = "Aparca en:\n " + firstNumber + symbol + secondNumber;
-        textAfterFail = "Aparca en:\n     " + firstNumber + "\n  " + symbol + " " + secondNumber;
+        textFirstTry = "Aparca en:\n " + firstNumber + " " + symbol + " " + secondNumber;
+        textAfterFail = "Aparca en:\n     " + firstNumber + "\n   " + symbol + " " + secondNumber;
 
         operationText.text = textFirstTry;
 
@@ -76,7 +86,16 @@ public class SetOperation : MonoBehaviour
         Debug.Log("El resultado es: " + sol);        
     }
 
+    void HandleOnWrongParked (GameObject go){
+        // Sacar una X roja o algo asi
 
+
+        // Cambiar la forma en la que esta la operacion
+        operationText.text = textAfterFail;
+        
+        // DialogueManager (script) tambien esta suscrito, el hace que desaparezca y aparezca la operacion
+    }
+    
 
     public void ChooseWrongAnswer(TextMeshPro ptext, int indexWrongN){
         int incorrectSol = Random.Range(sol - 12, sol +13);
@@ -108,11 +127,11 @@ public class SetOperation : MonoBehaviour
             
             // Actualizamos el tag del aparcamiento y el numero de la plaza
             if( i == correctPlace){
-                parkingNumbers[i].tag = "ParkedCorrectly";
+                parkingLots[i].tag = "ParkedCorrectly";
                 ptext.text = sol.ToString();                // Numero con la solucion
             }
             else{
-                parkingNumbers[i].tag = "ParkedIncorrectly";
+                parkingLots[i].tag = "ParkedIncorrectly";
                 ChooseWrongAnswer(ptext, indexWrongN);      // Numeros sin la solucion
                 indexWrongN ++; 
             }
