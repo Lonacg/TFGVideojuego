@@ -406,6 +406,7 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.9f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
 "Assets/Scripts/MGParkingCar/CarMovement.cs"
 "Assets/Scripts/MGParkingCar/DialogueManager.cs"
+"Assets/Scripts/MGParkingCar/ErrorXBehaviour.cs"
 "Assets/Scripts/MGParkingCar/Instances.cs"
 "Assets/Scripts/MGParkingCar/ParkingTrigger.cs"
 "Assets/Scripts/MGParkingCar/SetOperation.cs"

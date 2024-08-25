@@ -11,6 +11,7 @@ public class ParkingTrigger : MonoBehaviour
     public static event _OnWrongParked OnWrongParked;
 
 
+
     void OnTriggerEnter(Collider other){
         if (other.tag=="Player"){
             parkingReferences ++;
@@ -38,6 +39,10 @@ public class ParkingTrigger : MonoBehaviour
                 Debug.Log("APARCADO INNNNNNNNNNNNNNCORRECTO!");                                               // Aparcado en un sitio incorrecto
                 if(OnWrongParked != null)   
                     OnWrongParked(gameObject);
+
+                // Destruimos este aparcamiento en el que ha fallado para que no vuelva a detectar los colliders
+                Destroy(gameObject);    
+
 
             }
 

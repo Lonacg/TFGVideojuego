@@ -1,8 +1,6 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 using TMPro;
 using Unity.VisualScripting;
 
@@ -77,20 +75,16 @@ public class SetOperation : MonoBehaviour
             symbol = "-";
         }
         textFirstTry = "Aparca en:\n " + firstNumber + " " + symbol + " " + secondNumber;
-        textAfterFail = "Aparca en:\n     " + firstNumber + "\n   " + symbol + " " + secondNumber;
+        textAfterFail = "Aparca en:\n      " + firstNumber + "\n   " + symbol + " " + secondNumber;
 
         operationText.text = textFirstTry;
 
-        Debug.Log(textFirstTry);        
-        Debug.Log(textAfterFail);        
+        Debug.Log(textFirstTry);          
         Debug.Log("El resultado es: " + sol);        
     }
 
     void HandleOnWrongParked (GameObject go){
-        // Sacar una X roja o algo asi
-
-
-        // Cambiar la forma en la que esta la operacion
+        // Cambiamos la forma en la que esta la operacion para ayudar al jugador
         operationText.text = textAfterFail;
         
         // DialogueManager (script) tambien esta suscrito, el hace que desaparezca y aparezca la operacion
@@ -98,8 +92,19 @@ public class SetOperation : MonoBehaviour
     
 
     public void ChooseWrongAnswer(TextMeshPro ptext, int indexWrongN){
-        int incorrectSol = Random.Range(sol - 12, sol +13);
 
+        // Elegimos el intervalo en el que se generaran las soluciones incorrectas
+        int min = sol - 12;
+        if(min < 0)
+            min = 0;
+
+        int max = sol + 13;  // Sumo uno mas porque Random.Range no toma el limite superior
+        if(max > 999)
+            max = 999;
+        
+        int incorrectSol = Random.Range(min, max);
+
+        // Evitamos poner numeros repetidos o la solucion correcta
         bool duplicated = incorrectNumbers.Contains(incorrectSol);
 
         if (duplicated || incorrectSol == sol)      // MUY POCO EFICIENTE, REVISAR!!!!!!!!!!!!!!!!!!!
@@ -140,9 +145,4 @@ public class SetOperation : MonoBehaviour
 
 
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

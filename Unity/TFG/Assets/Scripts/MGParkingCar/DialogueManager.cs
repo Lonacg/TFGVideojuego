@@ -5,17 +5,22 @@ using System.Collections.Generic;
 
 public class DialogueManager : MonoBehaviour
 {
+    public GameObject player;
     public GameObject introView;
     public GameObject ingameView;
     public GameObject errorView;
+    public GameObject victoryView;
 
     public TextMeshProUGUI introDialoguePlace;
     public TextMeshProUGUI errorDialoguePlace;
+    public TextMeshProUGUI victoryDialoguePlace;
 
 
 
     public List<string> linesIntroDialogue;
     public List<string> linesErrorDialogue;
+    //public List<string> linesVictoryDialogue;
+
     // Alternativa escribiendo las frases en el inspector
     //public string[] linesIntroDialogue;
     //public string[] linesErrorDialogue;
@@ -25,25 +30,32 @@ public class DialogueManager : MonoBehaviour
 
 
     void OnEnable(){
+        ParkingTrigger.OnWellParked += HandleOnWellParked;
         ParkingTrigger.OnWrongParked += HandleOnWrongParked;
     }
 
     void OnDisable(){
+        ParkingTrigger.OnWellParked -= HandleOnWellParked;
         ParkingTrigger.OnWrongParked -= HandleOnWrongParked;
     }
 
     void Awake(){
         // Primer dialogo de inicio
-        string line1 = "¿Podrás aparcar en el lugar correcto?";
+        string line1 = " ¿Podrás aparcar en el lugar correcto?";
         string line2 = "3... 2... 1.... ¡YA!";
         linesIntroDialogue.Add(line1);
         linesIntroDialogue.Add(line2);
 
-        // Dialogo tras errorlinesErrorDialogue
+        // Dialogo tras error
         line1 = "¡¡ERROR!!";
         line2 = "Repasa la operación";
         linesErrorDialogue.Add(line1);
         linesErrorDialogue.Add(line2);
+
+        // Dialogo tras victoria
+        //line1 = "¡¡Conseguido!!";
+        //linesVictoryDialogue.Add(line1);
+
     }
 
     void Start()
@@ -53,38 +65,47 @@ public class DialogueManager : MonoBehaviour
         StartDialogue(introView, introDialoguePlace, linesIntroDialogue);
     }
 
-    void Update()
-    {
 
+
+   
+    void HandleOnWrongParked(GameObject go){
+        StartCoroutine(FadeCanvasGroup(errorView, from: 0, to: 1));
+        StartCoroutine(FadeCanvasGroup(ingameView, from: 1, to: 0));
+        StartDialogue(errorView, errorDialoguePlace, linesErrorDialogue);
     }
 
-    // Lee la siguiente frase
-    public void NextLine(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){
-        if (index < lines.Count){
-            dialoguePlace.text = "";
-            StartCoroutine(WriteLine(view, dialoguePlace, lines));
-        }
-        else{ // Despues de la ultima linea cerramos el dialogo y empieza el juego
-            StartCoroutine(FadeCanvasGroup(view, from: 1, to: 0));
-            StartCoroutine(FadeCanvasGroup(ingameView, from: 0, to: 1));
-        }
+
+    void HandleOnWellParked(GameObject go){
+        StartCoroutine(FadeCanvasGroup(victoryView, from: 0, to: 1));
+        StartCoroutine(FadeCanvasGroup(ingameView, from: 1, to: 0));
+        player.GetComponent<CarMovement>().enabled = false;
     }
 
     public void StartDialogue(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){
         index = 0;
-        StartCoroutine(WriteLine(view, dialoguePlace, lines));
+        dialoguePlace.text = "";
+        // Desactivamos el Script de Player para que no se pueda mover mientras dure la corrutina 
+        player.GetComponent<CarMovement>().enabled = false;
+        StartCoroutine(WriteLetterByLetter(view, dialoguePlace, lines));
     
     }
 
-    void HandleOnWrongParked (GameObject go){
-        StartCoroutine(FadeCanvasGroup(errorView, from: 0, to: 1));
-        StartDialogue(errorView, errorDialoguePlace, linesErrorDialogue);
-        //RechargeView(ingameView);
+    public void NextLine(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){
+        if (index < lines.Count){
+            dialoguePlace.text = "";
+            StartCoroutine(WriteLetterByLetter(view, dialoguePlace, lines));
+        }
+        else{ // Despues de la ultima linea cerramos el dialogo y empieza el juego
+            StartCoroutine(FadeCanvasGroup(view, from: 1, to: 0));
+            StartCoroutine(FadeCanvasGroup(ingameView, from: 0, to: 1));
+            
+            // Activamos el Script de Player para que no se pueda mover mientras dure la corrutina 
+            player.GetComponent<CarMovement>().enabled = true;
+
+        }
     }
 
-
-    // Escribe letra a letra
-    IEnumerator WriteLine(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){ 
+    IEnumerator WriteLetterByLetter(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){ 
         foreach (char letter in lines[index].ToCharArray()){
             dialoguePlace.text += letter;
             yield return new WaitForSeconds(textSpeed);
@@ -94,14 +115,8 @@ public class DialogueManager : MonoBehaviour
         NextLine(view, dialoguePlace, lines);
     }
 
-    IEnumerator RechargeView(GameObject view){
-        StartCoroutine(FadeCanvasGroup(view, from: 1, to: 0));
-        yield return new WaitForSeconds(1.1f);
-        StartCoroutine(FadeCanvasGroup(view, from: 0, to: 1));
-    }
 
 
-    // Corrutina para esconder y mostrar vistas suavemente
     IEnumerator FadeCanvasGroup(GameObject view, float from, float to){ 
         CanvasGroup canvasGroup = view.GetComponent<CanvasGroup>();
         if(to > 0)
@@ -118,7 +133,7 @@ public class DialogueManager : MonoBehaviour
 
         canvasGroup.alpha = to;
 
-        if (to == 0)
+        if(to == 0)
             view.SetActive(false);
 
     }
