@@ -1,0 +1,2 @@
+1 El objeto visualmente parece que tiene el eje en el centro, pero pasa lo que en la imagen 2
+2 si desactivo el objeto, se ve que el eje de verdad esta en el suelo, no entiendo por que no se ve ahi tambien al activarlo. Estaba haciendo cosas rarisimas en el movimiento, se iba hacia arriba y hacia abajo al llevarle a los lanes situados en el 0.5 de y
