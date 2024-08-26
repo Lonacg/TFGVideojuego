@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 
@@ -9,7 +10,8 @@ public class SetOperation : MonoBehaviour
 
     public GameObject parkingNumber;
     public Instances scriptInstances;
-    public TextMeshProUGUI operationText;
+    public TextMeshProUGUI operationFirstTryText;
+    public TextMeshProUGUI operationSecondTryText;
 
     public List<GameObject> parkingNumbers;
     public List<GameObject> parkingLots;
@@ -59,7 +61,7 @@ public class SetOperation : MonoBehaviour
         if (i == 0){        // Generamos una suma cuyo resultado tenga como maximo 3 cifras
             firstNumber = Random.Range(110, 800);
             int limit = 999 - firstNumber;
-            secondNumber = Random.Range(150,limit);
+            secondNumber = Random.Range(11, limit);
 
             sol = firstNumber + secondNumber;
 
@@ -68,26 +70,42 @@ public class SetOperation : MonoBehaviour
         }
         else{               // Generamos una resta cuyo resultado tenga como maximo 3 cifras
             firstNumber = Random.Range(501, 999);
-            secondNumber = Random.Range(0, firstNumber-50);
-
+            secondNumber = Random.Range(11, firstNumber - 50);
+            
             sol = firstNumber - secondNumber;
 
             symbol = "-";
+        
         }
-        textFirstTry = "Aparca en:\n " + firstNumber + " " + symbol + " " + secondNumber;
-        textAfterFail = "Aparca en:\n      " + firstNumber + "\n   " + symbol + " " + secondNumber;
 
-        operationText.text = textFirstTry;
+        textFirstTry = firstNumber + " " + symbol + " " + secondNumber;
+        textAfterFail = firstNumber + "\n" + symbol + " " + secondNumber;        
+
+        // Rellenamos con espacios a la izq para que el texto AfterFail quede bien representado (secondPart no es igual a la suma, firstPart si)
+        if(secondNumber < 100)
+            textAfterFail = firstNumber + "\n" + symbol + "  " + secondNumber;  
+
+        // Ponemos en el cuadro de texto la operacion
+        operationFirstTryText.text = textFirstTry;
 
         Debug.Log(textFirstTry);          
         Debug.Log("El resultado es: " + sol);        
     }
 
     void HandleOnWrongParked (GameObject go){
+        StartCoroutine(ChangeTextSecondTry());
+    }
+
+    IEnumerator ChangeTextSecondTry(){
+        yield return new WaitForSeconds(1);
         // Cambiamos la forma en la que esta la operacion para ayudar al jugador
-        operationText.text = textAfterFail;
+        operationFirstTryText.gameObject.SetActive(false);
+        operationSecondTryText.text = textAfterFail;
+        operationSecondTryText.gameObject.SetActive(true);
         
         // DialogueManager (script) tambien esta suscrito, el hace que desaparezca y aparezca la operacion
+
+
     }
     
 
