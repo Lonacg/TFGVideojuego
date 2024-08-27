@@ -7,8 +7,16 @@ public class GrannyMovement : MonoBehaviour
 {
 
 
+    // Para animaciones
+    private Animator animator;
+    private Rigidbody rb;
+    private Vector2 movement = Vector2.zero;
+    private string currentAnimation = "";
+    private int currentRSG = 0; // Current Ready/Steady/Go animacion
 
-    public Animator animator;
+
+
+
     //public GameObject player;
 
     public float x = 0;
@@ -36,17 +44,21 @@ public class GrannyMovement : MonoBehaviour
 
         currentLane = lanes[currentIndex];
 
+        // Asignamos el Animator y el Rigidbody
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody>();
 
-        // Lanzamos la corrutina para que el personaje haga un Ready, Steady, go
+
+        // Animacion del personaje al empezar
         StartCoroutine(ReadySteadyGo());
+
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
 
         // Entradas del teclado
         if(Input.GetKeyDown(KeyCode.LeftArrow)){
@@ -68,48 +80,55 @@ public class GrannyMovement : MonoBehaviour
         // x = 0;
         // y = 1;
 
+        // animator.SetFloat("VelX", x);
+        // animator.SetFloat("VelY", y);
 
-        animator.SetFloat("VelX", x);
-        animator.SetFloat("VelY", y);
+        //StartCoroutine(WaitForXSeconds(2, newY: 1));
 
-
-
-
+        //CheckAnimation();
 
     }
 
+    private void ChangeAnimation(string animation, float crossfade = 0.2f){
+        if(currentAnimation != animation){
+            currentAnimation = animation;
+            animator.CrossFade(animation, crossfade);
+        }
+    }
 
+    // private void CheckAnimation(){
+    //     if(movement.y == 1){
+    //         ChangeAnimation("Run");
+    //     }
+    //     else{
+    //         // AQUI HABRIA QUE DISTINGUIR SI ESTA PARADO AL PRINCIPIO O AL FINAL, PARA LA ANIMACION DE VISTORIA
+    //         ChangeAnimation("Idle");
+    //     }
+    // }
+
+
+    // IEnumerator WaitForXSeconds(float seconds, float newY){
+    //     yield return new WaitForSeconds(seconds);
+    //     movement.y = newY;
+    // }
 
     IEnumerator ReadySteadyGo(){
-        // player.GetComponent<GrannyMovement>().enabled = false;
-        
-        Debug.Log("Idle");
-        yield return new WaitForSeconds(2);
 
-        y = 0.25f;
-        Debug.Log("Agachandome");
+        // Intro texto y camara
+        ChangeAnimation("Idle");
         yield return new WaitForSeconds(1);
 
-        y = 0.5f;
-        Debug.Log("Agachada");
-        yield return new WaitForSeconds(2);
+        // READY
+        ChangeAnimation("Crouched");        
+        yield return new WaitForSeconds(1);
 
-        //y = 0.75f;
-        Debug.Log("Levantandome");
-        //yield return new WaitForSeconds(0.5f);      
+        // STEADY (sigue esperando)
+        yield return new WaitForSeconds(1);
 
-        y = 1;
-        Debug.Log("Corriendo");
+        // GO
+        ChangeAnimation("Running");  
         
-
-
     }
-
-
-
-
-
-
 
 
 }
