@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class CarMovement : MonoBehaviour
 {
+
     [Header("Movement:")]
-    public float runSpeed = 10;
+    public float movSpeed = 10;
     public float rotationSpeed = 250;
-
-    public float x, y;
-
+    private Vector2 movement = Vector2.zero;
+    private Rigidbody rb;
 
     [Header("Accessories")]
     public Transform[] frontWheels;
@@ -16,27 +16,34 @@ public class CarMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        // Asignamos el Rigidbody
+        rb = GetComponent<Rigidbody>();
+        
     }
+
+    void Update(){
+        // Input del teclado para el movimiento
+        movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+    }
+
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        // Entrada de movimiento
-        x= Input.GetAxis("Horizontal");
-        y= Input.GetAxis("Vertical");
+        // Movemos el coche aplicando la fisica y en el FixedUpdate para que sean siempre los mismos frames
+        Vector3 velocity = movSpeed * (movement.y * transform. forward);
+        rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.z);
 
-        // Actualizacion del movimiento
-        transform.Rotate(0, x * Time.deltaTime * rotationSpeed, 0);
-        transform.Translate(0,0, y * Time.deltaTime * runSpeed); 
-
+        if(movement.y != 0){ // QUITANDO ESTE IF PIERDE REALISMO PERO GANA MANEJABILIDAD
+            transform.Rotate(0, movement.x * Time.deltaTime * rotationSpeed, 0);
+        }
 
         // Giro de las ruedas delanteras
         Quaternion wheelTargetRotation = Quaternion.identity;
-        if (x < 0) // Giro a la izquierda
+        if (movement.x < 0) // Giro a la izquierda
             wheelTargetRotation = Quaternion.Euler(0, -30, 0);
         
-        if (x > 0) // Giro a la derecha
+        if (movement.x > 0) // Giro a la derecha
             wheelTargetRotation = Quaternion.Euler(0, 30, 0);
         
         foreach (var wheel in frontWheels)
@@ -45,4 +52,5 @@ public class CarMovement : MonoBehaviour
 
 
     }
+
 }

@@ -77,10 +77,11 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - HECHO: Que la lista de ParkingLot se coja por codigo en vez de asignarlo en el inspector 
 - HECHO: Añadir una ayuda tras el primer fallo
 - Vehiculos pasando por la carretera en ambos sentidos
-- Los conos se mueven al ser empujados por player
+- HECHO: Los conos se mueven al ser empujados por player
+- La pantalla de error es una imagen en vez de una vista, asi cuando aparece el error, se puede seguir viendo la operacion y le da tiempo a pensar mientras sale el texto.
 - Añadir que haya que aparcar 2 veces, primero una suma/resta y luego una multi/divi
-- Añadir 2 niveles de dificultad: modo facil solo 2 cifras y modo dificil 3
-- Que en el segundo fallo se ayude de alguna forma (no se como, porque decirle el resultado de las unidades es regalarselo. Separar en unidades, decenas y centenas?)
+
+
 
 
 
