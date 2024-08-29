@@ -37,7 +37,9 @@ public class GrannyMovement : MonoBehaviour
         animator = GetComponent<Animator>();
 
         // Animacion del personaje al empezar
-        StartCoroutine(ReadySteadyGo());
+        // StartCoroutine(ReadySteadyGo());
+
+        ChangeAnimation("Running"); 
 
     }
 
