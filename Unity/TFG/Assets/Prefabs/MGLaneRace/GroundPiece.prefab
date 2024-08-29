@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1816217606813447380}
   - component: {fileID: 2948360931701505238}
-  - component: {fileID: 6048412870442119435}
+  - component: {fileID: 5840327088735460823}
   m_Layer: 0
   m_Name: GroundPiece
   m_TagString: Untagged
@@ -56,7 +56,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10.86, y: 2.86, z: 1}
   m_Center: {x: 0, y: 1.4, z: 19}
---- !u!114 &6048412870442119435
+--- !u!114 &5840327088735460823
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3787812954335415120}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5110eacc8b3734f4884a6a4e768bb584, type: 3}
+  m_Script: {fileID: 11500000, guid: 6cb8447612340a44d846d697195d4d5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6079848064530966474

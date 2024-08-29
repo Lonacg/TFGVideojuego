@@ -174,6 +174,10 @@ PrefabInstance:
       propertyPath: groundSpeed
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7688277920998212077, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -361,6 +365,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 736563152}
+  - component: {fileID: 736563153}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -386,6 +391,19 @@ Transform:
   - {fileID: 2143907531}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &736563153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736563151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5110eacc8b3734f4884a6a4e768bb584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundSpeed: 5
 --- !u!1 &777313400
 GameObject:
   m_ObjectHideFlags: 0
