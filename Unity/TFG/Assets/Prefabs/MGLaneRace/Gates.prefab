@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8853490559813179937}
+  - component: {fileID: 6658937665366218638}
   m_Layer: 0
   m_Name: Gates
   m_TagString: Untagged
@@ -34,6 +35,22 @@ Transform:
   - {fileID: 6227447901189979147}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6658937665366218638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24734545890699495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07268c09aaaded64e8bd5fa26b4f39e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstNumber: 0
+  secondNumber: 0
+  sol: 0
+  operatorChosen: 0
 --- !u!1001 &2976681510687094952
 PrefabInstance:
   m_ObjectHideFlags: 0

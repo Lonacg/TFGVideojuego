@@ -2,15 +2,10 @@ using UnityEngine;
 
 public class TriggerFinalGate : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    void OnTriggerEnter(Collider other){
+        if (other.tag == "Player"){
+            // PARAR LA VELOCIDAD DE GROUND Y PONER LA ANIMACION DE GANANDO
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
     }
 }
