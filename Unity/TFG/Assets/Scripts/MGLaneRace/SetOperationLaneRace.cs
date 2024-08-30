@@ -1,40 +1,46 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
+
 
 public class SetOperationLaneRace : MonoBehaviour
 {
-
     public int firstNumber;
     public int secondNumber;
     public int sol;
     public int operatorChosen;
-    private int[] wrongSols;
-    private int[] allWrongSols;
+    public int[] wrongSols;
+    public int[] allWrongSols;
 
-
+    public List<GameObject> gates;
     private int totalGates;
 
 
 
     
-    void Start(){
-        // Contamos cuantos carriles tenemos para generalizar y poder ampliarlos en el futuro
-        GameObject parent = transform.parent.gameObject;
-        totalGates = parent.transform.childCount;
-
-        wrongSols = new int[totalGates - 1];
-        allWrongSols = new int[wrongSols.Count() * 2];
-
-    }
 
 
     void OnEnable()  // Cada vez que se activa el objeto genera una nueva operacion
     {
+        // Contamos cuantos carriles tenemos para generalizar y poder ampliarlos en el futuro
+        totalGates = transform.childCount;
+
+        wrongSols = new int[totalGates -1];
+        allWrongSols = new int[(totalGates -1) * 2];
+
+        
+        // Asignamos las puertas a una lista
+        gates = new List<GameObject>();
+        for (int i = 0 ; i < totalGates; i++ ){
+            gates.Add(transform.GetChild(i).gameObject); 
+        }
+
+
+        // Generamos la nueva operacion y actualizamos los numeros en el juego
         GenerateOperation();
-
-        // Actualizar numeros de las gates
-
+        WriteNumbers();
+        
     }
 
     // Update is called once per frame
@@ -43,9 +49,51 @@ public class SetOperationLaneRace : MonoBehaviour
         
     }
 
+
+    public void ShuffleWrongSols(){
+        
+        // Usamos una variante del algoritmo de Fisher-Yates para desordenar la lista y que los numeros se coloquen de forma aleatoria
+        for(int i = wrongSols.Count() - 1 ; i > 0 ; i --){
+            int indexRandom = Random.Range(0, i + 1); 
+
+            // Intercmbiamos las posiciones de 2 elementos de la lista en cada vuelta del bucle
+            int aux  = wrongSols[i];
+            wrongSols[i] = wrongSols[indexRandom];
+            wrongSols[indexRandom] = aux;
+        }
+
+    }
+
+    public void WriteNumbers(){
+        // Elegimos donde colocar la solucion
+        int correctPlace = Random.Range(0, totalGates);
+
+        int indexWrongN = 0;
+        for(int i = 0 ; i < totalGates ; i ++){
+            //Accedemos a la referencia donde esta el numero del texto
+            TextMeshPro numberText = gates[i].GetComponentInChildren<TextMeshPro>();
+
+            // Actualizamos el tag y el texto
+            if(i == correctPlace){
+                gates[i].tag = "CorrectAnswer";
+                numberText.text = sol.ToString();
+            }
+            else{
+                gates[i].tag = "IncorrectAnswer";
+                numberText.text = wrongSols[indexWrongN].ToString();
+                indexWrongN ++;
+            }
+
+        }
+
+    }
+
+
+
     public void GenerateOperation(){
 
-        operatorChosen = Random.Range(0,4);
+        //ACTIVAR ESTA operatorChosen = Random.Range(0,4);
+        operatorChosen = Random.Range(0,2);
 
         // SUMA
         if(operatorChosen == 0){
@@ -54,7 +102,8 @@ public class SetOperationLaneRace : MonoBehaviour
             secondNumber = Random.Range(4, 13);
 
             sol = firstNumber + secondNumber;
-            
+
+
             // Soluciones incorrectas
             wrongSols = IncorrectAdditionSubtractionOrDivision();
 
@@ -121,7 +170,7 @@ public class SetOperationLaneRace : MonoBehaviour
             num ++;    
         }
 
-        wrongSols = ChoseSomeWrong(nElements);
+        wrongSols = ChooseSomeWrong(nElements);
 
         return wrongSols;
     }
@@ -141,33 +190,15 @@ public class SetOperationLaneRace : MonoBehaviour
             num ++;    
         }  
 
-        wrongSols = ChoseSomeWrong(nElements);
-
-        return wrongSols;
-    }
-
-    public int[] IncorrectDivision(){ // Tiene la misma estructura que la suma y la resta
-        // Cogemos x numeros que sean la solucion del producto por encima y por debajo de la solucion
-        int nElements = totalGates - 1;
-        int num = secondNumber - nElements;
-        int i = 0;
-        while(num <= secondNumber + nElements){
-            if(num == secondNumber){
-                num ++ ;
-                continue;
-            }
-            allWrongSols[i] = firstNumber * num;
-            i ++;
-            num ++;    
-        }  
-
-        wrongSols = ChoseSomeWrong(nElements);
+        wrongSols = ChooseSomeWrong(nElements);
 
         return wrongSols;
     }
 
 
-    public int[] ChoseSomeWrong(int amount){
+
+
+    public int[] ChooseSomeWrong(int amount){
         // De las opciones que hay, elegimos TotalGates numeros consecutivos en la lista, para que en el juego sean por ejemplo si hay 3 puertas, nElements es 2:  -, --, sol ; -, sol, + ; sol, +, ++ 
         int start = Random.Range(0, amount);
         for (int j = 0 ; j < amount ; j ++)
@@ -176,6 +207,8 @@ public class SetOperationLaneRace : MonoBehaviour
             start ++;
 
         }      
+
+        //ShuffleWrongSols();
 
         return wrongSols;
     }

@@ -80,9 +80,10 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - HECHO: Los conos se mueven al ser empujados por player
 - La pantalla de error es una imagen en vez de una vista, asi cuando aparece el error, se puede seguir viendo la operacion y le da tiempo a pensar mientras sale el texto.
 - Añadir que haya que aparcar 2 veces, primero una suma/resta y luego una multi/divi
+- Que los tag sean "CorrectAnswer" / "IncorrectAnswer"
+- Refactorizar codigo. Por ejemplo, si el script esta en un objeto, no hace falta pasarle por referencia ese objeto, con gameObject. se accede directamente.
 
-
-
+### MG Parking
 
 
 
