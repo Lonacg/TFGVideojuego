@@ -83,7 +83,10 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - Que los tag sean "CorrectAnswer" / "IncorrectAnswer"
 - Refactorizar codigo. Por ejemplo, si el script esta en un objeto, no hace falta pasarle por referencia ese objeto, con gameObject. se accede directamente.
 
-### MG Parking
-
+### MG LaneRace
+- Que las operaciones no puedan repetirse (es muy poco probable que pase). Habria que almacenar una tupla con los numeros que van saliendo en otro script y que SetOperation acceda a ella en la eleccion del numero para comprobar que no es ninguno
+- No se que es mejor, si que los resultados salgan los 3 ordenados de menor a mayor, o que salgan desordenados random como ahora
+- Poner particulas brillantes al activarse los botones de correcto e incorrecto
+- Activar particulas de humo al cruzar la puerta para hacerla desaparecer
 
 

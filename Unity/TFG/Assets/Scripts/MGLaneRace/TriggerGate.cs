@@ -1,12 +1,14 @@
 using UnityEngine;
+using System.Collections;
+
 
 public class TriggerGate : MonoBehaviour
 {
 
-    public delegate void _OnWellSol(GameObject go);
+    public delegate void _OnWellSol(GameObject gameObject);
     public static event _OnWellSol OnWellSol;
 
-    public delegate void _OnWrongSol(GameObject go);
+    public delegate void _OnWrongSol();
     public static event _OnWrongSol OnWrongSol;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,30 +25,47 @@ public class TriggerGate : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
         if (other.tag == "Player"){
-            if(gameObject.tag == "CorrectGate"){
+
+            if(gameObject.tag == "CorrectAnswer"){
                 if(OnWellSol != null)   
                     OnWellSol(gameObject);
             }
-            if(gameObject.tag == "IncorrectGate"){
+            if(gameObject.tag == "IncorrectAnswer"){
                 if(OnWrongSol != null)   
-                    OnWrongSol(gameObject);
+                    OnWrongSol();
             }
+
+            StartCoroutine(HideGates());
 
         }
     }
+
+
+
+
+
+    IEnumerator HideGates(){
+        yield return 0;
+
+    }
+
+
+
 }
+
+
 
 
 /*
     void OnEnable(){
-        ParkingTrigger.OnWrongParked += HandleOnWrongParked;
-        ParkingTrigger.OnWellParked += HandleOnWellParked;
+        TriggerGate.OnWellSol += HandleOnWellSol;
+        TriggerGate.OnWrongSol += HandleOnWrongSol;
 
     }
 
     void OnDisable(){
-        ParkingTrigger.OnWrongParked -= HandleOnWrongParked;
-        ParkingTrigger.OnWellParked -= HandleOnWellParked;
+        TriggerGate.OnWellSol -= HandleOnWellSol;
+        TriggerGate.OnOnWrongSol -= HandleOnWrongSol;
     }
 */
 

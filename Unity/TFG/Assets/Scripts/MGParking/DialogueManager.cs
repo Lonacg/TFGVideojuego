@@ -52,7 +52,7 @@ public class DialogueManager : MonoBehaviour
         linesErrorDialogue.Add(line1);
         linesErrorDialogue.Add(line2);
 
-        // Dialogo tras victoria
+        // Dialogo tras victoria (esta escrito directamente en la etiqueta)
         //line1 = "¡¡Conseguido!!";
         //linesVictoryDialogue.Add(line1);
 
@@ -69,15 +69,15 @@ public class DialogueManager : MonoBehaviour
 
    
     void HandleOnWrongParked(GameObject go){
-        StartCoroutine(FadeCanvasGroup(errorView, from: 0, to: 1));
-        StartCoroutine(FadeCanvasGroup(ingameView, from: 1, to: 0));
+        StartCoroutine(FadeCanvasGroup(errorView, fromAlpha: 0, toAlpha: 1));
+        StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 1, toAlpha: 0));
         StartDialogue(errorView, errorDialoguePlace, linesErrorDialogue);
     }
 
 
     void HandleOnWellParked(GameObject go){
-        StartCoroutine(FadeCanvasGroup(victoryView, from: 0, to: 1));
-        StartCoroutine(FadeCanvasGroup(ingameView, from: 1, to: 0));
+        StartCoroutine(FadeCanvasGroup(victoryView, fromAlpha: 0, toAlpha: 1));
+        StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 1, toAlpha: 0));
         player.GetComponent<CarMovement>().enabled = false;
     }
 
@@ -96,8 +96,8 @@ public class DialogueManager : MonoBehaviour
             StartCoroutine(WriteLetterByLetter(view, dialoguePlace, lines));
         }
         else{ // Despues de la ultima linea cerramos el dialogo y empieza el juego
-            StartCoroutine(FadeCanvasGroup(view, from: 1, to: 0));
-            StartCoroutine(FadeCanvasGroup(ingameView, from: 0, to: 1));
+            StartCoroutine(FadeCanvasGroup(view, fromAlpha: 1, toAlpha: 0));
+            StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1));
             
             // Activamos el Script de Player para que no se pueda mover mientras dure la corrutina 
             player.GetComponent<CarMovement>().enabled = true;
@@ -117,23 +117,23 @@ public class DialogueManager : MonoBehaviour
 
 
 
-    IEnumerator FadeCanvasGroup(GameObject view, float from, float to){ 
+    IEnumerator FadeCanvasGroup(GameObject view, float fromAlpha, float toAlpha){ 
         CanvasGroup canvasGroup = view.GetComponent<CanvasGroup>();
-        if(to > 0)
+        if(toAlpha > 0)
             view.SetActive(true);
 
         float animationTime = 0.3f;
         float elapsedTime = 0;
 
         while(elapsedTime <= animationTime){
-            canvasGroup.alpha = Mathf.Lerp(from, to, elapsedTime / animationTime);
+            canvasGroup.alpha = Mathf.Lerp(fromAlpha, toAlpha, elapsedTime / animationTime);
             elapsedTime += Time.unscaledDeltaTime;
             yield return 0;
         }
 
-        canvasGroup.alpha = to;
+        canvasGroup.alpha = toAlpha;
 
-        if(to == 0)
+        if(toAlpha == 0)
             view.SetActive(false);
 
     }

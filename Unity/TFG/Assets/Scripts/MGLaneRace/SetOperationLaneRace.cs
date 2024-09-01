@@ -9,13 +9,16 @@ public class SetOperationLaneRace : MonoBehaviour
     public int firstNumber;
     public int secondNumber;
     public int sol;
-    public int operatorChosen;
-    public int[] wrongSols;
-    public int[] allWrongSols;
-
-    public List<GameObject> gates;
+    public string symbol = "";
+    public List<GameObject> gates;    
+    private int operatorChosen;
     private int totalGates;
 
+    private int[] wrongSols;
+    private int[] allWrongSols;
+
+
+    
 
 
     
@@ -37,63 +40,19 @@ public class SetOperationLaneRace : MonoBehaviour
         }
 
 
-        // Generamos la nueva operacion y actualizamos los numeros en el juego
+        // Generamos la nueva operacion y actualizamos los numeros de las puertas
         GenerateOperation();
         WriteNumbers();
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
-    public void ShuffleWrongSols(){
-        
-        // Usamos una variante del algoritmo de Fisher-Yates para desordenar la lista y que los numeros se coloquen de forma aleatoria
-        for(int i = wrongSols.Count() - 1 ; i > 0 ; i --){
-            int indexRandom = Random.Range(0, i + 1); 
-
-            // Intercmbiamos las posiciones de 2 elementos de la lista en cada vuelta del bucle
-            int aux  = wrongSols[i];
-            wrongSols[i] = wrongSols[indexRandom];
-            wrongSols[indexRandom] = aux;
-        }
-
-    }
-
-    public void WriteNumbers(){
-        // Elegimos donde colocar la solucion
-        int correctPlace = Random.Range(0, totalGates);
-
-        int indexWrongN = 0;
-        for(int i = 0 ; i < totalGates ; i ++){
-            //Accedemos a la referencia donde esta el numero del texto
-            TextMeshPro numberText = gates[i].GetComponentInChildren<TextMeshPro>();
-
-            // Actualizamos el tag y el texto
-            if(i == correctPlace){
-                gates[i].tag = "CorrectAnswer";
-                numberText.text = sol.ToString();
-            }
-            else{
-                gates[i].tag = "IncorrectAnswer";
-                numberText.text = wrongSols[indexWrongN].ToString();
-                indexWrongN ++;
-            }
-
-        }
-
-    }
 
 
 
     public void GenerateOperation(){
 
         //ACTIVAR ESTA operatorChosen = Random.Range(0,4);
-        operatorChosen = Random.Range(0,2);
+        operatorChosen = Random.Range(2,4);
 
         // SUMA
         if(operatorChosen == 0){
@@ -102,11 +61,12 @@ public class SetOperationLaneRace : MonoBehaviour
             secondNumber = Random.Range(4, 13);
 
             sol = firstNumber + secondNumber;
+            
+            symbol = " + ";
 
 
             // Soluciones incorrectas
             wrongSols = IncorrectAdditionSubtractionOrDivision();
-
 
         }
         else {
@@ -117,15 +77,21 @@ public class SetOperationLaneRace : MonoBehaviour
 
                 sol = firstNumber - secondNumber;
 
+                symbol = " - ";
+
                 wrongSols = IncorrectAdditionSubtractionOrDivision();
             } 
             else{
                 // MULTIPLICACION
-                int firstNumber = Random.Range(2, 10);
-                int secondNumber = Random.Range(2, 10);
+                firstNumber = Random.Range(2, 10);
+                secondNumber = Random.Range(2, 10);
 
-                int sol = firstNumber * secondNumber;
+                sol = firstNumber * secondNumber;
+
+                symbol = " x ";
+
                 wrongSols = IncorrectMultiplication();
+
 
                 // DIVISION
                 if(operatorChosen == 3 ){
@@ -135,6 +101,8 @@ public class SetOperationLaneRace : MonoBehaviour
                     sol = secondNumber;
                     secondNumber = aux;
 
+                    symbol = " / ";
+
                     wrongSols = IncorrectAdditionSubtractionOrDivision();
 
                 }
@@ -142,16 +110,7 @@ public class SetOperationLaneRace : MonoBehaviour
 
         }
 
-        // Escribimos la operacion por consola para facilitar el desarrollo del minijuego
-        string symbol = "";
-        if(operatorChosen == 0)
-            symbol = " + ";
-        if(operatorChosen == 1)
-            symbol = " - ";
-        if(operatorChosen == 2)
-            symbol = " x ";
-        if(operatorChosen == 3)
-            symbol = " / ";                        
+        // Escribimos la operacion por consola para facilitar el desarrollo del minijuego              
         Debug.Log("La operacion es: " + firstNumber + symbol + secondNumber + " = " + sol);
     }
     
@@ -208,13 +167,50 @@ public class SetOperationLaneRace : MonoBehaviour
 
         }      
 
-        //ShuffleWrongSols();
+        ShuffleWrongSols();
 
         return wrongSols;
     }
 
 
+    public void ShuffleWrongSols(){
+        // Otra opcion seria añadir la solucion a la lista WrongSols, ordenarla y escribirla. Asi los numeros estarian ordenados, pero la solucion podria estar en cualquiera de las 3 posiciones
+        
+        // Usamos una variante del algoritmo de Fisher-Yates para desordenar la lista y que los numeros se coloquen de forma aleatoria
+        for(int i = wrongSols.Count() - 1 ; i > 0 ; i --){
+            int indexRandom = Random.Range(0, i + 1); 
 
+            // Intercmbiamos las posiciones de 2 elementos de la lista en cada vuelta del bucle
+            int aux  = wrongSols[i];
+            wrongSols[i] = wrongSols[indexRandom];
+            wrongSols[indexRandom] = aux;
+        }
+
+    }
+
+    public void WriteNumbers(){
+        // Elegimos donde colocar la solucion
+        int correctPlace = Random.Range(0, totalGates);
+
+        int indexWrongN = 0;
+        for(int i = 0 ; i < totalGates ; i ++){
+            //Accedemos a la referencia donde esta el numero del texto
+            TextMeshPro numberText = gates[i].GetComponentInChildren<TextMeshPro>();
+
+            // Actualizamos el tag y el texto
+            if(i == correctPlace){
+                gates[i].tag = "CorrectAnswer";
+                numberText.text = sol.ToString();
+            }
+            else{
+                gates[i].tag = "IncorrectAnswer";
+                numberText.text = wrongSols[indexWrongN].ToString();
+                indexWrongN ++;
+            }
+
+        }
+
+    }
 
 
 
