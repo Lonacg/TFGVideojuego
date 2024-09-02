@@ -20,8 +20,8 @@ public class StageManagerLaneRace : MonoBehaviour
     public TextMeshProUGUI scoreText;
 
 
-    public delegate void _OnWinning();
-    public static event _OnWinning OnWinning;
+    public delegate void _OnVictory();
+    public static event _OnVictory OnVictory;
 
 
     void OnEnable(){
@@ -56,8 +56,8 @@ public class StageManagerLaneRace : MonoBehaviour
 
 
             // Lanzamos el evento de que se ha llegado al maximo de aciertos necesario
-            if(OnWinning != null)   
-                OnWinning();
+            if(OnVictory != null)   
+                OnVictory();
 
         }
 
@@ -94,7 +94,7 @@ public class StageManagerLaneRace : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        scoreText.text = "0/" + neededScore;
     }
 
     // Update is called once per frame

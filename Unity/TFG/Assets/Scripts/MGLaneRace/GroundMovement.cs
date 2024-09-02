@@ -12,6 +12,25 @@ public class GroundMovement : MonoBehaviour
     private float elapsedTime;
     private bool wantMove = false;
 
+
+    void OnEnable(){
+        TriggerFinalGate.OnFinalLine += HandleOnFinalLine;
+    }
+
+    void OnDisable(){
+        TriggerFinalGate.OnFinalLine -= HandleOnFinalLine;
+
+    }
+
+
+    public void HandleOnFinalLine(){
+        StartCoroutine(StopMovement());
+
+    }
+
+
+
+
     void Start(){
         wantMove = false;
         StartCoroutine(WaitForXSeconds(3f));
@@ -20,7 +39,7 @@ public class GroundMovement : MonoBehaviour
     void Update()
     {
         if(wantMove)
-            transform.Translate(0, 0, Time.deltaTime * -groundSpeed );
+            transform.Translate(0, 0, Time.deltaTime * - groundSpeed );
         
     }
 
@@ -31,6 +50,16 @@ public class GroundMovement : MonoBehaviour
         wantMove = true;
 
     }
+    IEnumerator StopMovement(){
+        yield return new WaitForSeconds(1f);
+        groundSpeed = 2;
 
+        yield return new WaitForSeconds(1f);
+        groundSpeed = 1;
+        yield return new WaitForSeconds(0.5f);
+        
+        wantMove = false;        
+
+    }
 
 }

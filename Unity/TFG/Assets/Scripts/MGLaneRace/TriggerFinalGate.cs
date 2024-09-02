@@ -2,10 +2,16 @@ using UnityEngine;
 
 public class TriggerFinalGate : MonoBehaviour
 {
+
+    public delegate void _OnFinalLine();
+    public static event _OnFinalLine OnFinalLine;
+
+
     void OnTriggerEnter(Collider other){
         if (other.tag == "Player"){
-            // PARAR LA VELOCIDAD DE GROUND Y PONER LA ANIMACION DE GANANDO
+            if(OnFinalLine != null)   
 
+                    OnFinalLine();
         }
     }
 }

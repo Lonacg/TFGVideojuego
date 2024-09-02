@@ -555,6 +555,8 @@ MonoBehaviour:
   - {fileID: 762132188}
   correctAnswerImage: {fileID: 35629245}
   failedAnswerImage: {fileID: 707532553}
+  scorePanel: {fileID: 1052669466}
+  operationPanel: {fileID: 1054449141}
   textOperation: {fileID: 1423374382}
   textSpeed: 0.1
 --- !u!1 &707532551
@@ -840,7 +842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &914901366
 Transform:
   m_ObjectHideFlags: 0

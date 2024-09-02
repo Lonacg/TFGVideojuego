@@ -10,12 +10,15 @@ public class CanvasManager : MonoBehaviour
     public GameObject player;
     public GameObject introView;
     public GameObject ingameView;
+
     public GameObject[] gates;
     
 
 
     public Image correctAnswerImage;
     public Image failedAnswerImage;
+    public Image scorePanel;
+    public Image operationPanel;
     public TextMeshProUGUI textOperation;
 
 
@@ -29,6 +32,7 @@ public class CanvasManager : MonoBehaviour
         TriggerGate.OnWellSol += HandleOnWellSol;
         TriggerGate.OnWrongSol += HandleOnWrongSol;
         GroundMovement.OnGo += HandleOnGo;
+        StageManagerLaneRace.OnVictory += HandleOnVictory;
 
     }
 
@@ -38,6 +42,7 @@ public class CanvasManager : MonoBehaviour
         TriggerGate.OnWellSol -= HandleOnWellSol;
         TriggerGate.OnWrongSol -= HandleOnWrongSol;
         GroundMovement.OnGo -= HandleOnGo;
+        StageManagerLaneRace.OnVictory -= HandleOnVictory;
 
     }
 
@@ -59,10 +64,18 @@ public class CanvasManager : MonoBehaviour
 
 
     private void HandleOnGo(){
-        ChangeOperation();
-        StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1));
-        
+        StartCoroutine(StartIngameView(0.2f));
+
     }
+
+    private void HandleOnVictory(){
+        textOperation.text = "";
+
+        StartCoroutine(FadeImage(operationPanel, fromAlpha: 1, toAlpha: 0));
+        StartCoroutine(WaitAndFadeImage(scorePanel, 1.3f));
+
+    }
+
 
 
 
@@ -124,12 +137,11 @@ public class CanvasManager : MonoBehaviour
 
 
 
-    IEnumerator FadeCanvasGroup(GameObject view, float fromAlpha, float toAlpha){ 
+    IEnumerator FadeCanvasGroup(GameObject view, float fromAlpha, float toAlpha, float animationTime = 0.3f){ 
         CanvasGroup canvasGroup = view.GetComponent<CanvasGroup>();
         if(toAlpha > 0)
             view.SetActive(true);
 
-        float animationTime = 0.3f;
         float elapsedTime = 0;
 
         while(elapsedTime <= animationTime){
@@ -154,8 +166,15 @@ public class CanvasManager : MonoBehaviour
     }
 
     
+    IEnumerator WaitAndFadeImage(Image imageWanted, float seconds){ 
 
-    IEnumerator FadeImage(Image imageToShow, float fromAlpha, float toAlpha, float animationTime){
+        yield return new WaitForSeconds(seconds);
+        StartCoroutine(FadeImage(imageWanted, fromAlpha: 1, toAlpha: 0, animationTime: 0.5f));
+
+    }
+
+
+    IEnumerator FadeImage(Image imageToShow, float fromAlpha, float toAlpha, float animationTime = 0.5f){
         float elapsedTime = 0;
         Color colorImage = imageToShow.color;
 
@@ -214,6 +233,12 @@ public class CanvasManager : MonoBehaviour
         StartCoroutine(TransformSizeFont(startSize: 0, endSize: 54.4f, animationTime: 1));
     }
 
+
+    IEnumerator StartIngameView(float seconds){
+        yield return new WaitForSeconds(seconds);
+        ChangeOperation();
+        StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1, animationTime: 0.5f));
+    }
 
 
 }

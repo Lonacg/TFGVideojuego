@@ -20,6 +20,23 @@ public class GrannyMovement : MonoBehaviour
     public float speed = 8f;
 
     private Transform currentLane;
+    private bool canMove;
+
+    void OnEnable(){
+        TriggerFinalGate.OnFinalLine += HandleOnFinalLine;
+
+    }
+
+    void OnDisable(){
+        TriggerFinalGate.OnFinalLine -= HandleOnFinalLine;
+
+    }
+
+
+    public void HandleOnFinalLine(){
+        StartCoroutine(Winning());
+
+    }
 
 
     void Start()
@@ -47,15 +64,18 @@ public class GrannyMovement : MonoBehaviour
 
     void Update()
     {
-        // Entradas del teclado
-        if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)){
-            if(currentIndex > 0)
-                currentIndex --;
+        if(canMove){
+            // Entradas del teclado
+            if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)){
+                if(currentIndex > 0)
+                    currentIndex --;
+            }
+            if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)){
+                if(currentIndex < lanesParent.childCount -1)
+                    currentIndex ++;
+            }    
         }
-        if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)){
-            if(currentIndex < lanesParent.childCount -1)
-                currentIndex ++;
-        }    
+
 
         // Actualizamos posicion
         currentLane = lanes[currentIndex];
@@ -101,9 +121,34 @@ public class GrannyMovement : MonoBehaviour
         // STEADY (sigue esperando)
         yield return new WaitForSeconds(1);
 
+
+        ChangeAnimation("Levantandose", 0);        
+        yield return new WaitForSeconds(0.1f);
+
         // GO
         ChangeAnimation("FastRunning", 0.1f);  
+
+        // Permitimos el movimiento del jugador
+        canMove = true;
         
+    }
+
+    IEnumerator Winning(){
+        // Impedimos el movimiento del jugador
+        canMove = false;
+
+        yield return new WaitForSeconds(1f);
+
+        ChangeAnimation("Walking");        
+        yield return new WaitForSeconds(1.5f);
+
+        ChangeAnimation("StrongGesture"); 
+        yield return new WaitForSeconds(1.5f);
+
+        ChangeAnimation("Victory");  
+        yield return new WaitForSeconds(1.5f);
+
+        ChangeAnimation("Idle");     
     }
 
 

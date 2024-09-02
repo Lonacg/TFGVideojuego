@@ -1801,8 +1801,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7078443320125721227}
   - component: {fileID: 286988170480624565}
-  - component: {fileID: 5462265731815282334}
-  - component: {fileID: 8842411345040550828}
   m_Layer: 0
   m_Name: GrannyModel
   m_TagString: Untagged
@@ -1852,47 +1850,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!136 &5462265731815282334
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4106758505025711591}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.21073374
-  m_Height: 1.9293201
-  m_Direction: 1
-  m_Center: {x: -0.000000014901161, y: 0.96116245, z: 0.047541894}
---- !u!114 &8842411345040550828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4106758505025711591}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc93f9291b4948f488c94b8dbdf3c136, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  x: 0
-  y: 0
-  lanesParent: {fileID: 0}
-  lanes: []
-  currentIndex: 1
-  speed: 10
 --- !u!1 &4203604271885365496
 GameObject:
   m_ObjectHideFlags: 0
