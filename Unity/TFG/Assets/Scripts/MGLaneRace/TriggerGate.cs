@@ -4,8 +4,10 @@ using System.Collections;
 
 public class TriggerGate : MonoBehaviour
 {
+    public GameObject finishLine;
 
-    public delegate void _OnWellSol(GameObject gameObject);
+
+    public delegate void _OnWellSol();
     public static event _OnWellSol OnWellSol;
 
     public delegate void _OnWrongSol();
@@ -28,7 +30,7 @@ public class TriggerGate : MonoBehaviour
 
             if(gameObject.tag == "CorrectAnswer"){
                 if(OnWellSol != null)   
-                    OnWellSol(gameObject);
+                    OnWellSol();
             }
             if(gameObject.tag == "IncorrectAnswer"){
                 if(OnWrongSol != null)   

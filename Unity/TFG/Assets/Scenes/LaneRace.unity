@@ -193,37 +193,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 35629243}
   m_CullTransparentMesh: 1
---- !u!1 &564786812
+--- !u!1 &153569646 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 268257568452750843, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+  m_PrefabInstance: {fileID: 1615657110}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 564786813}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &564786813
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!1 &271861780 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 268257568452750843, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+  m_PrefabInstance: {fileID: 2080745208}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 564786812}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 20}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &584246067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -232,6 +211,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 736563152}
     m_Modifications:
+    - target: {fileID: 268257568452750843, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+      propertyPath: m_Name
+      value: FinalGate2
+      objectReference: {fileID: 0}
     - target: {fileID: 770241022444830849, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -412,7 +395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &695104539
 RectTransform:
   m_ObjectHideFlags: 0
@@ -570,7 +553,6 @@ MonoBehaviour:
   - {fileID: 1155402514}
   - {fileID: 1536352544}
   - {fileID: 762132188}
-  currentGround: 0
   correctAnswerImage: {fileID: 35629245}
   failedAnswerImage: {fileID: 707532553}
   textOperation: {fileID: 1423374382}
@@ -1029,6 +1011,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054449139}
   m_CullTransparentMesh: 1
+--- !u!1 &1080544254 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 268257568452750843, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+  m_PrefabInstance: {fileID: 584246067}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1088790366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1086,7 +1073,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0/3
+  m_text: 0/X
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1296,6 +1283,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 219a645b6217e35468f2c1623200e334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numberCorrectAnswers: 0
+  numberIncorrectAnswers: 0
+  neededScore: 3
+  ground: {fileID: 736563151}
+  grannyPlayer: {fileID: 1822029462}
+  gates:
+  - {fileID: 1155402514}
+  - {fileID: 1536352544}
+  - {fileID: 762132188}
+  finishGates:
+  - {fileID: 271861780}
+  - {fileID: 1080544254}
+  - {fileID: 153569646}
+  currentGround: 0
   scoreText: {fileID: 1088790368}
 --- !u!4 &1384487099
 Transform:
@@ -1461,6 +1462,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 736563152}
     m_Modifications:
+    - target: {fileID: 268257568452750843, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+      propertyPath: m_Name
+      value: FinalGate3
+      objectReference: {fileID: 0}
     - target: {fileID: 770241022444830849, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1691,7 +1696,7 @@ MonoBehaviour:
   lanesParent: {fileID: 914901366}
   lanes: []
   currentIndex: 1
-  speed: 8
+  speed: 9
 --- !u!136 &1822029464
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1788,6 +1793,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 736563152}
     m_Modifications:
+    - target: {fileID: 268257568452750843, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+      propertyPath: m_Name
+      value: FinalGate1
+      objectReference: {fileID: 0}
+    - target: {fileID: 268257568452750843, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 770241022444830849, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1879,6 +1892,10 @@ PrefabInstance:
     - target: {fileID: 6306782475181079268, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
       propertyPath: m_Name
       value: Gates1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306782475181079268, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2056,4 +2073,3 @@ SceneRoots:
   - {fileID: 704996233}
   - {fileID: 777313403}
   - {fileID: 1384487099}
-  - {fileID: 564786813}

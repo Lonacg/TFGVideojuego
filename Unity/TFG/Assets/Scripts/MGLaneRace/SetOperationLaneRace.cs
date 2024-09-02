@@ -51,8 +51,7 @@ public class SetOperationLaneRace : MonoBehaviour
 
     public void GenerateOperation(){
 
-        //ACTIVAR ESTA operatorChosen = Random.Range(0,4);
-        operatorChosen = Random.Range(2,4);
+        operatorChosen = Random.Range(0,4);
 
         // SUMA
         if(operatorChosen == 0){
@@ -63,7 +62,6 @@ public class SetOperationLaneRace : MonoBehaviour
             sol = firstNumber + secondNumber;
             
             symbol = " + ";
-
 
             // Soluciones incorrectas
             wrongSols = IncorrectAdditionSubtractionOrDivision();
@@ -111,7 +109,7 @@ public class SetOperationLaneRace : MonoBehaviour
         }
 
         // Escribimos la operacion por consola para facilitar el desarrollo del minijuego              
-        Debug.Log("La operacion es: " + firstNumber + symbol + secondNumber + " = " + sol);
+        //Debug.Log("La operacion es: " + firstNumber + symbol + secondNumber + " = " + sol);
     }
     
     public int[] IncorrectAdditionSubtractionOrDivision(){

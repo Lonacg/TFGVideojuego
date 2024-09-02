@@ -39,7 +39,7 @@ public class GrannyMovement : MonoBehaviour
         // Animacion del personaje al empezar
         StartCoroutine(ReadySteadyGo());
 
-        ChangeAnimation("Running"); 
+        //ChangeAnimation("Running"); 
 
     }
 
@@ -65,7 +65,7 @@ public class GrannyMovement : MonoBehaviour
 
 
 
-    private void ChangeAnimation(string animation, float crossfade = 0.2f){
+    public void ChangeAnimation(string animation, float crossfade = 0.2f){
         if(currentAnimation != animation){
             currentAnimation = animation;
             animator.CrossFade(animation, crossfade);
@@ -102,7 +102,7 @@ public class GrannyMovement : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         // GO
-        ChangeAnimation("Running");  
+        ChangeAnimation("FastRunning", 0.1f);  
         
     }
 

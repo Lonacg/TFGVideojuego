@@ -11,7 +11,7 @@ public class CanvasManager : MonoBehaviour
     public GameObject introView;
     public GameObject ingameView;
     public GameObject[] gates;
-    public int currentGround = 0;
+    
 
 
     public Image correctAnswerImage;
@@ -21,13 +21,14 @@ public class CanvasManager : MonoBehaviour
 
     public float textSpeed = 0.1f;
     private int indexSentence = 0;
-
+    private int currentGround = 0;
 
 
 
     void OnEnable(){
         TriggerGate.OnWellSol += HandleOnWellSol;
         TriggerGate.OnWrongSol += HandleOnWrongSol;
+        GroundMovement.OnGo += HandleOnGo;
 
     }
 
@@ -36,17 +37,17 @@ public class CanvasManager : MonoBehaviour
     void OnDisable(){
         TriggerGate.OnWellSol -= HandleOnWellSol;
         TriggerGate.OnWrongSol -= HandleOnWrongSol;
+        GroundMovement.OnGo -= HandleOnGo;
 
     }
 
 
 
-    private void HandleOnWellSol(GameObject gameObject){
+    private void HandleOnWellSol(){
         IncreaseCurrentGround();
 
         StartCoroutine(ShowImageForXSeconds(correctAnswerImage, 1.3f));
         StartCoroutine(ShowNewOperation());
-        
     }
     
     private void HandleOnWrongSol(){
@@ -54,7 +55,13 @@ public class CanvasManager : MonoBehaviour
 
         StartCoroutine(ShowImageForXSeconds(failedAnswerImage, 1.3f));
         StartCoroutine(ShowNewOperation());
+    }
 
+
+    private void HandleOnGo(){
+        ChangeOperation();
+        StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1));
+        
     }
 
 
@@ -71,7 +78,7 @@ public class CanvasManager : MonoBehaviour
 
     void Start()
     {
-        ChangeOperation();
+        
         
     }
 
@@ -98,8 +105,8 @@ public class CanvasManager : MonoBehaviour
             StartCoroutine(WriteLetterByLetter(view, dialoguePlace, lines));
         }
         else{ // Despues de la ultima linea cerramos el dialogo y empieza el juego
-            StartCoroutine(FadeCanvasGroup(view, from: 1, to: 0));
-            StartCoroutine(FadeCanvasGroup(ingameView, from: 0, to: 1));
+            StartCoroutine(FadeCanvasGroup(view, fromAlpha: 1, toAlpha: 0));
+            StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1));
 
         }
     }
@@ -117,23 +124,23 @@ public class CanvasManager : MonoBehaviour
 
 
 
-    IEnumerator FadeCanvasGroup(GameObject view, float from, float to){ 
+    IEnumerator FadeCanvasGroup(GameObject view, float fromAlpha, float toAlpha){ 
         CanvasGroup canvasGroup = view.GetComponent<CanvasGroup>();
-        if(to > 0)
+        if(toAlpha > 0)
             view.SetActive(true);
 
         float animationTime = 0.3f;
         float elapsedTime = 0;
 
         while(elapsedTime <= animationTime){
-            canvasGroup.alpha = Mathf.Lerp(from, to, elapsedTime / animationTime);
+            canvasGroup.alpha = Mathf.Lerp(fromAlpha, toAlpha, elapsedTime / animationTime);
             elapsedTime += Time.unscaledDeltaTime;
             yield return 0;
         }
 
-        canvasGroup.alpha = to;
+        canvasGroup.alpha = toAlpha;
 
-        if(to == 0)
+        if(toAlpha == 0)
             view.SetActive(false);
 
     }
