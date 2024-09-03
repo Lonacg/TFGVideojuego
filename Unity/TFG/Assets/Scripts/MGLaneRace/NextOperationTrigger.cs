@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class NextOperationTrigger : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
+    public delegate void _OnNextOperation();
+    public static event _OnNextOperation OnNextOperation;
+  
+
+
+    void OnTriggerEnter(Collider other){
+        if (other.tag == "Player")
+            if(OnNextOperation != null)   
+                OnNextOperation();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -12723,6 +12723,7 @@ MonoBehaviour:
   numberCorrectAnswers: 0
   numberIncorrectAnswers: 0
   neededScore: 3
+  currentGround: 0
   ground: {fileID: 736563151}
   grannyPlayer: {fileID: 293346282565496797}
   confetyParticles: {fileID: 1381156291179928088}
@@ -12734,7 +12735,7 @@ MonoBehaviour:
   - {fileID: 909549997}
   - {fileID: 1080544254}
   - {fileID: 153569646}
-  currentGround: 0
+  textOperationPlace: {fileID: 1423374382}
   scoreText: {fileID: 1088790368}
 --- !u!4 &7053514641704719145
 Transform:

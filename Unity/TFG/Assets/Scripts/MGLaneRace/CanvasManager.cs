@@ -38,7 +38,6 @@ public class CanvasManager : MonoBehaviour
 
     private float textSpeed = 0.1f;
     private int indexSentence = 0;
-    private int currentGround = 0;
 
 
 
@@ -73,6 +72,7 @@ public class CanvasManager : MonoBehaviour
     private void HandleOnReady(){
         StartCoroutine(ShowImageForXSeconds(readyImage, 0.75f));
     }
+
     private void HandleOnSteady(){
         StartCoroutine(ShowImageForXSeconds(steadyImage, 0.75f));
     }
@@ -82,40 +82,27 @@ public class CanvasManager : MonoBehaviour
         StartCoroutine(StartIngameView(waitSeconds: 1.1f));
     }
 
-
-
     private void HandleOnWellSol(){
-        IncreaseCurrentGround();
-
         StartCoroutine(ShowImageForXSeconds(correctAnswerImage, 1.3f));
-        StartCoroutine(ShowNewOperation());
     }
     
     private void HandleOnWrongSol(){
-        IncreaseCurrentGround();
-
         StartCoroutine(ShowImageForXSeconds(failedAnswerImage, 1.3f));
-        StartCoroutine(ShowNewOperation());
     }
-
-    
-
 
     private void HandleOnVictory(){
         textOperationPlace.text = "";
 
         StartCoroutine(FadeImage(operationImage, fromAlpha: 1, toAlpha: 0));
         StartCoroutine(WaitAndFadeImage(scoreImage, 1.3f));
-
     }
+
 
     void Awake(){
         // Primer dialogo de inicio
         string line1 = " ¡Intenta llegar a la meta!";
         linesIntroDialogue.Add(line1);
-
     }
-
 
     void Start()
     {
@@ -123,24 +110,18 @@ public class CanvasManager : MonoBehaviour
         RSGView.SetActive(true);
         introView.SetActive(true);
         StartDialogue(introView, introDialoguePlace, linesIntroDialogue);
-
-        
-        
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
 
 
-
     public void StartDialogue(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){
         indexSentence = 0;
         dialoguePlace.text = "";
         StartCoroutine(WriteLetterByLetter(view, dialoguePlace, lines));
-    
     }
 
     public void NextLine(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){
@@ -159,27 +140,8 @@ public class CanvasManager : MonoBehaviour
         }
     }
 
-    public void IncreaseCurrentGround(){
-        if(currentGround == 2){
-            currentGround = 0;
-        }
-        else
-            currentGround ++;
 
-    }
 
-    public void ChangeOperation(){
-        GameObject currentGate = gates[currentGround];
-        SetOperationLaneRace scriptSetOperation = currentGate.GetComponent<SetOperationLaneRace>();
-
-        int firstNumber = scriptSetOperation.firstNumber;
-        int secondNumber = scriptSetOperation.secondNumber;
-
-        string symbol = scriptSetOperation.symbol;
-
-        textOperationPlace.text = "";
-        textOperationPlace.text = firstNumber + symbol + secondNumber;
-    }
 
     IEnumerator WriteLetterByLetter(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){ 
         foreach (char letter in lines[indexSentence].ToCharArray()){
@@ -190,7 +152,6 @@ public class CanvasManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         NextLine(view, dialoguePlace, lines);
     }
-
 
 
     IEnumerator FadeCanvasGroup(GameObject view, float fromAlpha, float toAlpha, float animationTime = 0.3f){ 
@@ -210,11 +171,10 @@ public class CanvasManager : MonoBehaviour
 
         if(toAlpha == 0)
             view.SetActive(false);
-
     }
 
-    IEnumerator ShowImageForXSeconds(Image imageToShow, float seconds){ 
 
+    IEnumerator ShowImageForXSeconds(Image imageToShow, float seconds){ 
         StartCoroutine(FadeImage(imageToShow, fromAlpha: 0, toAlpha: 1, animationTime: 0.3f));
         yield return new WaitForSeconds(seconds);
         StartCoroutine(FadeImage(imageToShow, fromAlpha: 1, toAlpha: 0, animationTime: 0.5f));
@@ -222,10 +182,8 @@ public class CanvasManager : MonoBehaviour
 
     
     IEnumerator WaitAndFadeImage(Image imageWanted, float seconds){ 
-
         yield return new WaitForSeconds(seconds);
         StartCoroutine(FadeImage(imageWanted, fromAlpha: 1, toAlpha: 0, animationTime: 0.5f));
-
     }
 
 
@@ -254,33 +212,8 @@ public class CanvasManager : MonoBehaviour
 
 
 
-    IEnumerator TransformSizeFont(float startSize, float endSize, float animationTime){
-        float elapsedTime = 0;
-
-        while(elapsedTime < animationTime){
-            float newSize = Mathf.Lerp(startSize, endSize, elapsedTime / animationTime);
-            textOperationPlace.fontSize = newSize;
-            elapsedTime += Time.deltaTime;
-            yield return 0;
-        }
-
-    }
-
-
-
-
-
-    IEnumerator ShowNewOperation(){
-        StartCoroutine(TransformSizeFont(startSize: 54.4f, endSize: 0, animationTime: 1));
-        yield return new WaitForSeconds(1);
-        ChangeOperation();
-        StartCoroutine(TransformSizeFont(startSize: 0, endSize: 54.4f, animationTime: 1));
-    }
-
-
     IEnumerator StartIngameView(float waitSeconds = 0){
         yield return new WaitForSeconds(waitSeconds);
-        ChangeOperation();
         StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1, animationTime: 0.5f));
     }
 
