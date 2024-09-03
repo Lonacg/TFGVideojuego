@@ -12,6 +12,7 @@ public class StageManagerLaneRace : MonoBehaviour
     public int neededScore = 3;
     public GameObject ground;
     public GameObject grannyPlayer;
+    public GameObject confetyParticles;
     public GameObject[] gates;
     public GameObject[] finishGates;
 
@@ -27,12 +28,15 @@ public class StageManagerLaneRace : MonoBehaviour
     void OnEnable(){
         TriggerGate.OnWellSol += HandleOnWellSol;
         TriggerGate.OnWrongSol += HandleOnWrongSol;
+        GrannyMovement.OnParty += HandleOnParty;
 
     }
 
     void OnDisable(){
         TriggerGate.OnWellSol -= HandleOnWellSol;
         TriggerGate.OnWrongSol -= HandleOnWrongSol;
+        GrannyMovement.OnParty += HandleOnParty;
+
 
     }
 
@@ -67,19 +71,22 @@ public class StageManagerLaneRace : MonoBehaviour
         numberIncorrectAnswers ++;
         IncreaseCurrentGround();
 
-        // Cuando falla 2 veces, reducimos en 1 la velocidad del movimiento para facilitarselo
-        if(numberIncorrectAnswers  == 2)
+        // Cuando falla 2 veces, reducimos en 1 la velocidad del movimiento para facilitarselo y cambiamos la animacion de correr
+        if(numberIncorrectAnswers  == 2){
             ground.GetComponent<GroundMovement>().groundSpeed -= 1;
             grannyPlayer.GetComponent<GrannyMovement>().ChangeAnimation("Running");
-
+        }
         // Cuando falla 4 veces, reducimos en 1 la velocidad del movimiento otra vez y cambiamos la animacion de correr
         if(numberIncorrectAnswers  == 4){
-            ground.GetComponent<GroundMovement>().groundSpeed -= 1;
+            ground.GetComponent<GroundMovement>().groundSpeed -= 0.5f;
             grannyPlayer.GetComponent<GrannyMovement>().ChangeAnimation("SlowRunning");
         }
-            
-        
     }
+
+    private void HandleOnParty(){
+        confetyParticles.SetActive(true);
+    }
+
 
     public void IncreaseCurrentGround(){
         if(currentGround == 2){
@@ -95,6 +102,8 @@ public class StageManagerLaneRace : MonoBehaviour
     void Start()
     {
         scoreText.text = "0/" + neededScore;
+        numberCorrectAnswers = 0;
+        numberIncorrectAnswers = 0;
     }
 
     // Update is called once per frame

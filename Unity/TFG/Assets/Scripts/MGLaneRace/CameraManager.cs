@@ -14,20 +14,30 @@ public class CameraManager : MonoBehaviour
     private Vector3 OriginalPosition;
     private Vector3 RigthPosition;
     private Vector3 LeftPosition;
+    
+    private bool firstMovement;
 
 
 
     void OnEnable(){
         CanvasManager.OnStart += HandleOnStart;
+        TriggerFinalGate.OnFinalLine += HandleOnFinalLine;
 
     }
 
     void OnDisable(){
         CanvasManager.OnStart -= HandleOnStart;
+        TriggerFinalGate.OnFinalLine -= HandleOnFinalLine;
 
     }
 
     private void HandleOnStart()
+    {
+        firstMovement = true;
+        StartCoroutine(MoveCamera());
+    }
+
+    private void HandleOnFinalLine()
     {
         StartCoroutine(MoveCamera());
     }
@@ -94,23 +104,26 @@ public class CameraManager : MonoBehaviour
         }
 
 
+        if(firstMovement){
+            // Vuelta a la posicion original
+            elapsedTime = 0;
+            animationTime = 5;
+            
+            while(elapsedTime <= animationTime){
+                offset = Vector3.Lerp(offset, originalOffset, speed * Time.deltaTime);
 
-        // Vuelta a la posicion original
-        elapsedTime = 0;
-        animationTime = 5;
-        
-        while(elapsedTime <= animationTime){
-            offset = Vector3.Lerp(offset, originalOffset, speed * Time.deltaTime);
+                target = player.transform.position + offset;
 
-            target = player.transform.position + offset;
+                transform.LookAt(target);
 
-            transform.LookAt(target);
+                transform.position = Vector3.Lerp(transform.position, OriginalPosition, speed * Time.deltaTime);
 
-            transform.position = Vector3.Lerp(transform.position, OriginalPosition, speed * Time.deltaTime);
-
-            elapsedTime += Time.deltaTime;
-            yield return 0;
+                elapsedTime += Time.deltaTime;
+                yield return 0;
+            }
+            firstMovement = false;
         }
+
 
     }
 

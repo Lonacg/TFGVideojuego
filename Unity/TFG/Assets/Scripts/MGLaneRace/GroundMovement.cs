@@ -5,40 +5,43 @@ using UnityEngine;
 public class GroundMovement : MonoBehaviour
 {
 
-    public delegate void _OnGo();
-    public static event _OnGo OnGo;
+
 
     public float groundSpeed = 5 ;
-    private float elapsedTime;
     private bool wantMove = false;
 
 
     void OnEnable(){
+        GrannyMovement.OnGo += HandleOnGo;
+        StageManagerLaneRace.OnVictory += HandleOnVictory;
         TriggerFinalGate.OnFinalLine += HandleOnFinalLine;
-        CanvasManager.OnStart += HandleOnStart;
+        
     }
 
     void OnDisable(){
+        GrannyMovement.OnGo -= HandleOnGo;
+        StageManagerLaneRace.OnVictory -= HandleOnVictory;
         TriggerFinalGate.OnFinalLine -= HandleOnFinalLine;
-        CanvasManager.OnStart += HandleOnStart;
+        
     }
 
+
+    public void HandleOnGo(){
+        StartCoroutine(WaitXSecondAndGo(seconds: 0.45f));
+    }
+
+    public void HandleOnVictory(){
+        groundSpeed = 5;
+    }
 
     public void HandleOnFinalLine(){
         StartCoroutine(StopMovement());
 
     }
 
-    public void HandleOnStart(){
-        StartCoroutine(WaitForXSeconds(11f));
-
-    }
-
 
     void Start(){
-        wantMove = false;
-        // ESTA ES LA QUE VALE StartCoroutine(WaitForXSeconds(3f));
-        
+        wantMove = false;        
     }
 
     void Update()
@@ -48,21 +51,24 @@ public class GroundMovement : MonoBehaviour
         
     }
 
-    IEnumerator WaitForXSeconds(float seconds){
+    IEnumerator WaitXSecondAndGo(float seconds){
         yield return new WaitForSeconds(seconds);
-        if(OnGo != null)   
-            OnGo();
         wantMove = true;
-
     }
-    IEnumerator StopMovement(){
-        yield return new WaitForSeconds(1f);
-        groundSpeed = 2;
+    
 
+    IEnumerator StopMovement(){
+        // Slow Running
+        groundSpeed = 3;
+        yield return new WaitForSeconds(1.5f);
+        
+        // Walking
+        groundSpeed = 2;
         yield return new WaitForSeconds(1f);
         groundSpeed = 1;
         yield return new WaitForSeconds(0.5f);
         
+        // Parado
         wantMove = false;        
 
     }

@@ -50,21 +50,36 @@ public class CanvasManager : MonoBehaviour
 
 
     void OnEnable(){
+        GrannyMovement.OnReady += HandleOnReady;
+        GrannyMovement.OnSteady += HandleOnSteady;
+        GrannyMovement.OnGo += HandleOnGo;
         TriggerGate.OnWellSol += HandleOnWellSol;
         TriggerGate.OnWrongSol += HandleOnWrongSol;
-        GroundMovement.OnGo += HandleOnGo;
         StageManagerLaneRace.OnVictory += HandleOnVictory;
-
     }
 
 
 
     void OnDisable(){
+        GrannyMovement.OnReady -= HandleOnReady;
+        GrannyMovement.OnSteady -= HandleOnSteady;
+        GrannyMovement.OnGo -= HandleOnGo;
         TriggerGate.OnWellSol -= HandleOnWellSol;
         TriggerGate.OnWrongSol -= HandleOnWrongSol;
-        GroundMovement.OnGo -= HandleOnGo;
         StageManagerLaneRace.OnVictory -= HandleOnVictory;
 
+    }
+
+    private void HandleOnReady(){
+        StartCoroutine(ShowImageForXSeconds(readyImage, 0.75f));
+    }
+    private void HandleOnSteady(){
+        StartCoroutine(ShowImageForXSeconds(steadyImage, 0.75f));
+    }
+
+    private void HandleOnGo(){
+        StartCoroutine(ShowImageForXSeconds(goImage, 0.4f));
+        StartCoroutine(StartIngameView(waitSeconds: 1.1f));
     }
 
 
@@ -84,10 +99,7 @@ public class CanvasManager : MonoBehaviour
     }
 
 
-    private void HandleOnGo(){
-        StartCoroutine(StartIngameView(waitSeconds: 0.2f));
 
-    }
 
     private void HandleOnVictory(){
         textOperationPlace.text = "";
@@ -108,7 +120,8 @@ public class CanvasManager : MonoBehaviour
     void Start()
     {
         ingameView.SetActive(false);
-        RSGView.SetActive(false);
+        RSGView.SetActive(true);
+        introView.SetActive(true);
         StartDialogue(introView, introDialoguePlace, linesIntroDialogue);
 
         
@@ -135,10 +148,11 @@ public class CanvasManager : MonoBehaviour
             dialoguePlace.text = "";
             StartCoroutine(WriteLetterByLetter(view, dialoguePlace, lines));
         }
-        else{ // Despues de la ultima linea cerramos el dialogo y empieza el juego
+        else{ 
+            // Despues de la ultima linea cerramos el dialogo
             StartCoroutine(FadeCanvasGroup(view, fromAlpha: 1, toAlpha: 0));
 
-            StartCoroutine(StartIngameView());
+            // Lanzamos el evento de que la intro ha terminado
             if(OnStart != null)   
                 OnStart();
 
@@ -204,7 +218,6 @@ public class CanvasManager : MonoBehaviour
         StartCoroutine(FadeImage(imageToShow, fromAlpha: 0, toAlpha: 1, animationTime: 0.3f));
         yield return new WaitForSeconds(seconds);
         StartCoroutine(FadeImage(imageToShow, fromAlpha: 1, toAlpha: 0, animationTime: 0.5f));
-
     }
 
     

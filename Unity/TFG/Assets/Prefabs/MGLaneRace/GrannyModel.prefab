@@ -1800,7 +1800,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7078443320125721227}
-  - component: {fileID: 286988170480624565}
   m_Layer: 0
   m_Name: GrannyModel
   m_TagString: Untagged
@@ -1818,7 +1817,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4154473248121299003}
@@ -1828,28 +1827,6 @@ Transform:
   - {fileID: 8626990850692908742}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &286988170480624565
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4106758505025711591}
-  m_Enabled: 0
-  m_Avatar: {fileID: 9000000, guid: 0961bd0b671edad4bbb783fa67b5881a, type: 3}
-  m_Controller: {fileID: 9100000, guid: 882dbb64a8c957d4b86bf4d976ab8196, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4203604271885365496
 GameObject:
   m_ObjectHideFlags: 0

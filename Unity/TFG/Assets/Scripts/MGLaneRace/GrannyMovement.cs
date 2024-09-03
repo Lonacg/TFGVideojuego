@@ -20,30 +20,52 @@ public class GrannyMovement : MonoBehaviour
     public float speed = 8f;
 
     private Transform currentLane;
-    private bool canMove;
+    public bool canMove;
+
+
+    public delegate void _OnReady();
+    public static event _OnReady OnReady;
+
+
+    public delegate void _OnSteady();
+    public static event _OnSteady OnSteady;
+
+    public delegate void _OnGo();
+    public static event _OnGo OnGo;
+
+    public delegate void _OnParty();
+    public static event _OnGo OnParty;
+
 
     void OnEnable(){
-        TriggerFinalGate.OnFinalLine += HandleOnFinalLine;
         CanvasManager.OnStart += HandleOnStart;
-
+        StageManagerLaneRace.OnVictory += HandleOnVictory;
+        TriggerFinalGate.OnFinalLine += HandleOnFinalLine;
     }
 
     void OnDisable(){
-        TriggerFinalGate.OnFinalLine -= HandleOnFinalLine;
         CanvasManager.OnStart -= HandleOnStart;
-
-    }
-
-
-    public void HandleOnFinalLine(){
-        StartCoroutine(Winning());
+        StageManagerLaneRace.OnVictory -= HandleOnVictory;
+        TriggerFinalGate.OnFinalLine -= HandleOnFinalLine;
     }
 
     public void HandleOnStart(){
         // Animacion del personaje al empezar
         StartCoroutine(ReadySteadyGo());
+    }
+    public void HandleOnVictory(){
+        // Movemos a player al carril central e impedimos su movimiento
+        canMove= false;
+        speed = 6f;
+        ChangeAnimation("FastRunning"); 
+
+        StartCoroutine(WaitAndMoveToCentralGate(seconds: 1.5f));
 
     }
+    public void HandleOnFinalLine(){
+        StartCoroutine(Winning());
+    }
+
 
 
     void Start()
@@ -59,6 +81,9 @@ public class GrannyMovement : MonoBehaviour
 
         // Asignamos el Animator y el Rigidbody
         animator = GetComponent<Animator>();
+
+        // Impedimos que player se mueva hasta que acaben las animaciones del inicio
+        canMove = false;
 
     }
 
@@ -77,8 +102,6 @@ public class GrannyMovement : MonoBehaviour
                     currentIndex ++;
             }    
         }
-
-
         // Actualizamos posicion
         currentLane = lanes[currentIndex];
         transform.position = Vector3.MoveTowards(transform.position, currentLane.position, speed * Time.deltaTime);
@@ -95,49 +118,60 @@ public class GrannyMovement : MonoBehaviour
     }
 
     IEnumerator ReadySteadyGo(){
-
-        
-        // Intro texto y camara
-        ChangeAnimation("Idle");
         yield return new WaitForSeconds(1);
+        
+        ChangeAnimation("Greeting");
+        yield return new WaitForSeconds(5.1f);
 
-
-        // BORRAR ESTE DE ABAJO
-        yield return new WaitForSeconds(8);
 
         // READY
+        if(OnReady != null)   
+            OnReady();
         ChangeAnimation("Crouched");        
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2f);
 
         // STEADY (sigue esperando)
-        yield return new WaitForSeconds(1);
-
-
-        ChangeAnimation("Levantandose", 0);        
-        yield return new WaitForSeconds(0.1f);
+        if(OnSteady != null)   
+            OnSteady();
+        yield return new WaitForSeconds(2f);
 
         // GO
-        ChangeAnimation("FastRunning", 0.1f);  
+        if(OnGo != null)   
+            OnGo();
+        yield return new WaitForSeconds(0.4f); // Para que aparezca el GO! justo antes de empezar el mov (GroundMovemetn tambien lo tiene en el HandleOnGo)
+        ChangeAnimation("FastRunning");  
 
         // Permitimos el movimiento del jugador
         canMove = true;
         
     }
 
+
+    IEnumerator WaitAndMoveToCentralGate(float seconds){
+        yield return new WaitForSeconds(seconds);
+        currentIndex = 1;
+    }
+
+
     IEnumerator Winning(){
         // Impedimos el movimiento del jugador
         canMove = false;
 
-        yield return new WaitForSeconds(1f);
+        ChangeAnimation("SlowRunning");        
+        yield return new WaitForSeconds(1.5f);
 
         ChangeAnimation("Walking");        
         yield return new WaitForSeconds(1.5f);
 
         ChangeAnimation("StrongGesture"); 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.7f);
+
 
         ChangeAnimation("Victory");  
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.17f);
+        if(OnParty != null)   
+            OnParty();
+        yield return new WaitForSeconds(1.33f);
 
         ChangeAnimation("Idle");     
     }
