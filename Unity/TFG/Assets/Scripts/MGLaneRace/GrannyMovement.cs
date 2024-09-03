@@ -24,17 +24,24 @@ public class GrannyMovement : MonoBehaviour
 
     void OnEnable(){
         TriggerFinalGate.OnFinalLine += HandleOnFinalLine;
+        CanvasManager.OnStart += HandleOnStart;
 
     }
 
     void OnDisable(){
         TriggerFinalGate.OnFinalLine -= HandleOnFinalLine;
+        CanvasManager.OnStart -= HandleOnStart;
 
     }
 
 
     public void HandleOnFinalLine(){
         StartCoroutine(Winning());
+    }
+
+    public void HandleOnStart(){
+        // Animacion del personaje al empezar
+        StartCoroutine(ReadySteadyGo());
 
     }
 
@@ -52,11 +59,6 @@ public class GrannyMovement : MonoBehaviour
 
         // Asignamos el Animator y el Rigidbody
         animator = GetComponent<Animator>();
-
-        // Animacion del personaje al empezar
-        StartCoroutine(ReadySteadyGo());
-
-        //ChangeAnimation("Running"); 
 
     }
 
@@ -92,27 +94,16 @@ public class GrannyMovement : MonoBehaviour
         }
     }
 
-    // private void CheckAnimation(){
-    //     if(movement.y == 1){
-    //         ChangeAnimation("Run");
-    //     }
-    //     else{
-    //         // AQUI HABRIA QUE DISTINGUIR SI ESTA PARADO AL PRINCIPIO O AL FINAL, PARA LA ANIMACION DE VISTORIA
-    //         ChangeAnimation("Idle");
-    //     }
-    // }
-
-
-    // IEnumerator WaitForXSeconds(float seconds, float newY){
-    //     yield return new WaitForSeconds(seconds);
-    //     movement.y = newY;
-    // }
-
     IEnumerator ReadySteadyGo(){
 
+        
         // Intro texto y camara
         ChangeAnimation("Idle");
         yield return new WaitForSeconds(1);
+
+
+        // BORRAR ESTE DE ABAJO
+        yield return new WaitForSeconds(8);
 
         // READY
         ChangeAnimation("Crouched");        

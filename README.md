@@ -80,6 +80,7 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - HECHO: Los conos se mueven al ser empujados por player
 - La pantalla de error es una imagen en vez de una vista, asi cuando aparece el error, se puede seguir viendo la operacion y le da tiempo a pensar mientras sale el texto.
 - Que los tag sean "CorrectAnswer" / "IncorrectAnswer"
+- Cambiar el 3, 2, 1, ya
 - Refactorizar codigo. Por ejemplo, si el script esta en un objeto, no hace falta pasarle por referencia ese objeto, con gameObject. se accede directamente.
 - Añadir que haya que aparcar 2 veces, primero una suma/resta y luego una multi/divi
 
@@ -89,5 +90,6 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - No se que es mejor, si que los resultados salgan los 3 ordenados de menor a mayor, o que salgan desordenados random como ahora
 - Poner particulas brillantes al activarse los botones de correcto e incorrecto
 - Activar particulas de humo al cruzar la puerta para hacerla desaparecer
+- Cambiar la actualizacion del texto de la operacion del canvas al stage manager
 
 

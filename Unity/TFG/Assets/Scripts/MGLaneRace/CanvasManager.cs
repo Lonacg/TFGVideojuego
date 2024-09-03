@@ -6,25 +6,46 @@ using UnityEngine.UI;
 
 public class CanvasManager : MonoBehaviour
 {
-
+    [Header("Game Objects:")]
     public GameObject player;
-    public GameObject introView;
-    public GameObject ingameView;
-
     public GameObject[] gates;
     
+    [Header("Views:")]
+    public GameObject introView;
+    public GameObject RSGView;
+    public GameObject ingameView;
 
 
+    
+
+    [Header("Images:")]
+    public Image readyImage;
+    public Image steadyImage;
+    public Image goImage;
+    public Image operationImage;
+    public Image scoreImage;
     public Image correctAnswerImage;
     public Image failedAnswerImage;
-    public Image scorePanel;
-    public Image operationPanel;
-    public TextMeshProUGUI textOperation;
+    
+    
+
+    [Header("Text:")] 
+    public TextMeshProUGUI introDialoguePlace;
+    public TextMeshProUGUI textOperationPlace;
+    public List<string> linesIntroDialogue;
 
 
-    public float textSpeed = 0.1f;
+
+    private float textSpeed = 0.1f;
     private int indexSentence = 0;
     private int currentGround = 0;
+
+
+
+    public delegate void _OnStart();
+    public static event _OnStart OnStart;
+
+
 
 
 
@@ -64,33 +85,32 @@ public class CanvasManager : MonoBehaviour
 
 
     private void HandleOnGo(){
-        StartCoroutine(StartIngameView(0.2f));
+        StartCoroutine(StartIngameView(waitSeconds: 0.2f));
 
     }
 
     private void HandleOnVictory(){
-        textOperation.text = "";
+        textOperationPlace.text = "";
 
-        StartCoroutine(FadeImage(operationPanel, fromAlpha: 1, toAlpha: 0));
-        StartCoroutine(WaitAndFadeImage(scorePanel, 1.3f));
+        StartCoroutine(FadeImage(operationImage, fromAlpha: 1, toAlpha: 0));
+        StartCoroutine(WaitAndFadeImage(scoreImage, 1.3f));
 
     }
 
-
-
-
-    public void IncreaseCurrentGround(){
-        if(currentGround == 2){
-            currentGround = 0;
-        }
-        else
-            currentGround ++;
+    void Awake(){
+        // Primer dialogo de inicio
+        string line1 = " ¡Intenta llegar a la meta!";
+        linesIntroDialogue.Add(line1);
 
     }
 
 
     void Start()
     {
+        ingameView.SetActive(false);
+        RSGView.SetActive(false);
+        StartDialogue(introView, introDialoguePlace, linesIntroDialogue);
+
         
         
     }
@@ -106,8 +126,6 @@ public class CanvasManager : MonoBehaviour
     public void StartDialogue(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){
         indexSentence = 0;
         dialoguePlace.text = "";
-        // Desactivamos el Script de Player para que no se pueda mover mientras dure la corrutina 
-        player.GetComponent<CarMovement>().enabled = false;
         StartCoroutine(WriteLetterByLetter(view, dialoguePlace, lines));
     
     }
@@ -119,11 +137,35 @@ public class CanvasManager : MonoBehaviour
         }
         else{ // Despues de la ultima linea cerramos el dialogo y empieza el juego
             StartCoroutine(FadeCanvasGroup(view, fromAlpha: 1, toAlpha: 0));
-            StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1));
+
+            StartCoroutine(StartIngameView());
+            if(OnStart != null)   
+                OnStart();
 
         }
     }
 
+    public void IncreaseCurrentGround(){
+        if(currentGround == 2){
+            currentGround = 0;
+        }
+        else
+            currentGround ++;
+
+    }
+
+    public void ChangeOperation(){
+        GameObject currentGate = gates[currentGround];
+        SetOperationLaneRace scriptSetOperation = currentGate.GetComponent<SetOperationLaneRace>();
+
+        int firstNumber = scriptSetOperation.firstNumber;
+        int secondNumber = scriptSetOperation.secondNumber;
+
+        string symbol = scriptSetOperation.symbol;
+
+        textOperationPlace.text = "";
+        textOperationPlace.text = firstNumber + symbol + secondNumber;
+    }
 
     IEnumerator WriteLetterByLetter(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){ 
         foreach (char letter in lines[indexSentence].ToCharArray()){
@@ -204,7 +246,7 @@ public class CanvasManager : MonoBehaviour
 
         while(elapsedTime < animationTime){
             float newSize = Mathf.Lerp(startSize, endSize, elapsedTime / animationTime);
-            textOperation.fontSize = newSize;
+            textOperationPlace.fontSize = newSize;
             elapsedTime += Time.deltaTime;
             yield return 0;
         }
@@ -212,18 +254,7 @@ public class CanvasManager : MonoBehaviour
     }
 
 
-    public void ChangeOperation(){
-        GameObject currentGate = gates[currentGround];
-        SetOperationLaneRace scriptSetOperation = currentGate.GetComponent<SetOperationLaneRace>();
 
-        int firstNumber = scriptSetOperation.firstNumber;
-        int secondNumber = scriptSetOperation.secondNumber;
-
-        string symbol = scriptSetOperation.symbol;
-
-        textOperation.text = "";
-        textOperation.text = firstNumber + symbol + secondNumber;
-    }
 
 
     IEnumerator ShowNewOperation(){
@@ -234,8 +265,8 @@ public class CanvasManager : MonoBehaviour
     }
 
 
-    IEnumerator StartIngameView(float seconds){
-        yield return new WaitForSeconds(seconds);
+    IEnumerator StartIngameView(float waitSeconds = 0){
+        yield return new WaitForSeconds(waitSeconds);
         ChangeOperation();
         StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1, animationTime: 0.5f));
     }

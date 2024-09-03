@@ -15,11 +15,12 @@ public class GroundMovement : MonoBehaviour
 
     void OnEnable(){
         TriggerFinalGate.OnFinalLine += HandleOnFinalLine;
+        CanvasManager.OnStart += HandleOnStart;
     }
 
     void OnDisable(){
         TriggerFinalGate.OnFinalLine -= HandleOnFinalLine;
-
+        CanvasManager.OnStart += HandleOnStart;
     }
 
 
@@ -28,12 +29,16 @@ public class GroundMovement : MonoBehaviour
 
     }
 
+    public void HandleOnStart(){
+        StartCoroutine(WaitForXSeconds(11f));
 
+    }
 
 
     void Start(){
         wantMove = false;
-        StartCoroutine(WaitForXSeconds(3f));
+        // ESTA ES LA QUE VALE StartCoroutine(WaitForXSeconds(3f));
+        
     }
 
     void Update()
