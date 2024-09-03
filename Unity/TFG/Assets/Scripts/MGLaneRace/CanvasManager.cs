@@ -98,7 +98,7 @@ public class CanvasManager : MonoBehaviour
         StartCoroutine(ShowNewOperation());
     }
 
-
+    
 
 
     private void HandleOnVictory(){
