@@ -34,6 +34,7 @@ public class StageManagerLaneRace : MonoBehaviour
     public static event _OnVictory OnVictory;
 
 
+
     void OnEnable(){
         GrannyMovement.OnGo += HandleOnGo;
         TriggerGate.OnWellSol += HandleOnWellSol;
@@ -41,7 +42,6 @@ public class StageManagerLaneRace : MonoBehaviour
         NextOperationTrigger.OnNextOperation += HandleOnNextOperation;
         TriggerExtraGround.OnNewGround += HandleOnNewGround;
         GrannyMovement.OnParty += HandleOnParty;
-
     }
 
     void OnDisable(){
@@ -51,9 +51,9 @@ public class StageManagerLaneRace : MonoBehaviour
         NextOperationTrigger.OnNextOperation -= HandleOnNextOperation;
         TriggerExtraGround.OnNewGround -= HandleOnNewGround;
         GrannyMovement.OnParty -= HandleOnParty;
-
-
     }
+
+
 
     private void HandleOnGo(){
         StartCoroutine(WaitXSecondAndChangeOperation(seconds: 1.1f));
@@ -80,7 +80,6 @@ public class StageManagerLaneRace : MonoBehaviour
             if(OnVictory != null)   
                 OnVictory();
         }
-
     }
 
     private void HandleOnWrongSol(){
@@ -97,12 +96,10 @@ public class StageManagerLaneRace : MonoBehaviour
             ground.GetComponent<GroundMovement>().groundSpeed -= 0.5f;
             grannyPlayer.GetComponent<GrannyMovement>().ChangeAnimation("SlowRunning");
         }
-        
     }
 
     private void HandleOnNextOperation(){
         StartCoroutine(ShowNewOperation());
-
     }
 
     private void HandleOnNewGround(){
@@ -112,11 +109,10 @@ public class StageManagerLaneRace : MonoBehaviour
         positionCurreentGround = newPosition;
     }
 
-
-
     private void HandleOnParty(){
         confetyParticles.SetActive(true);
     }
+
 
 
     void Start(){
@@ -126,6 +122,8 @@ public class StageManagerLaneRace : MonoBehaviour
         numberCorrectAnswers = 0;
         numberIncorrectAnswers = 0;
     }
+
+
 
     public void ChangeOperation(){
         GameObject currentGate = gates[currentGround];
@@ -146,7 +144,6 @@ public class StageManagerLaneRace : MonoBehaviour
         }
         else
             currentGround ++;
-
     }
 
 
@@ -154,7 +151,6 @@ public class StageManagerLaneRace : MonoBehaviour
     IEnumerator WaitXSecondAndChangeOperation(float seconds){
         yield return new WaitForSeconds(seconds);
         ChangeOperation();
-
     }
 
     IEnumerator ShowNewOperation(){
@@ -163,7 +159,6 @@ public class StageManagerLaneRace : MonoBehaviour
         ChangeOperation();
         StartCoroutine(TransformSizeFont(startSize: 0, endSize: 54.4f, animationTime: 1));
     }
-
 
     IEnumerator TransformSizeFont(float startSize, float endSize, float animationTime){
         float elapsedTime = 0;
@@ -174,10 +169,6 @@ public class StageManagerLaneRace : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return 0;
         }
-
     }
-
-
-
 
 }

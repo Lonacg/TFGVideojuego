@@ -7,10 +7,12 @@ public class TriggerFinalGate : MonoBehaviour
     public static event _OnFinalLine OnFinalLine;
 
 
+
     void OnTriggerEnter(Collider other){
         if (other.tag == "Player"){
             if(OnFinalLine != null)   
                 OnFinalLine();
         }
     }
+    
 }

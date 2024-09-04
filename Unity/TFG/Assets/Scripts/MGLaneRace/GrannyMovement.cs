@@ -5,27 +5,22 @@ using UnityEngine;
 
 public class GrannyMovement : MonoBehaviour
 {
-
-
     // Para animaciones
     private Animator animator;
     private string currentAnimation = "";
 
-
     // Para movimiento
     public Transform lanesParent;
     public Transform[] lanes;
-    
     public int currentIndex = 1;
     public float speed = 8f;
-
-    private Transform currentLane;
     public bool canMove;
+    private Transform currentLane;
+    
 
 
     public delegate void _OnReady();
     public static event _OnReady OnReady;
-
 
     public delegate void _OnSteady();
     public static event _OnSteady OnSteady;
@@ -35,6 +30,7 @@ public class GrannyMovement : MonoBehaviour
 
     public delegate void _OnParty();
     public static event _OnGo OnParty;
+
 
 
     void OnEnable(){
@@ -49,10 +45,13 @@ public class GrannyMovement : MonoBehaviour
         TriggerFinalGate.OnFinalLine -= HandleOnFinalLine;
     }
 
+
+
     public void HandleOnStart(){
         // Animacion del personaje al empezar
         StartCoroutine(ReadySteadyGo());
     }
+
     public void HandleOnVictory(){
         // Movemos a player al carril central e impedimos su movimiento
         canMove= false;
@@ -60,8 +59,8 @@ public class GrannyMovement : MonoBehaviour
         ChangeAnimation("FastRunning"); 
 
         StartCoroutine(WaitAndMoveToCentralGate(seconds: 1.5f));
-
     }
+
     public void HandleOnFinalLine(){
         StartCoroutine(Winning());
     }
@@ -84,10 +83,7 @@ public class GrannyMovement : MonoBehaviour
 
         // Impedimos que player se mueva hasta que acaben las animaciones del inicio
         canMove = false;
-
     }
-
-
 
     void Update()
     {
@@ -109,13 +105,14 @@ public class GrannyMovement : MonoBehaviour
 
 
 
-
     public void ChangeAnimation(string animation, float crossfade = 0.2f){
         if(currentAnimation != animation){
             currentAnimation = animation;
             animator.CrossFade(animation, crossfade);
         }
     }
+
+
 
     IEnumerator ReadySteadyGo(){
         yield return new WaitForSeconds(1);
@@ -143,15 +140,12 @@ public class GrannyMovement : MonoBehaviour
 
         // Permitimos el movimiento del jugador
         canMove = true;
-        
     }
-
 
     IEnumerator WaitAndMoveToCentralGate(float seconds){
         yield return new WaitForSeconds(seconds);
         currentIndex = 1;
     }
-
 
     IEnumerator Winning(){
         // Impedimos el movimiento del jugador
@@ -175,6 +169,5 @@ public class GrannyMovement : MonoBehaviour
 
         ChangeAnimation("Idle");     
     }
-
-
+    
 }

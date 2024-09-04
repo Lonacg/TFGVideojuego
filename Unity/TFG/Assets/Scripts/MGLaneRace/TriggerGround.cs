@@ -9,7 +9,6 @@ public class TriggerGround : MonoBehaviour
 
 
 
-
     void Start(){
         // Pasamos por codigo las referencias al padre y al hijo
         parent = transform.parent.gameObject;
@@ -31,7 +30,7 @@ public class TriggerGround : MonoBehaviour
             // Activamos las puertas para que se genere una nueva operacion
             childrenGates.SetActive(false);
             childrenGates.SetActive(true);
-
         }
     }
+
 }

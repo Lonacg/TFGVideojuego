@@ -4,26 +4,23 @@ using UnityEngine;
 
 public class GroundMovement : MonoBehaviour
 {
-
-
-
     public float groundSpeed = 5 ;
     private bool wantMove = false;
+
 
 
     void OnEnable(){
         GrannyMovement.OnGo += HandleOnGo;
         StageManagerLaneRace.OnVictory += HandleOnVictory;
-        TriggerFinalGate.OnFinalLine += HandleOnFinalLine;
-        
+        TriggerFinalGate.OnFinalLine += HandleOnFinalLine; 
     }
 
     void OnDisable(){
         GrannyMovement.OnGo -= HandleOnGo;
         StageManagerLaneRace.OnVictory -= HandleOnVictory;
         TriggerFinalGate.OnFinalLine -= HandleOnFinalLine;
-        
     }
+
 
 
     public void HandleOnGo(){
@@ -36,8 +33,8 @@ public class GroundMovement : MonoBehaviour
 
     public void HandleOnFinalLine(){
         StartCoroutine(StopMovement());
-
     }
+
 
 
     void Start(){
@@ -48,15 +45,15 @@ public class GroundMovement : MonoBehaviour
     {
         if(wantMove)
             transform.Translate(0, 0, Time.deltaTime * - groundSpeed );
-        
     }
+
+
 
     IEnumerator WaitXSecondAndGo(float seconds){
         yield return new WaitForSeconds(seconds);
         wantMove = true;
     }
     
-
     IEnumerator StopMovement(){
         // Slow Running
         groundSpeed = 3;
@@ -70,7 +67,6 @@ public class GroundMovement : MonoBehaviour
         
         // Parado
         wantMove = false;        
-
     }
-
+    
 }

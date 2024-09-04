@@ -10,18 +10,13 @@ public class SetOperationLaneRace : MonoBehaviour
     public int secondNumber;
     public int sol;
     public string symbol = "";
-    public List<GameObject> gates;    
+
+    private List<GameObject> gates;    
     private int operatorChosen;
     private int totalGates;
-
     private int[] wrongSols;
     private int[] allWrongSols;
 
-
-    
-
-
-    
 
 
     void OnEnable()  // Cada vez que se activa el objeto genera una nueva operacion
@@ -43,9 +38,7 @@ public class SetOperationLaneRace : MonoBehaviour
         // Generamos la nueva operacion y actualizamos los numeros de las puertas
         GenerateOperation();
         WriteNumbers();
-        
     }
-
 
 
 
@@ -90,7 +83,6 @@ public class SetOperationLaneRace : MonoBehaviour
 
                 wrongSols = IncorrectMultiplication();
 
-
                 // DIVISION
                 if(operatorChosen == 3 ){
                     int aux = firstNumber;
@@ -102,12 +94,9 @@ public class SetOperationLaneRace : MonoBehaviour
                     symbol = " / ";
 
                     wrongSols = IncorrectAdditionSubtractionOrDivision();
-
                 }
             }         
-
         }
-
         // Escribimos la operacion por consola para facilitar el desarrollo del minijuego              
         //Debug.Log("La operacion es: " + firstNumber + symbol + secondNumber + " = " + sol);
     }
@@ -152,9 +141,6 @@ public class SetOperationLaneRace : MonoBehaviour
         return wrongSols;
     }
 
-
-
-
     public int[] ChooseSomeWrong(int amount){
         // De las opciones que hay, elegimos TotalGates numeros consecutivos en la lista, para que en el juego sean por ejemplo si hay 3 puertas, nElements es 2:  -, --, sol ; -, sol, + ; sol, +, ++ 
         int start = Random.Range(0, amount);
@@ -170,7 +156,6 @@ public class SetOperationLaneRace : MonoBehaviour
         return wrongSols;
     }
 
-
     public void ShuffleWrongSols(){
         // Otra opcion seria añadir la solucion a la lista WrongSols, ordenarla y escribirla. Asi los numeros estarian ordenados, pero la solucion podria estar en cualquiera de las 3 posiciones
         
@@ -183,7 +168,6 @@ public class SetOperationLaneRace : MonoBehaviour
             wrongSols[i] = wrongSols[indexRandom];
             wrongSols[indexRandom] = aux;
         }
-
     }
 
     public void WriteNumbers(){
@@ -205,21 +189,9 @@ public class SetOperationLaneRace : MonoBehaviour
                 numberText.text = wrongSols[indexWrongN].ToString();
                 indexWrongN ++;
             }
-
         }
-
     }
-
-
-
-
-
-
-
-
-
-
-
+    
 }
 
 

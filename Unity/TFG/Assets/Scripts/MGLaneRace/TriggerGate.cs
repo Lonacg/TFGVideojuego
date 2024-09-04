@@ -4,8 +4,6 @@ using System.Collections;
 
 public class TriggerGate : MonoBehaviour
 {
-
-
     public delegate void _OnWellSol();
     public static event _OnWellSol OnWellSol;
 
@@ -25,10 +23,7 @@ public class TriggerGate : MonoBehaviour
                     OnWrongSol();
             }
         }
-
     }
-
-
 
 }
 

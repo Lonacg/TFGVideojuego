@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
-using System;
+
+
+
 public class CameraManager : MonoBehaviour  
 {
     public GameObject player;
@@ -22,13 +24,11 @@ public class CameraManager : MonoBehaviour
     void OnEnable(){
         CanvasManager.OnStart += HandleOnStart;
         TriggerFinalGate.OnFinalLine += HandleOnFinalLine;
-
     }
 
     void OnDisable(){
         CanvasManager.OnStart -= HandleOnStart;
         TriggerFinalGate.OnFinalLine -= HandleOnFinalLine;
-
     }
 
     private void HandleOnStart()
@@ -61,13 +61,8 @@ public class CameraManager : MonoBehaviour
         // Posiciones intermedias de la cámara
         RigthPosition = new Vector3(2.33f, 1.31f, 1.13f);
         LeftPosition = new Vector3(-2.33f, 1.31f, 1.13f);
-        
     }
 
-    private void Update()
-    {
-    
-    }
 
     IEnumerator MoveCamera(){
 
@@ -123,8 +118,6 @@ public class CameraManager : MonoBehaviour
             }
             firstMovement = false;
         }
-
-
     }
 
 }

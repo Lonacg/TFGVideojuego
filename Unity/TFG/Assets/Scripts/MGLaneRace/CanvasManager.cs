@@ -9,14 +9,13 @@ public class CanvasManager : MonoBehaviour
     [Header("Game Objects:")]
     public GameObject player;
     public GameObject[] gates;
+
     
     [Header("Views:")]
     public GameObject introView;
     public GameObject RSGView;
     public GameObject ingameView;
 
-
-    
 
     [Header("Images:")]
     public Image readyImage;
@@ -27,13 +26,11 @@ public class CanvasManager : MonoBehaviour
     public Image correctAnswerImage;
     public Image failedAnswerImage;
     
-    
 
     [Header("Text:")] 
     public TextMeshProUGUI introDialoguePlace;
     public TextMeshProUGUI textOperationPlace;
     public List<string> linesIntroDialogue;
-
 
 
     private float textSpeed = 0.1f;
@@ -43,7 +40,6 @@ public class CanvasManager : MonoBehaviour
 
     public delegate void _OnStart();
     public static event _OnStart OnStart;
-
 
 
 
@@ -66,8 +62,9 @@ public class CanvasManager : MonoBehaviour
         TriggerGate.OnWellSol -= HandleOnWellSol;
         TriggerGate.OnWrongSol -= HandleOnWrongSol;
         StageManagerLaneRace.OnVictory -= HandleOnVictory;
-
     }
+
+
 
     private void HandleOnReady(){
         StartCoroutine(ShowImageForXSeconds(readyImage, 0.75f));
@@ -98,6 +95,7 @@ public class CanvasManager : MonoBehaviour
     }
 
 
+
     void Awake(){
         // Primer dialogo de inicio
         string line1 = " ¡Intenta llegar a la meta!";
@@ -112,10 +110,6 @@ public class CanvasManager : MonoBehaviour
         StartDialogue(introView, introDialoguePlace, linesIntroDialogue);
     }
 
-    void Update()
-    {
-        
-    }
 
 
     public void StartDialogue(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){
@@ -136,10 +130,8 @@ public class CanvasManager : MonoBehaviour
             // Lanzamos el evento de que la intro ha terminado
             if(OnStart != null)   
                 OnStart();
-
         }
     }
-
 
 
 
@@ -216,6 +208,4 @@ public class CanvasManager : MonoBehaviour
         yield return new WaitForSeconds(waitSeconds);
         StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1, animationTime: 0.5f));
     }
-
-
 }
