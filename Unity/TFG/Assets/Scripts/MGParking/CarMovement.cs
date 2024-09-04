@@ -9,16 +9,15 @@ public class CarMovement : MonoBehaviour
     private Vector2 movement = Vector2.zero;
     private Rigidbody rb;
 
+
     [Header("Accessories")]
     public Transform[] frontWheels;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // Asignamos el Rigidbody
         rb = GetComponent<Rigidbody>();
-        
     }
 
     void Update(){
@@ -26,8 +25,6 @@ public class CarMovement : MonoBehaviour
         movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
     }
 
-
-    // Update is called once per frame
     void FixedUpdate()
     {
         // Movemos el coche aplicando la fisica y en el FixedUpdate para que sean siempre los mismos frames
@@ -48,9 +45,6 @@ public class CarMovement : MonoBehaviour
         
         foreach (var wheel in frontWheels)
             wheel.localRotation = Quaternion.Lerp(wheel.localRotation, wheelTargetRotation, Time.deltaTime * 10);
-        
-
-
     }
 
 }

@@ -27,6 +27,7 @@ public class SetOperationParking : MonoBehaviour
     private string textAfterFail;
 
 
+
     void OnEnable(){
         ParkingTrigger.OnWrongParked += HandleOnWrongParked;
     }
@@ -37,22 +38,24 @@ public class SetOperationParking : MonoBehaviour
 
 
 
+    void HandleOnWrongParked (GameObject go){
+        StartCoroutine(ChangeTextSecondTry());
+    }
 
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {   
         parkingNumbers = scriptInstances.pNumbers;
         parkingLots = scriptInstances.pLots;
         numberFreeParkings = parkingLots.Count;
         
-
         GenerateOperation();
         // Llamar a la funcion que muestre la operacion
         ChangeNumberParking();
-
     }
+
+
 
     public void GenerateOperation(){
         // Generamos un numero aleatorio para decidir si sera una suma o una resta
@@ -88,26 +91,8 @@ public class SetOperationParking : MonoBehaviour
         // Ponemos en el cuadro de texto la operacion
         operationFirstTryText.text = textFirstTry;
 
-        Debug.Log(textFirstTry);          
-        Debug.Log("El resultado es: " + sol);        
+        //Debug.Log("Operacion: " + textFirstTry + " = " + sol);          
     }
-
-    void HandleOnWrongParked (GameObject go){
-        StartCoroutine(ChangeTextSecondTry());
-    }
-
-    IEnumerator ChangeTextSecondTry(){
-        yield return new WaitForSeconds(1);
-        // Cambiamos la forma en la que esta la operacion para ayudar al jugador
-        operationFirstTryText.gameObject.SetActive(false);
-        operationSecondTryText.text = textAfterFail;
-        operationSecondTryText.gameObject.SetActive(true);
-        
-        // DialogueManager (script) tambien esta suscrito, el hace que desaparezca y aparezca la operacion
-
-
-    }
-    
 
     public void ChooseWrongAnswer(TextMeshPro ptext, int indexWrongN){
 
@@ -131,9 +116,7 @@ public class SetOperationParking : MonoBehaviour
             ptext.text = incorrectSol.ToString();
             incorrectNumbers[indexWrongN] = incorrectSol;
         }
-
     }
-
 
     public void ChangeNumberParking(){ // Cambia el Tag del parking y escribe el numero de la solucion
 
@@ -150,11 +133,11 @@ public class SetOperationParking : MonoBehaviour
             
             // Actualizamos el tag del aparcamiento y el numero de la plaza
             if( i == correctPlace){
-                parkingLots[i].tag = "ParkedCorrectly";
+                parkingLots[i].tag = "CorrectAnswer";
                 ptext.text = sol.ToString();                // Numero con la solucion
             }
             else{
-                parkingLots[i].tag = "ParkedIncorrectly";
+                parkingLots[i].tag = "IncorrectAnswer";
                 ChooseWrongAnswer(ptext, indexWrongN);      // Numeros sin la solucion
                 indexWrongN ++; 
             }
@@ -162,5 +145,15 @@ public class SetOperationParking : MonoBehaviour
     }
 
 
+
+    IEnumerator ChangeTextSecondTry(){
+        yield return new WaitForSeconds(1);
+        // Cambiamos la forma en la que esta la operacion para ayudar al jugador
+        operationFirstTryText.gameObject.SetActive(false);
+        operationSecondTryText.text = textAfterFail;
+        operationSecondTryText.gameObject.SetActive(true);
+        
+        // DialogueManager (script) tambien esta suscrito, el hace que desaparezca y aparezca la operacion
+    }
 
 }

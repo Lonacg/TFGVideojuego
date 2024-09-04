@@ -15,7 +15,7 @@ C:/Users/Usuario/Documents/0-MIS DOCUMENTOS/0-Universidad/TFGVideojuego/Unity/TF
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-51331
+51873
 -job-worker-count
 1
 -background-job-worker-count
@@ -59,16 +59,16 @@ C:/Users/Usuario/Documents/0-MIS DOCUMENTOS/0-Universidad/TFGVideojuego/Unity/TF
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [8768]  Target information:
+Player connection [7924]  Target information:
 
-Player connection [8768]  * "[IP] 192.168.0.15 [Port] 0 [Flags] 2 [Guid] 1232869550 [EditorId] 1232869550 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-H0L38D2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [7924]  * "[IP] 192.168.0.15 [Port] 0 [Flags] 2 [Guid] 18867124 [EditorId] 18867124 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-H0L38D2) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [8768] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [8768] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [7924] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [7924] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 1
 Library Redirect Path: Library/
 [PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-Refreshing native plugins compatible for Editor in 6.14 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 2.63 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.0.9f1 (1490908003ac)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.0.9f1/Editor/Data/Resources/UnitySubsystems
@@ -84,43 +84,43 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.0.9f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.0.9f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.0.9f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56784
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56168
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.011908 seconds.
-- Loaded All Assemblies, in  0.985 seconds
+Registered in 0.010884 seconds.
+- Loaded All Assemblies, in  0.973 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.158 seconds
-Domain Reload Profiling: 2131ms
-	BeginReloadAssembly (284ms)
+- Finished resetting the current domain, in  6.970 seconds
+Domain Reload Profiling: 7940ms
+	BeginReloadAssembly (278ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (103ms)
-	RebuildNativeTypeToScriptingClass (36ms)
-	initialDomainReloadingComplete (162ms)
-	LoadAllAssembliesAndSetupDomain (387ms)
-		LoadAssemblies (276ms)
+	RebuildCommonClasses (95ms)
+	RebuildNativeTypeToScriptingClass (33ms)
+	initialDomainReloadingComplete (124ms)
+	LoadAllAssembliesAndSetupDomain (438ms)
+		LoadAssemblies (273ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (378ms)
-			TypeCache.Refresh (376ms)
-				TypeCache.ScanAssembly (347ms)
+		AnalyzeDomain (432ms)
+			TypeCache.Refresh (429ms)
+				TypeCache.ScanAssembly (388ms)
 			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (1ms)
-	FinalizeReload (1159ms)
+	FinalizeReload (6972ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1056ms)
+		SetupLoadedEditorAssemblies (5673ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (63ms)
-			SetLoadedEditorAssemblies (7ms)
-			BeforeProcessingInitializeOnLoad (9ms)
-			ProcessInitializeOnLoadAttributes (416ms)
-			ProcessInitializeOnLoadMethodAttributes (561ms)
+			InitializePlatformSupportModulesInManaged (178ms)
+			SetLoadedEditorAssemblies (29ms)
+			BeforeProcessingInitializeOnLoad (43ms)
+			ProcessInitializeOnLoadAttributes (1326ms)
+			ProcessInitializeOnLoadMethodAttributes (4097ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -132,9 +132,9 @@ Import Worker Mode flag is 0x00
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  2.497 seconds
+- Loaded All Assemblies, in  3.119 seconds
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Refreshing native plugins compatible for Editor in 3.25 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 2.81 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 Package Manager log level set to [2]
@@ -142,179 +142,54 @@ Package Manager log level set to [2]
 [Package Manager] Unable to send message (not connected to server process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.608 seconds
-Domain Reload Profiling: 5091ms
-	BeginReloadAssembly (1070ms)
+- Finished resetting the current domain, in  3.120 seconds
+Domain Reload Profiling: 6223ms
+	BeginReloadAssembly (1474ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (16ms)
+		DisableScriptedObjects (24ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (66ms)
-	RebuildCommonClasses (107ms)
+		CreateAndSetChildDomain (61ms)
+	RebuildCommonClasses (130ms)
 	RebuildNativeTypeToScriptingClass (31ms)
-	initialDomainReloadingComplete (98ms)
-	LoadAllAssembliesAndSetupDomain (1175ms)
-		LoadAssemblies (837ms)
+	initialDomainReloadingComplete (211ms)
+	LoadAllAssembliesAndSetupDomain (1255ms)
+		LoadAssemblies (1177ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (607ms)
-			TypeCache.Refresh (447ms)
-				TypeCache.ScanAssembly (415ms)
-			BuildScriptInfoCaches (131ms)
-			ResolveRequiredComponents (25ms)
-	FinalizeReload (2610ms)
+		AnalyzeDomain (726ms)
+			TypeCache.Refresh (534ms)
+				TypeCache.ScanAssembly (487ms)
+			BuildScriptInfoCaches (165ms)
+			ResolveRequiredComponents (20ms)
+	FinalizeReload (3122ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2026ms)
+		SetupLoadedEditorAssemblies (2357ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (7ms)
-			SetLoadedEditorAssemblies (11ms)
-			BeforeProcessingInitializeOnLoad (149ms)
-			ProcessInitializeOnLoadAttributes (1428ms)
-			ProcessInitializeOnLoadMethodAttributes (416ms)
-			AfterProcessingInitializeOnLoad (15ms)
-			EditorAssembliesLoaded (0ms)
+			InitializePlatformSupportModulesInManaged (8ms)
+			SetLoadedEditorAssemblies (14ms)
+			BeforeProcessingInitializeOnLoad (173ms)
+			ProcessInitializeOnLoadAttributes (1503ms)
+			ProcessInitializeOnLoadMethodAttributes (643ms)
+			AfterProcessingInitializeOnLoad (16ms)
+			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (14ms)
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.02 seconds
-Refreshing native plugins compatible for Editor in 3.36 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (17ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Refreshing native plugins compatible for Editor in 4.09 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 30 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4216 unused Assets / (1.2 MB). Loaded Objects now: 4860.
-Memory consumption went from 131.5 MB to 130.3 MB.
-Total: 18.415000 ms (FindLiveObjects: 1.390000 ms CreateObjectMapping: 0.899300 ms MarkObjects: 12.717800 ms  DeleteObjects: 3.402900 ms)
+Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4213 unused Assets / (0.7 MB). Loaded Objects now: 4855.
+Memory consumption went from 128.6 MB to 127.9 MB.
+Total: 39.827600 ms (FindLiveObjects: 1.917600 ms CreateObjectMapping: 1.120200 ms MarkObjects: 19.587500 ms  DeleteObjects: 17.199600 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 13052.792758 seconds.
-  path: Assets/Prefabs/MGLaneRace/Ground.prefab
-  artifactKey: Guid(9fd25e11dcb4a734588a3a03c6cc09d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/MGLaneRace/Ground.prefab using Guid(9fd25e11dcb4a734588a3a03c6cc09d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: 'd142dc6ae79043f15020a0da5982a63f') in 0.7379689 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1066
-
-========================================================================
-Received Import Request.
-  Time since last request: 9.395179 seconds.
-  path: Assets/Prefabs/MGLaneRace/Ground.prefab
-  artifactKey: Guid(9fd25e11dcb4a734588a3a03c6cc09d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/MGLaneRace/Ground.prefab using Guid(9fd25e11dcb4a734588a3a03c6cc09d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: '84c3e21c8678d52223d1508942b8daa7') in 0.1425577 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1066
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.618025 seconds.
-  path: Assets/Prefabs/MGLaneRace/Ground.prefab
-  artifactKey: Guid(9fd25e11dcb4a734588a3a03c6cc09d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/MGLaneRace/Ground.prefab using Guid(9fd25e11dcb4a734588a3a03c6cc09d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: 'e92a02f46b1fb6708069a7fbcd2a8655') in 0.1309912 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1066
-
-========================================================================
-Received Import Request.
-  Time since last request: 14.351472 seconds.
-  path: Assets/Prefabs/MGLaneRace/Ground.prefab
-  artifactKey: Guid(9fd25e11dcb4a734588a3a03c6cc09d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/MGLaneRace/Ground.prefab using Guid(9fd25e11dcb4a734588a3a03c6cc09d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: '9a286d883ed457d8b882c4b67af751f4') in 0.1527613 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1067
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.732004 seconds.
-  path: Assets/Prefabs/MGLaneRace/Ground.prefab
-  artifactKey: Guid(9fd25e11dcb4a734588a3a03c6cc09d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/MGLaneRace/Ground.prefab using Guid(9fd25e11dcb4a734588a3a03c6cc09d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: 'e4b28f8e8a86a09daf2a0f223f9f2a75') in 0.1438845 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1068
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.290584 seconds.
-  path: Assets/Prefabs/MGLaneRace/GameObject.prefab
-  artifactKey: Guid(08aed8a53314968439d39e573a0ca051) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/MGLaneRace/GameObject.prefab using Guid(08aed8a53314968439d39e573a0ca051) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: '80d6a2f7ab3c47afeb1ecd9642316a50') in 0.099648 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1055
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.145675 seconds.
-  path: Assets/Prefabs/MGLaneRace/Ground.prefab
-  artifactKey: Guid(9fd25e11dcb4a734588a3a03c6cc09d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/MGLaneRace/Ground.prefab using Guid(9fd25e11dcb4a734588a3a03c6cc09d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: '3f54feefc6dcb79c30b6907b41f61305') in 0.1508363 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1695
-
-========================================================================
-Received Prepare
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.374 seconds
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Refreshing native plugins compatible for Editor in 2.18 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.971 seconds
-Domain Reload Profiling: 4338ms
-	BeginReloadAssembly (393ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (9ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (101ms)
-	RebuildCommonClasses (77ms)
-	RebuildNativeTypeToScriptingClass (24ms)
-	initialDomainReloadingComplete (52ms)
-	LoadAllAssembliesAndSetupDomain (821ms)
-		LoadAssemblies (602ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (424ms)
-			TypeCache.Refresh (10ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (394ms)
-			ResolveRequiredComponents (13ms)
-	FinalizeReload (2972ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2341ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (4ms)
-			SetLoadedEditorAssemblies (8ms)
-			BeforeProcessingInitializeOnLoad (129ms)
-			ProcessInitializeOnLoadAttributes (1653ms)
-			ProcessInitializeOnLoadMethodAttributes (526ms)
-			AfterProcessingInitializeOnLoad (20ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (19ms)
-Refreshing native plugins compatible for Editor in 3.35 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4216 unused Assets / (1.0 MB). Loaded Objects now: 4872.
-Memory consumption went from 125.8 MB to 124.8 MB.
-Total: 22.627100 ms (FindLiveObjects: 1.082700 ms CreateObjectMapping: 1.085900 ms MarkObjects: 14.353400 ms  DeleteObjects: 6.103500 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 667.368403 seconds.
-  path: Assets/Scripts/MGLaneRace/CanvasManager.cs
-  artifactKey: Guid(439af5df20d90994281de0b0f75a9d38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scripts/MGLaneRace/CanvasManager.cs using Guid(439af5df20d90994281de0b0f75a9d38) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: 'ca93015c4b836d32eec2b384ddfb8a42') in 0.015583 seconds
+  Time since last request: 18454.924502 seconds.
+  path: Assets/Scripts/MGParking/DialogueManager.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/DialogueManager.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '789283da9a6cf8031e7b32725f8a81ab') in 0.0167813 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
@@ -322,515 +197,1068 @@ Received Prepare
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  5.000 seconds
+- Loaded All Assemblies, in  1.629 seconds
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Refreshing native plugins compatible for Editor in 17.62 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 1.71 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Unable to send message (not connected to server process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in 10.412 seconds
-Domain Reload Profiling: 15417ms
-	BeginReloadAssembly (1065ms)
+- Finished resetting the current domain, in  2.266 seconds
+Domain Reload Profiling: 3882ms
+	BeginReloadAssembly (434ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (18ms)
+		DisableScriptedObjects (8ms)
 		BackupInstance (0ms)
-		ReleaseScriptingObjects (1ms)
-		CreateAndSetChildDomain (312ms)
-	RebuildCommonClasses (173ms)
-	RebuildNativeTypeToScriptingClass (70ms)
-	initialDomainReloadingComplete (173ms)
-	LoadAllAssembliesAndSetupDomain (3523ms)
-		LoadAssemblies (1464ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (102ms)
+	RebuildCommonClasses (97ms)
+	RebuildNativeTypeToScriptingClass (31ms)
+	initialDomainReloadingComplete (75ms)
+	LoadAllAssembliesAndSetupDomain (979ms)
+		LoadAssemblies (725ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (2550ms)
-			TypeCache.Refresh (52ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (2334ms)
-			ResolveRequiredComponents (133ms)
-	FinalizeReload (10414ms)
+		AnalyzeDomain (484ms)
+			TypeCache.Refresh (19ms)
+				TypeCache.ScanAssembly (3ms)
+			BuildScriptInfoCaches (437ms)
+			ResolveRequiredComponents (21ms)
+	FinalizeReload (2267ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (6859ms)
+		SetupLoadedEditorAssemblies (1697ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (52ms)
-			SetLoadedEditorAssemblies (94ms)
-			BeforeProcessingInitializeOnLoad (2256ms)
-			ProcessInitializeOnLoadAttributes (3712ms)
-			ProcessInitializeOnLoadMethodAttributes (715ms)
-			AfterProcessingInitializeOnLoad (28ms)
+			InitializePlatformSupportModulesInManaged (5ms)
+			SetLoadedEditorAssemblies (8ms)
+			BeforeProcessingInitializeOnLoad (145ms)
+			ProcessInitializeOnLoadAttributes (1160ms)
+			ProcessInitializeOnLoadMethodAttributes (363ms)
+			AfterProcessingInitializeOnLoad (17ms)
 			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (22ms)
-Refreshing native plugins compatible for Editor in 4.26 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (15ms)
+Refreshing native plugins compatible for Editor in 3.25 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4214 unused Assets / (0.8 MB). Loaded Objects now: 4872.
-Memory consumption went from 125.8 MB to 125.0 MB.
-Total: 31.021300 ms (FindLiveObjects: 1.569500 ms CreateObjectMapping: 1.295700 ms MarkObjects: 22.144800 ms  DeleteObjects: 6.008800 ms)
+Unloading 4211 unused Assets / (2.0 MB). Loaded Objects now: 4857.
+Memory consumption went from 123.0 MB to 121.0 MB.
+Total: 15.514900 ms (FindLiveObjects: 0.933100 ms CreateObjectMapping: 0.548200 ms MarkObjects: 10.858500 ms  DeleteObjects: 3.173200 ms)
 
 Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 2.52 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4204 unused Assets / (2.4 MB). Loaded Objects now: 4857.
+Memory consumption went from 123.2 MB to 120.8 MB.
+Total: 32.662600 ms (FindLiveObjects: 1.196800 ms CreateObjectMapping: 0.943000 ms MarkObjects: 17.115300 ms  DeleteObjects: 13.405600 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 270.972094 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '1688f24ec0b133961d62b01f97ee78a9') in 0.0593021 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
 ========================================================================
 Received Prepare
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.622 seconds
+- Loaded All Assemblies, in  3.905 seconds
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Refreshing native plugins compatible for Editor in 2.47 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 19.38 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Unable to send message (not connected to server process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.012 seconds
-Domain Reload Profiling: 3621ms
-	BeginReloadAssembly (443ms)
+- Finished resetting the current domain, in  6.244 seconds
+Domain Reload Profiling: 10056ms
+	BeginReloadAssembly (735ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (17ms)
+		DisableScriptedObjects (15ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (99ms)
-	RebuildCommonClasses (99ms)
-	RebuildNativeTypeToScriptingClass (32ms)
-	initialDomainReloadingComplete (62ms)
-	LoadAllAssembliesAndSetupDomain (973ms)
-		LoadAssemblies (733ms)
+		CreateAndSetChildDomain (205ms)
+	RebuildCommonClasses (176ms)
+	RebuildNativeTypeToScriptingClass (81ms)
+	initialDomainReloadingComplete (672ms)
+	LoadAllAssembliesAndSetupDomain (2147ms)
+		LoadAssemblies (1571ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (487ms)
-			TypeCache.Refresh (11ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (448ms)
-			ResolveRequiredComponents (23ms)
-	FinalizeReload (2012ms)
+		AnalyzeDomain (924ms)
+			TypeCache.Refresh (63ms)
+				TypeCache.ScanAssembly (7ms)
+			BuildScriptInfoCaches (813ms)
+			ResolveRequiredComponents (36ms)
+	FinalizeReload (6246ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1514ms)
+		SetupLoadedEditorAssemblies (3125ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (4ms)
-			SetLoadedEditorAssemblies (8ms)
-			BeforeProcessingInitializeOnLoad (114ms)
-			ProcessInitializeOnLoadAttributes (1047ms)
-			ProcessInitializeOnLoadMethodAttributes (326ms)
-			AfterProcessingInitializeOnLoad (15ms)
-			EditorAssembliesLoaded (0ms)
+			InitializePlatformSupportModulesInManaged (7ms)
+			SetLoadedEditorAssemblies (14ms)
+			BeforeProcessingInitializeOnLoad (460ms)
+			ProcessInitializeOnLoadAttributes (1993ms)
+			ProcessInitializeOnLoadMethodAttributes (613ms)
+			AfterProcessingInitializeOnLoad (37ms)
+			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (11ms)
-Refreshing native plugins compatible for Editor in 3.35 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (25ms)
+Refreshing native plugins compatible for Editor in 5.84 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4214 unused Assets / (2.1 MB). Loaded Objects now: 4872.
-Memory consumption went from 125.8 MB to 123.7 MB.
-Total: 16.265200 ms (FindLiveObjects: 0.957900 ms CreateObjectMapping: 0.946600 ms MarkObjects: 11.171000 ms  DeleteObjects: 3.187800 ms)
+Unloading 4211 unused Assets / (0.8 MB). Loaded Objects now: 4857.
+Memory consumption went from 123.0 MB to 122.2 MB.
+Total: 99.810000 ms (FindLiveObjects: 2.278600 ms CreateObjectMapping: 1.906800 ms MarkObjects: 31.498500 ms  DeleteObjects: 64.123000 ms)
 
 Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 35.501325 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0465353 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.008570 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0028114 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.086763 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0011956 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.035651 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0023135 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.034689 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0009838 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.034922 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0007806 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.031673 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.000847 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029654 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0010106 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.030471 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0027916 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037548 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0012067 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.032674 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.001004 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029761 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0009408 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029043 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0014025 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.028716 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0010129 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029707 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0011555 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.030271 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0011652 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.031111 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0018686 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.031056 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.001445 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.028197 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0010262 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029941 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0010764 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.033336 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0010289 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.031789 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0010276 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.034413 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0015431 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.030024 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0009041 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.038570 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0008758 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.031538 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0010975 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029936 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0011696 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.033675 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0010896 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.034485 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0013571 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.034147 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0010939 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029469 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.001148 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.028333 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0012701 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029331 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.001022 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029591 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0008881 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.030772 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0010228 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029593 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0009906 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.030706 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0010137 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029718 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0009389 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029743 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0012696 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029521 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0008496 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.032364 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0010943 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.029845 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0010817 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.034167 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0089132 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:02.0594829Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.032885 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0013035 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.033573 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0014229 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.032592 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0027645 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.030769 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.001332 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.052489 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0056119 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000448 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.005114 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.047307 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0062329 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.052128 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0019014 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.053243 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0015439 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.041647 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0013596 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.045943 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0310287 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.047221 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0021825 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.047289 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0018866 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.044652 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0041971 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.047346 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0014467 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.048628 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.001414 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.040374 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0016494 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.048112 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0017623 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.046743 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0016625 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.045340 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0030243 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.036129 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0010062 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.032818 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0010572 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.046974 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0012724 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.042407 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0010211 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.033535 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0010691 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.039161 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0012148 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.030649 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0010266 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.039988 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0019779 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.037792 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0012684 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.032962 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: '00000000000000000000000000000000') in 0.0012344 seconds
+Import Error Code:(4)
+Message: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+  ERROR: Build asset version error: assets/scripts/mgparking/canvasmanagerparking.cs in SourceAssetDB has modification time of '2024-09-04T16:58:01.1226503Z' while content on disk has modification time of '2024-09-04T17:09:18.1527576Z'
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
 ========================================================================
 Received Prepare
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  2.802 seconds
+- Loaded All Assemblies, in  2.077 seconds
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Refreshing native plugins compatible for Editor in 2.63 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 2.92 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Unable to send message (not connected to server process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  2.859 seconds
-Domain Reload Profiling: 5642ms
-	BeginReloadAssembly (701ms)
+- Finished resetting the current domain, in  4.475 seconds
+Domain Reload Profiling: 6537ms
+	BeginReloadAssembly (547ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (13ms)
+		DisableScriptedObjects (14ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (122ms)
-	RebuildCommonClasses (218ms)
-	RebuildNativeTypeToScriptingClass (83ms)
-	initialDomainReloadingComplete (152ms)
-	LoadAllAssembliesAndSetupDomain (1628ms)
-		LoadAssemblies (1328ms)
+		CreateAndSetChildDomain (123ms)
+	RebuildCommonClasses (133ms)
+	RebuildNativeTypeToScriptingClass (38ms)
+	initialDomainReloadingComplete (90ms)
+	LoadAllAssembliesAndSetupDomain (1253ms)
+		LoadAssemblies (1124ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (777ms)
-			TypeCache.Refresh (12ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (713ms)
-			ResolveRequiredComponents (45ms)
-	FinalizeReload (2860ms)
+		AnalyzeDomain (441ms)
+			TypeCache.Refresh (18ms)
+				TypeCache.ScanAssembly (3ms)
+			BuildScriptInfoCaches (401ms)
+			ResolveRequiredComponents (17ms)
+	FinalizeReload (4476ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2250ms)
+		SetupLoadedEditorAssemblies (3416ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (8ms)
-			SetLoadedEditorAssemblies (13ms)
-			BeforeProcessingInitializeOnLoad (271ms)
-			ProcessInitializeOnLoadAttributes (1639ms)
-			ProcessInitializeOnLoadMethodAttributes (305ms)
-			AfterProcessingInitializeOnLoad (15ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (12ms)
-Refreshing native plugins compatible for Editor in 1.94 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4214 unused Assets / (0.6 MB). Loaded Objects now: 4872.
-Memory consumption went from 125.8 MB to 125.2 MB.
-Total: 20.817100 ms (FindLiveObjects: 0.622400 ms CreateObjectMapping: 0.470200 ms MarkObjects: 13.549700 ms  DeleteObjects: 6.172600 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.228 seconds
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Refreshing native plugins compatible for Editor in 2.13 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.552 seconds
-Domain Reload Profiling: 2776ms
-	BeginReloadAssembly (329ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (10ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (67ms)
-	RebuildCommonClasses (64ms)
-	RebuildNativeTypeToScriptingClass (26ms)
-	initialDomainReloadingComplete (55ms)
-	LoadAllAssembliesAndSetupDomain (749ms)
-		LoadAssemblies (576ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (361ms)
-			TypeCache.Refresh (9ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (335ms)
-			ResolveRequiredComponents (12ms)
-	FinalizeReload (1552ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1126ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (6ms)
-			SetLoadedEditorAssemblies (10ms)
-			BeforeProcessingInitializeOnLoad (96ms)
-			ProcessInitializeOnLoadAttributes (763ms)
-			ProcessInitializeOnLoadMethodAttributes (238ms)
-			AfterProcessingInitializeOnLoad (13ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (12ms)
-Refreshing native plugins compatible for Editor in 2.24 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4214 unused Assets / (2.7 MB). Loaded Objects now: 4872.
-Memory consumption went from 125.8 MB to 123.1 MB.
-Total: 13.916800 ms (FindLiveObjects: 0.968300 ms CreateObjectMapping: 0.578900 ms MarkObjects: 9.031200 ms  DeleteObjects: 3.336300 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.473 seconds
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Refreshing native plugins compatible for Editor in 2.60 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  4.459 seconds
-Domain Reload Profiling: 5931ms
-	BeginReloadAssembly (387ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (10ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (88ms)
-	RebuildCommonClasses (84ms)
-	RebuildNativeTypeToScriptingClass (33ms)
-	initialDomainReloadingComplete (65ms)
-	LoadAllAssembliesAndSetupDomain (899ms)
-		LoadAssemblies (675ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (429ms)
-			TypeCache.Refresh (12ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (400ms)
-			ResolveRequiredComponents (12ms)
-	FinalizeReload (4463ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (3538ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (11ms)
-			SetLoadedEditorAssemblies (18ms)
-			BeforeProcessingInitializeOnLoad (411ms)
-			ProcessInitializeOnLoadAttributes (2302ms)
-			ProcessInitializeOnLoadMethodAttributes (761ms)
-			AfterProcessingInitializeOnLoad (34ms)
+			InitializePlatformSupportModulesInManaged (7ms)
+			SetLoadedEditorAssemblies (14ms)
+			BeforeProcessingInitializeOnLoad (310ms)
+			ProcessInitializeOnLoadAttributes (2347ms)
+			ProcessInitializeOnLoadMethodAttributes (694ms)
+			AfterProcessingInitializeOnLoad (43ms)
 			EditorAssembliesLoaded (1ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (27ms)
-Refreshing native plugins compatible for Editor in 8.00 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 5.27 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4214 unused Assets / (0.6 MB). Loaded Objects now: 4872.
-Memory consumption went from 125.8 MB to 125.2 MB.
-Total: 50.265400 ms (FindLiveObjects: 1.178200 ms CreateObjectMapping: 3.504200 ms MarkObjects: 38.749200 ms  DeleteObjects: 6.830700 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.268 seconds
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Refreshing native plugins compatible for Editor in 1.76 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.673 seconds
-Domain Reload Profiling: 2936ms
-	BeginReloadAssembly (345ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (11ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (83ms)
-	RebuildCommonClasses (78ms)
-	RebuildNativeTypeToScriptingClass (29ms)
-	initialDomainReloadingComplete (46ms)
-	LoadAllAssembliesAndSetupDomain (765ms)
-		LoadAssemblies (595ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (358ms)
-			TypeCache.Refresh (11ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (327ms)
-			ResolveRequiredComponents (15ms)
-	FinalizeReload (1673ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1272ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (5ms)
-			SetLoadedEditorAssemblies (7ms)
-			BeforeProcessingInitializeOnLoad (141ms)
-			ProcessInitializeOnLoadAttributes (842ms)
-			ProcessInitializeOnLoadMethodAttributes (263ms)
-			AfterProcessingInitializeOnLoad (13ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (10ms)
-Refreshing native plugins compatible for Editor in 12.73 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4214 unused Assets / (1.9 MB). Loaded Objects now: 4872.
-Memory consumption went from 125.8 MB to 124.0 MB.
-Total: 20.631600 ms (FindLiveObjects: 1.651200 ms CreateObjectMapping: 0.993600 ms MarkObjects: 13.224500 ms  DeleteObjects: 4.760400 ms)
+Unloading 4211 unused Assets / (0.6 MB). Loaded Objects now: 4857.
+Memory consumption went from 123.0 MB to 122.4 MB.
+Total: 26.268000 ms (FindLiveObjects: 0.983300 ms CreateObjectMapping: 0.933500 ms MarkObjects: 19.850700 ms  DeleteObjects: 4.497200 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Import Request.
-  Time since last request: 1299.403575 seconds.
-  path: Assets/Prefabs/MGLaneRace/Ground 1.prefab
-  artifactKey: Guid(5c1f382f5ac4a7f4398a0dafea004204) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/MGLaneRace/Ground 1.prefab using Guid(5c1f382f5ac4a7f4398a0dafea004204) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: 'a157b8814680ad0bdb8e92914cedab1b') in 0.2738475 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1055
-
-========================================================================
-Received Import Request.
-  Time since last request: 12.852357 seconds.
-  path: Assets/Prefabs/MGLaneRace/Ground.prefab
-  artifactKey: Guid(5c1f382f5ac4a7f4398a0dafea004204) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/MGLaneRace/Ground.prefab using Guid(5c1f382f5ac4a7f4398a0dafea004204) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: 'fbfe6322cc074c7b66144d71cfce7796') in 0.100496 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1055
-
-========================================================================
-Received Import Request.
-  Time since last request: 40.434167 seconds.
-  path: Assets/Prefabs/MGLaneRace/Ground1.prefab
-  artifactKey: Guid(5b398d8da8a2116499385160c1b16d1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/MGLaneRace/Ground1.prefab using Guid(5b398d8da8a2116499385160c1b16d1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: 'a1f048eeb8888f79a12d8cf096631dbf') in 0.0903218 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 426
-
-========================================================================
-Received Import Request.
-  Time since last request: 10.198631 seconds.
-  path: Assets/Prefabs/MGLaneRace/Ground.prefab
-  artifactKey: Guid(5b398d8da8a2116499385160c1b16d1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/MGLaneRace/Ground.prefab using Guid(5b398d8da8a2116499385160c1b16d1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: '299d01ef88944b4036c35d8f10f463d1') in 0.0856597 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 426
-
-========================================================================
-Received Import Request.
-  Time since last request: 13.831035 seconds.
-  path: Assets/Prefabs/MGLaneRace/Ground.prefab
-  artifactKey: Guid(5b398d8da8a2116499385160c1b16d1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/MGLaneRace/Ground.prefab using Guid(5b398d8da8a2116499385160c1b16d1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: '7134e0da852ea230a1aeba143b179123') in 0.0784198 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 426
-
-========================================================================
-Received Import Request.
-  Time since last request: 33.671986 seconds.
-  path: Assets/Prefabs/MGLaneRace/GroundPiece.prefab
-  artifactKey: Guid(e8afaa3492d044a45bc922e1fc920621) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/MGLaneRace/GroundPiece.prefab using Guid(e8afaa3492d044a45bc922e1fc920621) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: 'fb07145e3a2f11fd9819665bb6b436c5') in 0.0875043 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 426
-
-========================================================================
-Received Import Request.
-  Time since last request: 40.945872 seconds.
-  path: Assets/Prefabs/MGLaneRace/GroundPiece.prefab
-  artifactKey: Guid(e8afaa3492d044a45bc922e1fc920621) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/MGLaneRace/GroundPiece.prefab using Guid(e8afaa3492d044a45bc922e1fc920621) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: 'efe7e82392dea7bf29ae66eab220fe5e') in 0.0765362 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 426
-
-========================================================================
-Received Import Request.
-  Time since last request: 33.621680 seconds.
-  path: Assets/Textures/GroundSandTexture.png
-  artifactKey: Guid(c3c4673abc7f1ac4e981951aabacc969) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Textures/GroundSandTexture.png using Guid(c3c4673abc7f1ac4e981951aabacc969) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: '99afaa6e3098620f5e4e596acbdb0fbb') in 0.0426901 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000112 seconds.
-  path: Assets/Textures/GroundGrassTexture.png
-  artifactKey: Guid(38bb15d6b378aff46b461e248592d1da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Textures/GroundGrassTexture.png using Guid(38bb15d6b378aff46b461e248592d1da) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: '1ed3d09ceffeb3d05c9e645674436e00') in 0.0389044 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/Textures/GroundStonesTexture.tga
-  artifactKey: Guid(e4ede2e6c10541546b717e9b8f8e14fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Textures/GroundStonesTexture.tga using Guid(e4ede2e6c10541546b717e9b8f8e14fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: '0f80e864fe96bcb0afa1398ad11a1a07') in 0.0272776 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.870045 seconds.
-  path: Assets/Terrain/GLayerGrass.terrainlayer
-  artifactKey: Guid(afde8317861c1384097dfdb733a539d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Terrain/GLayerGrass.terrainlayer using Guid(afde8317861c1384097dfdb733a539d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: '4f51270f0ef0baaf0354b6049d0611f8') in 0.0494026 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 9.249868 seconds.
-  path: Assets/Textures/Grass2.tga
-  artifactKey: Guid(f0a8168310b10da4faedc474bb26c20f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Textures/Grass2.tga using Guid(f0a8168310b10da4faedc474bb26c20f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: '64d6731e9367165aa7449eef7a38884b') in 0.0228736 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000027 seconds.
-  path: Assets/Textures/TextureGrass2ForMaterial.tga
-  artifactKey: Guid(f0ec40764219f3f4787df1c70bacf45b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Textures/TextureGrass2ForMaterial.tga using Guid(f0ec40764219f3f4787df1c70bacf45b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: '93685e98fefcabbd85fd6d243cbc444e') in 0.0389058 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000031 seconds.
-  path: Assets/Textures/TextureStonesForMaterial.tga
-  artifactKey: Guid(2ead97df5c2e3bc4192793bb5a033f0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Textures/TextureStonesForMaterial.tga using Guid(2ead97df5c2e3bc4192793bb5a033f0e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: '8b78a92024e940c1a09bf4066cefcd95') in 0.0194873 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 26.769974 seconds.
-  path: Assets/Terrain/GLayerSand.terrainlayer
-  artifactKey: Guid(2c475d3f3fdecee409afae7d6d84988d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Terrain/GLayerSand.terrainlayer using Guid(2c475d3f3fdecee409afae7d6d84988d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: 'cfc125c013025b493cf42810f29b99cd') in 0.0260227 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000030 seconds.
-  path: Assets/Terrain/GroundTerrain.asset
-  artifactKey: Guid(8b29f4a5bedf13b49849800c83ff21ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Terrain/GroundTerrain.asset using Guid(8b29f4a5bedf13b49849800c83ff21ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: '4ec03483fc42bcf9f2e81caae075d68a') in 0.0554072 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000076 seconds.
-  path: Assets/Terrain/GroundExtraTerrain.asset
-  artifactKey: Guid(bceb241e99aff3045affd0aa7fed320f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Terrain/GroundExtraTerrain.asset using Guid(bceb241e99aff3045affd0aa7fed320f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
-[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: '9e4afe0861031205fd8103e3ebbdcf51') in 0.0347072 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000026 seconds.
-  path: Assets/Terrain/GLayerStones.terrainlayer
-  artifactKey: Guid(c3ddaf84d254c194b8432c3783ce3939) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Terrain/GLayerStones.terrainlayer using Guid(c3ddaf84d254c194b8432c3783ce3939) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: 'dc2f3722fe00e2e4caa3e52e7fabac28') in 0.0247752 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 24.382125 seconds.
-  path: Assets/Textures/Layers
-  artifactKey: Guid(bbe58337f12133345983167e39ebf3df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Textures/Layers using Guid(bbe58337f12133345983167e39ebf3df) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
- -> (artifact id: '9f1163351b41d6a057ee5e7e96c06f30') in 0.0018087 seconds
+  Time since last request: 16.124530 seconds.
+  path: Assets/Scripts/MGParking/CanvasManagerParking.cs
+  artifactKey: Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MGParking/CanvasManagerParking.cs using Guid(0664191cff222dd4e844d9321177b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter)[PhysX] Initialized MultithreadedTaskDispatcher with 2 workers.
+ -> (artifact id: 'fda60c997d5a77ecf3cf5a2365e65cf5') in 0.0383361 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
@@ -838,163 +1266,163 @@ Received Prepare
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.368 seconds
+- Loaded All Assemblies, in  1.562 seconds
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Refreshing native plugins compatible for Editor in 4.03 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 3.74 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
 Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
 [Package Manager] Unable to send message (not connected to server process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  3.078 seconds
-Domain Reload Profiling: 4449ms
-	BeginReloadAssembly (332ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (10ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (79ms)
-	RebuildCommonClasses (69ms)
-	RebuildNativeTypeToScriptingClass (32ms)
-	initialDomainReloadingComplete (47ms)
-	LoadAllAssembliesAndSetupDomain (889ms)
-		LoadAssemblies (584ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (477ms)
-			TypeCache.Refresh (11ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (411ms)
-			ResolveRequiredComponents (42ms)
-	FinalizeReload (3080ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (2353ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (9ms)
-			SetLoadedEditorAssemblies (17ms)
-			BeforeProcessingInitializeOnLoad (244ms)
-			ProcessInitializeOnLoadAttributes (1518ms)
-			ProcessInitializeOnLoadMethodAttributes (537ms)
-			AfterProcessingInitializeOnLoad (27ms)
-			EditorAssembliesLoaded (1ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (23ms)
-Refreshing native plugins compatible for Editor in 6.22 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4214 unused Assets / (2.2 MB). Loaded Objects now: 4878.
-Memory consumption went from 125.9 MB to 123.7 MB.
-Total: 27.486300 ms (FindLiveObjects: 1.504200 ms CreateObjectMapping: 1.439200 ms MarkObjects: 17.820600 ms  DeleteObjects: 6.719900 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  2.675 seconds
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Refreshing native plugins compatible for Editor in 3.90 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in 13.239 seconds
-Domain Reload Profiling: 15910ms
-	BeginReloadAssembly (415ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (11ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (98ms)
-	RebuildCommonClasses (108ms)
-	RebuildNativeTypeToScriptingClass (34ms)
-	initialDomainReloadingComplete (63ms)
-	LoadAllAssembliesAndSetupDomain (2047ms)
-		LoadAssemblies (801ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (1469ms)
-			TypeCache.Refresh (20ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (1426ms)
-			ResolveRequiredComponents (17ms)
-	FinalizeReload (13242ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (10422ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (15ms)
-			SetLoadedEditorAssemblies (31ms)
-			BeforeProcessingInitializeOnLoad (948ms)
-			ProcessInitializeOnLoadAttributes (4040ms)
-			ProcessInitializeOnLoadMethodAttributes (5332ms)
-			AfterProcessingInitializeOnLoad (54ms)
-			EditorAssembliesLoaded (2ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (37ms)
-Refreshing native plugins compatible for Editor in 8.83 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4214 unused Assets / (4.2 MB). Loaded Objects now: 4878.
-Memory consumption went from 125.9 MB to 121.8 MB.
-Total: 81.403800 ms (FindLiveObjects: 3.359500 ms CreateObjectMapping: 1.757900 ms MarkObjects: 38.519800 ms  DeleteObjects: 37.764100 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  1.613 seconds
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-Refreshing native plugins compatible for Editor in 1.78 ms, found 3 plugins.
-Native extension for WindowsStandalone target not found
-Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.461 seconds
-Domain Reload Profiling: 3072ms
-	BeginReloadAssembly (353ms)
+- Finished resetting the current domain, in  2.319 seconds
+Domain Reload Profiling: 3876ms
+	BeginReloadAssembly (406ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (13ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (81ms)
-	RebuildCommonClasses (78ms)
-	RebuildNativeTypeToScriptingClass (30ms)
-	initialDomainReloadingComplete (52ms)
-	LoadAllAssembliesAndSetupDomain (1097ms)
-		LoadAssemblies (782ms)
+		CreateAndSetChildDomain (90ms)
+	RebuildCommonClasses (99ms)
+	RebuildNativeTypeToScriptingClass (36ms)
+	initialDomainReloadingComplete (63ms)
+	LoadAllAssembliesAndSetupDomain (952ms)
+		LoadAssemblies (720ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (494ms)
-			TypeCache.Refresh (18ms)
-				TypeCache.ScanAssembly (2ms)
-			BuildScriptInfoCaches (441ms)
-			ResolveRequiredComponents (28ms)
-	FinalizeReload (1462ms)
+		AnalyzeDomain (440ms)
+			TypeCache.Refresh (10ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (407ms)
+			ResolveRequiredComponents (13ms)
+	FinalizeReload (2320ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (1109ms)
+		SetupLoadedEditorAssemblies (1776ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (3ms)
-			SetLoadedEditorAssemblies (8ms)
-			BeforeProcessingInitializeOnLoad (95ms)
-			ProcessInitializeOnLoadAttributes (766ms)
-			ProcessInitializeOnLoadMethodAttributes (225ms)
-			AfterProcessingInitializeOnLoad (11ms)
+			InitializePlatformSupportModulesInManaged (7ms)
+			SetLoadedEditorAssemblies (10ms)
+			BeforeProcessingInitializeOnLoad (156ms)
+			ProcessInitializeOnLoadAttributes (1237ms)
+			ProcessInitializeOnLoadMethodAttributes (347ms)
+			AfterProcessingInitializeOnLoad (19ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (10ms)
-Refreshing native plugins compatible for Editor in 2.09 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (14ms)
+Refreshing native plugins compatible for Editor in 3.11 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 4214 unused Assets / (2.5 MB). Loaded Objects now: 4878.
-Memory consumption went from 126.0 MB to 123.5 MB.
-Total: 13.983400 ms (FindLiveObjects: 0.717800 ms CreateObjectMapping: 0.740600 ms MarkObjects: 8.796300 ms  DeleteObjects: 3.726600 ms)
+Unloading 4211 unused Assets / (1.8 MB). Loaded Objects now: 4857.
+Memory consumption went from 123.0 MB to 121.2 MB.
+Total: 14.344400 ms (FindLiveObjects: 0.959600 ms CreateObjectMapping: 1.051600 ms MarkObjects: 8.300600 ms  DeleteObjects: 4.030800 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  1.847 seconds
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Refreshing native plugins compatible for Editor in 2.84 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  2.110 seconds
+Domain Reload Profiling: 3938ms
+	BeginReloadAssembly (406ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (11ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (82ms)
+	RebuildCommonClasses (86ms)
+	RebuildNativeTypeToScriptingClass (36ms)
+	initialDomainReloadingComplete (64ms)
+	LoadAllAssembliesAndSetupDomain (1236ms)
+		LoadAssemblies (775ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (694ms)
+			TypeCache.Refresh (32ms)
+				TypeCache.ScanAssembly (10ms)
+			BuildScriptInfoCaches (629ms)
+			ResolveRequiredComponents (24ms)
+	FinalizeReload (2111ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1593ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (5ms)
+			SetLoadedEditorAssemblies (9ms)
+			BeforeProcessingInitializeOnLoad (126ms)
+			ProcessInitializeOnLoadAttributes (1069ms)
+			ProcessInitializeOnLoadMethodAttributes (369ms)
+			AfterProcessingInitializeOnLoad (15ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (20ms)
+Refreshing native plugins compatible for Editor in 1.97 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4211 unused Assets / (0.6 MB). Loaded Objects now: 4857.
+Memory consumption went from 123.0 MB to 122.4 MB.
+Total: 16.502500 ms (FindLiveObjects: 1.183700 ms CreateObjectMapping: 1.057200 ms MarkObjects: 11.434500 ms  DeleteObjects: 2.824900 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  2.058 seconds
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+Refreshing native plugins compatible for Editor in 4.81 ms, found 3 plugins.
+Native extension for WindowsStandalone target not found
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  5.702 seconds
+Domain Reload Profiling: 7748ms
+	BeginReloadAssembly (502ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (11ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (100ms)
+	RebuildCommonClasses (115ms)
+	RebuildNativeTypeToScriptingClass (38ms)
+	initialDomainReloadingComplete (99ms)
+	LoadAllAssembliesAndSetupDomain (1287ms)
+		LoadAssemblies (962ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (639ms)
+			TypeCache.Refresh (16ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (594ms)
+			ResolveRequiredComponents (23ms)
+	FinalizeReload (5706ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (4460ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (8ms)
+			SetLoadedEditorAssemblies (25ms)
+			BeforeProcessingInitializeOnLoad (455ms)
+			ProcessInitializeOnLoadAttributes (3054ms)
+			ProcessInitializeOnLoadMethodAttributes (881ms)
+			AfterProcessingInitializeOnLoad (36ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (31ms)
+Refreshing native plugins compatible for Editor in 9.96 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 4211 unused Assets / (0.6 MB). Loaded Objects now: 4857.
+Memory consumption went from 123.0 MB to 122.4 MB.
+Total: 47.937900 ms (FindLiveObjects: 1.468900 ms CreateObjectMapping: 3.454700 ms MarkObjects: 27.162500 ms  DeleteObjects: 15.849400 ms)
 
 Prepare: number of updated asset objects reloaded= 0

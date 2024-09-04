@@ -3,7 +3,6 @@ using UnityEngine;
 using System.Collections;
 
 
-
 public class Instances : MonoBehaviour
 {
     public GameObject player;
@@ -22,10 +21,10 @@ public class Instances : MonoBehaviour
     public List<GameObject> pNumbers;
 
 
+
     void OnEnable(){
         ParkingTrigger.OnWrongParked += HandleOnWrongParked;
         ParkingTrigger.OnWellParked += HandleOnWellParked;
-
     }
 
     void OnDisable(){
@@ -33,26 +32,27 @@ public class Instances : MonoBehaviour
         ParkingTrigger.OnWellParked -= HandleOnWellParked;
     }
 
+
+
     private void HandleOnWrongParked(GameObject go){
         // Instanciamos la X en el aparcamiento
         if(go.transform.position.z == 4.1f)
             Instantiate(xErrorAbove, go.transform.position,  Quaternion.Euler(0, 0, 0));
         else
             Instantiate(xErrorBelow, go.transform.position,  Quaternion.Euler(0, 0, 0));
-
     }
 
     private void HandleOnWellParked(GameObject go){
         player.GetComponent<CarMovement>().enabled = false;
         StartCoroutine(LaunchFireworks());
-    
-
     }
+
 
 
     void Awake(){
         intanciateCars();
     }
+
 
 
     public void intanciateCars(){
@@ -95,12 +95,12 @@ public class Instances : MonoBehaviour
         }
     }
 
+
+
     IEnumerator LaunchFireworks(){
         Instantiate(confetiParticles, player.transform.position, Quaternion.identity);
 
         yield return 0;             
     }
-
-
 
 }
