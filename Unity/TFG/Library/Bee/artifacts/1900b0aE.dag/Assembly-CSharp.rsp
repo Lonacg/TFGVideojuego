@@ -411,6 +411,7 @@
 "Assets/Scripts/MGLaneRace/NextOperationTrigger.cs"
 "Assets/Scripts/MGLaneRace/SetOperationLaneRace.cs"
 "Assets/Scripts/MGLaneRace/StageManagerLaneRace.cs"
+"Assets/Scripts/MGLaneRace/TriggerExtraGround.cs"
 "Assets/Scripts/MGLaneRace/TriggerFinalGate.cs"
 "Assets/Scripts/MGLaneRace/TriggerGate.cs"
 "Assets/Scripts/MGLaneRace/TriggerGround.cs"
@@ -454,6 +455,7 @@
 "Assets/TextMesh Pro/Examples & Extras/Scripts/VertexShakeB.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/VertexZoom.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/WarpTextExample.cs"
+"Assets/TrashTreePackVol.1/Sample/LB_CameraMove.cs"
 -langversion:9.0
 /deterministic
 /optimize+

@@ -28,7 +28,8 @@ public class TriggerGround : MonoBehaviour
             // Movemos esa porcion del suelo hacia atras
             gameObject.transform.position += newPosition;
 
-            // Activamos las puertas para que se genere una nueva operacion (se desactivaron al pasar player por debajo)
+            // Activamos las puertas para que se genere una nueva operacion
+            childrenGates.SetActive(false);
             childrenGates.SetActive(true);
 
         }

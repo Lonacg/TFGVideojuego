@@ -52,7 +52,7 @@ public class SetOperationLaneRace : MonoBehaviour
     public void GenerateOperation(){
 
         operatorChosen = Random.Range(0,4);
-
+        
         // SUMA
         if(operatorChosen == 0){
             // Operandos y solucion

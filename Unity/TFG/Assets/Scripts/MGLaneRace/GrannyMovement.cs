@@ -168,10 +168,10 @@ public class GrannyMovement : MonoBehaviour
 
 
         ChangeAnimation("Victory");  
-        yield return new WaitForSeconds(0.17f);
+        yield return new WaitForSeconds(0.3f);
         if(OnParty != null)   
             OnParty();
-        yield return new WaitForSeconds(1.33f);
+        yield return new WaitForSeconds(1.2f);
 
         ChangeAnimation("Idle");     
     }

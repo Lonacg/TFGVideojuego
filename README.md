@@ -85,11 +85,13 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - Añadir que haya que aparcar 2 veces, primero una suma/resta y luego una multi/divi
 
 ### MG LaneRace
-- PROBLEMA: Si pasa entre 2 puertas no se contabiliza y por tanto no se actualiza currentGround ni se cambia la operacion en CanvasManager, y a partir de ahi van todo retrasado una vez, no coincide operacion con resultados. Si amplio el collider de las gates para que esten pegados, podria pasar que pase por los 2, lo cual tambien seria un problema porque la accion se contabilizaria 2 veces. Otra opcion seria que el modelo de Player no sea hijo del padre, asi el modelo puede hacer la interpolacion entre 2 posiciones para que visualmente quede bien, mientras que el que ahora es el padre y tiene los collideres y todo cambie automaticamente de carril. El problema es que las animaciones se ven afectadas, porque el animator esta en el padre. Quizas se puedan poner en el modelo, y que el modelo herede del padre o algo asi
-- Que las operaciones no puedan repetirse (es muy poco probable que pase). Habria que almacenar una tupla con los numeros que van saliendo en otro script y que SetOperation acceda a ella en la eleccion del numero para comprobar que no es ninguno. Igual valdria con que no salgan 2 tipos iguales de operacion seguidos, pero como las gates se generan independientemente, tendrian que poder acceder a una lista conjunta en SStageManager que vaya almacenando que operacion ha salido la ultima. Aunque las 3 primeras no se sabe el orden en el que se generan
+- SOLUCIONADO: un trigger nuevo para que actualice siempre la operacion, si pasa entre dos puertas no se contabiliza como error ni como acierto. PROBLEMA: Si pasa entre 2 puertas no se contabiliza y por tanto no se actualiza currentGround ni se cambia la operacion en CanvasManager, y a partir de ahi van todo retrasado una vez, no coincide operacion con resultados. Si amplio el collider de las gates para que esten pegados, podria pasar que pase por los 2, lo cual tambien seria un problema porque la accion se contabilizaria 2 veces. Otra opcion seria que el modelo de Player no sea hijo del padre, asi el modelo puede hacer la interpolacion entre 2 posiciones para que visualmente quede bien, mientras que el que ahora es el padre y tiene los collideres y todo cambie automaticamente de carril. El problema es que las animaciones se ven afectadas, porque el animator esta en el padre. Quizas se puedan poner en el modelo, y que el modelo herede del padre o algo asi
+- HECHO: Cambiar la actualizacion del texto de la operacion del canvas al stage manager
+- HECHO: Poner un terreno infinito de alguna forma
+- Listar las 4 operaciones en Stage manager y que set opetarion coja una de ahi (gestionando correctamente las 3 primeras que se generan al mismo tiempo... posibles pobremas de paralela)
 - No se que es mejor, si que los resultados salgan los 3 ordenados de menor a mayor, o que salgan desordenados random como ahora
 - Poner particulas brillantes al activarse los botones de correcto e incorrecto
 - Activar particulas de humo al cruzar la puerta para hacerla desaparecer
-- Cambiar la actualizacion del texto de la operacion del canvas al stage manager
+
 
 

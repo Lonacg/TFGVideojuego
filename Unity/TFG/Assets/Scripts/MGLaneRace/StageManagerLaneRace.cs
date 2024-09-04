@@ -13,9 +13,11 @@ public class StageManagerLaneRace : MonoBehaviour
     public int numberIncorrectAnswers = 0;
     public int neededScore = 3;
     public int currentGround = 0;
+    private Vector3 positionCurreentGround;
 
     [Header("Game Objects:")]
     public GameObject ground;
+    public GameObject extraGround;
     public GameObject grannyPlayer;
     public GameObject confetyParticles;
     public GameObject[] gates;
@@ -37,6 +39,7 @@ public class StageManagerLaneRace : MonoBehaviour
         TriggerGate.OnWellSol += HandleOnWellSol;
         TriggerGate.OnWrongSol += HandleOnWrongSol;
         NextOperationTrigger.OnNextOperation += HandleOnNextOperation;
+        TriggerExtraGround.OnNewGround += HandleOnNewGround;
         GrannyMovement.OnParty += HandleOnParty;
 
     }
@@ -46,6 +49,7 @@ public class StageManagerLaneRace : MonoBehaviour
         TriggerGate.OnWellSol -= HandleOnWellSol;
         TriggerGate.OnWrongSol -= HandleOnWrongSol;
         NextOperationTrigger.OnNextOperation -= HandleOnNextOperation;
+        TriggerExtraGround.OnNewGround -= HandleOnNewGround;
         GrannyMovement.OnParty -= HandleOnParty;
 
 
@@ -75,7 +79,6 @@ public class StageManagerLaneRace : MonoBehaviour
             // Lanzamos el evento de que se ha llegado al maximo de aciertos necesario
             if(OnVictory != null)   
                 OnVictory();
-
         }
 
     }
@@ -94,7 +97,21 @@ public class StageManagerLaneRace : MonoBehaviour
             ground.GetComponent<GroundMovement>().groundSpeed -= 0.5f;
             grannyPlayer.GetComponent<GrannyMovement>().ChangeAnimation("SlowRunning");
         }
+        
     }
+
+    private void HandleOnNextOperation(){
+        StartCoroutine(ShowNewOperation());
+
+    }
+
+    private void HandleOnNewGround(){
+        Vector3 newPosition = positionCurreentGround + new Vector3(0, 0, 1000);
+
+        Instantiate(extraGround, newPosition, Quaternion.identity);
+        positionCurreentGround = newPosition;
+    }
+
 
 
     private void HandleOnParty(){
@@ -102,11 +119,13 @@ public class StageManagerLaneRace : MonoBehaviour
     }
 
 
-    private void HandleOnNextOperation(){
-        ChangeOperation();
-
+    void Start(){
+        positionCurreentGround = ground.transform.position;
+        
+        scoreText.text = "0/" + neededScore;
+        numberCorrectAnswers = 0;
+        numberIncorrectAnswers = 0;
     }
-
 
     public void ChangeOperation(){
         GameObject currentGate = gates[currentGround];
@@ -130,13 +149,6 @@ public class StageManagerLaneRace : MonoBehaviour
 
     }
 
-
-    void Start()
-    {
-        scoreText.text = "0/" + neededScore;
-        numberCorrectAnswers = 0;
-        numberIncorrectAnswers = 0;
-    }
 
 
     IEnumerator WaitXSecondAndChangeOperation(float seconds){
