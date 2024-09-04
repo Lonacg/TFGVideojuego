@@ -24,7 +24,7 @@ Te dan puntos de bondad por cada misión completada.
 
 ## Minijuegos en la calle
    - HECHO -> Pasar al lado de un coche amarillo: MJ de aparccamiento (aparcar en la sol correcta)
-   - Pasar al lado de un corredor: MJ de pasillos (entrar por el pasillo con la sol correcta)
+   - HECHO -> Pasar al lado de Granny (ella corriendo): MJ de pasillos (entrar por el pasillo con la sol correcta)
    - Pisar una interrogacion en el suelo: MJ de adivinar el signo de la operacion
    - Pasar al lado de una bici aparcada en la acera: MJ carrera de bicis (cada operacion resuelta es un impulso)
 
@@ -92,6 +92,7 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - No se que es mejor, si que los resultados salgan los 3 ordenados de menor a mayor, o que salgan desordenados random como ahora
 - Poner particulas brillantes al activarse los botones de correcto e incorrecto
 - Activar particulas de humo al cruzar la puerta para hacerla desaparecer
+- Poner arboles y flores en el suelo 
 
 
 
