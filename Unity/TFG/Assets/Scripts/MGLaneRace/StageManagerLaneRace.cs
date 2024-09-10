@@ -11,14 +11,14 @@ public class StageManagerLaneRace : MonoBehaviour
     [Header("Variables")]
     public int numberCorrectAnswers = 0;
     public int numberIncorrectAnswers = 0;
-    public int neededScore = 3;
-    public int currentGround = 0;
-    private Vector3 positionCurreentGround;
+    private int neededScore = 3;
+    private int currentGround = 0;
+    private int extraTerrainsPlaced = 0;
 
     [Header("Game Objects:")]
     public GameObject ground;
     public GameObject terrain;
-    public GameObject extraGround;
+    public GameObject extraTerrain;
     public GameObject grannyPlayer;
     public GameObject confetyParticles;
     public GameObject[] gates;
@@ -31,7 +31,7 @@ public class StageManagerLaneRace : MonoBehaviour
 
 
 
-    public delegate void _OnVictory();
+    public delegate void _OnVictory();          // El evento de victoria se lanza en el momento en el que se consiguen 3 aciertos (OnFinalLine es cuando cruza la meta)
     public static event _OnVictory OnVictory;
 
 
@@ -41,7 +41,7 @@ public class StageManagerLaneRace : MonoBehaviour
         TriggerGate.OnWellSol += HandleOnWellSol;
         TriggerGate.OnWrongSol += HandleOnWrongSol;
         NextOperationTrigger.OnNextOperation += HandleOnNextOperation;
-        TriggerExtraGround.OnNewGround += HandleOnNewGround;
+        TriggerExtraTerrain.OnNewGround += HandleOnNewGround;
         GrannyMovement.OnParty += HandleOnParty;
     }
 
@@ -50,7 +50,7 @@ public class StageManagerLaneRace : MonoBehaviour
         TriggerGate.OnWellSol -= HandleOnWellSol;
         TriggerGate.OnWrongSol -= HandleOnWrongSol;
         NextOperationTrigger.OnNextOperation -= HandleOnNextOperation;
-        TriggerExtraGround.OnNewGround -= HandleOnNewGround;
+        TriggerExtraTerrain.OnNewGround -= HandleOnNewGround;
         GrannyMovement.OnParty -= HandleOnParty;
     }
 
@@ -90,13 +90,11 @@ public class StageManagerLaneRace : MonoBehaviour
         // Cuando falla 2 veces, reducimos en 1 la velocidad del movimiento para facilitarselo y cambiamos la animacion de correr
         if(numberIncorrectAnswers  == 2){
             ground.GetComponent<GroundMovement>().groundSpeed -= 1;
-            terrain.GetComponent<GroundMovement>().groundSpeed -= 1;
             grannyPlayer.GetComponent<GrannyMovement>().ChangeAnimation("Running");
         }
         // Cuando falla 4 veces, reducimos en 0.5 mas la velocidad del movimiento y cambiamos la animacion de correr
         if(numberIncorrectAnswers  == 4){
             ground.GetComponent<GroundMovement>().groundSpeed -= 0.5f;
-            terrain.GetComponent<GroundMovement>().groundSpeed -= 0.5f;
             grannyPlayer.GetComponent<GrannyMovement>().ChangeAnimation("SlowRunning");
         }
     }
@@ -106,20 +104,26 @@ public class StageManagerLaneRace : MonoBehaviour
     }
 
     private void HandleOnNewGround(){
-        Vector3 newPosition = positionCurreentGround + new Vector3(0, 0, 1000);
+        // Indice para contar cuantos terrenos extra se han colocado para calcular la posicion del nuevo a instanciar
+        extraTerrainsPlaced ++;
 
-        Instantiate(extraGround, newPosition, Quaternion.identity);
-        positionCurreentGround = newPosition;
+        Vector3 newPosition = new Vector3(0, 0, 1000 * extraTerrainsPlaced);    // 1000 es el z de los terrenos por defeco en Unity
+
+        // Instanciamos un terreno nuevo como hijo de Ground
+        GameObject newTerrain = Instantiate(extraTerrain, terrain.transform);
+        
+        // Lo colocamos en la posicion local correcta (para que no sea respecto al padre)
+        newTerrain.transform.localPosition = newPosition;
     }
 
     private void HandleOnParty(){
-        confetyParticles.SetActive(true);
+        confetyParticles.SetActive(true); 
     }
 
 
 
     void Start(){
-        positionCurreentGround = ground.transform.position;
+        // positionCurrentTerrain = terrain.transform.localPosition;
         
         scoreText.text = "0/" + neededScore;
         numberCorrectAnswers = 0;

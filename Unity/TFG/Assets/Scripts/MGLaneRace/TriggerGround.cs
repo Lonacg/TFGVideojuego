@@ -12,7 +12,7 @@ public class TriggerGround : MonoBehaviour
     void Start(){
         // Pasamos por codigo las referencias al padre y al hijo
         parent = transform.parent.gameObject;
-        numberOfPieces = parent.transform.childCount;
+        numberOfPieces = parent.transform.childCount - 1;       // -1 porque el terreno tambien es hijo de Ground, pero no es una pieza que se mueve
 
         childrenGates = transform.GetChild(0).gameObject;
     }

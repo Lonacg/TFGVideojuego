@@ -13,7 +13,7 @@ public class CameraManager : MonoBehaviour
     private Vector3 offset;
     private Vector3 finalOffset;
     private Quaternion orignalRotation;
-    private Vector3 OriginalPosition;
+    private Vector3 originalPosition;
     private Vector3 RigthPosition;
     private Vector3 LeftPosition;
     
@@ -46,10 +46,10 @@ public class CameraManager : MonoBehaviour
     {
         // Rotacion inicial
         orignalRotation = Quaternion.Euler(39.74f, 0, 0);
-        OriginalPosition = new Vector3(0, 7.71f, -7.73f);
+        originalPosition = new Vector3(0, 7.71f, -7.73f);
 
         // Posicion inicial
-        transform.position = OriginalPosition;
+        transform.position = originalPosition;
         transform.rotation = orignalRotation;
 
         // Lugar al que apunta la camara
@@ -111,7 +111,7 @@ public class CameraManager : MonoBehaviour
 
                 transform.LookAt(target);
 
-                transform.position = Vector3.Lerp(transform.position, OriginalPosition, speed * Time.deltaTime);
+                transform.position = Vector3.Lerp(transform.position, originalPosition, speed * Time.deltaTime);
 
                 elapsedTime += Time.deltaTime;
                 yield return 0;

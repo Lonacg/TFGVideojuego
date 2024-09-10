@@ -411,7 +411,7 @@
 "Assets/Scripts/MGLaneRace/NextOperationTrigger.cs"
 "Assets/Scripts/MGLaneRace/SetOperationLaneRace.cs"
 "Assets/Scripts/MGLaneRace/StageManagerLaneRace.cs"
-"Assets/Scripts/MGLaneRace/TriggerExtraGround.cs"
+"Assets/Scripts/MGLaneRace/TriggerExtraTerrain.cs"
 "Assets/Scripts/MGLaneRace/TriggerFinalGate.cs"
 "Assets/Scripts/MGLaneRace/TriggerGate.cs"
 "Assets/Scripts/MGLaneRace/TriggerGround.cs"

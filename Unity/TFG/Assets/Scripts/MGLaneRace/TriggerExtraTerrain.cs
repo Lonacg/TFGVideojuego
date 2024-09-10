@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TriggerExtraGround : MonoBehaviour
+public class TriggerExtraTerrain : MonoBehaviour
 {
 
     public delegate void _OnNewGround();
