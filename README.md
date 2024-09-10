@@ -76,23 +76,23 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 ### MG Parking
 - HECHO: Que la lista de ParkingLot se coja por codigo en vez de asignarlo en el inspector 
 - HECHO: Añadir una ayuda tras el primer fallo
-- Vehiculos pasando por la carretera en ambos sentidos
 - HECHO: Los conos se mueven al ser empujados por player
-- La pantalla de error es una imagen en vez de una vista, asi cuando aparece el error, se puede seguir viendo la operacion y le da tiempo a pensar mientras sale el texto.
 - HECHO: Que los tag sean "CorrectAnswer" / "IncorrectAnswer"
+- HECHO: Refactorizar codigo. Por ejemplo, si el script esta en un objeto, no hace falta pasarle por referencia ese objeto, con gameObject. se accede directamente.
 - Cambiar el 3, 2, 1, ya
-- Refactorizar codigo. Por ejemplo, si el script esta en un objeto, no hace falta pasarle por referencia ese objeto, con gameObject. se accede directamente.
-- Añadir que haya que aparcar 2 veces, primero una suma/resta y luego una multi/divi
+- La pantalla de error es una imagen en vez de una vista, asi cuando aparece el error, se puede seguir viendo la operacion y le da tiempo a pensar mientras sale el texto.
+- Vehiculos pasando por la carretera en ambos sentidos
 
 ### MG LaneRace
 - SOLUCIONADO: un trigger nuevo para que actualice siempre la operacion, si pasa entre dos puertas no se contabiliza como error ni como acierto. PROBLEMA: Si pasa entre 2 puertas no se contabiliza y por tanto no se actualiza currentGround ni se cambia la operacion en CanvasManager, y a partir de ahi van todo retrasado una vez, no coincide operacion con resultados. Si amplio el collider de las gates para que esten pegados, podria pasar que pase por los 2, lo cual tambien seria un problema porque la accion se contabilizaria 2 veces. Otra opcion seria que el modelo de Player no sea hijo del padre, asi el modelo puede hacer la interpolacion entre 2 posiciones para que visualmente quede bien, mientras que el que ahora es el padre y tiene los collideres y todo cambie automaticamente de carril. El problema es que las animaciones se ven afectadas, porque el animator esta en el padre. Quizas se puedan poner en el modelo, y que el modelo herede del padre o algo asi
 - HECHO: Cambiar la actualizacion del texto de la operacion del canvas al stage manager
 - HECHO: Poner un terreno infinito de alguna forma
-- Listar las 4 operaciones en Stage manager y que set opetarion coja una de ahi (gestionando correctamente las 3 primeras que se generan al mismo tiempo... posibles pobremas de paralela)
-- No se que es mejor, si que los resultados salgan los 3 ordenados de menor a mayor, o que salgan desordenados random como ahora
+- Listar las 4 operaciones en Stage manager y que set opetarion coja una de ahi (gestionando correctamente las 3 primeras que se generan al mismo tiempo... posibles poblemas de paralela)
 - Poner particulas brillantes al activarse los botones de correcto e incorrecto
 - Activar particulas de humo al cruzar la puerta para hacerla desaparecer
 - Poner arboles y flores en el suelo 
+- ARREGLAR MOV DEL SUELO
+- Transicion en velolociadad del suelo
 
 
 

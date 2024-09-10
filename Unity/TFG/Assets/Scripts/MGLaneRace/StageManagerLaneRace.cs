@@ -17,6 +17,7 @@ public class StageManagerLaneRace : MonoBehaviour
 
     [Header("Game Objects:")]
     public GameObject ground;
+    public GameObject terrain;
     public GameObject extraGround;
     public GameObject grannyPlayer;
     public GameObject confetyParticles;
@@ -89,11 +90,13 @@ public class StageManagerLaneRace : MonoBehaviour
         // Cuando falla 2 veces, reducimos en 1 la velocidad del movimiento para facilitarselo y cambiamos la animacion de correr
         if(numberIncorrectAnswers  == 2){
             ground.GetComponent<GroundMovement>().groundSpeed -= 1;
+            terrain.GetComponent<GroundMovement>().groundSpeed -= 1;
             grannyPlayer.GetComponent<GrannyMovement>().ChangeAnimation("Running");
         }
-        // Cuando falla 4 veces, reducimos en 1 la velocidad del movimiento otra vez y cambiamos la animacion de correr
+        // Cuando falla 4 veces, reducimos en 0.5 mas la velocidad del movimiento y cambiamos la animacion de correr
         if(numberIncorrectAnswers  == 4){
             ground.GetComponent<GroundMovement>().groundSpeed -= 0.5f;
+            terrain.GetComponent<GroundMovement>().groundSpeed -= 0.5f;
             grannyPlayer.GetComponent<GrannyMovement>().ChangeAnimation("SlowRunning");
         }
     }

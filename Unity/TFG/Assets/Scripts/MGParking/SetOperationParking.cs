@@ -20,7 +20,7 @@ public class SetOperationParking : MonoBehaviour
     private int secondNumber;
     private int sol;
     private int numberFreeParkings;
-    private int[] incorrectNumbers;
+    private int[] incorrectNumbers; // MIRAR CONJUNTO EN VEZ DE ARRAY
 
     private string symbol;
     private string textFirstTry;

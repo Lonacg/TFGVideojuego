@@ -2213,7 +2213,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -12788,7 +12788,8 @@ MonoBehaviour:
   numberIncorrectAnswers: 0
   neededScore: 3
   currentGround: 0
-  ground: {fileID: 7072221546995497890}
+  ground: {fileID: 7235333242731692506}
+  terrain: {fileID: 7072221546995497890}
   extraGround: {fileID: 6531734436580339373, guid: eb514317fafe06e44b059e68056e9ac9, type: 3}
   grannyPlayer: {fileID: 293346282565496797}
   confetyParticles: {fileID: 1381156291179928088}
