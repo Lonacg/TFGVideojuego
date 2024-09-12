@@ -36,29 +36,29 @@ Te dan puntos de bondad por cada misión completada.
 
 
 ## Dialogos
-   - Diálogo al comienzo del juego: (escrito directamente en la pantalla)
-            + Buenos dias, ¿cómo te llamas? (escribe tu nombre y pulsa Enter) 
-            - *Nombre*
-            + Encantado *Nombre*. Dime, ¿cómo se llama el sitio donde te gustaría vivir? (escribe el lugar y pulsa Enter)
-            - *Ciudad*
-            + ¡Concedido! Por ultimo, ¿Eres un niño, una niña o un extraterreste? (selecciona la opcion que desees moviendote con las flechas y pulsa Enter)
-            - *ModeloGenero*
-            + Ya veo, ¡perfecto entonces! Puedes moverte por *Ciudad* pulsando las flechas de tu teclado. Para ir rápido como una bala, además de eso pulsa la tecla Shift. Para coger objetos, cruzar una puerta, o hablar con personas, sitúate cerca de ellos y pulsa X. Si se te olvida como hacerlo o tienes alguna duda, puedes pulsar el menú de Pausa situado en la esquina superior derecha de tu pantalla.
-            ¡Una última cosa! Por favor, dirígete a *SiguienteMision*, ¡te necesitan *Nombre*!
+   - Diálogo al _comienzo_ del juego: (escrito directamente en la pantalla)
+      - UI: Buenos dias, ¿cómo te llamas? (escribe tu nombre y pulsa Enter) 
+      - Player: *Nombre*
+      - UI: Encantado *Nombre*. Dime, ¿cómo se llama el sitio donde te gustaría vivir? (escribe el lugar y pulsa Enter)
+      - Player: *Ciudad*
+      - UI: ¡Concedido! Por ultimo, ¿Eres un niño, una niña o un extraterreste? (selecciona la opcion que desees moviendote con las flechas y pulsa Enter)
+      - Player: *ModeloGenero*
+      - UI: Ya veo, ¡perfecto entonces! Puedes moverte por *Ciudad* pulsando las flechas de tu teclado. Para ir rápido como una bala, además de eso pulsa la tecla Shift. Para coger objetos, cruzar una puerta, o hablar con personas, sitúate cerca de ellos y pulsa X. Si se te olvida como hacerlo o tienes alguna duda, puedes pulsar el menú de Pausa situado en la esquina superior derecha de tu pantalla.
+      - UI: ¡Una última cosa! Por favor, dirígete a *SiguienteMision*, ¡te necesitan *Nombre*!
 
-   - Diálogo al terminar una misión: (Imagen 2D de la persona de la tienda)
-            + ¡Lo has conseguido! Muchas gracias *Nombre*, lo has hecho genial. Ahora que lo pienso... *SiguienteMision* también te necesita, ¡si puedes ve a ayudarle por favor!
+   - Diálogo al _terminar una misión_: (Imagen 2D de la persona de la tienda)
+      - UI: ¡Lo has conseguido! Muchas gracias *Nombre*, lo has hecho genial. Ahora que lo pienso... *SiguienteMision* también te necesita, ¡si puedes ve a ayudarle por favor!
 
-   - Diálogo última misión: 
-            + ¡Bien hecho! Eso es todo por hoy *Nombre*, gracias a ti *Ciudad* es un lugar mejor. Si quieres, puedes seguir disfrutando y pasear un rato más por la ciudad. ¡Nos vemos!
+   - Diálogo _última misión_: 
+      - UI: ¡Bien hecho! Eso es todo por hoy *Nombre*, gracias a ti *Ciudad* es un lugar mejor. Si quieres, puedes seguir disfrutando y pasear un rato más por la ciudad. ¡Nos vemos!
 
 
 ## UI 
 Boton de pausa permanente en la esquina superior derecha. Se abre un menú con: 
-    - Mapa: entra a una imagen donde se visualiza la ciudad, con el nombre de cada comercio puesto + botón de continuar
-    - Misión actual: entra a una imagen con el mapa de la ciudad resaltando con un círculo rojo  donde tiene que ir (cada misión tiene su imagen) + botón de continuar
-    - Controles: entra imagen fija en la que sale explicado + botón de continuar
-    - Salir del juego: entra imagen "¿Seguro que quieres salir? No se guardará el progreso de esta partida, pero podrás empezar una nueva" + botón SI + botón NO.
+   - _Mapa:_ entra a una imagen donde se visualiza la ciudad, con el nombre de cada comercio puesto + botón de continuar
+   - _Misión actual:_ entra a una imagen con el mapa de la ciudad resaltando con un círculo rojo  donde tiene que ir (cada misión tiene su imagen) + botón de continuar
+   - _Controles:_ entra imagen fija en la que sale explicado + botón de continuar
+   - _Salir:_ entra imagen "¿Seguro que quieres salir? No se guardará el progreso de esta partida, pero podrás empezar una nueva" + botón SI + botón NO.
     
 
 ## Mecanicas    
