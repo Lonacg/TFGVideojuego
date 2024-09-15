@@ -90,6 +90,7 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - HECHO: Cambiar la actualizacion del texto de la operacion del canvas al stage manager
 - HECHO: Poner un terreno infinito de alguna forma
 - HECHO: arreglar el movimiento del terreno y el suelo infinito
+- Añadir "correctos:" a la imagen de score
 - Listar las 4 operaciones en Stage manager y que set opetarion coja una de ahi (gestionando correctamente las 3 primeras que se generan al mismo tiempo... posibles poblemas de paralela)
 - Poner particulas brillantes al activarse los botones de correcto e incorrecto
 - Activar particulas de humo al cruzar la puerta para hacerla desaparecer
