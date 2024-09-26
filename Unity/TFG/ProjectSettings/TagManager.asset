@@ -4,10 +4,12 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - ParkedCorrectly
-  - ParkedIncorrectly
   - CorrectAnswer
   - IncorrectAnswer
+  - Addition
+  - Subtraction
+  - Multiplication
+  - Division
   layers:
   - Default
   - TransparentFX
