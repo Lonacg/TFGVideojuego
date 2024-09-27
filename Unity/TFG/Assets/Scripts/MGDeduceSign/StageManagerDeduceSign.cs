@@ -13,22 +13,39 @@ public class StageManagerDeduceSign : MonoBehaviour
     public int numberIncorrectAnswers = 0;
     public int scoreNedeed;
 
-    [Header("Game Objects:")]
-    public GameObject emptySign;
 
 
-    [Header("Script:")]
-    public SetOperationDeduceSign scriptSetOperationDeduceSign;
+
+    [Header("Text References:")]
+    [SerializeField] private TextMeshPro firsNumberText;
+    [SerializeField] private TextMeshPro secondNumberText;
+    [SerializeField] private TextMeshPro resultNumberText;
 
 
-    [Header("Text:")]
-    public TextMeshProUGUI textOperationPlace;
-    public TextMeshProUGUI scoreText;
+    [Header("GameObjects:")]
+    [SerializeField] private GameObject operationParent;    
+    [SerializeField] private GameObject plusSign;
+    [SerializeField] private GameObject minusSign;
+    [SerializeField] private GameObject xSign;
+
+    [SerializeField] private GameObject divisionSign;
+
+
+
+
+
+
 
 
     void Start()
     {
+        // Inicializamos la operacion en "invisible" (escala 0 en y)
+        operationParent.transform.localScale = new Vector3(1, 0, 1);
+
+        // Actualizamos el texto de la operacion y la mostramos
         ChangeOperation();
+        StartCoroutine(TransformSizeOperation(startSize: 0, endSize: 1, animationTime: 1));
+
     }
 
     void Update()
@@ -39,35 +56,41 @@ public class StageManagerDeduceSign : MonoBehaviour
 
     public void ChangeOperation(){  
 
+        // Buscamos los nuevos numeros
+        SetOperationDeduceSign scriptSetOperationDeduceSign = operationParent.GetComponent<SetOperationDeduceSign>();
         int firstNumber = scriptSetOperationDeduceSign.firstNumber;
         int secondNumber = scriptSetOperationDeduceSign.secondNumber;
+        int resultNumber = scriptSetOperationDeduceSign.resultNumber;
 
-        int operatorChosen = scriptSetOperationDeduceSign.operatorChosen;
+        // Actualizamos los textos
+        firsNumberText.text = firstNumber.ToString();
+        secondNumberText.text = secondNumber.ToString();
+        resultNumberText.text = resultNumber.ToString();
 
-        textOperationPlace.text = "";
-        textOperationPlace.text = firstNumber + " ? " + secondNumber + " = " + operatorChosen;
     }
 
 
-    IEnumerator TransformSizeFont(float startSize, float endSize, float animationTime){
+    IEnumerator TransformSizeOperation(float startSize, float endSize, float animationTime){
         // Funcion reutilizada de MGLaneRace
         float elapsedTime = 0;
 
         while(elapsedTime < animationTime){
-            float newSize = Mathf.Lerp(startSize, endSize, elapsedTime / animationTime);
-            textOperationPlace.fontSize = newSize;
+            float newScale = Mathf.Lerp(startSize, endSize, elapsedTime / animationTime);
+            
+            operationParent.transform.localScale = new Vector3(1, newScale, 1);
             elapsedTime += Time.deltaTime;
             yield return 0;
         }
+
     }
 
 
     IEnumerator ShowNewOperation(){
         // Funcion reutilizada de MGLaneRace
-        StartCoroutine(TransformSizeFont(startSize: 54.4f, endSize: 0, animationTime: 1));
+        StartCoroutine(TransformSizeOperation(startSize: 1, endSize: 0, animationTime: 1));
         yield return new WaitForSeconds(1);
         ChangeOperation();
-        StartCoroutine(TransformSizeFont(startSize: 0, endSize: 54.4f, animationTime: 1));
+        StartCoroutine(TransformSizeOperation(startSize: 0, endSize: 1, animationTime: 1));
     }
 
 
