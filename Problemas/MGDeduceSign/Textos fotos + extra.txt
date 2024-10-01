@@ -1,0 +1,24 @@
+
+Error: Estaba cogiendo un bool de Stage Manager que decia si los botones se podian pulsar ono, y accedia a el en el update de cada boton, pero me parece super ineficiente
+Solucion: creo un evento en stage manager para decir que he cambiado el bool, y cada boton esta suscrito a ese evento, asi no tienen que acceder al script de stage manager en cada frame
+
+
+Imagenes:
+1- Problema: me muestra posiciones diferentes en la escena y en game
+   Solucion: era porque la posicion de z de los numeros era diferente a 0, que es como debe estar en juegos 2D
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

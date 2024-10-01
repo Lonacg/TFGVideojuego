@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ButtonBehaviour : MonoBehaviour
@@ -9,7 +11,8 @@ public class ButtonBehaviour : MonoBehaviour
 
 
     private Color lightGreen;
-    private bool selectedSign = false;
+    public bool canChooseButton = true;
+    [SerializeField] private StageManagerDeduceSign scriptStageManager;
 
 
 
@@ -18,8 +21,27 @@ public class ButtonBehaviour : MonoBehaviour
     public static event _OnSignChosen OnSignChosen;
     
 
-    void Start()
-    {
+    void OnEnable(){
+        StageManagerDeduceSign.OnChangedCanChoose += HandleOnChangedCanChoose;
+
+    }
+
+    void OnDisable(){
+        StageManagerDeduceSign.OnChangedCanChoose -= HandleOnChangedCanChoose;
+
+    }
+
+
+    private void HandleOnChangedCanChoose(){
+        canChooseButton = !canChooseButton;
+    }
+
+
+
+    void Start(){
+        // Inicializamos que se pueden elegir los botones
+        canChooseButton = true;
+
         // Asignamos el componente del color del sprite
         spriteRendererBase = gameObject.GetComponent<SpriteRenderer>();
         spriteRendererSign = gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
@@ -28,37 +50,59 @@ public class ButtonBehaviour : MonoBehaviour
         lightGreen = new Vector4(0.65f, 1, 0.65f, 1);
     }
 
-    void OnEnable(){
-        // Inicializamos el booleano como que no se ha seleccionado aun ningun signo
-        selectedSign = false;
-    }
-
 
     private void OnMouseEnter(){
-        // Este if no hara falta ponerlo una vez que gestione la accion al pulsar el primer signo, ya que habra que desactivar este script po algo asi
-        if( !selectedSign ){
-            spriteRendererBase.color = lightGreen;
-            spriteRendererSign.color = lightGreen;
+        // Este if no hara falta ponerlo una vez que gestione la accion al pulsar el primer signo, ya que habra que desactivar este script o algo asi
+        if( canChooseButton ){
+            ChangeButtonColor(lightGreen);
+
         }
     }
 
     private void  OnMouseExit(){
         // Si pasa el raton por encima resaltamos el boton en verde claro
-        if( !selectedSign ){
-            spriteRendererBase.color = Color.white;
-            spriteRendererSign.color = Color.white;
+        if( canChooseButton ){
+            ChangeButtonColor(Color.white);
         }
     }
 
     private void OnMouseDown(){
-        // Si selecciona este signo fijamos el color a verde
-        selectedSign = true;
-        spriteRendererBase.color = Color.green;
-        spriteRendererSign.color = Color.green;
 
-        // Lanzamos el evento de que se ha escogido un signo
+        StartCoroutine(ClickAnimation(seconds: 0.2f));
+        
+        ChangeButtonColor(Color.green);
+
+        // Lanzamos el evento de que se ha escogido un signo (Stage Manager suscrito)
         if(OnSignChosen != null)   
             OnSignChosen(gameObject);
+    }
+
+ 
+    public void ChangeButtonColor(Color newColor){
+        spriteRendererBase.color = newColor;
+        spriteRendererSign.color = newColor;
+    }
+
+
+    IEnumerator ClickAnimation(float seconds){
+        float time = seconds / 2;
+        StartCoroutine(TransformSizeButtom(startSize: 1, endSize: 0.85f, animationTime: time));
+        yield return new WaitForSeconds(time);
+        StartCoroutine(TransformSizeButtom(startSize: 0.85f, endSize: 1, animationTime: time));
+    }
+
+    IEnumerator TransformSizeButtom(float startSize, float endSize, float animationTime){
+        // Funcion reutilizada de MGLaneRace
+        float elapsedTime = 0;
+
+        while(elapsedTime < animationTime){
+            float newScale = Mathf.Lerp(startSize, endSize, elapsedTime / animationTime);
+            
+            gameObject.transform.localScale = new Vector3(newScale, newScale, 1);
+            elapsedTime += Time.deltaTime;
+            yield return 0;
+        }
+
     }
 
 }

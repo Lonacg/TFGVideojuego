@@ -32,13 +32,32 @@ public class StageManagerDeduceSign : MonoBehaviour
 
 
 
+    public delegate void _OnChangedCanChoose();
+    public static event _OnChangedCanChoose OnChangedCanChoose;
 
 
+
+    void OnEnable(){
+        ButtonBehaviour.OnSignChosen += HandleOnSignChosen;
+
+    }
+
+    void OnDisable(){
+        ButtonBehaviour.OnSignChosen -= HandleOnSignChosen;
+
+    }
+
+
+    private void HandleOnSignChosen(GameObject buttonChosenGO){
+        if(OnChangedCanChoose != null)   
+            OnChangedCanChoose();
+    }
 
 
 
     void Start()
     {
+
         // Inicializamos la operacion en "invisible" (escala 0 en y)
         operationParent.transform.localScale = new Vector3(1, 0, 1);
 
