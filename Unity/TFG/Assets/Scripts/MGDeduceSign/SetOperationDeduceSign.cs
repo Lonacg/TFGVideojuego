@@ -7,10 +7,24 @@ public class SetOperationDeduceSign : MonoBehaviour
     public int firstNumber;
     public int secondNumber;
     public int resultNumber;
-    public int operatorChosen;
+    public string answerSign = "";
+    private int operatorChosen;
 
 
-    private string symbol = "";
+    void OnEnable(){
+        StageManagerDeduceSign.OnCorrectAnswer += HandleOnCorrectAnswer;
+
+    }
+
+    void OnDisable(){
+        StageManagerDeduceSign.OnCorrectAnswer -= HandleOnCorrectAnswer;
+        
+    }
+
+
+    private void HandleOnCorrectAnswer(){
+        GenerateOperation();
+    }
 
 
     void Awake()  // Cada vez que se activa el objeto genera una nueva operacion
@@ -33,7 +47,7 @@ public class SetOperationDeduceSign : MonoBehaviour
 
             resultNumber = firstNumber + secondNumber;
             
-            symbol = " + ";
+            answerSign = "Addition";
 
 
         }
@@ -45,7 +59,7 @@ public class SetOperationDeduceSign : MonoBehaviour
 
                 resultNumber = firstNumber - secondNumber;
 
-                symbol = " - ";
+                answerSign = "Subtraction";
 
 
             } 
@@ -56,7 +70,7 @@ public class SetOperationDeduceSign : MonoBehaviour
 
                 resultNumber = firstNumber * secondNumber;
 
-                symbol = " x ";
+                answerSign = "Multiplication";
 
 
                 // DIVISION
@@ -67,13 +81,13 @@ public class SetOperationDeduceSign : MonoBehaviour
                     resultNumber = secondNumber;
                     secondNumber = aux;
 
-                    symbol = " / ";
+                    answerSign = "Division";
 
                 }
             }         
         }
         // Escribimos la operacion por consola para facilitar el desarrollo del minijuego              
-        Debug.Log("La operacion es: " + firstNumber + symbol + secondNumber + " = " + resultNumber);
+        Debug.Log("La operacion es: " + firstNumber + answerSign + secondNumber + " = " + resultNumber);
     }
     
 

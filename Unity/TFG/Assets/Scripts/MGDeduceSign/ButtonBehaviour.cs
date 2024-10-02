@@ -12,7 +12,6 @@ public class ButtonBehaviour : MonoBehaviour
 
     private Color lightGreen;
     public bool canChooseButton = true;
-    [SerializeField] private StageManagerDeduceSign scriptStageManager;
 
 
 
@@ -52,29 +51,33 @@ public class ButtonBehaviour : MonoBehaviour
 
 
     private void OnMouseEnter(){
-        // Este if no hara falta ponerlo una vez que gestione la accion al pulsar el primer signo, ya que habra que desactivar este script o algo asi
-        if( canChooseButton ){
-            ChangeButtonColor(lightGreen);
 
+        // Si pasa el raton por encima resaltamos el boton en verde claro
+        if(canChooseButton){
+            ChangeButtonColor(lightGreen);
         }
     }
 
     private void  OnMouseExit(){
-        // Si pasa el raton por encima resaltamos el boton en verde claro
-        if( canChooseButton ){
+
+        //  Cuando el raton sale del boton lo volvemos a blanco
+        if(canChooseButton){
+
             ChangeButtonColor(Color.white);
         }
     }
 
     private void OnMouseDown(){
 
-        StartCoroutine(ClickAnimation(seconds: 0.2f));
-        
-        ChangeButtonColor(Color.green);
+        if(canChooseButton){
+            StartCoroutine(ClickAnimation(seconds: 0.2f));
+            
+            // ChangeButtonColor(Color.green);
 
-        // Lanzamos el evento de que se ha escogido un signo (Stage Manager suscrito)
-        if(OnSignChosen != null)   
-            OnSignChosen(gameObject);
+            // Lanzamos el evento de que se ha escogido un signo (Stage Manager suscrito)
+            if(OnSignChosen != null)   
+                OnSignChosen(gameObject);
+        }
     }
 
  

@@ -196,16 +196,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &40448153 stripped
+--- !u!1 &137312366
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 2020414199280277920, guid: 5aa7790a2bd46c54f9d59a2393e53780, type: 3}
-  m_PrefabInstance: {fileID: 4783903609906121367}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &179242437 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6157036717123911841, guid: b060e0846301c684aae8a8296f738165, type: 3}
-  m_PrefabInstance: {fileID: 771026162736192885}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 137312367}
+  - component: {fileID: 137312368}
+  m_Layer: 5
+  m_Name: InGameView
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &137312367
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137312366}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 707790281}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &137312368
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137312366}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &417884332
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,11 +420,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &707324415 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 460535445064460739, guid: 9025bb3984c71e142b937240b26a08e2, type: 3}
-  m_PrefabInstance: {fileID: 8728245025149140537}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &707790277
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,7 +513,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 137312367}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -517,17 +551,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a71a5b5310804c47bc6c8b6977794d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberCorrectAnswers: 0
-  numberIncorrectAnswers: 0
-  scoreNedeed: 0
   firsNumberText: {fileID: 8082559037813151887}
   secondNumberText: {fileID: 417884334}
   resultNumberText: {fileID: 1699871774}
   operationParent: {fileID: 8776502994316028100}
-  plusSign: {fileID: 179242437}
-  minusSign: {fileID: 40448153}
-  xSign: {fileID: 707324415}
-  divisionSign: {fileID: 1690834573}
 --- !u!4 &868207765
 Transform:
   m_ObjectHideFlags: 0
@@ -986,11 +1013,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1690834573 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 121141989854017198, guid: d70f5cd50c01f744e9c7004510dd863a, type: 3}
-  m_PrefabInstance: {fileID: 5231168365463641296}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1699871772
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,6 +1468,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 614695535623780385, guid: b060e0846301c684aae8a8296f738165, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5401114642186495736, guid: b060e0846301c684aae8a8296f738165, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -1516,7 +1542,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6157036717123911841, guid: b060e0846301c684aae8a8296f738165, type: 3}
       propertyPath: m_TagString
-      value: Addition
+      value: Subtraction
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1942,7 +1968,7 @@ MonoBehaviour:
   firstNumber: 0
   secondNumber: 0
   resultNumber: 0
-  operatorChosen: 0
+  answerSign: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

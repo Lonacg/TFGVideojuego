@@ -97,5 +97,6 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - Poner arboles y flores en el suelo 
 - Transicion en velolociadad del suelo
 
-
+### MG DeduceSign
+- Impedir que se pueda pasar el raton por algun boton hasta que la operacion sea completamente visible
 
