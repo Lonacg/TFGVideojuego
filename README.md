@@ -98,5 +98,5 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - Transicion en velolociadad del suelo
 
 ### MG DeduceSign
-- Impedir que se pueda pasar el raton por algun boton hasta que la operacion sea completamente visible
+- Impedir que se pueda pasar el raton por algun boton (ni pulsar) hasta que la operacion sea completamente visible. Quizas haciendo que la animacion dure menos no hace falta
 

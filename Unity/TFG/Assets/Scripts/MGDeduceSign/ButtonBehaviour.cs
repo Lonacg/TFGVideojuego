@@ -60,7 +60,7 @@ public class ButtonBehaviour : MonoBehaviour
 
         // Si pasa el raton por encima resaltamos el boton en verde claro
         if(canChooseButton){
-            ChangeButtonColor(lightGreen);
+            spriteRendererBase.color = lightGreen;
         }
     }
 
@@ -69,7 +69,7 @@ public class ButtonBehaviour : MonoBehaviour
         //  Cuando el raton sale del boton lo volvemos a blanco
         if(canChooseButton){
 
-            ChangeButtonColor(Color.white);
+            spriteRendererBase.color = Color.white;
         }
     }
 
@@ -88,8 +88,12 @@ public class ButtonBehaviour : MonoBehaviour
 
  
     public void ChangeButtonColor(Color newColor){
+        Vector4 blackboardColor = new Vector4(0.063f, 0.29f, 0.386f, 1);
         spriteRendererBase.color = newColor;
-        spriteRendererSign.color = newColor;
+        if(newColor == Color.white)
+            spriteRendererSign.color = newColor;
+        else
+            spriteRendererSign.color = blackboardColor;
     }
 
 

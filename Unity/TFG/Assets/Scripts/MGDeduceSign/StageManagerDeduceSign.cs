@@ -92,7 +92,7 @@ public class StageManagerDeduceSign : MonoBehaviour
 
         // Actualizamos el texto de la operacion y la mostramos
         ChangeOperation();
-        StartCoroutine(TransformSizeOperation(startSize: 0, endSize: 1, animationTime: 1));
+        StartCoroutine(TransformSizeOperation(startSize: 0, endSize: 1, animationTime: 0.5f));
 
     }
 
@@ -161,7 +161,8 @@ public class StageManagerDeduceSign : MonoBehaviour
 
         // Cambiamos el boton a rojo y deshabilitamos el script
         ButtonBehaviour scriptButton = goSign.GetComponent<ButtonBehaviour>();
-        scriptButton.ChangeButtonColor(Color.red);
+        Vector4 darkRed = new Vector4(0.8f, 0, 0, 1);
+        scriptButton.ChangeButtonColor(darkRed);
         scriptButton.enabled = false; 
 
     } 
@@ -195,6 +196,7 @@ public class StageManagerDeduceSign : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return 0;
         }
+        operationParent.transform.localScale = new Vector3(1, endSize, 1);
 
     }
 
@@ -206,26 +208,24 @@ public class StageManagerDeduceSign : MonoBehaviour
         buttonScript.enabled = false;
         yield return new WaitForSeconds(1f);
 
-        StartCoroutine(ShowNewOperation());
+        StartCoroutine(ShowNewOperation(animationTime: 0.5f));
         buttonScript.enabled = true;
         buttonScript.ChangeButtonColor(Color.white);
 
 
         RestartButtons();
         
-
-
     }
 
-    IEnumerator ShowNewOperation(){
+    IEnumerator ShowNewOperation(float animationTime){
 
         // Funcion reutilizada de MGLaneRace
-        StartCoroutine(TransformSizeOperation(startSize: 1, endSize: 0, animationTime: 1));
-        yield return new WaitForSeconds(1);
+        StartCoroutine(TransformSizeOperation(startSize: 1, endSize: 0, animationTime: animationTime));
+        yield return new WaitForSeconds(animationTime);
 
         ChangeOperation();
 
-        StartCoroutine(TransformSizeOperation(startSize: 0, endSize: 1, animationTime: 1));
+        StartCoroutine(TransformSizeOperation(startSize: 0, endSize: 1, animationTime: animationTime));
 
     }
 
