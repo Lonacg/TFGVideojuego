@@ -555,6 +555,7 @@ MonoBehaviour:
   secondNumberText: {fileID: 417884334}
   resultNumberText: {fileID: 1699871774}
   operationParent: {fileID: 8776502994316028100}
+  incorrectButtonsChosen: []
 --- !u!4 &868207765
 Transform:
   m_ObjectHideFlags: 0
@@ -1542,7 +1543,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6157036717123911841, guid: b060e0846301c684aae8a8296f738165, type: 3}
       propertyPath: m_TagString
-      value: Subtraction
+      value: Addition
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1886,6 +1887,10 @@ PrefabInstance:
     - target: {fileID: 460535445064460739, guid: 9025bb3984c71e142b937240b26a08e2, type: 3}
       propertyPath: m_Name
       value: SingX
+      objectReference: {fileID: 0}
+    - target: {fileID: 460535445064460739, guid: 9025bb3984c71e142b937240b26a08e2, type: 3}
+      propertyPath: m_TagString
+      value: Multiplication
       objectReference: {fileID: 0}
     - target: {fileID: 4747804443425536562, guid: 9025bb3984c71e142b937240b26a08e2, type: 3}
       propertyPath: m_SortingOrder

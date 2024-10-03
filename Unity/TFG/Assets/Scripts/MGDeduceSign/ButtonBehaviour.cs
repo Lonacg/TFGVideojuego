@@ -21,11 +21,17 @@ public class ButtonBehaviour : MonoBehaviour
     
 
     void OnEnable(){
+        // Inicializamos que se pueden elegir los botones cuando el script se activa
+        canChooseButton = true;
+
+
+        // Eventos:
         StageManagerDeduceSign.OnChangedCanChoose += HandleOnChangedCanChoose;
 
     }
 
     void OnDisable(){
+
         StageManagerDeduceSign.OnChangedCanChoose -= HandleOnChangedCanChoose;
 
     }
