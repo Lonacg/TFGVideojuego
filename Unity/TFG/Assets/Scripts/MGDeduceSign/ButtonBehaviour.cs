@@ -11,7 +11,7 @@ public class ButtonBehaviour : MonoBehaviour
 
 
     private Color lightGreen;
-    public bool canChooseButton = true;
+    public bool canChooseButton;
 
 
 
@@ -26,18 +26,18 @@ public class ButtonBehaviour : MonoBehaviour
 
 
         // Eventos:
-        StageManagerDeduceSign.OnChangedCanChoose += HandleOnChangedCanChoose;
+        StageManagerDeduceSign.OnChangeBoolCanChoose += HandleOnChangeBoolCanChoose;
 
     }
 
     void OnDisable(){
 
-        StageManagerDeduceSign.OnChangedCanChoose -= HandleOnChangedCanChoose;
+        StageManagerDeduceSign.OnChangeBoolCanChoose -= HandleOnChangeBoolCanChoose;
 
     }
 
 
-    private void HandleOnChangedCanChoose(){
+    private void HandleOnChangeBoolCanChoose(){
         canChooseButton = !canChooseButton;
     }
 
@@ -45,7 +45,7 @@ public class ButtonBehaviour : MonoBehaviour
 
     void Start(){
         // Inicializamos que se pueden elegir los botones
-        canChooseButton = true;
+        canChooseButton = false;
 
         // Asignamos el componente del color del sprite
         spriteRendererBase = gameObject.GetComponent<SpriteRenderer>();
@@ -56,10 +56,11 @@ public class ButtonBehaviour : MonoBehaviour
     }
 
 
-    private void OnMouseEnter(){
+    
 
-        // Si pasa el raton por encima resaltamos el boton en verde claro
-        if(canChooseButton){
+    private void OnMouseOver(){
+        // Se usa esta en vez de OnMouseEnter(), aunque conlleve mas coste, porque si ha hecho click encima de la correcta en la pantalla anterior y no ha movido el raton (sigue encima del boton), al empezar la nueva debe resaltarse, pero OnMouseEnter no lo detecta
+        if(canChooseButton && spriteRendererBase.color == Color.white){
             spriteRendererBase.color = lightGreen;
         }
     }
@@ -72,6 +73,9 @@ public class ButtonBehaviour : MonoBehaviour
             spriteRendererBase.color = Color.white;
         }
     }
+
+
+
 
     private void OnMouseDown(){
 
@@ -98,10 +102,14 @@ public class ButtonBehaviour : MonoBehaviour
 
 
     IEnumerator ClickAnimation(float seconds){
-        float time = seconds / 2;
-        StartCoroutine(TransformSizeButtom(startSize: 1, endSize: 0.85f, animationTime: time));
-        yield return new WaitForSeconds(time);
-        StartCoroutine(TransformSizeButtom(startSize: 0.85f, endSize: 1, animationTime: time));
+
+        float originalScale = gameObject.transform.localScale.x;
+        float desiredScale = originalScale - 0.15f;
+
+        float animTime = seconds / 2;
+        StartCoroutine(TransformSizeButtom(startSize: originalScale, endSize: desiredScale, animationTime: animTime));
+        yield return new WaitForSeconds(animTime);
+        StartCoroutine(TransformSizeButtom(startSize: desiredScale, endSize: originalScale, animationTime: animTime));
     }
 
     IEnumerator TransformSizeButtom(float startSize, float endSize, float animationTime){

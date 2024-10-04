@@ -19,7 +19,8 @@ public class CanvasManagerDS : MonoBehaviour
 
     [Header("Text:")] 
     public TextMeshProUGUI introDialoguePlace;
-    public TextMeshProUGUI textOperationPlace;
+    public TextMeshProUGUI textRoundPlace;
+    public TextMeshProUGUI textNumberAttemptPlace;
     public List<string> linesIntroDialogue;
 
 
@@ -55,9 +56,9 @@ public class CanvasManagerDS : MonoBehaviour
 
     void Start()
     {
-        ingameView.SetActive(false);
-        introView.SetActive(true);
-        StartDialogue(introView, introDialoguePlace, linesIntroDialogue);
+        //ingameView.SetActive(false);
+        //introView.SetActive(true);
+        //StartDialogue(introView, introDialoguePlace, linesIntroDialogue);
     }
 
 

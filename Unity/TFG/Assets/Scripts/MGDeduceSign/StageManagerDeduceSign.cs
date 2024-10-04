@@ -14,9 +14,10 @@ public class StageManagerDeduceSign : MonoBehaviour
     private int numberCorrectAnswers = 0;
     //private int numberIncorrectAnswers = 0;
     private int scoreNedeed;
-    public bool canChooseButton = true;
     private string answerSign;
-
+    public int indexRound = 1;
+    public int tryNumber = 2;
+    private bool firstOperation;
 
 
 
@@ -33,8 +34,8 @@ public class StageManagerDeduceSign : MonoBehaviour
 
 
 
-    public delegate void _OnChangedCanChoose();
-    public static event _OnChangedCanChoose OnChangedCanChoose;
+    public delegate void _OnChangeBoolCanChoose();
+    public static event _OnChangeBoolCanChoose OnChangeBoolCanChoose;
 
 
     public delegate void _OnCorrectAnswer();
@@ -59,31 +60,25 @@ public class StageManagerDeduceSign : MonoBehaviour
 
     private void HandleOnSignChosen(GameObject buttonChosenGO){
 
-        // Con este if(canChooseButton), no contabilizamos los clicks que haga en los botones cuando NO se pueden pulsar
-        if(canChooseButton){
-            
-            // Metemos el boton en una lista para luego volver a activarles el script
-            buttonsChosen.Add(buttonChosenGO.gameObject); // me dice null reference, por que? Sol: igual que arriba, aunque goSing sea un game object, cuando se mete a la lista tenemos que decir que queremos meterlo como .gameObject
-            
-            // Le decimos a los botones que se ha seleccionado uno de los signos, para que cambien su bool y no se pueda pulsar otro
-            if(OnChangedCanChoose != null){
-                OnChangedCanChoose();
-            }
-
-            canChooseButton = false;
-
-            // Comprobamos si el simbolo escogido es el correcto
-            CheckAnswer(buttonChosenGO);
+        // Metemos el boton en una lista para luego volver a activarles el script
+        buttonsChosen.Add(buttonChosenGO.gameObject); // me dice null reference, por que? Sol: igual que arriba, aunque goSing sea un game object, cuando se mete a la lista tenemos que decir que queremos meterlo como .gameObject
+        
+        // Avisamos a los botones para que cambien a false
+        if(OnChangeBoolCanChoose != null){
+            OnChangeBoolCanChoose();
         }
 
-            
+
+        // Comprobamos si el simbolo escogido es el correcto
+        CheckAnswer(buttonChosenGO);
+         
     }
 
 
     void Start()
     {
-        canChooseButton = true;
         scoreNedeed = 3;
+        firstOperation = true;
         
 
         // Inicializamos la operacion en "invisible" (escala 0 en y)
@@ -93,7 +88,7 @@ public class StageManagerDeduceSign : MonoBehaviour
         // Actualizamos el texto de la operacion y la mostramos
         ChangeOperation();
         StartCoroutine(TransformSizeOperation(startSize: 0, endSize: 1, animationTime: 0.5f));
-
+        
     }
 
  
@@ -106,8 +101,6 @@ public class StageManagerDeduceSign : MonoBehaviour
         int resultNumber = scriptSetOperation.resultNumber;
         answerSign = scriptSetOperation.answerSign;
 
-
-
         // Actualizamos los textos
         firsNumberText.text = firstNumber.ToString();
         secondNumberText.text = secondNumber.ToString();
@@ -117,11 +110,9 @@ public class StageManagerDeduceSign : MonoBehaviour
 
 
     public void CheckAnswer(GameObject goSign){
-        // Terrible para leer: if((goSign.tag == "Addition" && answerSign == 0) || (goSign.tag == "Subtraction" && answerSign == 1) || (goSign.tag == "Multiplication" && answerSign == 2) || (goSign.tag == "Division" && answerSign == 3));
         
-
         // Solucion correcta
-        if((goSign.tag == answerSign) || (goSign.tag == answerSign) || (goSign.tag == answerSign) || (goSign.tag == answerSign)){
+        if((goSign.tag == answerSign) || (goSign.tag == answerSign) || (goSign.tag == answerSign) || (goSign.tag == answerSign)){        // Terrible para leer: if((goSign.tag == "Addition" && answerSign == 0) || (goSign.tag == "Subtraction" && answerSign == 1) || (goSign.tag == "Multiplication" && answerSign == 2) || (goSign.tag == "Division" && answerSign == 3));
 
             ManageCorrectAnswer(goSign);
 
@@ -129,8 +120,7 @@ public class StageManagerDeduceSign : MonoBehaviour
                 OnCorrectAnswer();
             }
         }
-        // Solucion incorrecta
-        else{ 
+        else{ // Solucion incorrecta
 
             ManageWrongAnswer(goSign);
 
@@ -138,37 +128,51 @@ public class StageManagerDeduceSign : MonoBehaviour
                 OnWrongAnswer();
             }
 
+            // Avisamos a los botones para que cambien a true
+            if(OnChangeBoolCanChoose != null){
+                OnChangeBoolCanChoose();
+            }
+
         }
 
-        // Avisamos a los botones de que ya se pueden pulsar
-        if(OnChangedCanChoose != null){
-            OnChangedCanChoose();
-        }
-        canChooseButton = true;
     }
 
 
     public void ManageCorrectAnswer(GameObject goSign){
 
+        MakeButtonGreen(goSign);
+
         numberCorrectAnswers ++;
 
-        // Cambiamos el boton a verde y deshabilitamos el script
-        StartCoroutine(ButtonGreenAndNewOpertion(goSign));
+        StartCoroutine(ShowNewOperation());
+
+
 
     }
 
     public void ManageWrongAnswer(GameObject goSign){
 
+        
+        MakeButtonRed(goSign);
+
+        // Compueba en que ronda esta
+
+    } 
+
+    public void MakeButtonGreen(GameObject goSign){
+        goSign.GetComponent<ButtonBehaviour>().ChangeButtonColor(Color.green);
+    }
+
+
+    public void MakeButtonRed(GameObject goSign){
         // Cambiamos el boton a rojo y deshabilitamos el script
         ButtonBehaviour scriptButton = goSign.GetComponent<ButtonBehaviour>();
+
         Vector4 darkRed = new Vector4(0.8f, 0, 0, 1);
         scriptButton.ChangeButtonColor(darkRed);
         scriptButton.enabled = false; 
 
-    } 
-
-
-
+    }
 
 
     public void RestartButtons(){
@@ -198,34 +202,38 @@ public class StageManagerDeduceSign : MonoBehaviour
         }
         operationParent.transform.localScale = new Vector3(1, endSize, 1);
 
+        if(firstOperation){
+            // Avisamos para que cambien a true
+            if(OnChangeBoolCanChoose != null){
+                OnChangeBoolCanChoose();
+            }
+
+            firstOperation = false;
+        }
     }
 
-    IEnumerator ButtonGreenAndNewOpertion(GameObject goSign){
-
-        // Cambiamos el color a verde oscuro y desactivamos el Script para que no cambia automaticamente de color si se quita el raton de encima
-        ButtonBehaviour buttonScript = goSign.GetComponent<ButtonBehaviour>();
-        buttonScript.ChangeButtonColor(Color.green);
-        buttonScript.enabled = false;
-        yield return new WaitForSeconds(1f);
-
-        StartCoroutine(ShowNewOperation(animationTime: 0.5f));
-        buttonScript.enabled = true;
-        buttonScript.ChangeButtonColor(Color.white);
 
 
-        RestartButtons();
-        
-    }
+    IEnumerator ShowNewOperation(){
+        float animationTime = 0.5f;
 
-    IEnumerator ShowNewOperation(float animationTime){
+        yield return new WaitForSeconds(animationTime);
 
-        // Funcion reutilizada de MGLaneRace
         StartCoroutine(TransformSizeOperation(startSize: 1, endSize: 0, animationTime: animationTime));
         yield return new WaitForSeconds(animationTime);
 
         ChangeOperation();
 
         StartCoroutine(TransformSizeOperation(startSize: 0, endSize: 1, animationTime: animationTime));
+        yield return new WaitForSeconds(animationTime - 0.1f);
+
+        // Avisamos para que cambien a true
+        if(OnChangeBoolCanChoose != null){
+            OnChangeBoolCanChoose();
+        }
+
+        RestartButtons();
+
 
     }
 
