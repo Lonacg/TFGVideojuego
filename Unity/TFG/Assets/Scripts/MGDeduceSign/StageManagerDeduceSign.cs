@@ -3,6 +3,8 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
+using System;
 
 public class StageManagerDeduceSign : MonoBehaviour
 {
@@ -13,11 +15,12 @@ public class StageManagerDeduceSign : MonoBehaviour
     [Header("Variables")]
     private int numberCorrectAnswers = 0;
     //private int numberIncorrectAnswers = 0;
-    private int scoreNedeed;
+    public int totalRounds = 3;
     private string answerSign;
     public int indexRound = 1;
     public int tryNumber = 2;
     private bool firstOperation;
+    private float animationsTime = 0.5f;
 
 
 
@@ -25,10 +28,18 @@ public class StageManagerDeduceSign : MonoBehaviour
     [SerializeField] private TextMeshPro firsNumberText;
     [SerializeField] private TextMeshPro secondNumberText;
     [SerializeField] private TextMeshPro resultNumberText;
+    [SerializeField] private TextMeshProUGUI attemptPlace;
+
+    
 
 
     [Header("GameObjects:")]
+    [SerializeField] private GameObject buttonsParent;     
     [SerializeField] private GameObject operationParent; 
+    [SerializeField] private GameObject opGenerator; 
+
+
+
     public List<GameObject> buttonsChosen;   
 
 
@@ -46,15 +57,23 @@ public class StageManagerDeduceSign : MonoBehaviour
     public static event _OnWrongAnswer OnWrongAnswer;
 
 
+    public delegate void _OnHideEverything();
+    public static event _OnHideEverything OnHideEverything;
+
+
+
 
     void OnEnable(){
         ButtonBehaviour.OnSignChosen += HandleOnSignChosen;
+        RoundBehaviour.OnShowAttempt += HandleOnShowAttempt;
+        AttemptMovement.OnPlaying += HandleOnPlaying;
 
     }
 
     void OnDisable(){
         ButtonBehaviour.OnSignChosen -= HandleOnSignChosen;
-
+        RoundBehaviour.OnShowAttempt -= HandleOnShowAttempt;
+        AttemptMovement.OnPlaying += HandleOnPlaying;
     }
 
 
@@ -74,10 +93,36 @@ public class StageManagerDeduceSign : MonoBehaviour
          
     }
 
+    
+    private void HandleOnShowAttempt(){
+        attemptPlace.gameObject.SetActive(true);
+    }
+
+
+    private void HandleOnPlaying(){
+        buttonsParent.SetActive(true);
+        operationParent.SetActive(true);
+
+        UpdateNumbers();
+        StartCoroutine(TransformSizeOperation(startSize: 0, endSize: 1, animationsTime));
+
+    }
+
+
+    void Awake(){
+        buttonsParent.SetActive(false);
+        operationParent.SetActive(false);
+        attemptPlace.gameObject.SetActive(false);
+
+
+    }
+
+
 
     void Start()
     {
-        scoreNedeed = 3;
+        animationsTime = 0.5f;
+        totalRounds = 3;
         firstOperation = true;
         
 
@@ -86,13 +131,13 @@ public class StageManagerDeduceSign : MonoBehaviour
 
 
         // Actualizamos el texto de la operacion y la mostramos
-        ChangeOperation();
-        StartCoroutine(TransformSizeOperation(startSize: 0, endSize: 1, animationTime: 0.5f));
+        //UpdateNumbers();
+        
         
     }
 
  
-    public void ChangeOperation(){  
+    public void UpdateNumbers(){  
 
         // Buscamos los nuevos numeros
         SetOperationDeduceSign scriptSetOperation = operationParent.GetComponent<SetOperationDeduceSign>();
@@ -144,7 +189,7 @@ public class StageManagerDeduceSign : MonoBehaviour
 
         numberCorrectAnswers ++;
 
-        StartCoroutine(ShowNewOperation());
+        StartCoroutine(ShowNewOperation(animationsTime));
 
 
 
@@ -214,15 +259,14 @@ public class StageManagerDeduceSign : MonoBehaviour
 
 
 
-    IEnumerator ShowNewOperation(){
-        float animationTime = 0.5f;
+    IEnumerator ShowNewOperation(float animationTime){
 
         yield return new WaitForSeconds(animationTime);
 
         StartCoroutine(TransformSizeOperation(startSize: 1, endSize: 0, animationTime: animationTime));
         yield return new WaitForSeconds(animationTime);
 
-        ChangeOperation();
+        UpdateNumbers();
 
         StartCoroutine(TransformSizeOperation(startSize: 0, endSize: 1, animationTime: animationTime));
         yield return new WaitForSeconds(animationTime - 0.1f);

@@ -12,6 +12,7 @@ public class SetOperationDeduceSign : MonoBehaviour
 
 
     void OnEnable(){
+
         StageManagerDeduceSign.OnCorrectAnswer += HandleOnCorrectAnswer;
 
     }
