@@ -5,15 +5,19 @@ using UnityEngine;
 public class RoundBehaviour : MonoBehaviour
 {
 
-
-    [SerializeField] private AnimationCurve curve;
+    [Header("References:")]
+    [SerializeField] private AnimationCurve curveIn;
+    [SerializeField] private AnimationCurve curveOut;
     [SerializeField] private TextMeshProUGUI attempText;
     [SerializeField] private GameObject stageManager;
 
     
+    [Header("Variables:")]
+    public int correctAnswers = 0;
+    public int totalRounds;
+    private Vector3[] goingOutPositions;
+    private Vector3[] goingInPositions;
 
-    private int correctAnswers = 0;
-    private int totalRounds;
 
 
 
@@ -25,29 +29,15 @@ public class RoundBehaviour : MonoBehaviour
     void OnEnable()
     {
         StageManagerDeduceSign.OnCorrectAnswer += HandleOnCorrectAnswer;
+        StageManagerDeduceSign.OnHasWin += HandleOnHasWin;
 
     }
 
     void OnDisable(){
         StageManagerDeduceSign.OnCorrectAnswer -= HandleOnCorrectAnswer;
+        StageManagerDeduceSign.OnHasWin -= HandleOnHasWin;
     }
 
-    void Start(){
-
-        gameObject.GetComponent<TextMeshProUGUI>().text = "Ronda 1";
-
-        // Comprobamos cual es el numero de rondas que debe superar Player
-        totalRounds = stageManager.GetComponent<StageManagerDeduceSign>().totalRounds;
-
-        // Activamos el movimiento del texto Ronda X
-        Vector3 startPosition = transform.localPosition;
-        Vector3 endPosition = transform.localPosition;
-
-        startPosition.x = -650;
-        endPosition.x =  0;         // No haria falta, ya que es cero, pero por facilitar la comprension
-        
-        StartCoroutine(MoveRound(startPosition, endPosition, mustNotifyAttempt: true));
-    }
 
 
     private void HandleOnCorrectAnswer(){
@@ -63,21 +53,75 @@ public class RoundBehaviour : MonoBehaviour
     }
 
 
+    private void HandleOnHasWin(){
+        StartCoroutine(GoOut());
+        
+    }
+
+
+
+
+
+
+
+
+    void Start(){
+
+        // Inicializamos variables
+        correctAnswers = 0;
+        goingInPositions = new Vector3[2];
+        goingOutPositions = new Vector3[2];
+        SetPositionsRound();
+        
+
+        // Comprobamos cual es el numero de rondas que debe superar Player
+        totalRounds = stageManager.GetComponent<StageManagerDeduceSign>().totalRounds;
+
+
+        // Activamos el movimiento del texto Ronda 1
+        gameObject.GetComponent<TextMeshProUGUI>().text = "RONDA 1";
+        StartCoroutine(MoveRound(goingInPositions[0], goingInPositions[1], curveIn, mustNotifyAttempt: true));
+    }
+
+    private void SetPositionsRound(){
+        
+        Vector3 startPosition = transform.localPosition;
+        Vector3 endPosition = transform.localPosition;
+
+        // Posiciones cuando va a entrar en pantalla 
+        startPosition.x = -650;
+        endPosition.x =  0;         // No haria falta, ya que ya es cero, pero por facilitar la comprension
+        
+        goingInPositions[0] = startPosition;
+        goingInPositions[1] = endPosition;
+
+        // Posiciones cuando va a salir de la pantalla 
+        startPosition.x = 0;        // No haria falta, ya que ya es cero, pero por facilitar la comprension
+        endPosition.x =  650;         
+        
+        goingOutPositions[0] = startPosition;
+        goingOutPositions[1] = endPosition;    
+
+    }
+
+
+
     private void NewRoundText(){
 
-        int numberRound = correctAnswers ++;
-        if(numberRound == totalRounds){
-            gameObject.GetComponent<TextMeshProUGUI>().text = "¡Ronda final!";
+        int numberNextRound = correctAnswers + 1;
+
+        if(numberNextRound == totalRounds){
+            gameObject.GetComponent<TextMeshProUGUI>().text = "RONDA FINAL";
         }
         else{
-            gameObject.GetComponent<TextMeshProUGUI>().text = "Ronda " + numberRound.ToString();
+            gameObject.GetComponent<TextMeshProUGUI>().text = "RONDA " + numberNextRound.ToString();
         }
 
 
     }
 
 
-    IEnumerator MoveRound(Vector3 startPosition, Vector3 endPosition, bool mustNotifyAttempt = false, float animationTime = 1){
+    IEnumerator MoveRound(Vector3 startPosition, Vector3 endPosition, AnimationCurve curve, bool mustNotifyAttempt = false, float animationTime = 1){
 
         float elapsedTime = 0;
         
@@ -99,14 +143,9 @@ public class RoundBehaviour : MonoBehaviour
 
 
     IEnumerator GoOutGoIn(){
-        Vector3 startPosition = transform.localPosition;
-        Vector3 endPosition = transform.localPosition;
 
-        // Se va el texto de la ronda hecha
-        startPosition.x = 0;        // No haria falta, ya que es cero, pero por facilitar la comprension
-        endPosition.x = 650;
-
-        StartCoroutine(MoveRound(startPosition, endPosition));
+        // Sale la ronda actual
+        StartCoroutine(MoveRound(goingOutPositions[0], goingOutPositions[1], curveOut));
 
         yield return new WaitForSeconds(1);
 
@@ -114,14 +153,18 @@ public class RoundBehaviour : MonoBehaviour
         NewRoundText();
 
 
-        // Viene el texto de la ronda nueva
-        startPosition.x = -650;        
-        endPosition.x = 0;
-
-        StartCoroutine(MoveRound(startPosition, endPosition));
+        // Viene la ronda nueva
+        StartCoroutine(MoveRound(goingInPositions[0], goingInPositions[1], curveIn, mustNotifyAttempt: true));
 
     }
 
+    IEnumerator GoOut(){
+
+        // Sale la ronda actual
+        StartCoroutine(MoveRound(goingOutPositions[0], goingOutPositions[1], curveOut));
+
+        yield return 0;
+    }
 
 
 }

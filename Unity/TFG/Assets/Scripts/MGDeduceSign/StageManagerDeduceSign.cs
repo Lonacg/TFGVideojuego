@@ -60,6 +60,9 @@ public class StageManagerDeduceSign : MonoBehaviour
     public delegate void _OnHideEverything();
     public static event _OnHideEverything OnHideEverything;
 
+    public delegate void _OnHasWin();
+    public static event _OnHasWin OnHasWin;
+
 
 
 

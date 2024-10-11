@@ -14,11 +14,13 @@ public class SetOperationDeduceSign : MonoBehaviour
     void OnEnable(){
 
         StageManagerDeduceSign.OnCorrectAnswer += HandleOnCorrectAnswer;
+        StageManagerDeduceSign.OnHasWin += HandleOnHasWin;
 
     }
 
     void OnDisable(){
         StageManagerDeduceSign.OnCorrectAnswer -= HandleOnCorrectAnswer;
+        StageManagerDeduceSign.OnHasWin -= HandleOnHasWin;
         
     }
 
@@ -26,6 +28,13 @@ public class SetOperationDeduceSign : MonoBehaviour
     private void HandleOnCorrectAnswer(){
         GenerateOperation();
     }
+
+    private void HandleOnHasWin(){
+        
+    }
+
+
+
 
 
     void Awake()  // Cada vez que se activa el objeto genera una nueva operacion

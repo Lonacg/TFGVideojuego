@@ -8,12 +8,15 @@ public class AttemptMovement : MonoBehaviour
 {
 
     private TextMeshProUGUI attemptPlace;
+    [SerializeField] private GameObject stageManager;
 
-
-
+    private int maxAttempts;
+    private int attemptsNumber;
 
     public delegate void _OnPlaying();
     public static event _OnPlaying OnPlaying;
+
+
 
 
     void OnEnable()
@@ -25,13 +28,23 @@ public class AttemptMovement : MonoBehaviour
 
 
         // Eventos:
-
+        StageManagerDeduceSign.OnCorrectAnswer += HandleOnCorrectAnswer;
+        StageManagerDeduceSign.OnWrongAnswer += HandleOnWrongAnswer;
         
 
         // Movimiento con corrutina en vez de animaciones
         //StartCoroutine(TransformSizeFont(startSize: 0, endSize: 80.4f, animationTime: 1));
 
     }
+
+    void OnDisable(){
+        StageManagerDeduceSign.OnCorrectAnswer -= HandleOnCorrectAnswer;
+        StageManagerDeduceSign.OnWrongAnswer -= HandleOnWrongAnswer;
+
+    }
+
+
+
 
 
 
@@ -42,6 +55,31 @@ public class AttemptMovement : MonoBehaviour
     }
 
 
+    private void HandleOnWrongAnswer(){
+        attemptsNumber --;
+
+        gameObject.GetComponent<TextMeshProUGUI>().text = "Intentos:\n" + attemptsNumber.ToString();
+        
+
+    }
+
+    private void HandleOnCorrectAnswer(){
+        attemptPlace.GetComponent<Animator>().SetTrigger("FadeOut");
+    }
+
+
+    void Awake(){
+        int totalRounds = stageManager.GetComponent<StageManagerDeduceSign>().totalRounds;
+
+        // El numero de intentos varia en funcion de las rondas totales que haya. Si hay mas de 4 rondas, los intentos pueden ser su maximo que es 4 (por los 4 simbolos de operacion). Si hay menos, los intentos van con la ronda
+        if(totalRounds > 4)
+            maxAttempts = 4;
+        else
+            maxAttempts = totalRounds;
+            
+        attemptsNumber = maxAttempts;
+    }
+
 
     IEnumerator WaitAndMoveAttempts(){
         yield return new WaitForSeconds(1.5f);
@@ -50,11 +88,10 @@ public class AttemptMovement : MonoBehaviour
         attemptPlace.GetComponent<Animator>().SetTrigger("MoveAttempt");
 
         yield return new WaitForSeconds(0.5f);
+
         // Lanzamos el evento para que se active la operacion y los botones
         if(OnPlaying != null)   
             OnPlaying();
-
-
     }
 
 
