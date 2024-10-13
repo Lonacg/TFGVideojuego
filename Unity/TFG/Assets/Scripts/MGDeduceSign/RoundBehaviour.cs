@@ -22,45 +22,37 @@ public class RoundBehaviour : MonoBehaviour
 
 
 
+
     public delegate void _OnShowAttempt();
     public static event _OnShowAttempt OnShowAttempt;
 
 
+
     void OnEnable()
     {
-        StageManagerDeduceSign.OnCorrectAnswer += HandleOnCorrectAnswer;
-        StageManagerDeduceSign.OnHasWin += HandleOnHasWin;
+        StageManagerDeduceSign.OnNewRound += HandleOnNewRound;
 
     }
 
     void OnDisable(){
-        StageManagerDeduceSign.OnCorrectAnswer -= HandleOnCorrectAnswer;
-        StageManagerDeduceSign.OnHasWin -= HandleOnHasWin;
+        StageManagerDeduceSign.OnNewRound -= HandleOnNewRound;
     }
 
 
 
-    private void HandleOnCorrectAnswer(){
+    private void HandleOnNewRound(bool sameRound){
         correctAnswers ++;
 
-        if(correctAnswers < totalRounds){
-            StartCoroutine(GoOutGoIn());            
+        if(sameRound){
+            // Entra el mismo titulo que habia
+            StartCoroutine(MoveRound(goingInPositions[0], goingInPositions[1], curveIn, mustNotifyAttempt: true));                   
         }
         else{
-
+            StartCoroutine(GoOutGoIn());  
         }
 
+
     }
-
-
-    private void HandleOnHasWin(){
-        StartCoroutine(GoOut());
-        
-    }
-
-
-
-
 
 
 
@@ -82,6 +74,8 @@ public class RoundBehaviour : MonoBehaviour
         gameObject.GetComponent<TextMeshProUGUI>().text = "RONDA 1";
         StartCoroutine(MoveRound(goingInPositions[0], goingInPositions[1], curveIn, mustNotifyAttempt: true));
     }
+
+
 
     private void SetPositionsRound(){
         
@@ -152,20 +146,10 @@ public class RoundBehaviour : MonoBehaviour
         // Actualizamos el numero de ronda
         NewRoundText();
 
-
         // Viene la ronda nueva
         StartCoroutine(MoveRound(goingInPositions[0], goingInPositions[1], curveIn, mustNotifyAttempt: true));
 
     }
-
-    IEnumerator GoOut(){
-
-        // Sale la ronda actual
-        StartCoroutine(MoveRound(goingOutPositions[0], goingOutPositions[1], curveOut));
-
-        yield return 0;
-    }
-
 
 }
 

@@ -16,6 +16,8 @@ public class StageManagerDeduceSign : MonoBehaviour
     private int numberCorrectAnswers = 0;
     //private int numberIncorrectAnswers = 0;
     public int totalRounds = 3;
+    public int maxAttempts;
+    public int attemptsNumber;
     private string answerSign;
     public int indexRound = 1;
     public int tryNumber = 2;
@@ -49,20 +51,18 @@ public class StageManagerDeduceSign : MonoBehaviour
     public static event _OnChangeBoolCanChoose OnChangeBoolCanChoose;
 
 
-    public delegate void _OnCorrectAnswer();
-    public static event _OnCorrectAnswer OnCorrectAnswer;
-
 
     public delegate void _OnWrongAnswer();
     public static event _OnWrongAnswer OnWrongAnswer;
 
 
-    public delegate void _OnHideEverything();
-    public static event _OnHideEverything OnHideEverything;
 
     public delegate void _OnHasWin();
     public static event _OnHasWin OnHasWin;
 
+
+    public delegate void _OnNewRound(bool sameRound);
+    public static event _OnNewRound OnNewRound;
 
 
 
@@ -76,7 +76,7 @@ public class StageManagerDeduceSign : MonoBehaviour
     void OnDisable(){
         ButtonBehaviour.OnSignChosen -= HandleOnSignChosen;
         RoundBehaviour.OnShowAttempt -= HandleOnShowAttempt;
-        AttemptMovement.OnPlaying += HandleOnPlaying;
+        AttemptMovement.OnPlaying -= HandleOnPlaying;
     }
 
 
@@ -104,11 +104,12 @@ public class StageManagerDeduceSign : MonoBehaviour
 
 
     private void HandleOnPlaying(){
+        buttonsParent.SetActive(false);
         buttonsParent.SetActive(true);
-        operationParent.SetActive(true);
 
-        UpdateNumbers();
-        StartCoroutine(TransformSizeOperation(startSize: 0, endSize: 1, animationsTime));
+        operationParent.SetActive(false);
+        operationParent.SetActive(true);
+        StartCoroutine(FadeInOperation(animationsTime));
 
     }
 
@@ -118,6 +119,7 @@ public class StageManagerDeduceSign : MonoBehaviour
         operationParent.SetActive(false);
         attemptPlace.gameObject.SetActive(false);
 
+        SetAttemptsNumber();
 
     }
 
@@ -130,20 +132,27 @@ public class StageManagerDeduceSign : MonoBehaviour
         firstOperation = true;
         
 
-        // Inicializamos la operacion en "invisible" (escala 0 en y)
+        // Inicializamos la operacion en "invisible" (escala 0 en y) para que al activarlo no se vea
         operationParent.transform.localScale = new Vector3(1, 0, 1);
-
-
-        // Actualizamos el texto de la operacion y la mostramos
-        //UpdateNumbers();
-        
+       
         
     }
+
+
+    private void SetAttemptsNumber(){
+        if(totalRounds > 4)
+            maxAttempts = 4;
+        else
+            maxAttempts = totalRounds;
+            
+        attemptsNumber = maxAttempts;
+    }
+
 
  
     public void UpdateNumbers(){  
 
-        // Buscamos los nuevos numeros
+        // Buscamos los nuevos numeros generados en el script SetOperation
         SetOperationDeduceSign scriptSetOperation = operationParent.GetComponent<SetOperationDeduceSign>();
         int firstNumber = scriptSetOperation.firstNumber;
         int secondNumber = scriptSetOperation.secondNumber;
@@ -165,9 +174,6 @@ public class StageManagerDeduceSign : MonoBehaviour
 
             ManageCorrectAnswer(goSign);
 
-            if(OnCorrectAnswer != null){
-                OnCorrectAnswer();
-            }
         }
         else{ // Solucion incorrecta
 
@@ -193,18 +199,28 @@ public class StageManagerDeduceSign : MonoBehaviour
 
         numberCorrectAnswers ++;
 
-        StartCoroutine(ShowNewOperation(animationsTime));
+        if(numberCorrectAnswers == totalRounds){
+            Debug.Log("VICTORIA FINAL!!!!!!!!!!!");
+            if(OnHasWin != null) // Canvas suscrito
+                OnHasWin();
+        }
+        else{
+            StartCoroutine(WaitAndNewRound(sameRound:false));
+        }
 
-
+        maxAttempts --;
+        attemptsNumber = maxAttempts;
 
     }
 
     public void ManageWrongAnswer(GameObject goSign){
-
+        attemptsNumber --;
         
         MakeButtonRed(goSign);
 
-        // Compueba en que ronda esta
+        if(attemptsNumber == 0){
+            StartCoroutine(WaitAndNewRound(sameRound:true));
+        }
 
     } 
 
@@ -237,6 +253,8 @@ public class StageManagerDeduceSign : MonoBehaviour
     }
 
 
+
+
     IEnumerator TransformSizeOperation(float startSize, float endSize, float animationTime){
         // Funcion reutilizada de MGLaneRace
         float elapsedTime = 0;
@@ -250,42 +268,47 @@ public class StageManagerDeduceSign : MonoBehaviour
         }
         operationParent.transform.localScale = new Vector3(1, endSize, 1);
 
-        if(firstOperation){
-            // Avisamos para que cambien a true
-            if(OnChangeBoolCanChoose != null){
-                OnChangeBoolCanChoose();
-            }
-
-            firstOperation = false;
-        }
     }
 
 
-
-    IEnumerator ShowNewOperation(float animationTime){
-
-        yield return new WaitForSeconds(animationTime);
+    IEnumerator FadeOutOperation(float animationTime){
 
         StartCoroutine(TransformSizeOperation(startSize: 1, endSize: 0, animationTime: animationTime));
-        yield return new WaitForSeconds(animationTime);
+        yield return 0;
+    }
+
+    IEnumerator FadeInOperation(float animationTime){
+
+        if(firstOperation){
+            firstOperation = false;
+        }
+        else{
+            RestartButtons();
+        }
 
         UpdateNumbers();
 
         StartCoroutine(TransformSizeOperation(startSize: 0, endSize: 1, animationTime: animationTime));
-        yield return new WaitForSeconds(animationTime - 0.1f);
+        yield return new WaitForSeconds(animationTime); 
 
         // Avisamos para que cambien a true
         if(OnChangeBoolCanChoose != null){
             OnChangeBoolCanChoose();
         }
-
-        RestartButtons();
-
-
     }
 
+ 
 
+    IEnumerator WaitAndNewRound(bool sameRound){
+        yield return new WaitForSeconds(animationsTime);
 
+        if(OnNewRound != null){
+            OnNewRound(sameRound);
+        }
+
+        buttonsParent.GetComponent<Animator>().SetTrigger("FadeOut");
+        StartCoroutine(FadeOutOperation(animationsTime));
+    }
 
 
 

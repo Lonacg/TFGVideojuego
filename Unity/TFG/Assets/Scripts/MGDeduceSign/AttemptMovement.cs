@@ -10,8 +10,8 @@ public class AttemptMovement : MonoBehaviour
     private TextMeshProUGUI attemptPlace;
     [SerializeField] private GameObject stageManager;
 
-    private int maxAttempts;
-    private int attemptsNumber;
+    public int maxAttempts;
+    public int attemptsNumber;
 
     public delegate void _OnPlaying();
     public static event _OnPlaying OnPlaying;
@@ -28,7 +28,7 @@ public class AttemptMovement : MonoBehaviour
 
 
         // Eventos:
-        StageManagerDeduceSign.OnCorrectAnswer += HandleOnCorrectAnswer;
+        StageManagerDeduceSign.OnNewRound += HandleOnNewRound;
         StageManagerDeduceSign.OnWrongAnswer += HandleOnWrongAnswer;
         
 
@@ -38,21 +38,12 @@ public class AttemptMovement : MonoBehaviour
     }
 
     void OnDisable(){
-        StageManagerDeduceSign.OnCorrectAnswer -= HandleOnCorrectAnswer;
+        StageManagerDeduceSign.OnNewRound -= HandleOnNewRound;
         StageManagerDeduceSign.OnWrongAnswer -= HandleOnWrongAnswer;
 
     }
 
 
-
-
-
-
-    private void ShowAttempt(){
-
-        StartCoroutine(WaitAndMoveAttempts());
-
-    }
 
 
     private void HandleOnWrongAnswer(){
@@ -63,45 +54,50 @@ public class AttemptMovement : MonoBehaviour
 
     }
 
-    private void HandleOnCorrectAnswer(){
+    private void HandleOnNewRound(bool sameRound){
         
-        StartCoroutine(RestartAttempt());
-        attemptPlace.GetComponent<Animator>().SetTrigger("FadeOut");
-
+        StartCoroutine(RestartAttempt(sameRound));
+        
     }
 
 
-    void Awake(){
-        int totalRounds = stageManager.GetComponent<StageManagerDeduceSign>().totalRounds;
-
-        // El numero de intentos varia en funcion de las rondas totales que haya. Si hay mas de 4 rondas, los intentos pueden ser su maximo que es 4 (por los 4 simbolos de operacion). Si hay menos, los intentos van con la ronda
-        if(totalRounds > 4)
-            maxAttempts = 4;
-        else
-            maxAttempts = totalRounds;
-            
-        attemptsNumber = maxAttempts;
+    void Start(){
+        maxAttempts = stageManager.GetComponent<StageManagerDeduceSign>().maxAttempts;
+        attemptsNumber = stageManager.GetComponent<StageManagerDeduceSign>().attemptsNumber;
 
         UpgradeTextAttempt();
     }
 
+    private void ShowAttempt(){
+
+        StartCoroutine(WaitAndMoveAttempts());
+
+    }
 
     private void UpgradeTextAttempt(){
         gameObject.GetComponent<TextMeshProUGUI>().text = "Intentos:\n" + attemptsNumber.ToString();
     }
 
 
-    IEnumerator RestartAttempt(){
-        // Hacemos el fade out del attept y lo colocamos en su posicion inicial con Restart, para prepararlo para la siguiente ronda
+    IEnumerator RestartAttempt(bool sameRound){
+        // Hacemos el fade out del attempt
         attemptPlace.GetComponent<Animator>().SetTrigger("FadeOut");
         
         yield return new WaitForSeconds(0.49f); // Tiempo de transicion de la animacion FadeOut (0.29 seg), para que con el restar sea 0.30 seg
 
-        // Actualizamos los intentos disponibles en esta ronda
+        // Actualizamos los intentos disponibles en la proxima ronda
+        if(sameRound){
+            attemptsNumber = maxAttempts;
+        }
+        else{
+            maxAttempts --;
+            attemptsNumber = maxAttempts;
+        }
+        
+        UpgradeTextAttempt();
 
-        maxAttempts --;
-        attemptsNumber = maxAttempts;
 
+        // Lo colocamos en su posicion inicial para prepararlo para la siguiente ronda
         attemptPlace.GetComponent<Animator>().SetTrigger("Restart");
 
     }
@@ -111,12 +107,12 @@ public class AttemptMovement : MonoBehaviour
 
 
     IEnumerator WaitAndMoveAttempts(){
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.5f); // Tiempo que muestra los intentos en grande
 
         // Cogemos el componente animator y lanzamos el trigger para que cambie de animacion
         attemptPlace.GetComponent<Animator>().SetTrigger("MoveAttempt");
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.5f); // Tiempo que duran las animaciones
 
         // Lanzamos el evento para que se active la operacion y los botones
         if(OnPlaying != null)   

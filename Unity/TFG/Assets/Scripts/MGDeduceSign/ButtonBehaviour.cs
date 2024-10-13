@@ -22,8 +22,8 @@ public class ButtonBehaviour : MonoBehaviour
 
     void OnEnable(){
         // Inicializamos que se pueden elegir los botones cuando el script se activa
-        canChooseButton = true;
-
+        canChooseButton = false;
+        //canChooseButton = false;
 
         // Eventos:
         StageManagerDeduceSign.OnChangeBoolCanChoose += HandleOnChangeBoolCanChoose;
@@ -44,8 +44,6 @@ public class ButtonBehaviour : MonoBehaviour
 
 
     void Start(){
-        // Inicializamos que se pueden elegir los botones
-        canChooseButton = false;
 
         // Asignamos el componente del color del sprite
         spriteRendererBase = gameObject.GetComponent<SpriteRenderer>();

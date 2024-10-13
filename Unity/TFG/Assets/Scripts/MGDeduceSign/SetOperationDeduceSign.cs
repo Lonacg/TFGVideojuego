@@ -4,50 +4,25 @@ using UnityEngine.Timeline;
 
 public class SetOperationDeduceSign : MonoBehaviour
 {
+    // Definimos las variables publicas para que StageManager pueda acceder a ellas
     public int firstNumber;
     public int secondNumber;
     public int resultNumber;
     public string answerSign = "";
-    private int operatorChosen;
+
 
 
     void OnEnable(){
-
-        StageManagerDeduceSign.OnCorrectAnswer += HandleOnCorrectAnswer;
-        StageManagerDeduceSign.OnHasWin += HandleOnHasWin;
-
-    }
-
-    void OnDisable(){
-        StageManagerDeduceSign.OnCorrectAnswer -= HandleOnCorrectAnswer;
-        StageManagerDeduceSign.OnHasWin -= HandleOnHasWin;
-        
-    }
-
-
-    private void HandleOnCorrectAnswer(){
         GenerateOperation();
     }
 
-    private void HandleOnHasWin(){
-        
-    }
 
-
-
-
-
-    void Awake()  // Cada vez que se activa el objeto genera una nueva operacion
-    {
-        GenerateOperation();
-
-    }
 
 
 
     public void GenerateOperation(){
         // Funcion reutilizada de MGLaneRace
-        operatorChosen = Random.Range(0,4);
+        int operatorChosen = Random.Range(0,4);
         
         // SUMA
         if(operatorChosen == 0){

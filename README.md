@@ -100,3 +100,6 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 ### MG DeduceSign
 - Impedir que se pueda pasar el raton por algun boton (ni pulsar) hasta que la operacion sea completamente visible. Quizas haciendo que la animacion dure menos no hace falta
 - Añadir en Stage manager que el totalRounds tenga que ser un numero mayor que 3
+- Añadir particulas cuando baja un intento
+- Añadir particulas en el boton al ponerse verde
+- ¿El intento deberia bajar en uno cuando se acierta?

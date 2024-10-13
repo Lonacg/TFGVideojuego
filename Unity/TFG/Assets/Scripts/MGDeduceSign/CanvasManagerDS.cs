@@ -52,6 +52,8 @@ public class CanvasManagerDS : MonoBehaviour
         // Primer dialogo de inicio
         string line1 = " Adivina el signo de la operación... ¡para poder seguir con tu misión!";
         linesIntroDialogue.Add(line1);
+
+        //string lineError = " Ronda fallida, ¡inténtalo de nuevo!";
     }
 
     void Start()
