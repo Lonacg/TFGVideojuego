@@ -235,7 +235,7 @@ public class StageManagerDeduceSign : MonoBehaviour
         }
     }
 
-
+//prueba commit
 
     IEnumerator TransformSizeOperation(float startSize, float endSize, float animationTime){
         // Funcion reutilizada de MGLaneRace
