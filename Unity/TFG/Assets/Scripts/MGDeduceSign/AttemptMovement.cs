@@ -58,13 +58,16 @@ public class AttemptMovement : MonoBehaviour
     private void HandleOnWrongAnswer(){
         attemptsNumber --;
 
-        gameObject.GetComponent<TextMeshProUGUI>().text = "Intentos:\n" + attemptsNumber.ToString();
+        UpgradeTextAttempt();
         
 
     }
 
     private void HandleOnCorrectAnswer(){
+        
+        StartCoroutine(RestartAttempt());
         attemptPlace.GetComponent<Animator>().SetTrigger("FadeOut");
+
     }
 
 
@@ -78,7 +81,33 @@ public class AttemptMovement : MonoBehaviour
             maxAttempts = totalRounds;
             
         attemptsNumber = maxAttempts;
+
+        UpgradeTextAttempt();
     }
+
+
+    private void UpgradeTextAttempt(){
+        gameObject.GetComponent<TextMeshProUGUI>().text = "Intentos:\n" + attemptsNumber.ToString();
+    }
+
+
+    IEnumerator RestartAttempt(){
+        // Hacemos el fade out del attept y lo colocamos en su posicion inicial con Restart, para prepararlo para la siguiente ronda
+        attemptPlace.GetComponent<Animator>().SetTrigger("FadeOut");
+        
+        yield return new WaitForSeconds(0.49f); // Tiempo de transicion de la animacion FadeOut (0.29 seg), para que con el restar sea 0.30 seg
+
+        // Actualizamos los intentos disponibles en esta ronda
+
+        maxAttempts --;
+        attemptsNumber = maxAttempts;
+
+        attemptPlace.GetComponent<Animator>().SetTrigger("Restart");
+
+    }
+
+
+
 
 
     IEnumerator WaitAndMoveAttempts(){

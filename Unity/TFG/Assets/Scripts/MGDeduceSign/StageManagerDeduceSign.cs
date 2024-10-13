@@ -98,6 +98,7 @@ public class StageManagerDeduceSign : MonoBehaviour
 
     
     private void HandleOnShowAttempt(){
+        attemptPlace.gameObject.SetActive(false);
         attemptPlace.gameObject.SetActive(true);
     }
 
@@ -235,7 +236,6 @@ public class StageManagerDeduceSign : MonoBehaviour
         }
     }
 
-//prueba commit
 
     IEnumerator TransformSizeOperation(float startSize, float endSize, float animationTime){
         // Funcion reutilizada de MGLaneRace
