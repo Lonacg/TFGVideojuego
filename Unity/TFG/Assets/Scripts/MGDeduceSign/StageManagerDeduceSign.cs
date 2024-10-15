@@ -38,7 +38,7 @@ public class StageManagerDeduceSign : MonoBehaviour
     [Header("GameObjects:")]
     [SerializeField] private GameObject buttonsParent;     
     [SerializeField] private GameObject operationParent; 
-    [SerializeField] private GameObject opGenerator; 
+    [SerializeField] private GameObject confetyParticles;
 
 
 
@@ -201,8 +201,14 @@ public class StageManagerDeduceSign : MonoBehaviour
 
         if(numberCorrectAnswers == totalRounds){
             Debug.Log("VICTORIA FINAL!!!!!!!!!!!");
-            if(OnHasWin != null) // Canvas suscrito
+
+            // Evento de victoria: se ocultan los elementos de la pizarra y canvas muestra el conseguido
+            if(OnHasWin != null) 
                 OnHasWin();
+            StartCoroutine(FadeOutOperation(animationsTime));
+            buttonsParent.GetComponent<Animator>().SetTrigger("FadeOut");
+
+            StartCoroutine(LaunchFireworks());
         }
         else{
             StartCoroutine(WaitAndNewRound(sameRound:false));
@@ -219,7 +225,10 @@ public class StageManagerDeduceSign : MonoBehaviour
         MakeButtonRed(goSign);
 
         if(attemptsNumber == 0){
+            
             StartCoroutine(WaitAndNewRound(sameRound:true));
+            attemptsNumber = maxAttempts;
+
         }
 
     } 
@@ -310,7 +319,11 @@ public class StageManagerDeduceSign : MonoBehaviour
         StartCoroutine(FadeOutOperation(animationsTime));
     }
 
+    IEnumerator LaunchFireworks(){
+        yield return new WaitForSeconds(animationsTime);
+        confetyParticles.SetActive(true); 
 
+    }
 
 
 

@@ -7,7 +7,6 @@ using System.Collections;
 public class AttemptMovement : MonoBehaviour
 {
 
-    private TextMeshProUGUI attemptPlace;
     [SerializeField] private GameObject stageManager;
 
     public int maxAttempts;
@@ -22,7 +21,6 @@ public class AttemptMovement : MonoBehaviour
     void OnEnable()
     {
 
-        attemptPlace = gameObject.GetComponent<TextMeshProUGUI>();
 
         ShowAttempt();
 
@@ -30,6 +28,8 @@ public class AttemptMovement : MonoBehaviour
         // Eventos:
         StageManagerDeduceSign.OnNewRound += HandleOnNewRound;
         StageManagerDeduceSign.OnWrongAnswer += HandleOnWrongAnswer;
+        StageManagerDeduceSign.OnHasWin += HandleOnHasWin;
+        
         
 
         // Movimiento con corrutina en vez de animaciones
@@ -40,6 +40,7 @@ public class AttemptMovement : MonoBehaviour
     void OnDisable(){
         StageManagerDeduceSign.OnNewRound -= HandleOnNewRound;
         StageManagerDeduceSign.OnWrongAnswer -= HandleOnWrongAnswer;
+        StageManagerDeduceSign.OnHasWin -= HandleOnHasWin;
 
     }
 
@@ -59,6 +60,14 @@ public class AttemptMovement : MonoBehaviour
         StartCoroutine(RestartAttempt(sameRound));
         
     }
+
+
+
+    private void HandleOnHasWin(){
+        gameObject.GetComponent<Animator>().SetTrigger("FadeOut");
+    }
+
+
 
 
     void Start(){
@@ -81,7 +90,7 @@ public class AttemptMovement : MonoBehaviour
 
     IEnumerator RestartAttempt(bool sameRound){
         // Hacemos el fade out del attempt
-        attemptPlace.GetComponent<Animator>().SetTrigger("FadeOut");
+        gameObject.GetComponent<Animator>().SetTrigger("FadeOut");
         
         yield return new WaitForSeconds(0.49f); // Tiempo de transicion de la animacion FadeOut (0.29 seg), para que con el restar sea 0.30 seg
 
@@ -98,7 +107,7 @@ public class AttemptMovement : MonoBehaviour
 
 
         // Lo colocamos en su posicion inicial para prepararlo para la siguiente ronda
-        attemptPlace.GetComponent<Animator>().SetTrigger("Restart");
+        gameObject.GetComponent<Animator>().SetTrigger("Restart");
 
     }
 
@@ -110,7 +119,7 @@ public class AttemptMovement : MonoBehaviour
         yield return new WaitForSeconds(1.5f); // Tiempo que muestra los intentos en grande
 
         // Cogemos el componente animator y lanzamos el trigger para que cambie de animacion
-        attemptPlace.GetComponent<Animator>().SetTrigger("MoveAttempt");
+        gameObject.GetComponent<Animator>().SetTrigger("MoveAttempt");
 
         yield return new WaitForSeconds(0.5f); // Tiempo que duran las animaciones
 

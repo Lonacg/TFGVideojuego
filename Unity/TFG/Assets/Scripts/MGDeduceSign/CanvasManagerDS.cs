@@ -12,6 +12,7 @@ public class CanvasManagerDS : MonoBehaviour
     [Header("Views:")]
     public GameObject introView;
     public GameObject ingameView;
+    public GameObject victoryView;
 
 
     [Header("Images:")]
@@ -36,21 +37,25 @@ public class CanvasManagerDS : MonoBehaviour
 
 
     void OnEnable(){
+        StageManagerDeduceSign.OnHasWin += HandleOnHasWin;
 
     }
 
 
 
     void OnDisable(){
-
+        StageManagerDeduceSign.OnHasWin -= HandleOnHasWin;
     }
 
 
+    private void HandleOnHasWin(){
+        victoryView.SetActive(true);
+    }
 
 
     void Awake(){
         // Primer dialogo de inicio
-        string line1 = " Adivina el signo de la operación... ¡para poder seguir con tu misión!";
+        string line1 = "Adivina el signo     de la operación...       ¡para poder seguir con tu misión!";
         linesIntroDialogue.Add(line1);
 
         //string lineError = " Ronda fallida, ¡inténtalo de nuevo!";
@@ -58,9 +63,10 @@ public class CanvasManagerDS : MonoBehaviour
 
     void Start()
     {
-        //ingameView.SetActive(false);
-        //introView.SetActive(true);
-        //StartDialogue(introView, introDialoguePlace, linesIntroDialogue);
+        ingameView.SetActive(false);
+        victoryView.SetActive(false);
+        introView.SetActive(true);
+        StartDialogue(introView, introDialoguePlace, linesIntroDialogue);
     }
 
 
@@ -79,10 +85,7 @@ public class CanvasManagerDS : MonoBehaviour
         else{ 
             // Despues de la ultima linea cerramos el dialogo
             StartCoroutine(FadeCanvasGroup(view, fromAlpha: 1, toAlpha: 0));
-
-            // Lanzamos el evento de que la intro ha terminado
-            if(OnStart != null)   
-                OnStart();
+            StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1));
         }
     }
 

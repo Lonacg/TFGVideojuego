@@ -21,9 +21,8 @@ public class ButtonBehaviour : MonoBehaviour
     
 
     void OnEnable(){
-        // Inicializamos que se pueden elegir los botones cuando el script se activa
+        // Inicializamos que no se pueden elegir los botones al activarse
         canChooseButton = false;
-        //canChooseButton = false;
 
         // Eventos:
         StageManagerDeduceSign.OnChangeBoolCanChoose += HandleOnChangeBoolCanChoose;
@@ -40,6 +39,7 @@ public class ButtonBehaviour : MonoBehaviour
     private void HandleOnChangeBoolCanChoose(){
         canChooseButton = !canChooseButton;
     }
+
 
 
 
@@ -80,7 +80,7 @@ public class ButtonBehaviour : MonoBehaviour
         if(canChooseButton){
             StartCoroutine(ClickAnimation(seconds: 0.2f));
             
-            // ChangeButtonColor(Color.green);
+            // El color se cambia en Stage Manager, que es el que sabe si es un boton correcto o incorrecto
 
             // Lanzamos el evento de que se ha escogido un signo (Stage Manager suscrito)
             if(OnSignChosen != null)   

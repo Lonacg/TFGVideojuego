@@ -31,29 +31,34 @@ public class RoundBehaviour : MonoBehaviour
     void OnEnable()
     {
         StageManagerDeduceSign.OnNewRound += HandleOnNewRound;
+        StageManagerDeduceSign.OnHasWin += HandleOnHasWin;
 
     }
 
     void OnDisable(){
         StageManagerDeduceSign.OnNewRound -= HandleOnNewRound;
+        StageManagerDeduceSign.OnHasWin -= HandleOnHasWin;
     }
 
 
 
     private void HandleOnNewRound(bool sameRound){
         correctAnswers ++;
-
         if(sameRound){
-            // Entra el mismo titulo que habia
+            // Entra el mismo titulo de ronda que habia
             StartCoroutine(MoveRound(goingInPositions[0], goingInPositions[1], curveIn, mustNotifyAttempt: true));                   
         }
         else{
+            
             StartCoroutine(GoOutGoIn());  
         }
 
 
     }
 
+    private void HandleOnHasWin(){
+        StartCoroutine(MoveRound(goingOutPositions[0], goingOutPositions[1], curveOut));
+    }
 
 
 

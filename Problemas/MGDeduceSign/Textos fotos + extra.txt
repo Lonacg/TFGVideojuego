@@ -7,9 +7,11 @@ Imagenes:
 1- Problema: me muestra posiciones diferentes en la escena y en game
    Solucion: era porque la posicion de z de los numeros era diferente a 0, que es como debe estar en juegos 2D
 
+2- Hay varios botones pulsandose cuando no deben, asi que hacemos una especie de semaforo. en 1	lanzo un eevento para que dejen de pulsarse, en 2 lanzo de nuevo el evento para permitir que se pulsen
 
 
-
+3- Problema:  a la segunda vez seguida de fallar, no gestiona bien la derrota
+   Solucion: Era porque la actualizacion de los intentos la llevo en el scriot de intentos, pero la gesion de la victoria y derrota va en stage Manager, entonces, se estaban visualizando bien, pero stage manager no los estaba contando bien. Faltaba reiniciar los intentos cuando se repite una ronda fallada
 
 
 
