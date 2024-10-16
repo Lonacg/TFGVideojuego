@@ -27,10 +27,11 @@ public class AttemptMovement : MonoBehaviour
 
         // Eventos:
         StageManagerDeduceSign.OnNewRound += HandleOnNewRound;
+        CanvasManagerDS.OnSameRound += HandleOnSameRound;
         StageManagerDeduceSign.OnWrongAnswer += HandleOnWrongAnswer;
-        StageManagerDeduceSign.OnHasWin += HandleOnHasWin;
+        StageManagerDeduceSign.OnFadeOutAll += HandleOnFadeOutAll;
         
-        
+         
 
         // Movimiento con corrutina en vez de animaciones
         //StartCoroutine(TransformSizeFont(startSize: 0, endSize: 80.4f, animationTime: 1));
@@ -39,9 +40,9 @@ public class AttemptMovement : MonoBehaviour
 
     void OnDisable(){
         StageManagerDeduceSign.OnNewRound -= HandleOnNewRound;
+        CanvasManagerDS.OnSameRound -= HandleOnSameRound;
         StageManagerDeduceSign.OnWrongAnswer -= HandleOnWrongAnswer;
-        StageManagerDeduceSign.OnHasWin -= HandleOnHasWin;
-
+        StageManagerDeduceSign.OnFadeOutAll -= HandleOnFadeOutAll;
     }
 
 
@@ -55,16 +56,24 @@ public class AttemptMovement : MonoBehaviour
 
     }
 
-    private void HandleOnNewRound(bool sameRound){
+    private void HandleOnNewRound(){
+
+        StartCoroutine(RestartAttempt(false));
         
-        StartCoroutine(RestartAttempt(sameRound));
+        
+    }
+
+    private void HandleOnSameRound(){
+
+        StartCoroutine(RestartAttempt(true));
+        
         
     }
 
 
-
-    private void HandleOnHasWin(){
+    private void HandleOnFadeOutAll(){
         gameObject.GetComponent<Animator>().SetTrigger("FadeOut");
+
     }
 
 
@@ -89,20 +98,20 @@ public class AttemptMovement : MonoBehaviour
 
 
     IEnumerator RestartAttempt(bool sameRound){
-        // Hacemos el fade out del attempt
-        gameObject.GetComponent<Animator>().SetTrigger("FadeOut");
-        
-        yield return new WaitForSeconds(0.49f); // Tiempo de transicion de la animacion FadeOut (0.29 seg), para que con el restar sea 0.30 seg
 
-        // Actualizamos los intentos disponibles en la proxima ronda
-        if(sameRound){
-            attemptsNumber = maxAttempts;
-        }
-        else{
+
+        if(!sameRound){
+
+            // Hacemos el fade out del attempt
+            gameObject.GetComponent<Animator>().SetTrigger("FadeOut");
+            
+            yield return new WaitForSeconds(0.49f); // Tiempo de transicion de la animacion FadeOut (0.29 seg), para que con el restar sea 0.30 seg
             maxAttempts --;
-            attemptsNumber = maxAttempts;
+            
         }
         
+        // Actualizamos los intentos disponibles en la proxima ronda
+        attemptsNumber = maxAttempts;
         UpgradeTextAttempt();
 
 

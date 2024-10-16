@@ -13,14 +13,12 @@ public class StageManagerDeduceSign : MonoBehaviour
     
     
     [Header("Variables")]
+    
+    [Min(2)] public int totalRounds = 3;    // Necesita ser publica para que RoundBehaviour acceda a ella
+    public int maxAttempts;                 // Necesita ser publica para que AttemptBehaviour acceda a ella
+    public int attemptsNumber;              // Necesita ser publica para que AttemptBehaviour acceda a ella
     private int numberCorrectAnswers = 0;
-    //private int numberIncorrectAnswers = 0;
-    public int totalRounds = 3;
-    public int maxAttempts;
-    public int attemptsNumber;
     private string answerSign;
-    public int indexRound = 1;
-    public int tryNumber = 2;
     private bool firstOperation;
     private float animationsTime = 0.5f;
 
@@ -39,10 +37,7 @@ public class StageManagerDeduceSign : MonoBehaviour
     [SerializeField] private GameObject buttonsParent;     
     [SerializeField] private GameObject operationParent; 
     [SerializeField] private GameObject confetyParticles;
-
-
-
-    public List<GameObject> buttonsChosen;   
+    public List<GameObject> buttonsChosen;      // Necesita ser publica para la correcta gestion de los botones
 
 
 
@@ -60,9 +55,15 @@ public class StageManagerDeduceSign : MonoBehaviour
     public delegate void _OnHasWin();
     public static event _OnHasWin OnHasWin;
 
+    public delegate void _OnErrorView();
+    public static event _OnErrorView OnErrorView;
 
-    public delegate void _OnNewRound(bool sameRound);
+    public delegate void _OnNewRound();
     public static event _OnNewRound OnNewRound;
+
+    public delegate void _OnFadeOutAll();
+    public static event _OnFadeOutAll OnFadeOutAll;
+
 
 
 
@@ -170,7 +171,7 @@ public class StageManagerDeduceSign : MonoBehaviour
     public void CheckAnswer(GameObject goSign){
         
         // Solucion correcta
-        if((goSign.tag == answerSign) || (goSign.tag == answerSign) || (goSign.tag == answerSign) || (goSign.tag == answerSign)){        // Terrible para leer: if((goSign.tag == "Addition" && answerSign == 0) || (goSign.tag == "Subtraction" && answerSign == 1) || (goSign.tag == "Multiplication" && answerSign == 2) || (goSign.tag == "Division" && answerSign == 3));
+        if(goSign.CompareTag(answerSign)){        // Terrible para leer: if((goSign.tag == "Addition" && answerSign == 0) || (goSign.tag == "Subtraction" && answerSign == 1) || (goSign.tag == "Multiplication" && answerSign == 2) || (goSign.tag == "Division" && answerSign == 3));
 
             ManageCorrectAnswer(goSign);
 
@@ -202,16 +203,19 @@ public class StageManagerDeduceSign : MonoBehaviour
         if(numberCorrectAnswers == totalRounds){
             Debug.Log("VICTORIA FINAL!!!!!!!!!!!");
 
-            // Evento de victoria: se ocultan los elementos de la pizarra y canvas muestra el conseguido
+            // Vaciamos la pizarra
+            if(OnFadeOutAll != null) 
+                OnFadeOutAll();
+            FadeOutButtonsAndOperation();
+
+            // Lanzamos el evento de victoria: canvas muestra el conseguido y se lanzan los confeti
             if(OnHasWin != null) 
                 OnHasWin();
-            StartCoroutine(FadeOutOperation(animationsTime));
-            buttonsParent.GetComponent<Animator>().SetTrigger("FadeOut");
 
             StartCoroutine(LaunchFireworks());
         }
         else{
-            StartCoroutine(WaitAndNewRound(sameRound:false));
+            StartCoroutine(WaitAndNewRound());
         }
 
         maxAttempts --;
@@ -225,11 +229,25 @@ public class StageManagerDeduceSign : MonoBehaviour
         MakeButtonRed(goSign);
 
         if(attemptsNumber == 0){
-            
-            StartCoroutine(WaitAndNewRound(sameRound:true));
+
+            // Actualizamos el int de intentos para la siguiente ronda
             attemptsNumber = maxAttempts;
 
+            // Ocultamos todo lo de la pizarra
+            if(OnFadeOutAll != null)
+                OnFadeOutAll();
+            FadeOutButtonsAndOperation();
+
+            /// Lanzamos el evento para que se muestre el dialogo de error
+            if(OnErrorView != null)
+                OnErrorView();
+        
+            
+            //StartCoroutine(WaitAndNewRound(sameRound:true));
+    
+
         }
+
 
     } 
 
@@ -262,6 +280,10 @@ public class StageManagerDeduceSign : MonoBehaviour
     }
 
 
+    private void FadeOutButtonsAndOperation(){
+        buttonsParent.GetComponent<Animator>().SetTrigger("FadeOut");
+        StartCoroutine(FadeOutOperation(animationsTime));
+    }
 
 
     IEnumerator TransformSizeOperation(float startSize, float endSize, float animationTime){
@@ -306,21 +328,21 @@ public class StageManagerDeduceSign : MonoBehaviour
         }
     }
 
- 
 
-    IEnumerator WaitAndNewRound(bool sameRound){
+
+
+    IEnumerator WaitAndNewRound(){
         yield return new WaitForSeconds(animationsTime);
 
         if(OnNewRound != null){
-            OnNewRound(sameRound);
+            OnNewRound();
         }
 
-        buttonsParent.GetComponent<Animator>().SetTrigger("FadeOut");
-        StartCoroutine(FadeOutOperation(animationsTime));
+        FadeOutButtonsAndOperation();
     }
 
     IEnumerator LaunchFireworks(){
-        yield return new WaitForSeconds(animationsTime);
+        yield return new WaitForSeconds(animationsTime*2);
         confetyParticles.SetActive(true); 
 
     }

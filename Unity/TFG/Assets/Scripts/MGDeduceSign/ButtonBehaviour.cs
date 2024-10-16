@@ -121,6 +121,7 @@ public class ButtonBehaviour : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return 0;
         }
+        gameObject.transform.localScale = new Vector3(endSize, endSize, 1);;
 
     }
 

@@ -6,14 +6,13 @@ public class RoundBehaviour : MonoBehaviour
 {
 
     [Header("References:")]
-    [SerializeField] private AnimationCurve curveIn;
-    [SerializeField] private AnimationCurve curveOut;
+    [SerializeField] private AnimationCurve curve;
     [SerializeField] private TextMeshProUGUI attempText;
     [SerializeField] private GameObject stageManager;
 
     
     [Header("Variables:")]
-    public int correctAnswers = 0;
+    public int roundNumber = 0;
     public int totalRounds;
     private Vector3[] goingOutPositions;
     private Vector3[] goingInPositions;
@@ -31,33 +30,39 @@ public class RoundBehaviour : MonoBehaviour
     void OnEnable()
     {
         StageManagerDeduceSign.OnNewRound += HandleOnNewRound;
-        StageManagerDeduceSign.OnHasWin += HandleOnHasWin;
+        CanvasManagerDS.OnSameRound += HandleOnSameRound;
+        StageManagerDeduceSign.OnFadeOutAll += HandleOnFadeOutAll;
 
     }
 
     void OnDisable(){
         StageManagerDeduceSign.OnNewRound -= HandleOnNewRound;
-        StageManagerDeduceSign.OnHasWin -= HandleOnHasWin;
+        CanvasManagerDS.OnSameRound -= HandleOnSameRound;
+        StageManagerDeduceSign.OnFadeOutAll -= HandleOnFadeOutAll;
     }
 
 
 
-    private void HandleOnNewRound(bool sameRound){
-        correctAnswers ++;
-        if(sameRound){
-            // Entra el mismo titulo de ronda que habia
-            StartCoroutine(MoveRound(goingInPositions[0], goingInPositions[1], curveIn, mustNotifyAttempt: true));                   
-        }
-        else{
-            
-            StartCoroutine(GoOutGoIn());  
-        }
+    private void HandleOnNewRound(){
+
+        roundNumber ++;
+        StartCoroutine(GoOutGoIn());  
+        
 
 
     }
 
-    private void HandleOnHasWin(){
-        StartCoroutine(MoveRound(goingOutPositions[0], goingOutPositions[1], curveOut));
+
+
+    private void HandleOnSameRound(){
+
+        StartCoroutine(GoIn());             
+        
+
+    }
+
+    private void HandleOnFadeOutAll(){
+        StartCoroutine(GoOut()); 
     }
 
 
@@ -65,7 +70,7 @@ public class RoundBehaviour : MonoBehaviour
     void Start(){
 
         // Inicializamos variables
-        correctAnswers = 0;
+        roundNumber = 0;
         goingInPositions = new Vector3[2];
         goingOutPositions = new Vector3[2];
         SetPositionsRound();
@@ -77,7 +82,7 @@ public class RoundBehaviour : MonoBehaviour
 
         // Activamos el movimiento del texto Ronda 1
         gameObject.GetComponent<TextMeshProUGUI>().text = "RONDA 1";
-        StartCoroutine(MoveRound(goingInPositions[0], goingInPositions[1], curveIn, mustNotifyAttempt: true));
+        StartCoroutine(MoveRound(goingInPositions[0], goingInPositions[1], curve, mustNotifyAttempt: true));
     }
 
 
@@ -107,7 +112,7 @@ public class RoundBehaviour : MonoBehaviour
 
     private void NewRoundText(){
 
-        int numberNextRound = correctAnswers + 1;
+        int numberNextRound = roundNumber + 1;
 
         if(numberNextRound == totalRounds){
             gameObject.GetComponent<TextMeshProUGUI>().text = "RONDA FINAL";
@@ -144,7 +149,7 @@ public class RoundBehaviour : MonoBehaviour
     IEnumerator GoOutGoIn(){
 
         // Sale la ronda actual
-        StartCoroutine(MoveRound(goingOutPositions[0], goingOutPositions[1], curveOut));
+        StartCoroutine(MoveRound(goingOutPositions[0], goingOutPositions[1], curve));
 
         yield return new WaitForSeconds(1);
 
@@ -152,9 +157,28 @@ public class RoundBehaviour : MonoBehaviour
         NewRoundText();
 
         // Viene la ronda nueva
-        StartCoroutine(MoveRound(goingInPositions[0], goingInPositions[1], curveIn, mustNotifyAttempt: true));
+        StartCoroutine(MoveRound(goingInPositions[0], goingInPositions[1], curve, mustNotifyAttempt: true));
 
     }
+
+    IEnumerator GoOut(){
+
+        // Sale la ronda actual
+        StartCoroutine(MoveRound(goingOutPositions[0], goingOutPositions[1], curve));
+
+        yield return 0;
+
+    }
+    IEnumerator GoIn(){
+        // Actualizamos el numero de ronda
+        NewRoundText();
+
+        // Viene la ronda nueva
+        StartCoroutine(MoveRound(goingInPositions[0], goingInPositions[1], curve, mustNotifyAttempt: true));
+        yield return 0; 
+
+    } 
+
 
 }
 

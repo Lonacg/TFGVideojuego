@@ -73,7 +73,7 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 
 ## MEJORAS POSIBLES
 
-- Buscar una fuente bonita para las letras
+- HECHO: Buscar una fuente bonita para las letras
 
 ### MG Parking
 - HECHO: Que la lista de ParkingLot se coja por codigo en vez de asignarlo en el inspector 
@@ -84,6 +84,7 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - Cambiar el 3, 2, 1, ya
 - La pantalla de error es una imagen en vez de una vista, asi cuando aparece el error, se puede seguir viendo la operacion y le da tiempo a pensar mientras sale el texto.
 - Vehiculos pasando por la carretera en ambos sentidos
+- Que se instancien entre 3 y 4 cochs, no siempre 4
 
 ### MG LaneRace
 - HECHO: (no se cuenta como acierto ni fallo y el juego sigue correctamente) arreglar problema de que pase entre dos puertas
@@ -94,12 +95,14 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - Listar las 4 operaciones en Stage manager y que set opetarion coja una de ahi (gestionando correctamente las 3 primeras que se generan al mismo tiempo... posibles poblemas de paralela)
 - Poner particulas brillantes al activarse los botones de correcto e incorrecto
 - Activar particulas de humo al cruzar la puerta para hacerla desaparecer
-- Poner arboles y flores en el suelo 
+- Poner arboles y flores en el suelo, algo mas VERDE BRILLANTE, asi queda muy apagado y no pega con Granny
 - Transicion en velolociadad del suelo
+- Valorar el uso de diccionarios
 
 ### MG DeduceSign
-- Impedir que se pueda pasar el raton por algun boton (ni pulsar) hasta que la operacion sea completamente visible. Quizas haciendo que la animacion dure menos no hace falta
+- HECHO: Impedir que se pueda pasar el raton por algun boton (ni pulsar) hasta que la operacion sea completamente visible
+- HECHO: Añadir rondas al juego
 - Añadir en Stage manager que el totalRounds tenga que ser un numero mayor que 3
 - Añadir particulas cuando baja un intento
 - Añadir particulas en el boton al ponerse verde
-- ¿El intento deberia bajar en uno cuando se acierta?
+- HECHo que si: ¿El intento deberia bajar en uno cuando se acierta?

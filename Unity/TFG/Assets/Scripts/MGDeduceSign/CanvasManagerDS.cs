@@ -6,38 +6,40 @@ using UnityEngine.UI;
 
 public class CanvasManagerDS : MonoBehaviour
 {
-    [Header("Game Objects:")]
+    
 
     
     [Header("Views:")]
     public GameObject introView;
     public GameObject ingameView;
+    public GameObject errorView;
     public GameObject victoryView;
 
 
-    [Header("Images:")]
 
 
     [Header("Text:")] 
     public TextMeshProUGUI introDialoguePlace;
-    public TextMeshProUGUI textRoundPlace;
-    public TextMeshProUGUI textNumberAttemptPlace;
+    public TextMeshProUGUI errorDialoguePlace;
     public List<string> linesIntroDialogue;
+    public List<string> linesErrorDialogue;
 
 
+    [Header("Variables:")]
     private float textSpeed = 0.1f;
     private int indexSentence = 0;
 
 
 
-    public delegate void _OnStart();
-    public static event _OnStart OnStart;
-
+    public delegate void _OnSameRound();
+    public static event _OnSameRound OnSameRound;
 
 
 
     void OnEnable(){
         StageManagerDeduceSign.OnHasWin += HandleOnHasWin;
+        StageManagerDeduceSign.OnErrorView += HandleOnErrorView;
+        
 
     }
 
@@ -45,6 +47,7 @@ public class CanvasManagerDS : MonoBehaviour
 
     void OnDisable(){
         StageManagerDeduceSign.OnHasWin -= HandleOnHasWin;
+        StageManagerDeduceSign.OnErrorView -= HandleOnErrorView;
     }
 
 
@@ -52,18 +55,27 @@ public class CanvasManagerDS : MonoBehaviour
         victoryView.SetActive(true);
     }
 
+    private void HandleOnErrorView(){
+        StartCoroutine(StartErrorView());
+        
+
+    }
+
 
     void Awake(){
         // Primer dialogo de inicio
-        string line1 = "Adivina el signo     de la operación...       ¡para poder seguir con tu misión!";
+        //string line1 = "Adivina el signo     de la operación...       ¡para poder seguir con tu misión!";
+        string line1 = "go";
         linesIntroDialogue.Add(line1);
 
-        //string lineError = " Ronda fallida, ¡inténtalo de nuevo!";
+        line1 = "¡Inténtalo de nuevo!";
+        linesErrorDialogue.Add(line1);
     }
 
     void Start()
     {
         ingameView.SetActive(false);
+        errorView.SetActive(false);
         victoryView.SetActive(false);
         introView.SetActive(true);
         StartDialogue(introView, introDialoguePlace, linesIntroDialogue);
@@ -71,34 +83,44 @@ public class CanvasManagerDS : MonoBehaviour
 
 
 
-    public void StartDialogue(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){
+    public void StartDialogue(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines, bool errorActive = false){
         indexSentence = 0;
         dialoguePlace.text = "";
-        StartCoroutine(WriteLetterByLetter(view, dialoguePlace, lines));
+        StartCoroutine(WriteLetterByLetter(view, dialoguePlace, lines, errorActive));
     }
 
-    public void NextLine(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){
-        if (indexSentence < lines.Count){
-            dialoguePlace.text = "";
-            StartCoroutine(WriteLetterByLetter(view, dialoguePlace, lines));
+
+    public void NextLine(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines, bool errorActive = false){
+        if(indexSentence < lines.Count){
+            dialoguePlace.text = ""; 
+            StartCoroutine(WriteLetterByLetter(view, dialoguePlace, lines, errorActive));
         }
         else{ 
             // Despues de la ultima linea cerramos el dialogo
             StartCoroutine(FadeCanvasGroup(view, fromAlpha: 1, toAlpha: 0));
-            StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1));
+
+            if(errorActive){
+                if(OnSameRound != null)   
+                    OnSameRound();
+
+            }
+            else{
+                StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1));
+            }
+            
         }
     }
 
 
 
-    IEnumerator WriteLetterByLetter(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){ 
+    IEnumerator WriteLetterByLetter(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines, bool errorActive = false){ 
         foreach (char letter in lines[indexSentence].ToCharArray()){
             dialoguePlace.text += letter;
             yield return new WaitForSeconds(textSpeed);
         }
         indexSentence ++;
         yield return new WaitForSeconds(1);
-        NextLine(view, dialoguePlace, lines);
+        NextLine(view, dialoguePlace, lines, errorActive);
     }
 
 
@@ -160,8 +182,10 @@ public class CanvasManagerDS : MonoBehaviour
 
 
 
-    IEnumerator StartIngameView(float waitSeconds = 0){
-        yield return new WaitForSeconds(waitSeconds);
-        StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1, animationTime: 0.5f));
+    IEnumerator StartErrorView(){
+        float animationTime = 1;
+        StartCoroutine(FadeCanvasGroup(errorView, fromAlpha: 0, toAlpha: 1, animationTime));
+        yield return new WaitForSeconds(animationTime + 0.5f);
+        StartDialogue(errorView, errorDialoguePlace, linesErrorDialogue, errorActive: true);
     }
 }
