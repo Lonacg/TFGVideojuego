@@ -4,37 +4,30 @@ using System.Collections;
 
 
 
-public class AttemptMovement : MonoBehaviour
+public class AttemptBehaviour : MonoBehaviour
 {
-
+    [Header("Game Objects:")]
     [SerializeField] private GameObject stageManager;
 
+    [Header("Variables:")]
     public int maxAttempts;
     public int attemptsNumber;
+
+
 
     public delegate void _OnPlaying();
     public static event _OnPlaying OnPlaying;
 
 
 
-
     void OnEnable()
     {
-
-
         ShowAttempt();
-
 
         // Eventos:
         StageManagerDeduceSign.OnNewRound += HandleOnNewRound;
         StageManagerDeduceSign.OnWrongAnswer += HandleOnWrongAnswer;
         StageManagerDeduceSign.OnFadeOutAll += HandleOnFadeOutAll;
-        
-         
-
-        // Movimiento con corrutina en vez de animaciones
-        //StartCoroutine(TransformSizeFont(startSize: 0, endSize: 80.4f, animationTime: 1));
-
     }
 
     void OnDisable(){
@@ -45,30 +38,23 @@ public class AttemptMovement : MonoBehaviour
 
 
 
-
     private void HandleOnWrongAnswer(){
         attemptsNumber --;
 
         UpgradeTextAttempt();
-        
-
     }
+
 
     private void HandleOnNewRound(bool sameRound){
 
-        StartCoroutine(RestartAttempt(sameRound));
-        
-        
+        StartCoroutine(RestartAttempt(sameRound));        
     }
-
-
 
 
     private void HandleOnFadeOutAll(){
         gameObject.GetComponent<Animator>().SetTrigger("FadeOut");
 
     }
-
 
 
 
@@ -79,28 +65,28 @@ public class AttemptMovement : MonoBehaviour
         UpgradeTextAttempt();
     }
 
+
+
     private void ShowAttempt(){
 
         StartCoroutine(WaitAndMoveAttempts());
-
     }
+
 
     private void UpgradeTextAttempt(){
         gameObject.GetComponent<TextMeshProUGUI>().text = "Intentos:\n" + attemptsNumber.ToString();
     }
 
 
+
     IEnumerator RestartAttempt(bool sameRound){
 
-
         if(!sameRound){
-
             // Hacemos el fade out del attempt
             gameObject.GetComponent<Animator>().SetTrigger("FadeOut");
             
             yield return new WaitForSeconds(0.49f); // Tiempo de transicion de la animacion FadeOut (0.29 seg), para que con el restar sea 0.30 seg
             maxAttempts --;
-            
         }
         
         // Actualizamos los intentos disponibles en la proxima ronda
@@ -110,11 +96,7 @@ public class AttemptMovement : MonoBehaviour
 
         // Lo colocamos en su posicion inicial para prepararlo para la siguiente ronda
         gameObject.GetComponent<Animator>().SetTrigger("Restart");
-
     }
-
-
-
 
 
     IEnumerator WaitAndMoveAttempts(){
@@ -132,10 +114,7 @@ public class AttemptMovement : MonoBehaviour
 
 
 
-
-
-
-
+    // ALTERNATIVA A LA ANIMACION (solo fadeIn, fadeOut y movimiento, sin cambio de color)
 
     // Movimiento del texto
     // IEnumerator MovementText(TextMeshPro text, float animationTime){

@@ -6,21 +6,16 @@ using UnityEngine.UI;
 
 public class CanvasManagerDS : MonoBehaviour
 {
-    
-
-    
+      
     [Header("Views:")]
-    public GameObject introView;
-    public GameObject ingameView;
-    public GameObject victoryView;
-
-
+    [SerializeField] private GameObject introView;
+    [SerializeField] private GameObject ingameView;
+    [SerializeField] private GameObject victoryView;
 
 
     [Header("Text:")] 
-    public TextMeshProUGUI introDialoguePlace;
-    public List<string> linesIntroDialogue;
-    public List<string> linesErrorDialogue;
+    [SerializeField] private TextMeshProUGUI introDialoguePlace;
+    [SerializeField] private List<string> linesIntroDialogue;
 
 
     [Header("Variables:")]
@@ -29,22 +24,15 @@ public class CanvasManagerDS : MonoBehaviour
 
 
 
-
-
-
     void OnEnable(){
         StageManagerDeduceSign.OnHasWin += HandleOnHasWin;
-        //StageManagerDeduceSign.OnErrorView += HandleOnErrorView;
-        
-
     }
-
 
 
     void OnDisable(){
         StageManagerDeduceSign.OnHasWin -= HandleOnHasWin;
-        //StageManagerDeduceSign.OnErrorView -= HandleOnErrorView;
     }
+
 
 
     private void HandleOnHasWin(){
@@ -55,11 +43,10 @@ public class CanvasManagerDS : MonoBehaviour
 
     void Awake(){
         // Primer dialogo de inicio
-        string line1 = " Adivina el signo     de la operación...       ¡para poder seguir con tu misión!";
+        string line1 = "Adivina el signo     de la operación...       ¡para poder seguir con tu misión!";
         linesIntroDialogue.Add(line1);
-
-
     }
+
 
     void Start()
     {
@@ -87,8 +74,6 @@ public class CanvasManagerDS : MonoBehaviour
             // Despues de la ultima linea cerramos el dialogo
             StartCoroutine(FadeCanvasGroup(view, fromAlpha: 1, toAlpha: 0));
             StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1));
-            
-            
         }
     }
 
@@ -123,45 +108,5 @@ public class CanvasManagerDS : MonoBehaviour
         if(toAlpha == 0)
             view.SetActive(false);
     }
-
-
-    IEnumerator ShowImageForXSeconds(Image imageToShow, float seconds){ 
-        StartCoroutine(FadeImage(imageToShow, fromAlpha: 0, toAlpha: 1, animationTime: 0.3f));
-        yield return new WaitForSeconds(seconds);
-        StartCoroutine(FadeImage(imageToShow, fromAlpha: 1, toAlpha: 0, animationTime: 0.5f));
-    }
-
-    
-    IEnumerator WaitAndFadeImage(Image imageWanted, float seconds){ 
-        yield return new WaitForSeconds(seconds);
-        StartCoroutine(FadeImage(imageWanted, fromAlpha: 1, toAlpha: 0, animationTime: 0.5f));
-    }
-
-
-    IEnumerator FadeImage(Image imageToShow, float fromAlpha, float toAlpha, float animationTime = 0.5f){
-        float elapsedTime = 0;
-        Color colorImage = imageToShow.color;
-
-        if(toAlpha > 0)
-            imageToShow.gameObject.SetActive(true);
-
-        while (elapsedTime < animationTime){
-            colorImage.a = Mathf.Lerp(fromAlpha, toAlpha, elapsedTime / animationTime);
-            imageToShow.color = colorImage;
-
-            elapsedTime += Time.deltaTime;
-            yield return 0;
-        }
-        
-        colorImage.a = toAlpha;
-        imageToShow.color = colorImage;
-
-        if(toAlpha == 0){
-            imageToShow.gameObject.SetActive(false);
-        }
-    }
-
-
-
 
 }

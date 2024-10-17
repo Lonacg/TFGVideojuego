@@ -542,8 +542,8 @@ GameObject:
   - component: {fileID: 97960221}
   - component: {fileID: 97960223}
   - component: {fileID: 97960222}
-  - component: {fileID: 97960224}
   - component: {fileID: 97960225}
+  - component: {fileID: 97960226}
   m_Layer: 5
   m_Name: AttemptText
   m_TagString: Untagged
@@ -671,21 +671,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97960220}
   m_CullTransparentMesh: 1
---- !u!114 &97960224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 97960220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7ae6c42c23793a4f984b6a081043399, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stageManager: {fileID: 868207763}
-  maxAttempts: 0
-  attemptsNumber: 0
 --- !u!95 &97960225
 Animator:
   serializedVersion: 7
@@ -708,6 +693,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &97960226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97960220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00356573c8bb472489ccd2239cb96a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageManager: {fileID: 868207763}
+  maxAttempts: 0
+  attemptsNumber: 0
 --- !u!1 &137312366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,7 +1190,6 @@ MonoBehaviour:
   victoryView: {fileID: 595819526}
   introDialoguePlace: {fileID: 1474176227}
   linesIntroDialogue: []
-  linesErrorDialogue: []
 --- !u!1001 &731354086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1512,8 +1511,6 @@ MonoBehaviour:
     m_RotationOrder: 4
   attempText: {fileID: 97960222}
   stageManager: {fileID: 868207763}
-  roundNumber: 0
-  totalRounds: 0
 --- !u!1 &1061762416
 GameObject:
   m_ObjectHideFlags: 0

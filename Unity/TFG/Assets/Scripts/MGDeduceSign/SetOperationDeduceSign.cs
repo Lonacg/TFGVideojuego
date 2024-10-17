@@ -1,10 +1,9 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.Timeline;
 
 public class SetOperationDeduceSign : MonoBehaviour
 {
     // Definimos las variables publicas para que StageManager pueda acceder a ellas
+    [Header("Variables:")]
     public int firstNumber;
     public int secondNumber;
     public int resultNumber;
@@ -17,11 +16,7 @@ public class SetOperationDeduceSign : MonoBehaviour
     }
 
 
-
-
-
     public void GenerateOperation(){
-        // Funcion reutilizada de MGLaneRace
         int operatorChosen = Random.Range(0,4);
         
         // SUMA
@@ -33,8 +28,6 @@ public class SetOperationDeduceSign : MonoBehaviour
             resultNumber = firstNumber + secondNumber;
             
             answerSign = "Addition";
-
-
         }
         else {
             // RESTA  
@@ -45,8 +38,6 @@ public class SetOperationDeduceSign : MonoBehaviour
                 resultNumber = firstNumber - secondNumber;
 
                 answerSign = "Subtraction";
-
-
             } 
             else{
                 // MULTIPLICACION
@@ -67,17 +58,13 @@ public class SetOperationDeduceSign : MonoBehaviour
                     secondNumber = aux;
 
                     answerSign = "Division";
-
                 }
             }         
         }
+
         // Escribimos la operacion por consola para facilitar el desarrollo del minijuego              
-        Debug.Log("La operacion es: " + firstNumber + answerSign + secondNumber + " = " + resultNumber);
-    }
-    
-
-
-    
+        //Debug.Log("La operacion es: " + firstNumber + answerSign + secondNumber + " = " + resultNumber);
+    }   
 }
 
 

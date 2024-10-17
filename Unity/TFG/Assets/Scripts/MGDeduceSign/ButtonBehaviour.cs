@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class ButtonBehaviour : MonoBehaviour
 {
-
-
+    [Header("Sprites:")]
     private SpriteRenderer spriteRendererBase;
     private SpriteRenderer spriteRendererSign;
 
 
+    [Header("Variables:")]
     private Color lightGreen;
-    public bool canChooseButton;
-
+    private bool canChooseButton;
 
 
 
@@ -20,26 +19,26 @@ public class ButtonBehaviour : MonoBehaviour
     public static event _OnSignChosen OnSignChosen;
     
 
+
     void OnEnable(){
         // Inicializamos que no se pueden elegir los botones al activarse
         canChooseButton = false;
 
         // Eventos:
         StageManagerDeduceSign.OnChangeBoolCanChoose += HandleOnChangeBoolCanChoose;
-
     }
+
 
     void OnDisable(){
 
         StageManagerDeduceSign.OnChangeBoolCanChoose -= HandleOnChangeBoolCanChoose;
-
     }
+
 
 
     private void HandleOnChangeBoolCanChoose(){
         canChooseButton = !canChooseButton;
     }
-
 
 
 
@@ -55,7 +54,6 @@ public class ButtonBehaviour : MonoBehaviour
 
 
     
-
     private void OnMouseOver(){
         // Se usa esta en vez de OnMouseEnter(), aunque conlleve mas coste, porque si ha hecho click encima de la correcta en la pantalla anterior y no ha movido el raton (sigue encima del boton), al empezar la nueva debe resaltarse, pero OnMouseEnter no lo detecta
         if(canChooseButton && spriteRendererBase.color == Color.white){
@@ -63,16 +61,14 @@ public class ButtonBehaviour : MonoBehaviour
         }
     }
 
+
     private void  OnMouseExit(){
 
         //  Cuando el raton sale del boton lo volvemos a blanco
         if(canChooseButton){
-
             spriteRendererBase.color = Color.white;
         }
     }
-
-
 
 
     private void OnMouseDown(){
@@ -99,6 +95,7 @@ public class ButtonBehaviour : MonoBehaviour
     }
 
 
+
     IEnumerator ClickAnimation(float seconds){
 
         float originalScale = gameObject.transform.localScale.x;
@@ -109,6 +106,7 @@ public class ButtonBehaviour : MonoBehaviour
         yield return new WaitForSeconds(animTime);
         StartCoroutine(TransformSizeButtom(startSize: desiredScale, endSize: originalScale, animationTime: animTime));
     }
+
 
     IEnumerator TransformSizeButtom(float startSize, float endSize, float animationTime){
         // Funcion reutilizada de MGLaneRace
@@ -122,7 +120,5 @@ public class ButtonBehaviour : MonoBehaviour
             yield return 0;
         }
         gameObject.transform.localScale = new Vector3(endSize, endSize, 1);;
-
     }
-
 }

@@ -10,15 +10,12 @@ public class RoundBehaviour : MonoBehaviour
     [SerializeField] private TextMeshProUGUI attempText;
     [SerializeField] private GameObject stageManager;
 
-    
+
     [Header("Variables:")]
-    public int roundNumber = 0;
-    public int totalRounds;
+    private int roundNumber = 0;
+    private int totalRounds;
     private Vector3[] goingOutPositions;
     private Vector3[] goingInPositions;
-
-
-
 
 
 
@@ -31,8 +28,8 @@ public class RoundBehaviour : MonoBehaviour
     {
         StageManagerDeduceSign.OnNewRound += HandleOnNewRound;
         StageManagerDeduceSign.OnFadeOutAll += HandleOnFadeOutAll;
-
     }
+
 
     void OnDisable(){
         StageManagerDeduceSign.OnNewRound -= HandleOnNewRound;
@@ -51,13 +48,7 @@ public class RoundBehaviour : MonoBehaviour
             roundNumber ++;
             StartCoroutine(GoOutGoIn());              
         }
-
-        
-
-
     }
-
-
 
 
     private void HandleOnFadeOutAll(){
@@ -104,9 +95,7 @@ public class RoundBehaviour : MonoBehaviour
         
         goingOutPositions[0] = startPosition;
         goingOutPositions[1] = endPosition;    
-
     }
-
 
 
     private void NewRoundText(){
@@ -119,9 +108,8 @@ public class RoundBehaviour : MonoBehaviour
         else{
             gameObject.GetComponent<TextMeshProUGUI>().text = "RONDA " + numberNextRound.ToString();
         }
-
-
     }
+
 
 
     IEnumerator MoveRound(Vector3 startPosition, Vector3 endPosition, AnimationCurve curve, bool mustNotifyAttempt = false, float animationTime = 1){
@@ -137,12 +125,10 @@ public class RoundBehaviour : MonoBehaviour
         }
         transform.localPosition = endPosition;
 
-
         // Avisamos para que se muestren los intentos diponibles del nivel
         if(OnShowAttempt != null && mustNotifyAttempt)   
             OnShowAttempt();
     }
-
 
 
     IEnumerator GoOutGoIn(){
@@ -157,8 +143,8 @@ public class RoundBehaviour : MonoBehaviour
 
         // Viene la ronda nueva
         StartCoroutine(MoveRound(goingInPositions[0], goingInPositions[1], curve, mustNotifyAttempt: true));
-
     }
+
 
     IEnumerator GoOut(){
 
@@ -166,8 +152,9 @@ public class RoundBehaviour : MonoBehaviour
         StartCoroutine(MoveRound(goingOutPositions[0], goingOutPositions[1], curve));
 
         yield return 0;
-
     }
+
+
     IEnumerator GoIn(){
         // Actualizamos el numero de ronda
         NewRoundText();
@@ -175,10 +162,7 @@ public class RoundBehaviour : MonoBehaviour
         // Viene la ronda nueva
         StartCoroutine(MoveRound(goingInPositions[0], goingInPositions[1], curve, mustNotifyAttempt: true));
         yield return 0; 
-
     } 
-
-
 }
 
 

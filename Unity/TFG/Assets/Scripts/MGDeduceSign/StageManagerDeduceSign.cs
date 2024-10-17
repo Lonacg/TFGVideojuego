@@ -6,12 +6,8 @@ using System.Collections.Generic;
 
 public class StageManagerDeduceSign : MonoBehaviour
 {
-
-
-    
-    
-    [Header("Variables")]
-    
+   
+    [Header("Variables:")]
     [Min(2)] public int totalRounds = 3;    // Necesita ser publica para que RoundBehaviour acceda a ella
     public int maxAttempts;                 // Necesita ser publica para que AttemptBehaviour acceda a ella
     public int attemptsNumber;              // Necesita ser publica para que AttemptBehaviour acceda a ella
@@ -21,7 +17,6 @@ public class StageManagerDeduceSign : MonoBehaviour
     private float animationsTime = 0.5f;
 
 
-
     [Header("Text References:")]
     [SerializeField] private TextMeshPro firsNumberText;
     [SerializeField] private TextMeshPro secondNumberText;
@@ -29,8 +24,6 @@ public class StageManagerDeduceSign : MonoBehaviour
     [SerializeField] private TextMeshProUGUI attemptPlace;
 
     
-
-
     [Header("GameObjects:")]
     [SerializeField] private GameObject buttonsParent;     
     [SerializeField] private GameObject operationParent; 
@@ -40,43 +33,39 @@ public class StageManagerDeduceSign : MonoBehaviour
 
 
 
-
     public delegate void _OnChangeBoolCanChoose();
     public static event _OnChangeBoolCanChoose OnChangeBoolCanChoose;
-
 
 
     public delegate void _OnWrongAnswer();
     public static event _OnWrongAnswer OnWrongAnswer;
 
 
-
     public delegate void _OnHasWin();
     public static event _OnHasWin OnHasWin;
 
 
-
     public delegate void _OnNewRound(bool sameRound);
     public static event _OnNewRound OnNewRound;
+
 
     public delegate void _OnFadeOutAll();
     public static event _OnFadeOutAll OnFadeOutAll;
 
 
 
-
     void OnEnable(){
         ButtonBehaviour.OnSignChosen += HandleOnSignChosen;
         RoundBehaviour.OnShowAttempt += HandleOnShowAttempt;
-        AttemptMovement.OnPlaying += HandleOnPlaying;
-
+        AttemptBehaviour.OnPlaying += HandleOnPlaying;
     }
 
     void OnDisable(){
         ButtonBehaviour.OnSignChosen -= HandleOnSignChosen;
         RoundBehaviour.OnShowAttempt -= HandleOnShowAttempt;
-        AttemptMovement.OnPlaying -= HandleOnPlaying;
+        AttemptBehaviour.OnPlaying -= HandleOnPlaying;
     }
+
 
 
     private void HandleOnSignChosen(GameObject buttonChosenGO){
@@ -89,10 +78,8 @@ public class StageManagerDeduceSign : MonoBehaviour
             OnChangeBoolCanChoose();
         }
 
-
         // Comprobamos si el simbolo escogido es el correcto
         CheckAnswer(buttonChosenGO);
-         
     }
 
     
@@ -109,8 +96,8 @@ public class StageManagerDeduceSign : MonoBehaviour
         operationParent.SetActive(false);
         operationParent.SetActive(true);
         StartCoroutine(FadeInOperation(animationsTime));
-
     }
+
 
 
     void Awake(){
@@ -119,9 +106,7 @@ public class StageManagerDeduceSign : MonoBehaviour
         attemptPlace.gameObject.SetActive(false);
 
         SetAttemptsNumber();
-
     }
-
 
 
     void Start()
@@ -130,12 +115,10 @@ public class StageManagerDeduceSign : MonoBehaviour
         totalRounds = 3;
         firstOperation = true;
         
-
         // Inicializamos la operacion en "invisible" (escala 0 en y) para que al activarlo no se vea
         operationParent.transform.localScale = new Vector3(1, 0, 1);
-       
-        
     }
+
 
 
     private void SetAttemptsNumber(){
@@ -146,7 +129,6 @@ public class StageManagerDeduceSign : MonoBehaviour
             
         attemptsNumber = maxAttempts;
     }
-
 
  
     public void UpdateNumbers(){  
@@ -162,7 +144,6 @@ public class StageManagerDeduceSign : MonoBehaviour
         firsNumberText.text = firstNumber.ToString();
         secondNumberText.text = secondNumber.ToString();
         resultNumberText.text = resultNumber.ToString();
-
     }
 
 
@@ -172,7 +153,6 @@ public class StageManagerDeduceSign : MonoBehaviour
         if(goSign.CompareTag(answerSign)){        // Terrible para leer: if((goSign.tag == "Addition" && answerSign == 0) || (goSign.tag == "Subtraction" && answerSign == 1) || (goSign.tag == "Multiplication" && answerSign == 2) || (goSign.tag == "Division" && answerSign == 3));
 
             ManageCorrectAnswer(goSign);
-
         }
         else{ // Solucion incorrecta
 
@@ -181,14 +161,7 @@ public class StageManagerDeduceSign : MonoBehaviour
             if(OnWrongAnswer != null){
                 OnWrongAnswer();
             }
-
-            // // Avisamos a los botones para que cambien a true
-            // if(OnChangeBoolCanChoose != null){
-            //     OnChangeBoolCanChoose();
-            // }
-
         }
-
     }
 
 
@@ -199,7 +172,6 @@ public class StageManagerDeduceSign : MonoBehaviour
         numberCorrectAnswers ++;
 
         if(numberCorrectAnswers == totalRounds){
-            Debug.Log("VICTORIA FINAL!!!!!!!!!!!");
 
             // Vaciamos la pizarra
             if(OnFadeOutAll != null) 
@@ -218,8 +190,8 @@ public class StageManagerDeduceSign : MonoBehaviour
 
         maxAttempts --;
         attemptsNumber = maxAttempts;
-
     }
+
 
     public void ManageWrongAnswer(GameObject goSign){
         attemptsNumber --;
@@ -236,11 +208,8 @@ public class StageManagerDeduceSign : MonoBehaviour
                 OnFadeOutAll();
             FadeOutButtonsAndOperation();
 
-            /// Lanzamos el evento para que se muestre el dialogo de error
+            // Mostramos el dialogo de error
             StartCoroutine(ShowError());
-
-            
-
         }
         else{
             // Avisamos a los botones para que cambien a true
@@ -248,9 +217,8 @@ public class StageManagerDeduceSign : MonoBehaviour
                 OnChangeBoolCanChoose();
             }
         }
-
-
     } 
+
 
     public void MakeButtonGreen(GameObject goSign){
         goSign.GetComponent<ButtonBehaviour>().ChangeButtonColor(Color.green);
@@ -264,7 +232,6 @@ public class StageManagerDeduceSign : MonoBehaviour
         Vector4 darkRed = new Vector4(0.8f, 0, 0, 1);
         scriptButton.ChangeButtonColor(darkRed);
         scriptButton.enabled = false; 
-
     }
 
 
@@ -273,8 +240,7 @@ public class StageManagerDeduceSign : MonoBehaviour
             foreach(GameObject goSign in buttonsChosen){
                 // ButtonBehaviour scriptButton = goSign.GetComponent<ButtonBehaviour>(); // NO SE PUEDE PONER ESTO porque en este momento el script esta desactivado asi que lanza Null reference
                 goSign.GetComponent<ButtonBehaviour>().enabled = true; 
-                goSign.GetComponent<ButtonBehaviour>().ChangeButtonColor(Color.white);
-                
+                goSign.GetComponent<ButtonBehaviour>().ChangeButtonColor(Color.white); 
             }
             buttonsChosen = new List<GameObject>();
         }
@@ -285,6 +251,7 @@ public class StageManagerDeduceSign : MonoBehaviour
         buttonsParent.GetComponent<Animator>().SetTrigger("FadeOut");
         StartCoroutine(FadeOutOperation(animationsTime));
     }
+
 
 
     IEnumerator TransformSizeOperation(float startSize, float endSize, float animationTime){
@@ -299,15 +266,8 @@ public class StageManagerDeduceSign : MonoBehaviour
             yield return 0;
         }
         operationParent.transform.localScale = new Vector3(1, endSize, 1);
-
     }
 
-
-    IEnumerator FadeOutOperation(float animationTime){
-
-        StartCoroutine(TransformSizeOperation(startSize: 1, endSize: 0, animationTime: animationTime));
-        yield return 0;
-    }
 
     IEnumerator FadeInOperation(float animationTime){
 
@@ -330,6 +290,11 @@ public class StageManagerDeduceSign : MonoBehaviour
     }
 
 
+    IEnumerator FadeOutOperation(float animationTime){
+
+        StartCoroutine(TransformSizeOperation(startSize: 1, endSize: 0, animationTime: animationTime));
+        yield return 0;
+    }
 
 
     IEnumerator WaitAndNewRound(){
@@ -342,6 +307,7 @@ public class StageManagerDeduceSign : MonoBehaviour
         FadeOutButtonsAndOperation();
     }
 
+
     IEnumerator ShowError(){
         errorSheet.SetActive(true);
         yield return new WaitForSeconds(3.5f); // 1 FadeIn + 2 Stay + 1 FadeOut - 0,5 de solape de animaciones
@@ -350,22 +316,11 @@ public class StageManagerDeduceSign : MonoBehaviour
             OnNewRound(sameRound: true);
         }
         errorSheet.SetActive(false);
-
     }
-
-
-
 
 
     IEnumerator LaunchFireworks(){
         yield return new WaitForSeconds(animationsTime*2);
         confetyParticles.SetActive(true); 
-
     }
-
-
-
-
-
-
 }
