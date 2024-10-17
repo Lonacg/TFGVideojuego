@@ -27,7 +27,6 @@ public class AttemptMovement : MonoBehaviour
 
         // Eventos:
         StageManagerDeduceSign.OnNewRound += HandleOnNewRound;
-        CanvasManagerDS.OnSameRound += HandleOnSameRound;
         StageManagerDeduceSign.OnWrongAnswer += HandleOnWrongAnswer;
         StageManagerDeduceSign.OnFadeOutAll += HandleOnFadeOutAll;
         
@@ -40,7 +39,6 @@ public class AttemptMovement : MonoBehaviour
 
     void OnDisable(){
         StageManagerDeduceSign.OnNewRound -= HandleOnNewRound;
-        CanvasManagerDS.OnSameRound -= HandleOnSameRound;
         StageManagerDeduceSign.OnWrongAnswer -= HandleOnWrongAnswer;
         StageManagerDeduceSign.OnFadeOutAll -= HandleOnFadeOutAll;
     }
@@ -56,19 +54,14 @@ public class AttemptMovement : MonoBehaviour
 
     }
 
-    private void HandleOnNewRound(){
+    private void HandleOnNewRound(bool sameRound){
 
-        StartCoroutine(RestartAttempt(false));
+        StartCoroutine(RestartAttempt(sameRound));
         
         
     }
 
-    private void HandleOnSameRound(){
 
-        StartCoroutine(RestartAttempt(true));
-        
-        
-    }
 
 
     private void HandleOnFadeOutAll(){

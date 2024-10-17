@@ -30,23 +30,28 @@ public class RoundBehaviour : MonoBehaviour
     void OnEnable()
     {
         StageManagerDeduceSign.OnNewRound += HandleOnNewRound;
-        CanvasManagerDS.OnSameRound += HandleOnSameRound;
         StageManagerDeduceSign.OnFadeOutAll += HandleOnFadeOutAll;
 
     }
 
     void OnDisable(){
         StageManagerDeduceSign.OnNewRound -= HandleOnNewRound;
-        CanvasManagerDS.OnSameRound -= HandleOnSameRound;
         StageManagerDeduceSign.OnFadeOutAll -= HandleOnFadeOutAll;
     }
 
 
 
-    private void HandleOnNewRound(){
+    private void HandleOnNewRound(bool sameRound){
 
-        roundNumber ++;
-        StartCoroutine(GoOutGoIn());  
+        if(sameRound){
+            StartCoroutine(GoIn());  
+
+        }
+        else{
+            roundNumber ++;
+            StartCoroutine(GoOutGoIn());              
+        }
+
         
 
 
@@ -54,12 +59,6 @@ public class RoundBehaviour : MonoBehaviour
 
 
 
-    private void HandleOnSameRound(){
-
-        StartCoroutine(GoIn());             
-        
-
-    }
 
     private void HandleOnFadeOutAll(){
         StartCoroutine(GoOut()); 

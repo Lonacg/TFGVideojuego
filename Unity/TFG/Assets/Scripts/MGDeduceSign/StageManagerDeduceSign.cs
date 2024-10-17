@@ -2,9 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
-using System;
+
 
 public class StageManagerDeduceSign : MonoBehaviour
 {
@@ -36,6 +34,7 @@ public class StageManagerDeduceSign : MonoBehaviour
     [Header("GameObjects:")]
     [SerializeField] private GameObject buttonsParent;     
     [SerializeField] private GameObject operationParent; 
+    [SerializeField] private GameObject errorSheet; 
     [SerializeField] private GameObject confetyParticles;
     public List<GameObject> buttonsChosen;      // Necesita ser publica para la correcta gestion de los botones
 
@@ -55,10 +54,9 @@ public class StageManagerDeduceSign : MonoBehaviour
     public delegate void _OnHasWin();
     public static event _OnHasWin OnHasWin;
 
-    public delegate void _OnErrorView();
-    public static event _OnErrorView OnErrorView;
 
-    public delegate void _OnNewRound();
+
+    public delegate void _OnNewRound(bool sameRound);
     public static event _OnNewRound OnNewRound;
 
     public delegate void _OnFadeOutAll();
@@ -184,10 +182,10 @@ public class StageManagerDeduceSign : MonoBehaviour
                 OnWrongAnswer();
             }
 
-            // Avisamos a los botones para que cambien a true
-            if(OnChangeBoolCanChoose != null){
-                OnChangeBoolCanChoose();
-            }
+            // // Avisamos a los botones para que cambien a true
+            // if(OnChangeBoolCanChoose != null){
+            //     OnChangeBoolCanChoose();
+            // }
 
         }
 
@@ -239,13 +237,16 @@ public class StageManagerDeduceSign : MonoBehaviour
             FadeOutButtonsAndOperation();
 
             /// Lanzamos el evento para que se muestre el dialogo de error
-            if(OnErrorView != null)
-                OnErrorView();
-        
-            
-            //StartCoroutine(WaitAndNewRound(sameRound:true));
-    
+            StartCoroutine(ShowError());
 
+            
+
+        }
+        else{
+            // Avisamos a los botones para que cambien a true
+            if(OnChangeBoolCanChoose != null){
+                OnChangeBoolCanChoose();
+            }
         }
 
 
@@ -335,11 +336,26 @@ public class StageManagerDeduceSign : MonoBehaviour
         yield return new WaitForSeconds(animationsTime);
 
         if(OnNewRound != null){
-            OnNewRound();
+            OnNewRound(sameRound: false);
         }
 
         FadeOutButtonsAndOperation();
     }
+
+    IEnumerator ShowError(){
+        errorSheet.SetActive(true);
+        yield return new WaitForSeconds(3.5f); // 1 FadeIn + 2 Stay + 1 FadeOut - 0,5 de solape de animaciones
+
+        if(OnNewRound != null){
+            OnNewRound(sameRound: true);
+        }
+        errorSheet.SetActive(false);
+
+    }
+
+
+
+
 
     IEnumerator LaunchFireworks(){
         yield return new WaitForSeconds(animationsTime*2);
