@@ -706,8 +706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageManager: {fileID: 868207763}
-  maxAttempts: 0
-  attemptsNumber: 0
+  currentAttemp: 0
 --- !u!1 &137312366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,6 +1302,7 @@ MonoBehaviour:
   totalRounds: 3
   maxAttempts: 0
   attemptsNumber: 0
+  currentRound: 0
   firsNumberText: {fileID: 8082559037813151887}
   secondNumberText: {fileID: 417884334}
   resultNumberText: {fileID: 1699871774}

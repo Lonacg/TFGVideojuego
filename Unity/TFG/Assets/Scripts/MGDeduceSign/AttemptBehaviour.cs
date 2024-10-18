@@ -10,8 +10,7 @@ public class AttemptBehaviour : MonoBehaviour
     [SerializeField] private GameObject stageManager;
 
     [Header("Variables:")]
-    public int maxAttempts;
-    public int attemptsNumber;
+    public int currentAttemp;
 
 
 
@@ -39,8 +38,6 @@ public class AttemptBehaviour : MonoBehaviour
 
 
     private void HandleOnWrongAnswer(){
-        attemptsNumber --;
-
         UpgradeTextAttempt();
     }
 
@@ -53,15 +50,11 @@ public class AttemptBehaviour : MonoBehaviour
 
     private void HandleOnFadeOutAll(){
         gameObject.GetComponent<Animator>().SetTrigger("FadeOut");
-
     }
 
 
 
     void Start(){
-        maxAttempts = stageManager.GetComponent<StageManagerDeduceSign>().maxAttempts;
-        attemptsNumber = stageManager.GetComponent<StageManagerDeduceSign>().attemptsNumber;
-
         UpgradeTextAttempt();
     }
 
@@ -74,7 +67,8 @@ public class AttemptBehaviour : MonoBehaviour
 
 
     private void UpgradeTextAttempt(){
-        gameObject.GetComponent<TextMeshProUGUI>().text = "Intentos:\n" + attemptsNumber.ToString();
+        currentAttemp = stageManager.GetComponent<StageManagerDeduceSign>().attemptsNumber;
+        gameObject.GetComponent<TextMeshProUGUI>().text = "Intentos:\n" + currentAttemp.ToString();
     }
 
 
@@ -85,14 +79,11 @@ public class AttemptBehaviour : MonoBehaviour
             // Hacemos el fade out del attempt
             gameObject.GetComponent<Animator>().SetTrigger("FadeOut");
             
-            yield return new WaitForSeconds(0.49f); // Tiempo de transicion de la animacion FadeOut (0.29 seg), para que con el restar sea 0.30 seg
-            maxAttempts --;
+            yield return new WaitForSeconds(0.5f); // Tiempo de transicion de la animacion FadeOut (0.29 seg), para que con el restar sea 0.30 seg
         }
         
         // Actualizamos los intentos disponibles en la proxima ronda
-        attemptsNumber = maxAttempts;
         UpgradeTextAttempt();
-
 
         // Lo colocamos en su posicion inicial para prepararlo para la siguiente ronda
         gameObject.GetComponent<Animator>().SetTrigger("Restart");

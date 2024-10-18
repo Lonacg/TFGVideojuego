@@ -8,10 +8,10 @@ public class StageManagerDeduceSign : MonoBehaviour
 {
    
     [Header("Variables:")]
-    [Min(2)] public int totalRounds = 3;    // Necesita ser publica para que RoundBehaviour acceda a ella
-    public int maxAttempts;                 // Necesita ser publica para que AttemptBehaviour acceda a ella
-    public int attemptsNumber;              // Necesita ser publica para que AttemptBehaviour acceda a ella
-    private int numberCorrectAnswers = 0;
+    [SerializeField, Min(2)] public int totalRounds = 3;    // Necesita ser publica para que RoundBehaviour acceda a ella
+    public int maxAttempts;                                 // Necesita ser publica para que AttemptBehaviour acceda a ella
+    public int attemptsNumber;                              // Necesita ser publica para que AttemptBehaviour acceda a ella
+    public int currentRound;
     private string answerSign;
     private bool firstOperation;
     private float animationsTime = 0.5f;
@@ -24,12 +24,12 @@ public class StageManagerDeduceSign : MonoBehaviour
     [SerializeField] private TextMeshProUGUI attemptPlace;
 
     
-    [Header("GameObjects:")]
+    [Header("GameObjects:")]     
     [SerializeField] private GameObject buttonsParent;     
     [SerializeField] private GameObject operationParent; 
     [SerializeField] private GameObject errorSheet; 
     [SerializeField] private GameObject confetyParticles;
-    public List<GameObject> buttonsChosen;      // Necesita ser publica para la correcta gestion de los botones
+    public List<GameObject> buttonsChosen;                  // Necesita ser publica para la correcta gestion de los botones
 
 
 
@@ -81,7 +81,6 @@ public class StageManagerDeduceSign : MonoBehaviour
         // Comprobamos si el simbolo escogido es el correcto
         CheckAnswer(buttonChosenGO);
     }
-
     
     private void HandleOnShowAttempt(){
         attemptPlace.gameObject.SetActive(false);
@@ -101,6 +100,7 @@ public class StageManagerDeduceSign : MonoBehaviour
 
 
     void Awake(){
+        currentRound = 1;
         buttonsParent.SetActive(false);
         operationParent.SetActive(false);
         attemptPlace.gameObject.SetActive(false);
@@ -112,23 +112,13 @@ public class StageManagerDeduceSign : MonoBehaviour
     void Start()
     {
         animationsTime = 0.5f;
-        totalRounds = 3;
+        //totalRounds = 3;          // Elegible en el inspector de Unity al ser SerializeField
         firstOperation = true;
         
         // Inicializamos la operacion en "invisible" (escala 0 en y) para que al activarlo no se vea
         operationParent.transform.localScale = new Vector3(1, 0, 1);
     }
 
-
-
-    private void SetAttemptsNumber(){
-        if(totalRounds > 4)
-            maxAttempts = 4;
-        else
-            maxAttempts = totalRounds;
-            
-        attemptsNumber = maxAttempts;
-    }
 
  
     public void UpdateNumbers(){  
@@ -147,6 +137,18 @@ public class StageManagerDeduceSign : MonoBehaviour
     }
 
 
+    private void SetAttemptsNumber(){
+        if(totalRounds - currentRound >= 4){
+            maxAttempts = 4;
+        }
+        else{
+            maxAttempts = totalRounds + 1 - currentRound; // + 1 porque current round ya se ha sumando
+        } 
+
+        attemptsNumber = maxAttempts;
+    }
+
+
     public void CheckAnswer(GameObject goSign){
         
         // Solucion correcta
@@ -155,7 +157,7 @@ public class StageManagerDeduceSign : MonoBehaviour
             ManageCorrectAnswer(goSign);
         }
         else{ // Solucion incorrecta
-
+            attemptsNumber --;
             ManageWrongAnswer(goSign);
 
             if(OnWrongAnswer != null){
@@ -166,12 +168,11 @@ public class StageManagerDeduceSign : MonoBehaviour
 
 
     public void ManageCorrectAnswer(GameObject goSign){
+        
 
         MakeButtonGreen(goSign);
 
-        numberCorrectAnswers ++;
-
-        if(numberCorrectAnswers == totalRounds){
+        if(currentRound == totalRounds){
 
             // Vaciamos la pizarra
             if(OnFadeOutAll != null) 
@@ -185,23 +186,19 @@ public class StageManagerDeduceSign : MonoBehaviour
             StartCoroutine(LaunchFireworks());
         }
         else{
+            // Ronda e intentos de la siguiente fase
+            currentRound ++;
+            SetAttemptsNumber();
             StartCoroutine(WaitAndNewRound());
         }
-
-        maxAttempts --;
-        attemptsNumber = maxAttempts;
     }
 
 
     public void ManageWrongAnswer(GameObject goSign){
-        attemptsNumber --;
         
         MakeButtonRed(goSign);
 
         if(attemptsNumber == 0){
-
-            // Actualizamos el int de intentos para la siguiente ronda
-            attemptsNumber = maxAttempts;
 
             // Ocultamos todo lo de la pizarra
             if(OnFadeOutAll != null)
@@ -210,6 +207,9 @@ public class StageManagerDeduceSign : MonoBehaviour
 
             // Mostramos el dialogo de error
             StartCoroutine(ShowError());
+
+            // Actualizamos el int de intentos para la siguiente ronda
+            SetAttemptsNumber();
         }
         else{
             // Avisamos a los botones para que cambien a true

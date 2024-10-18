@@ -12,7 +12,6 @@ public class RoundBehaviour : MonoBehaviour
 
 
     [Header("Variables:")]
-    private int roundNumber = 0;
     private int totalRounds;
     private Vector3[] goingOutPositions;
     private Vector3[] goingInPositions;
@@ -45,7 +44,6 @@ public class RoundBehaviour : MonoBehaviour
 
         }
         else{
-            roundNumber ++;
             StartCoroutine(GoOutGoIn());              
         }
     }
@@ -60,7 +58,6 @@ public class RoundBehaviour : MonoBehaviour
     void Start(){
 
         // Inicializamos variables
-        roundNumber = 0;
         goingInPositions = new Vector3[2];
         goingOutPositions = new Vector3[2];
         SetPositionsRound();
@@ -100,13 +97,13 @@ public class RoundBehaviour : MonoBehaviour
 
     private void NewRoundText(){
 
-        int numberNextRound = roundNumber + 1;
+        int currentRound = stageManager.GetComponent<StageManagerDeduceSign>().currentRound;
 
-        if(numberNextRound == totalRounds){
+        if(currentRound == totalRounds){
             gameObject.GetComponent<TextMeshProUGUI>().text = "RONDA FINAL";
         }
         else{
-            gameObject.GetComponent<TextMeshProUGUI>().text = "RONDA " + numberNextRound.ToString();
+            gameObject.GetComponent<TextMeshProUGUI>().text = "RONDA " + currentRound.ToString();
         }
     }
 
