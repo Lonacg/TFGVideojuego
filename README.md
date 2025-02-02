@@ -75,16 +75,26 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 
 - HECHO: Buscar una fuente bonita para las letras
 
+### En GENERAL
+- Cambiar LaunchFireworks por LaunchConfetti
+- Unificar nombres de archivos
+
+
 ### MG Parking
 - HECHO: Que la lista de ParkingLot se coja por codigo en vez de asignarlo en el inspector 
 - HECHO: Añadir una ayuda tras el primer fallo
 - HECHO: Los conos se mueven al ser empujados por player
 - HECHO: Que los tag sean "CorrectAnswer" / "IncorrectAnswer"
-- HECHO: Refactorizar codigo. Por ejemplo, si el script esta en un objeto, no hace falta pasarle por referencia ese objeto, con gameObject. se accede directamente.
+- HECHO: Refactorizar codigo. Por ejemplo, si el script esta en un objeto, no hace falta pasarle por referencia ese objeto, con 'gameObject.' se accede directamente.
 - Cambiar el 3, 2, 1, ya
 - La pantalla de error es una imagen en vez de una vista, asi cuando aparece el error, se puede seguir viendo la operacion y le da tiempo a pensar mientras sale el texto.
-- Vehiculos pasando por la carretera en ambos sentidos
-- Que se instancien entre 3 y 4 cochs, no siempre 4
+- Vehiculos pasando por la carretera en ambos sentidos (meterlo en la memoria si se hace)
+- Que la rotacion de los 4 vehiculos instanciados sea de +180º y no -180º
+- Uno de los coches deberia estar si o si instanciado de cara, otro si o si de culo, y los otros aleatorio.
+- Despues del texto de intro, deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
+- Añadir inercia
+- Poner que la X con el numero de mostrar una cosa sobre otra porque asi a veces falla
+- Que se instancien entre 3 y 4 coches, no siempre 4
 
 ### MG LaneRace
 - HECHO: (no se cuenta como acierto ni fallo y el juego sigue correctamente) arreglar problema de que pase entre dos puertas
@@ -94,15 +104,17 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - Añadir "correctos:" a la imagen de score
 - Listar las 4 operaciones en Stage manager y que set opetarion coja una de ahi (gestionando correctamente las 3 primeras que se generan al mismo tiempo... posibles poblemas de paralela)
 - Poner particulas brillantes al activarse los botones de correcto e incorrecto
-- Activar particulas de humo al cruzar la puerta para hacerla desaparecer
 - Poner arboles y flores en el suelo, algo mas VERDE BRILLANTE, asi queda muy apagado y no pega con Granny
 - Transicion en velolociadad del suelo
 - Valorar el uso de diccionarios
+- Despues del texto de intro, deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
 
 ### MG DeduceSign
 - HECHO: Impedir que se pueda pasar el raton por algun boton (ni pulsar) hasta que la operacion sea completamente visible
 - HECHO: Añadir rondas al juego
 - HECHO: Añadir en Stage manager que el totalRounds tenga que ser un numero mayor que 3
+- IMPORTANTE: cuando fallas la ronda, se ven por un momento los intentos de la proxima ronda. Deberia mantenerse o reducirse en uno y mantenerse.
 - Añadir particulas cuando baja un intento
 - Añadir particulas en el boton al ponerse verde
 - ¿El intento deberia bajar en uno cuando se acierta?
+- Despues del texto de intro, deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar

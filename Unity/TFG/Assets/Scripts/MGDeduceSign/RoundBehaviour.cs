@@ -110,7 +110,7 @@ public class RoundBehaviour : MonoBehaviour
 
 
     IEnumerator MoveRound(Vector3 startPosition, Vector3 endPosition, AnimationCurve curve, bool mustNotifyAttempt = false, float animationTime = 1){
-
+        // necesitamos mustNotifyAttempt porque esta funcion vale tanto para cuando se va (que no muestra los intentos a continuacion suya), como para cuando llega (que si los muestra) 
         float elapsedTime = 0;
         
         while(elapsedTime < animationTime){

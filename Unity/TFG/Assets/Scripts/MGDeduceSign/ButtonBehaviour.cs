@@ -55,7 +55,7 @@ public class ButtonBehaviour : MonoBehaviour
 
     
     private void OnMouseOver(){
-        // Se usa esta en vez de OnMouseEnter(), aunque conlleve mas coste, porque si ha hecho click encima de la correcta en la pantalla anterior y no ha movido el raton (sigue encima del boton), al empezar la nueva debe resaltarse, pero OnMouseEnter no lo detecta
+        // Se usa esta en vez de OnMouseEnter(), aunque conlleve mas coste, porque si ha hecho click encima de la correcta en la pantalla anterior y no ha movido el raton, cuando aparece el boton en la siguiente ronda sigue ahi encima, y con OnMouseEnter no se colorea porque realmente no ha entrado, ya estaba ahi
         if(canChooseButton && spriteRendererBase.color == Color.white){
             spriteRendererBase.color = lightGreen;
         }

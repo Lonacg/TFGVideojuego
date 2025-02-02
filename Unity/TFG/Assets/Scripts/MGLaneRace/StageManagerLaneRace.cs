@@ -31,7 +31,7 @@ public class StageManagerLaneRace : MonoBehaviour
 
 
 
-    public delegate void _OnVictory();          // El evento de victoria se lanza en el momento en el que se consiguen 3 aciertos (OnFinalLine es cuando cruza la meta)
+    public delegate void _OnVictory();          // El evento de victoria se lanza en el momento en el que se consiguen los aciertos objetivos (3 por defecto) (OnFinalLine es cuando cruza la meta)
     public static event _OnVictory OnVictory;
 
 
@@ -177,5 +177,4 @@ public class StageManagerLaneRace : MonoBehaviour
             yield return 0;
         }
     }
-
 }

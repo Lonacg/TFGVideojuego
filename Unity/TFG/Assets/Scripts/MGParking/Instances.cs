@@ -57,7 +57,7 @@ public class Instances : MonoBehaviour
 
     public void intanciateCars(){
 
-        // Opcional: pasar la referencia por codigo en vez de en el inspector (menos coste no haciendolo)
+        // Opcional: pasar la referencia por codigo en vez de en el inspector (menos coste como esta hecho)
         //parkingLot = GameObject.Find(pLot);
         //parkingNumber = GameObject.Find(pNum);
 

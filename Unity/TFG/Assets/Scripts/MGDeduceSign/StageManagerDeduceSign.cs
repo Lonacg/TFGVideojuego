@@ -71,7 +71,7 @@ public class StageManagerDeduceSign : MonoBehaviour
     private void HandleOnSignChosen(GameObject buttonChosenGO){
 
         // Metemos el boton en una lista para luego volver a activarles el script
-        buttonsChosen.Add(buttonChosenGO.gameObject); // me dice null reference, por que? Sol: igual que arriba, aunque goSing sea un game object, cuando se mete a la lista tenemos que decir que queremos meterlo como .gameObject
+        buttonsChosen.Add(buttonChosenGO.gameObject); // Aunque goSing sea un game object, cuando se mete a la lista tenemos que decir que queremos meterlo como .gameObject porque si no nos da null reference
         
         // Avisamos a los botones para que cambien a false
         if(OnChangeBoolCanChoose != null){

@@ -12,6 +12,7 @@ public class SetOperationParking : MonoBehaviour
     public Instances scriptInstances;
     public TextMeshProUGUI operationFirstTryText;
     public TextMeshProUGUI operationSecondTryText;
+    
 
     public List<GameObject> parkingNumbers;
     public List<GameObject> parkingLots;
@@ -25,6 +26,7 @@ public class SetOperationParking : MonoBehaviour
     private string symbol;
     private string textFirstTry;
     private string textAfterFail;
+    private bool firstTry = true;
 
 
 
@@ -39,7 +41,12 @@ public class SetOperationParking : MonoBehaviour
 
 
     void HandleOnWrongParked (GameObject go){
-        StartCoroutine(ChangeTextSecondTry());
+        if(firstTry){
+            operationSecondTryText.text = textAfterFail;
+            // StartCoroutine(ChangeTextSecondTry());
+            // firstTry = false;
+        }
+        
     }
 
 
@@ -49,6 +56,7 @@ public class SetOperationParking : MonoBehaviour
         parkingNumbers = scriptInstances.pNumbers;
         parkingLots = scriptInstances.pLots;
         numberFreeParkings = parkingLots.Count;
+        firstTry = true;
         
         GenerateOperation();
         // Llamar a la funcion que muestre la operacion
@@ -110,7 +118,7 @@ public class SetOperationParking : MonoBehaviour
         // Evitamos poner numeros repetidos o la solucion correcta
         bool duplicated = incorrectNumbers.Contains(incorrectSol);
 
-        if (duplicated || incorrectSol == sol)      // MUY POCO EFICIENTE, REVISAR!!!!!!!!!!!!!!!!!!!
+        if (duplicated || incorrectSol == sol)      
             ChooseWrongAnswer(ptext, indexWrongN);
         else{
             ptext.text = incorrectSol.ToString();
@@ -153,7 +161,6 @@ public class SetOperationParking : MonoBehaviour
         operationSecondTryText.text = textAfterFail;
         operationSecondTryText.gameObject.SetActive(true);
         
-        // DialogueManager (script) tambien esta suscrito, el hace que desaparezca y aparezca la operacion
     }
 
 }

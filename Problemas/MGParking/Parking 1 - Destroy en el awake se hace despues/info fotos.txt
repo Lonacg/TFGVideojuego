@@ -1,5 +1,5 @@
 1- No esta poniendo bien los numeros de aparcamiento! Coge el numero de plazas antes de instanciar los coches
-2-Cuando empieza Start aun no ha actualizado la eliminacion de objetos del Awake
+2- Cuando empieza Start aun no ha actualizado la eliminacion de objetos del Awake
 3. Donde se hace el Awake la lista se actualiza correctamente
 4. Donde se hace el start, no tiene en cuenta los que se han borrado hasta que llega el update que si dicee que hay 6
 5. Parece que el problema es que el Destroy de Awake se ejecuta en segundo plano, y para cuando empieza Start aun no se ha hecho, sin embargo, la lista se actualiza inmediatamente 

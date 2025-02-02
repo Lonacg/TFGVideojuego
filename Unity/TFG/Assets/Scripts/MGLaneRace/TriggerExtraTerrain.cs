@@ -12,10 +12,7 @@ public class TriggerExtraTerrain : MonoBehaviour
         if (other.tag == "Player"){
             if(OnNewGround != null)   
                 OnNewGround();
-
         }
-
     }
-
 }
 

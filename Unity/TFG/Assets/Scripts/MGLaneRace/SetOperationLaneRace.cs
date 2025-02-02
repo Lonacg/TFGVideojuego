@@ -163,7 +163,7 @@ public class SetOperationLaneRace : MonoBehaviour
         for(int i = wrongSols.Count() - 1 ; i > 0 ; i --){
             int indexRandom = Random.Range(0, i + 1); 
 
-            // Intercmbiamos las posiciones de 2 elementos de la lista en cada vuelta del bucle
+            // Intercambiamos las posiciones de 2 elementos de la lista en cada vuelta del bucle
             int aux  = wrongSols[i];
             wrongSols[i] = wrongSols[indexRandom];
             wrongSols[indexRandom] = aux;
