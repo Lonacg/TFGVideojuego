@@ -7232,6 +7232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movSpeed: 5
   rotationSpeed: 150
+  inertia: 0
   frontWheels:
   - {fileID: 486635807}
   - {fileID: 1575244652}
