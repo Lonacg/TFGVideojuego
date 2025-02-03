@@ -200,6 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 264308841}
   - component: {fileID: 264308840}
+  - component: {fileID: 264308842}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -251,6 +252,29 @@ Transform:
   - {fileID: 663887480}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &264308842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264308839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a52b6063db2174f4389eb68b11db1bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axleInfos:
+  - leftWheel: {fileID: 1559414125}
+    rightWheel: {fileID: 1534557348}
+    motor: 1
+    steering: 1
+  - leftWheel: {fileID: 90122445}
+    rightWheel: {fileID: 1857309382}
+    motor: 0
+    steering: 0
+  maxMotorTorque: 400
+  maxSteeringAngle: 30
 --- !u!1 &427181793
 GameObject:
   m_ObjectHideFlags: 0
