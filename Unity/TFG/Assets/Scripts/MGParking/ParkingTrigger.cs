@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class ParkingTrigger : MonoBehaviour
 {
-    private int parkingReferences = 0;
+    private int parkingReferences = 0; // Variable para contar los collider (sensores de aparcamiento) en los que esta dentro player
+
+
+
     public delegate void _OnWellParked(GameObject go);
     public static event _OnWellParked OnWellParked;
-
 
     public delegate void _OnWrongParked(GameObject go);
     public static event _OnWrongParked OnWrongParked;
@@ -15,20 +17,20 @@ public class ParkingTrigger : MonoBehaviour
     void OnTriggerEnter(Collider other){
         if (other.tag=="Player"){
             parkingReferences ++;
-            checkParking();
+            CheckParking();
         }
     }
 
     void OnTriggerExit(Collider other){
         if (other.tag=="Player"){
             parkingReferences --;
-            checkParking();
+            CheckParking();
         }
     }
 
 
 
-    public void checkParking(){
+    public void CheckParking(){
         if(parkingReferences == 4){
 
             if( gameObject.CompareTag("CorrectAnswer") ){       

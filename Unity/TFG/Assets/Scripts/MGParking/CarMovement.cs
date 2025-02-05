@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class CarMovement : MonoBehaviour
 {
-    [SerializeField] private float movSpeed = 15;
-    [SerializeField] private float rotationSpeed = 75;
-    private Vector2 inputMovement = Vector2.zero;
-    private Rigidbody rb;
+    [SerializeField] private float movSpeed = 150;
+    [SerializeField] private float rotationSpeed = 150;
     [SerializeField] private Transform[] frontWheels;
 
+    private Vector2 inputMovement = Vector2.zero;
+    private Rigidbody rb;
+    
 
-    void Start()
-    {
+    void Start(){
         // Asignamos el Rigidbody
         rb = GetComponent<Rigidbody>();
     }
@@ -22,8 +22,7 @@ public class CarMovement : MonoBehaviour
     }
 
 
-    void FixedUpdate()
-    {
+    void FixedUpdate(){
         // Movimiento del vehiculo aplicando la fisica y en el FixedUpdate para que sean siempre los mismos frames
         if(inputMovement.y != 0){
             // float speed = movSpeed > maxSpeed ? maxSpeed : movSpeed;  // si condicion, entonces, ? si verdadero : si falso
@@ -32,7 +31,7 @@ public class CarMovement : MonoBehaviour
             rb.AddForce(gameObject.transform.forward * inputMovement.y * movSpeed * Time.fixedDeltaTime,  ForceMode.Impulse );
             
             // Giro a izquierda y derecha
-            transform.Rotate(0, inputMovement.x * Time.deltaTime * rotationSpeed, 0);
+            transform.Rotate(xAngle: 0, yAngle: inputMovement.x * Time.deltaTime * rotationSpeed, zAngle: 0);
         }
         
         // Giro de las ruedas delanteras
@@ -46,4 +45,5 @@ public class CarMovement : MonoBehaviour
         foreach (var wheel in frontWheels)
             wheel.localRotation = Quaternion.Lerp(wheel.localRotation, wheelTargetRotation, Time.deltaTime * 10);
     }
+
 }

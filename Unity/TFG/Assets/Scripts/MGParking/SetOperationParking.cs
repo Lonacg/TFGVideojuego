@@ -7,21 +7,24 @@ using Unity.VisualScripting;
 
 public class SetOperationParking : MonoBehaviour
 {
+    [Header("Scripts:")]
+    [SerializeField] private Instances scriptInstances;
 
-    public GameObject parkingNumber;
-    public Instances scriptInstances;
-    public TextMeshProUGUI operationFirstTryText;
-    public TextMeshProUGUI operationSecondTryText;
+    [Header("Game Objects:")]
+    [SerializeField] private List<GameObject> parkingNumbers;
+    [SerializeField] private List<GameObject> parkingLots;
     
+    [Header("Texts")]
+    [SerializeField] private TextMeshProUGUI operationFirstTryText;
+    [SerializeField] private TextMeshProUGUI operationSecondTryText;
 
-    public List<GameObject> parkingNumbers;
-    public List<GameObject> parkingLots;
+
 
     private int firstNumber;
     private int secondNumber;
     private int sol;
     private int numberFreeParkings;
-    private int[] incorrectNumbers; // MIRAR CONJUNTO EN VEZ DE ARRAY
+    private int[] incorrectNumbers;
 
     private string symbol;
     private string textFirstTry;
@@ -41,25 +44,21 @@ public class SetOperationParking : MonoBehaviour
 
 
     void HandleOnWrongParked (GameObject go){
+        // Actualizamos el texto del segundo intento (CanvasManagerParking es quien lo muestra)
         if(firstTry){
             operationSecondTryText.text = textAfterFail;
-            // StartCoroutine(ChangeTextSecondTry());
-            // firstTry = false;
         }
-        
     }
 
 
 
-    void Start()
-    {   
+    void Start(){   
         parkingNumbers = scriptInstances.pNumbers;
         parkingLots = scriptInstances.pLots;
         numberFreeParkings = parkingLots.Count;
         firstTry = true;
         
         GenerateOperation();
-        // Llamar a la funcion que muestre la operacion
         ChangeNumberParking();
     }
 

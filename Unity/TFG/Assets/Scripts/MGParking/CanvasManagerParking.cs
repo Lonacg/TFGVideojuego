@@ -6,30 +6,28 @@ using System.Collections.Generic;
 public class CanvasManagerParking : MonoBehaviour
 {
     [Header("Game Objects:")]
-    public GameObject player;
-    public GameObject introView;
-    public GameObject ingameView;
-    public GameObject victoryView;
-    public GameObject operationImage;
-    public GameObject errorImage;
-    //public GameObject errorView;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject introView;
+    [SerializeField] private GameObject ingameView;
+    [SerializeField] private GameObject victoryView;
+    [SerializeField] private GameObject operationImage;
+    [SerializeField] private GameObject errorImage;
 
-    [Header("Text:")]
-    public TextMeshProUGUI introDialoguePlace;
-    public TextMeshProUGUI errorDialoguePlace;
-    public TextMeshProUGUI victoryDialoguePlace;
-    public TextMeshProUGUI operationFirstTryText;
-    public TextMeshProUGUI operationSecondTryText;
-    public List<string> linesIntroDialogue;
-    public List<string> linesErrorDialogue;
+    [Header("Texts:")]
+    [SerializeField] private TextMeshProUGUI introDialoguePlace;
+    [SerializeField] private TextMeshProUGUI errorDialoguePlace;
+    [SerializeField] private TextMeshProUGUI victoryDialoguePlace;
+    [SerializeField] private TextMeshProUGUI operationFirstTryText;
+    [SerializeField] private TextMeshProUGUI operationSecondTryText;
+    [SerializeField] private List<string> linesIntroDialogue;
     //public List<string> linesVictoryDialogue;
 
     // Alternativa escribiendo las frases en el inspector
     //public string[] linesIntroDialogue;
     //public string[] linesErrorDialogue;
 
-    [Header("Variables:")]
-    public float textSpeed = 0.1f;
+    //[Header("Variables:")]
+    private float textSpeed = 0.1f;
     private int indexSentence = 0;
     private bool firstTry= true;
 
@@ -48,10 +46,7 @@ public class CanvasManagerParking : MonoBehaviour
 
 
     void HandleOnWrongParked(GameObject go){
-        //StartCoroutine(FadeCanvasGroup(errorView, fromAlpha: 0, toAlpha: 1));
         StartCoroutine(ShowErrorImage());
-        //StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 1, toAlpha: 0));
-        //StartDialogue(errorView, errorDialoguePlace, linesErrorDialogue);
     }
 
     void HandleOnWellParked(GameObject go){
@@ -70,12 +65,6 @@ public class CanvasManagerParking : MonoBehaviour
         linesIntroDialogue.Add(line1);
         //linesIntroDialogue.Add(line2);
 
-        // Dialogo tras error
-        //line1 = "¡¡ERROR!!";
-        //line2 = "Repasa la operación";
-        //linesErrorDialogue.Add(line1);
-        //linesErrorDialogue.Add(line2);
-
         // Dialogo tras victoria (esta escrito directamente en la etiqueta)
         //line1 = "¡¡Conseguido!!";
         //linesVictoryDialogue.Add(line1);
@@ -92,8 +81,10 @@ public class CanvasManagerParking : MonoBehaviour
     public void StartDialogue(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){
         indexSentence = 0;
         dialoguePlace.text = "";
+
         // Desactivamos el Script de Player para que no se pueda mover mientras dure la corrutina 
         player.GetComponent<CarMovement>().enabled = false;
+
         StartCoroutine(WriteLetterByLetter(view, dialoguePlace, lines));
     }
 
@@ -106,7 +97,7 @@ public class CanvasManagerParking : MonoBehaviour
             StartCoroutine(FadeCanvasGroup(view, fromAlpha: 1, toAlpha: 0));
             StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1));
             
-            // Activamos el Script de Player para vuelva a poder moverse
+            // Activamos el Script de Player para que vuelva a poder moverse
             player.GetComponent<CarMovement>().enabled = true;
         }
     }
@@ -146,10 +137,11 @@ public class CanvasManagerParking : MonoBehaviour
         // Desactivamos el Script de Player para que no se pueda mover mientras dure la corrutina 
         player.GetComponent<CarMovement>().enabled = false;
 
-        // Mostramos la imagen de error y actualizamos la operacion si es el primer fallo
+        // Mostramos el panel de error  ("Repasa la operacion")
         float animationsTime = 0.6f;
         StartCoroutine(FadeCanvasGroup(errorImage, fromAlpha: 0, toAlpha: 1, animationTime: animationsTime));
 
+        // Actualizacion de la operacion si es el primer fallo
         if(firstTry){
             yield return new WaitForSeconds(1);
             StartCoroutine(FadeCanvasGroup(operationImage, fromAlpha: 1, toAlpha: 0, animationTime: animationsTime));
@@ -163,9 +155,8 @@ public class CanvasManagerParking : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         StartCoroutine(FadeCanvasGroup(errorImage, fromAlpha: 1, toAlpha: 0, animationTime: animationsTime));
 
-        // Activamos el Script de Player para vuelva a poder moverse
+        // Activamos el Script de Player para que vuelva a poder moverse
         player.GetComponent<CarMovement>().enabled = true;
-        
     }
 
 }

@@ -5,14 +5,14 @@ using UnityEngine;
 public class ErrorXBehaviour : MonoBehaviour
 {
 
-    public TextMeshPro textX;
+    private TextMeshPro textX;
     private float biggerSize = 60;
     private float endSize = 30;
 
 
 
-    void OnEnable()
-    {
+    void OnEnable(){
+        textX = GetComponentInChildren<TextMeshPro>();
         StartCoroutine(MakeAppearance());
     }
 

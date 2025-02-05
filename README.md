@@ -85,16 +85,18 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - HECHO: Añadir una ayuda tras el primer fallo
 - HECHO: Los conos se mueven al ser empujados por player
 - HECHO: Que los tag sean "CorrectAnswer" / "IncorrectAnswer"
-- HECHO: Refactorizar codigo. Por ejemplo, si el script esta en un objeto, no hace falta pasarle por referencia ese objeto, con 'gameObject.' se accede directamente.
-- Cambiar el 3, 2, 1, ya
-- La pantalla de error es una imagen en vez de una vista, asi cuando aparece el error, se puede seguir viendo la operacion y le da tiempo a pensar mientras sale el texto.
+- HECHO: Refactorizar codigo. Por ejemplo, si el script esta en un objeto, no hace falta pasarle por referencia ese objeto, con 'gameObject.' se accede directamente, y tampoco hace falta poner gameObject. para acceder un componente, coge directamente el objeto donde eta el script.
+- HECHO:Cambiar el 3, 2, 1, ya
+- HECHO: La pantalla de error es una imagen en vez de una vista, asi cuando aparece el error, se puede seguir viendo la operacion y le da tiempo a pensar mientras sale el texto.
+- HECHO: Añadir inercia
+- HECHO: Poner que la X con el order in layer porque asi a veces falla
+- HECHO: Cambiar fuente de letra a la de MG DeduceSign
+- HECHO: Poner las cosas como [SerializeField] en vez de como public
 - Vehiculos pasando por la carretera en ambos sentidos (meterlo en la memoria si se hace)
-- Que la rotacion de los 4 vehiculos instanciados sea de +180º y no -180º
-- Uno de los coches deberia estar si o si instanciado de cara, otro si o si de culo, y los otros aleatorio.
 - Despues del texto de intro, deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
-- Añadir inercia
-- Poner que la X con el numero de mostrar una cosa sobre otra porque asi a veces falla
-- Que se instancien entre 3 y 4 coches, no siempre 4
+- Uno de los coches deberia estar si o si instanciado de cara, otro si o si de culo, y los otros aleatorio.
+- Que se instancien entre 3 y 4 coches, no siempre 4 
+
 
 ### MG LaneRace
 - HECHO: (no se cuenta como acierto ni fallo y el juego sigue correctamente) arreglar problema de que pase entre dos puertas

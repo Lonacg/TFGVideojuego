@@ -5,20 +5,19 @@ using System.Collections;
 
 public class Instances : MonoBehaviour
 {
-    public GameObject player;
-    public GameObject confetiParticles;
-    public GameObject[] cars;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject confetiParticles;
+    [SerializeField] private GameObject xError;
+    [SerializeField] private GameObject[] cars;
 
-    public GameObject parkingLot;
+    [SerializeField] private GameObject parkingLot;
     //private string pLot = "ParkingLot";
 
-    public GameObject parkingNumber;
+    [SerializeField] private GameObject parkingNumber;
     //private string pNum = "ParkingNumbers";
 
-    public GameObject xErrorAbove;
-    public GameObject xErrorBelow;
-    public List<GameObject> pLots;
-    public List<GameObject> pNumbers;
+    public List<GameObject> pLots;      // Necesita ser publica porque SetOperationParking accede a ella
+    public List<GameObject> pNumbers;    // Necesita ser publica porque SetOperationParking accede a ella
 
 
 
@@ -35,11 +34,7 @@ public class Instances : MonoBehaviour
 
 
     private void HandleOnWrongParked(GameObject go){
-        // Instanciamos la X en el aparcamiento
-        if(go.transform.position.z == 4.1f)
-            Instantiate(xErrorAbove, go.transform.position,  Quaternion.Euler(0, 0, 0));
-        else
-            Instantiate(xErrorBelow, go.transform.position,  Quaternion.Euler(0, 0, 0));
+        Instantiate(xError, go.transform.position,  Quaternion.Euler(0, 0, 0));
     }
 
     private void HandleOnWellParked(GameObject go){
@@ -50,12 +45,12 @@ public class Instances : MonoBehaviour
 
 
     void Awake(){
-        intanciateCars();
+        IntanciateCars();
     }
 
 
 
-    public void intanciateCars(){
+    public void IntanciateCars(){
 
         // Opcional: pasar la referencia por codigo en vez de en el inspector (menos coste como esta hecho)
         //parkingLot = GameObject.Find(pLot);
