@@ -10,12 +10,22 @@ public class CarTest : MonoBehaviour
     public float maxSteeringAngle;   // maximum steer angle the wheel can have
 
     
-
+    public float motor;
+    public float steering;
+    public Rigidbody rb;
 
     void FixedUpdate()
     {
-        float motor = maxMotorTorque * Input.GetAxis("Vertical");
-        float steering = maxSteeringAngle * Input.GetAxis("Horizontal");
+
+        if(Input.GetAxis("Vertical") != 0){
+            motor = maxMotorTorque * Input.GetAxis("Vertical");
+            steering = maxSteeringAngle * Input.GetAxis("Horizontal");
+        }
+        else{
+            motor = 0;
+            steering = 0;       
+        }
+
             
         foreach (AxleInfo axleInfo in axleInfos) {
             if (axleInfo.steering) {
@@ -27,6 +37,7 @@ public class CarTest : MonoBehaviour
                 axleInfo.rightWheel.motorTorque = motor;
             }
         }
+        Debug.Log(rb.linearVelocity);
 
     }
 }
