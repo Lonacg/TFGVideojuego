@@ -92,9 +92,10 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - HECHO: Poner que la X con el order in layer porque asi a veces falla
 - HECHO: Cambiar fuente de letra a la de MG DeduceSign
 - HECHO: Poner las cosas como [SerializeField] en vez de como public
-- Vehiculos pasando por la carretera en ambos sentidos (meterlo en la memoria si se hace)
+- HECHO: Vehiculos pasando por la carretera en ambos sentidos (meterlo en la memoria si se hace)
+- Uno de los coches deberia estar si o si instanciado de cara, otro si o si de culo y los otros aleatorio.
+- Añadir música
 - Despues del texto de intro, deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
-- Uno de los coches deberia estar si o si instanciado de cara, otro si o si de culo, y los otros aleatorio.
 - Que se instancien entre 3 y 4 coches, no siempre 4 
 
 
@@ -104,12 +105,15 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - HECHO: Poner un terreno infinito de alguna forma
 - HECHO: arreglar el movimiento del terreno y el suelo infinito
 - Añadir "correctos:" a la imagen de score
-- Listar las 4 operaciones en Stage manager y que set opetarion coja una de ahi (gestionando correctamente las 3 primeras que se generan al mismo tiempo... posibles poblemas de paralela)
 - Poner particulas brillantes al activarse los botones de correcto e incorrecto
 - Poner arboles y flores en el suelo, algo mas VERDE BRILLANTE, asi queda muy apagado y no pega con Granny
+- Añadir musica
+- Añadir nubecitas o particulas tipo polvo que salgan en el suelo al correr, cuando corre rapido salen mas y cuando va ams despacio salen menos, como ayuda visual del cambio de velicidad
+- Despues del texto de intro, deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
 - Transicion en velolociadad del suelo
 - Valorar el uso de diccionarios
-- Despues del texto de intro, deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
+- Listar las 4 operaciones en Stage manager y que set opetarion coja una de ahi (gestionando correctamente las 3 primeras que se generan al mismo tiempo... posibles poblemas de paralela)
+
 
 ### MG DeduceSign
 - HECHO: Impedir que se pueda pasar el raton por algun boton (ni pulsar) hasta que la operacion sea completamente visible

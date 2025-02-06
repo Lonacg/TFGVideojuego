@@ -9,11 +9,7 @@ public class Instances : MonoBehaviour
     [SerializeField] private GameObject confetiParticles;
     [SerializeField] private GameObject xError;
     [SerializeField] private GameObject[] cars;
-
-    [SerializeField] private GameObject parkingLot;
-    //private string pLot = "ParkingLot";
-
-    [SerializeField] private GameObject parkingNumber;
+    [SerializeField] private GameObject parkingNumbers;
     //private string pNum = "ParkingNumbers";
 
     public List<GameObject> pLots;      // Necesita ser publica porque SetOperationParking accede a ella
@@ -39,7 +35,7 @@ public class Instances : MonoBehaviour
 
     private void HandleOnWellParked(GameObject go){
         player.GetComponent<CarMovement>().enabled = false;
-        StartCoroutine(LaunchFireworks());
+        LaunchFireworks();
     }
 
 
@@ -52,18 +48,17 @@ public class Instances : MonoBehaviour
 
     public void IntanciateCars(){
 
-        // Opcional: pasar la referencia por codigo en vez de en el inspector (menos coste como esta hecho)
-        //parkingLot = GameObject.Find(pLot);
-        //parkingNumber = GameObject.Find(pNum);
+        // Opcional: asignar el objeto por codigo en vez de en el inspector (es menos coste como esta hecho, por evitar el .Find() )
+        //parkingNumbers = GameObject.Find(pNum);
 
         // Asignamos las posiciones a las listas por codigo
-        for (int i = 0 ; i < parkingLot.transform.childCount; i++ ){
-            pLots.Add(parkingLot.transform.GetChild(i).gameObject); 
-            pNumbers.Add(parkingNumber.transform.GetChild(i).gameObject);
+        for(int i = 0 ; i < gameObject.transform.childCount; i++ ){  // gameObjet es parkingLots, que es el objeto dodne esta este script
+            pLots.Add(gameObject.transform.GetChild(i).gameObject); 
+            pNumbers.Add(parkingNumbers.transform.GetChild(i).gameObject);
         }
 
         // Instanciamos los prefabs
-        foreach (var car in cars){
+        foreach(var car in cars){
             // Lugar random para instanciar
             int i = Random.Range(0, pLots.Count);
             GameObject placeToInstantiate = pLots[i];
@@ -92,10 +87,8 @@ public class Instances : MonoBehaviour
 
 
 
-    IEnumerator LaunchFireworks(){
+    private void LaunchFireworks(){
         Instantiate(confetiParticles, player.transform.position, Quaternion.identity);
-
-        yield return 0;             
     }
 
 }

@@ -12,6 +12,8 @@ public class CanvasManagerParking : MonoBehaviour
     [SerializeField] private GameObject victoryView;
     [SerializeField] private GameObject operationImage;
     [SerializeField] private GameObject errorImage;
+    [SerializeField] private GameObject poolingRoad;
+
 
     [Header("Texts:")]
     [SerializeField] private TextMeshProUGUI introDialoguePlace;
@@ -53,6 +55,8 @@ public class CanvasManagerParking : MonoBehaviour
         StartCoroutine(FadeCanvasGroup(victoryView, fromAlpha: 0, toAlpha: 1));
         StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 1, toAlpha: 0));
         player.GetComponent<CarMovement>().enabled = false;
+
+        // NOTA: Lanzar aqui una corrutina que espere y salga del minijuego
     }
 
 
@@ -97,8 +101,9 @@ public class CanvasManagerParking : MonoBehaviour
             StartCoroutine(FadeCanvasGroup(view, fromAlpha: 1, toAlpha: 0));
             StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1));
             
-            // Activamos el Script de Player para que vuelva a poder moverse
+            // Activamos el Script de Player para que vuelva a poder moverse y activamos el Pool de objetos para que aparezcan los vehículos cruzando la calle
             player.GetComponent<CarMovement>().enabled = true;
+            poolingRoad.SetActive(true);
         }
     }
 
