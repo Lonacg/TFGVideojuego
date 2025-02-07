@@ -25,7 +25,7 @@ Te dan puntos de bondad por cada misión completada.
 ## Minijuegos en la calle
    - __HECHO__ -> Pasar al lado de un coche amarillo: MJ de aparccamiento (aparcar en la sol correcta)
    - __HECHO__ -> Pasar al lado de Granny (ella corriendo): MJ de pasillos (entrar por el pasillo con la sol correcta)
-   - Pisar una interrogacion en el suelo: MJ de adivinar el signo de la operacion
+   - __HECHO__ -> Pisar una interrogacion en el suelo: MJ de adivinar el signo de la operacion
    - Pasar al lado de una bici aparcada en la acera: MJ carrera de bicis (cada operacion resuelta es un impulso)
 
 
@@ -86,14 +86,15 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - HECHO: Los conos se mueven al ser empujados por player
 - HECHO: Que los tag sean "CorrectAnswer" / "IncorrectAnswer"
 - HECHO: Refactorizar codigo. Por ejemplo, si el script esta en un objeto, no hace falta pasarle por referencia ese objeto, con 'gameObject.' se accede directamente, y tampoco hace falta poner gameObject. para acceder un componente, coge directamente el objeto donde eta el script.
-- HECHO:Cambiar el 3, 2, 1, ya
+- HECHO: Cambiar el 3, 2, 1, ya
 - HECHO: La pantalla de error es una imagen en vez de una vista, asi cuando aparece el error, se puede seguir viendo la operacion y le da tiempo a pensar mientras sale el texto.
 - HECHO: Añadir inercia
 - HECHO: Poner que la X con el order in layer porque asi a veces falla
 - HECHO: Cambiar fuente de letra a la de MG DeduceSign
 - HECHO: Poner las cosas como [SerializeField] en vez de como public
 - HECHO: Vehiculos pasando por la carretera en ambos sentidos (meterlo en la memoria si se hace)
-- Uno de los coches deberia estar si o si instanciado de cara, otro si o si de culo y los otros aleatorio.
+- HECHO: Uno de los coches deberia estar si o si instanciado de cara, otro si o si de culo y los otros aleatorio.
+- HECHO: Ajustar mejor la  deteccion de coche aparcado, entrando muy torcido lo damos por bueno
 - Añadir música
 - Despues del texto de intro, deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
 - Que se instancien entre 3 y 4 coches, no siempre 4 

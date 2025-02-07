@@ -8,11 +8,18 @@ public class CarMovement : MonoBehaviour
 
     private Vector2 inputMovement = Vector2.zero;
     private Rigidbody rb;
+
+
+
+    public AudioSource engineAudioSource;
+    private float engineSpeed;
     
 
     void Start(){
         // Asignamos el Rigidbody
         rb = GetComponent<Rigidbody>();
+        engineSpeed = 0;
+        
     }
 
 
@@ -32,6 +39,9 @@ public class CarMovement : MonoBehaviour
             
             // Giro a izquierda y derecha
             transform.Rotate(xAngle: 0, yAngle: inputMovement.x * Time.deltaTime * rotationSpeed, zAngle: 0);
+
+            // Revolucionamos el motor (sonido)
+            SpeedUpEngine();
         }
         
         // Giro de las ruedas delanteras
@@ -44,6 +54,21 @@ public class CarMovement : MonoBehaviour
         
         foreach (var wheel in frontWheels)
             wheel.localRotation = Quaternion.Lerp(wheel.localRotation, wheelTargetRotation, Time.deltaTime * 10);
+
+
+        // Sonido del motor en movimiento
+        engineAudioSource.pitch = engineSpeed;
+        engineSpeed *= 0.9f;
+
+
+
+    }
+
+
+
+    private void SpeedUpEngine(){   // Para el sonido del motor en movimiento Clampeamos el valor para luego cambiar el pitch y que oiga mas fuerte cuanto mas acelete
+        engineSpeed = Mathf.Clamp01(engineSpeed + Time.deltaTime * 4);
+
     }
 
 }

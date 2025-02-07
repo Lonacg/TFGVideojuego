@@ -35,6 +35,11 @@ public class CanvasManagerParking : MonoBehaviour
 
 
 
+    public delegate void _OnPlay();
+    public static event _OnPlay OnPlay;
+
+
+
     void OnEnable(){
         ParkingTrigger.OnWellParked += HandleOnWellParked;
         ParkingTrigger.OnWrongParked += HandleOnWrongParked;
@@ -54,6 +59,7 @@ public class CanvasManagerParking : MonoBehaviour
     void HandleOnWellParked(GameObject go){
         StartCoroutine(FadeCanvasGroup(victoryView, fromAlpha: 0, toAlpha: 1));
         StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 1, toAlpha: 0));
+        player.GetComponent<AudioSource>().enabled = false;
         player.GetComponent<CarMovement>().enabled = false;
 
         // NOTA: Lanzar aqui una corrutina que espere y salga del minijuego
@@ -86,7 +92,8 @@ public class CanvasManagerParking : MonoBehaviour
         indexSentence = 0;
         dialoguePlace.text = "";
 
-        // Desactivamos el Script de Player para que no se pueda mover mientras dure la corrutina 
+        // Desactivamos el Script de Player para que no se pueda mover mientras dure la corrutina y el AudioSouerce para que no se ejecute el sonido del motor
+        player.GetComponent<AudioSource>().enabled = false;
         player.GetComponent<CarMovement>().enabled = false;
 
         StartCoroutine(WriteLetterByLetter(view, dialoguePlace, lines));
@@ -101,9 +108,15 @@ public class CanvasManagerParking : MonoBehaviour
             StartCoroutine(FadeCanvasGroup(view, fromAlpha: 1, toAlpha: 0));
             StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1));
             
-            // Activamos el Script de Player para que vuelva a poder moverse y activamos el Pool de objetos para que aparezcan los vehículos cruzando la calle
+
+            // Empieza el juego: activamos el Script de Player para que vuelva a poder moverse y activamos el Pool de objetos para que aparezcan los vehículos cruzando la calle
+            if(OnPlay != null)                          // Si hay alguien suscrito al evento, le envia la info
+                OnPlay();
             player.GetComponent<CarMovement>().enabled = true;
+            player.GetComponent<AudioSource>().enabled = true;
+
             poolingRoad.SetActive(true);
+
         }
     }
 
@@ -140,6 +153,7 @@ public class CanvasManagerParking : MonoBehaviour
 
     IEnumerator ShowErrorImage(float seconds = 2){ 
         // Desactivamos el Script de Player para que no se pueda mover mientras dure la corrutina 
+        player.GetComponent<AudioSource>().enabled = false;
         player.GetComponent<CarMovement>().enabled = false;
 
         // Mostramos el panel de error  ("Repasa la operacion")
@@ -162,6 +176,7 @@ public class CanvasManagerParking : MonoBehaviour
 
         // Activamos el Script de Player para que vuelva a poder moverse
         player.GetComponent<CarMovement>().enabled = true;
+        player.GetComponent<AudioSource>().enabled = true;
     }
 
 }
