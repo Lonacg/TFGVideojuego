@@ -11,6 +11,7 @@ public class Instances : MonoBehaviour
     [SerializeField] private GameObject[] cars;     // Como minimo tenemos que tener 2 prefabs, para que haya al menos uno instanciado de cara y otro de culo
     [SerializeField] private GameObject parkingNumbers;
     //private string pNum = "ParkingNumbers";
+    private bool inLowerParking;
 
     public List<GameObject> pLots;       // Necesita ser publica porque SetOperationParking accede a ella
     public List<GameObject> pNumbers;    // Necesita ser publica porque SetOperationParking accede a ella
@@ -58,34 +59,17 @@ public class Instances : MonoBehaviour
         }
 
         // Instanciamos los prefabs
-        for(int i = 0 ; i < cars.Length ; i++){
-        //foreach(var car in cars){
+        for(int intCar = 0 ; intCar < cars.Length ; intCar++){
+
             // Lugar random para instanciar
             int place = Random.Range(0, pLots.Count);
             GameObject placeToInstantiate = pLots[place];
 
-            // Rotacion del vehiculo prefab. Los dos primeros los fijamos, para que siempre haya uno de cara y otro de culo, y el resto seran aleatorios
-            int option = Random.Range(0,2);
-            int rotChosen;
-            if(i == 0){
-                rotChosen = 0;
-            }
-            else{  
-                if(i == 1){
-                    rotChosen = 180;
-                }
-                else{
-                    if(option == 0){
-                        rotChosen = 0;
-                    }
-                    else{
-                        rotChosen = 180;
-                    }
-                }
-            }    
+            // Rotacion del vehiculo prefab. Los dos primeros los fijamos, para que siempre haya uno de cara y otro de culo segun si estan en el parking de arriba o en el de abajo, y el resto seran aleatorios
+            int rotChosen = ChooseRotation(place, intCar);
 
             // Instancia
-            Instantiate(cars[i], placeToInstantiate.transform.position, Quaternion.Euler(0, rotChosen, 0));
+            Instantiate(cars[intCar], placeToInstantiate.transform.position, Quaternion.Euler(0, rotChosen, 0));
 
             // Eliminamos el Lot de esa posicion y lo quitamos de la lista
             Destroy(pLots[place]);
@@ -98,6 +82,63 @@ public class Instances : MonoBehaviour
     }
 
 
+
+
+
+    private int ChooseRotation(int place, int intCar){
+        int option = Random.Range(0,2);
+        int rotChosen;
+        if(intCar == 0){     // Primer coche (el blanco) aparcado de culo
+            // El angulo depende de si el coche esta en los parkings inferiores o en los superiores.
+            if(place <= 4){
+                // Esta en los parkings inferiores
+                rotChosen = 0;
+                inLowerParking = true;
+            }
+            else{
+                // Esta en los parking superiores
+                rotChosen = 180;
+                inLowerParking = false;
+            }
+        }
+        else{  
+            if(intCar == 1){  // Segundo coche (el verde) aparcado de cara
+                if(inLowerParking){
+                    // El primer coche se ha aparcado en los de arriba y se ha eliminado esa plaza, asi que ahora los parking de abajo libres van del 1 al 3 y los de arriba del 4 al 9
+                    if(place <= 3){
+                        // Esta en los parkings inferiores
+                        rotChosen = 180;
+                    }
+                    else{
+                        // Esta en los parking superiores
+                        rotChosen = 0;
+                    }                        
+                
+                }
+                else{
+                    // El primer coche se ha aparcado en los de abajo y se ha eliminado esa plaza, asi que ahora los parking de abajo libres van del 1 al 4 y los de arriba del 5 al 9
+                    if(place <= 4){
+                        // Esta en los parkings inferiores
+                        rotChosen = 180;
+                    }
+                    else{
+                        // Esta en los parking superiores
+                        rotChosen = 0;
+                    }   
+                }
+            } 
+            else{   // Si no es ni el primero ni el segundo coche, entonces le asignamos la orientacion random que haya salido
+                if(option == 0){
+                    rotChosen = 0;
+                }
+                else{
+                    rotChosen = 180;
+                }
+            }
+        }
+
+        return rotChosen;
+    }
 
     private void LaunchFireworks(){
         Instantiate(confetiParticles, player.transform.position, Quaternion.identity);

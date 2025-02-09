@@ -9195,7 +9195,8 @@ MonoBehaviour:
   audioSourceSFX: {fileID: 1838476297}
   engineStaticAudioSource: {fileID: 603014014}
   startCar: {fileID: 8300000, guid: 99077207653a74846877ef5dc69cc8f0, type: 3}
-  motorInMotion: {fileID: 8300000, guid: ff89099d49f4dfb46981d1be1b34544d, type: 3}
+  collisionCar: {fileID: 8300000, guid: 0c86a82d02f36984fa014204dae0ab8d, type: 3}
+  collisionCone: {fileID: 8300000, guid: c08e229604096204abdb3fa13b85814e, type: 3}
 --- !u!82 &1838476297
 AudioSource:
   m_ObjectHideFlags: 0

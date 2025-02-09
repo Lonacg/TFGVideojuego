@@ -13,12 +13,12 @@ public class TriggerGate : MonoBehaviour
 
 
     void OnTriggerEnter(Collider other){
-        if (other.tag == "Player"){
-            if(gameObject.tag == "CorrectAnswer"){
+        if (other.CompareTag("Player")){
+            if(gameObject.CompareTag("CorrectAnswer")){
                 if(OnWellSol != null)   
                     OnWellSol();
             }
-            if(gameObject.tag == "IncorrectAnswer"){
+            if(gameObject.CompareTag("IncorrectAnswer")){
                 if(OnWrongSol != null)   
                     OnWrongSol();
             }

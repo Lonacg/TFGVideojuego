@@ -62,7 +62,7 @@ public class CanvasManagerParking : MonoBehaviour
         player.GetComponent<AudioSource>().enabled = false;
         player.GetComponent<CarMovement>().enabled = false;
 
-        // NOTA: Lanzar aqui una corrutina que espere y salga del minijuego
+        // NOTA: Lanzar aqui una corrutina que espere (para que se vean los confetti un momento) y salga del minijuego
     }
 
 

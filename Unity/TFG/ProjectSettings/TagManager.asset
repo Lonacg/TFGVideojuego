@@ -10,6 +10,7 @@ TagManager:
   - Subtraction
   - Multiplication
   - Division
+  - ImmobileCar
   layers:
   - Default
   - TransparentFX

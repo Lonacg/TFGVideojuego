@@ -9,7 +9,7 @@ public class TriggerFinalGate : MonoBehaviour
 
 
     void OnTriggerEnter(Collider other){
-        if (other.tag == "Player"){
+        if (other.CompareTag("Player")){
             if(OnFinalLine != null)   
                 OnFinalLine();
         }

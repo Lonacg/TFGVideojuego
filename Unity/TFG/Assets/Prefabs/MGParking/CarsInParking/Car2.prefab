@@ -362,6 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7658277467289783145}
   - component: {fileID: 9085199120234788953}
+  - component: {fileID: 1351377343098183244}
   m_Layer: 0
   m_Name: Car2
   m_TagString: ImmobileCar
@@ -408,8 +409,20 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.5383406, y: 1.1163095, z: 2.8130608}
+  m_Size: {x: 1.22, y: 1.1163095, z: 2.66}
   m_Center: {x: 0.0038552284, y: 0.5507601, z: -0.0034208298}
+--- !u!114 &1351377343098183244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6993098923118154195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2013169848c0c1e4bba56b52fd080f97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7268782355628029966
 GameObject:
   m_ObjectHideFlags: 0
