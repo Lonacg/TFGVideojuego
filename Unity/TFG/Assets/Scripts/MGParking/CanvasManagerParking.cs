@@ -38,7 +38,8 @@ public class CanvasManagerParking : MonoBehaviour
     public delegate void _OnPlay();
     public static event _OnPlay OnPlay;
 
-
+    public delegate void _OnGotIt();
+    public static event _OnGotIt OnGotIt;
 
     void OnEnable(){
         ParkingTrigger.OnWellParked += HandleOnWellParked;
@@ -57,8 +58,10 @@ public class CanvasManagerParking : MonoBehaviour
     }
 
     void HandleOnWellParked(GameObject go){
-        StartCoroutine(FadeCanvasGroup(victoryView, fromAlpha: 0, toAlpha: 1));
         StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 1, toAlpha: 0));
+        StartCoroutine(FadeCanvasGroup(victoryView, fromAlpha: 0, toAlpha: 1));
+        if(OnGotIt != null)  // Lanzamos un evento de Conseguido para que se reproduzca el sonido
+            OnGotIt();
         player.GetComponent<AudioSource>().enabled = false;
         player.GetComponent<CarMovement>().enabled = false;
 

@@ -9197,6 +9197,9 @@ MonoBehaviour:
   startCar: {fileID: 8300000, guid: 99077207653a74846877ef5dc69cc8f0, type: 3}
   collisionCar: {fileID: 8300000, guid: 0c86a82d02f36984fa014204dae0ab8d, type: 3}
   collisionCone: {fileID: 8300000, guid: c08e229604096204abdb3fa13b85814e, type: 3}
+  correctAnswer: {fileID: 8300000, guid: b5d25affd5bccde45b45ab34709120e3, type: 3}
+  wrongAnswer: {fileID: 8300000, guid: d3ff3663cd67fc74b81d7317f400463b, type: 3}
+  gotIt: {fileID: 8300000, guid: c818446a230aa9d4c8aaa3f2d6552c3e, type: 3}
 --- !u!82 &1838476297
 AudioSource:
   m_ObjectHideFlags: 0

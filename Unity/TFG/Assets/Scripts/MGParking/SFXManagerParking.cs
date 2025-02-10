@@ -17,15 +17,20 @@ public class SFXManagerParking : MonoBehaviour
     public AudioClip startCar;
     public AudioClip collisionCar;
     public AudioClip collisionCone;
-
+    public AudioClip correctAnswer;
+    public AudioClip wrongAnswer;
+    public AudioClip gotIt;
 
 
     private void OnEnable(){
         CanvasManagerParking.OnPlay   += OnPlay;
         CollisionCar.OnCollisionCar   += OnCollisionCar;
         CollisionCone.OnCollisionCone += OnCollisionCone;
+        ParkingTrigger.OnWellParked   += OnWellParked;
+        ParkingTrigger.OnWrongParked  += OnWrongParked;
+        CanvasManagerParking.OnGotIt  += OnGotIt;
 
-        //script.evento += evento;
+
     }
 
     private void OnDisable(){
@@ -33,10 +38,10 @@ public class SFXManagerParking : MonoBehaviour
         CanvasManagerParking.OnPlay   -= OnPlay;
         CollisionCar.OnCollisionCar   -= OnCollisionCar;
         CollisionCone.OnCollisionCone -= OnCollisionCone;
+        ParkingTrigger.OnWellParked   -= OnWellParked;
+        ParkingTrigger.OnWrongParked  -= OnWrongParked;
+        CanvasManagerParking.OnGotIt  -= OnGotIt;
 
-
-
-        //script.evento -= evento;
     }
 
 
@@ -62,7 +67,24 @@ public class SFXManagerParking : MonoBehaviour
 
     private void OnCollisionCone(){
         // Sonido de colision con los conos
-        PlaySFX(collisionCone,0.8f);
+        PlaySFX(collisionCone, 0.6f);
+    }
+
+
+    private void OnWellParked(GameObject go){
+        // Sonido de victoria
+        PlaySFX(correctAnswer, 0.3f);        
+    }
+
+
+    private void OnWrongParked(GameObject go){
+        // Sonido de derrota
+        PlaySFX(wrongAnswer, 0.2f);        
+    }
+
+    private void OnGotIt(){
+        // Sonido al mostrar el conseguido
+        PlaySFX(gotIt, 0.6f);        
     }
 
 
