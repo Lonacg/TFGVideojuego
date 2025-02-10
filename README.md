@@ -95,9 +95,8 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - HECHO: Vehiculos pasando por la carretera en ambos sentidos (meterlo en la memoria si se hace)
 - HECHO: Uno de los coches deberia estar si o si instanciado de cara, otro si o si de culo y los otros aleatorio.
 - HECHO: Ajustar mejor la  deteccion de coche aparcado, entrando muy torcido lo damos por bueno
-- Añadir música
+- HECHO: Añadir música
 - Despues del texto de intro, deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
-- Que se instancien entre 3 y 4 coches, no siempre 4 
 
 
 ### MG LaneRace
