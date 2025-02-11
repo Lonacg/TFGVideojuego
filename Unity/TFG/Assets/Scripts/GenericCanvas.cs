@@ -2,13 +2,11 @@ using UnityEngine;
 using System.Collections;
 using TMPro;
 using System.Collections.Generic;
-
-public class CanvasManagerParking : MonoBehaviour
+public class GenericCanvas : MonoBehaviour
 {
     [Header("Game Objects:")]
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject introView;
-    [SerializeField] private GameObject controlsView;
     [SerializeField] private GameObject ingameView;
     [SerializeField] private GameObject victoryView;
     [SerializeField] private GameObject operationImage;
@@ -85,7 +83,6 @@ public class CanvasManagerParking : MonoBehaviour
     }
 
     void Start(){   
-        controlsView.SetActive(false);
         ingameView.SetActive(false);
         introView.SetActive(true);        
         StartDialogue(introView, introDialoguePlace, linesIntroDialogue);

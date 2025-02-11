@@ -509,6 +509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1744762178}
   introView: {fileID: 1488770166}
+  controlsView: {fileID: 0}
   ingameView: {fileID: 183512955}
   victoryView: {fileID: 445653416}
   operationImage: {fileID: 1970341272}
@@ -8672,7 +8673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1536334511
 RectTransform:
   m_ObjectHideFlags: 0

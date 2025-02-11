@@ -4,7 +4,19 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: a8f4fc9c49de28d4e9265d1f1f13f985
+  - enabled: 1
+    path: Assets/Scenes/Parking.unity
+    guid: 4e3bb07be33e4c94baae7a4f7be4d3b2
+  - enabled: 1
+    path: Assets/Scenes/LaneRace.unity
+    guid: d3aa49cc9a5e24d4abf4d9c1306acaa8
+  - enabled: 1
+    path: Assets/Scenes/DeduceSIgn.unity
+    guid: a35462fd5d24efd4bb5f208cce463513
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0
