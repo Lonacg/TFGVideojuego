@@ -2,15 +2,18 @@ using UnityEngine;
 using System.Collections;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class CanvasManagerParking : MonoBehaviour
 {
     [Header("Game Objects:")]
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject introView;
-    [SerializeField] private GameObject controlsView;
+    [SerializeField] private GameObject tutorialView;
     [SerializeField] private GameObject ingameView;
     [SerializeField] private GameObject victoryView;
+    [SerializeField] private GameObject fadeCircleStatic;
+    [SerializeField] private GameObject backgroundBlack;
     [SerializeField] private GameObject operationImage;
     [SerializeField] private GameObject errorImage;
     [SerializeField] private GameObject poolingRoad;
@@ -23,11 +26,6 @@ public class CanvasManagerParking : MonoBehaviour
     [SerializeField] private TextMeshProUGUI operationFirstTryText;
     [SerializeField] private TextMeshProUGUI operationSecondTryText;
     [SerializeField] private List<string> linesIntroDialogue;
-    //public List<string> linesVictoryDialogue;
-
-    // Alternativa escribiendo las frases en el inspector
-    //public string[] linesIntroDialogue;
-    //public string[] linesErrorDialogue;
 
     //[Header("Variables:")]
     private float textSpeed = 0.1f;
@@ -66,7 +64,8 @@ public class CanvasManagerParking : MonoBehaviour
         player.GetComponent<AudioSource>().enabled = false;
         player.GetComponent<CarMovement>().enabled = false;
 
-        // NOTA: Lanzar aqui una corrutina que espere (para que se vean los confetti un momento) y salga del minijuego
+        // Esperamos dos segundos para que se vean los confeti y volvemos al menu principal
+        StartCoroutine(ReturnToMenu());
     }
 
 
@@ -85,13 +84,54 @@ public class CanvasManagerParking : MonoBehaviour
     }
 
     void Start(){   
-        controlsView.SetActive(false);
         ingameView.SetActive(false);
-        introView.SetActive(true);        
-        StartDialogue(introView, introDialoguePlace, linesIntroDialogue);
+        victoryView.SetActive(false);
+        //introView.SetActive(true);        
+        //StartDialogue(introView, introDialoguePlace, linesIntroDialogue);
+        tutorialView.SetActive(true);
+
     }
 
 
+    void Update(){
+        // Si la ventana de tutorial esta activado y pulsan espacio damos paso al inicio del juego
+        if(tutorialView.activeSelf && Input.GetKeyDown(KeyCode.Space)){
+            StartCoroutine(StartGame());
+        }
+    }
+
+
+    IEnumerator StartGame(){
+            // StartCoroutine(FadeCanvasGroup(tutorialView, fromAlpha: 1, toAlpha: 0));
+            //StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1));
+
+            fadeCircleStatic.GetComponent<Animator>().SetTrigger("FadeOutCircleStatic");
+            yield return new WaitForSeconds(2f); // El fade out/in del CircleStatic dura 1,5 seg
+
+            // Lo ponemos negro completo mientras cambiamos la vista
+            backgroundBlack.SetActive(true);
+            Debug.Log("fONDO NEGRO ACTIVADO");
+            tutorialView.SetActive(false);
+            ingameView.SetActive(true);
+
+
+            // Destapamos la pantalla
+            backgroundBlack.SetActive(false);
+            Debug.Log("fONDO NEGRO DESACTIVADO");
+            fadeCircleStatic.GetComponent<Animator>().SetTrigger("FadeInCircleStatic");
+
+
+
+            // Avisamos de que empieza el juego
+            if(OnPlay != null)                          
+                OnPlay();
+
+            // Activamos el Script de Player para que vuelva a poder moverse, el sonido del motor en marcha y activamos el Pool de objetos para que aparezcan los vehículos cruzando la calle
+            player.GetComponent<CarMovement>().enabled = true;
+            player.GetComponent<AudioSource>().enabled = true;
+
+            poolingRoad.SetActive(true);
+    }
 
     public void StartDialogue(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){
         indexSentence = 0;
@@ -182,6 +222,14 @@ public class CanvasManagerParking : MonoBehaviour
         // Activamos el Script de Player para que vuelva a poder moverse
         player.GetComponent<CarMovement>().enabled = true;
         player.GetComponent<AudioSource>().enabled = true;
+    }
+
+
+    IEnumerator ReturnToMenu(){
+        yield return new WaitForSeconds(6);
+        
+        // AQUI OSCURECER PANTALLA
+        SceneManager.LoadScene("MainMenu");
     }
 
 }

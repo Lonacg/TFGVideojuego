@@ -89,8 +89,8 @@ public class Instances : MonoBehaviour
         int option = Random.Range(0,2);
         int rotChosen;
         if(intCar == 0){     // Primer coche (el blanco) aparcado de culo
-            // El angulo depende de si el coche esta en los parkings inferiores o en los superiores.
-            if(place <= 4){
+            // El angulo del modelo depende de si el coche esta en los parkings inferiores (place del 0 al 3) o en los superiores (place del 4 al 9)
+            if(place <= 3){
                 // Esta en los parkings inferiores
                 rotChosen = 0;
                 inLowerParking = true;
@@ -104,8 +104,8 @@ public class Instances : MonoBehaviour
         else{  
             if(intCar == 1){  // Segundo coche (el verde) aparcado de cara
                 if(inLowerParking){
-                    // El primer coche se ha aparcado en los de arriba y se ha eliminado esa plaza, asi que ahora los parking de abajo libres van del 1 al 3 y los de arriba del 4 al 9
-                    if(place <= 3){
+                    // El primer coche se ha aparcado en los de abajo y se ha eliminado esa plaza, asi que ahora los parking de abajo libres van del 0 al 2 y los de arriba del 3 al 8
+                    if(place <= 2){
                         // Esta en los parkings inferiores
                         rotChosen = 180;
                     }
@@ -116,7 +116,7 @@ public class Instances : MonoBehaviour
                 
                 }
                 else{
-                    // El primer coche se ha aparcado en los de abajo y se ha eliminado esa plaza, asi que ahora los parking de abajo libres van del 1 al 4 y los de arriba del 5 al 9
+                    // El primer coche se ha aparcado en los de arriba y se ha eliminado esa plaza, asi que ahora los parking de abajo libres van del 0 al 3 y los de arriba del 4 al 8
                     if(place <= 4){
                         // Esta en los parkings inferiores
                         rotChosen = 180;
