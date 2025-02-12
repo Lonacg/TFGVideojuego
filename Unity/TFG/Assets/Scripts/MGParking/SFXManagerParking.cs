@@ -49,10 +49,7 @@ public class SFXManagerParking : MonoBehaviour
 
 
     private void OnPlay(){
-        // Sonido de arranque
-        PlaySFX(startCar, 0.3f);
-        
-        // Sonido de motor estatico
+        // Sonido de arranque del coche y motor estatico
         StartCoroutine(WaitAndStartMotor(1f)); // 1f porque el sonido de arranque dura un segundo
 
         // El sonido de acelerar (MotorInMotion) lo reproduce CarMovement.cs porque es cuando se pulsa la tecla de avance o retroceso
@@ -102,7 +99,13 @@ public class SFXManagerParking : MonoBehaviour
     }
 
     IEnumerator WaitAndStartMotor(float seconds){
+        yield return new WaitForSeconds(0.5f);  // Damos medio segundo para que la transicion de FadeInCircle este ya a medias
+
+        // Sonido de arranque
+        PlaySFX(startCar, 0.3f);
+
         yield return new WaitForSeconds(seconds);
+
         // Activamos el AudioSource puesto en el hijo del coche, y automaticamente empieza a reproducirse, como la musica de fondo
         engineStaticAudioSource.enabled = true;
         

@@ -290,8 +290,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -105, y: -77.53}
-  m_SizeDelta: {x: 170, y: 50}
+  m_AnchoredPosition: {x: -155, y: -120}
+  m_SizeDelta: {x: 250, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &65467237
 MonoBehaviour:
@@ -337,8 +337,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1636035876}
-        m_TargetAssemblyTypeName: UIMainMenu, Assembly-CSharp
+      - m_Target: {fileID: 526095115}
+        m_TargetAssemblyTypeName: SceneLoadManager, Assembly-CSharp
         m_MethodName: OnDeduceSignButton
         m_Mode: 1
         m_Arguments:
@@ -557,6 +557,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &526095115 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7177382331783316282, guid: 426429a17a9e8de4ebcc3ba7023a0cde, type: 3}
+  m_PrefabInstance: {fileID: 2000251429}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f950bf2889f550142bdf13921571b917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &620802642
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,8 +604,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -105, y: 0}
-  m_SizeDelta: {x: 170, y: 50}
+  m_AnchoredPosition: {x: -155, y: 0}
+  m_SizeDelta: {x: 250, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &620802644
 MonoBehaviour:
@@ -640,9 +651,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1636035876}
-        m_TargetAssemblyTypeName: UIMainMenu, Assembly-CSharp
-        m_MethodName: OnParkingButton
+      - m_Target: {fileID: 526095115}
+        m_TargetAssemblyTypeName: SceneLoadManager, Assembly-CSharp
+        m_MethodName: OnLoadParking
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -862,8 +873,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 105, y: 0}
-  m_SizeDelta: {x: 170, y: 50}
+  m_AnchoredPosition: {x: 155, y: 0}
+  m_SizeDelta: {x: 250, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &670061498
 MonoBehaviour:
@@ -909,8 +920,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1636035876}
-        m_TargetAssemblyTypeName: UIMainMenu, Assembly-CSharp
+      - m_Target: {fileID: 526095115}
+        m_TargetAssemblyTypeName: SceneLoadManager, Assembly-CSharp
         m_MethodName: OnLaneRaceButton
         m_Mode: 1
         m_Arguments:
@@ -993,8 +1004,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 73.69}
-  m_SizeDelta: {x: 425.6, y: 50}
+  m_AnchoredPosition: {x: 0, y: 134.45}
+  m_SizeDelta: {x: 636.9, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &714694296
 MonoBehaviour:
@@ -1043,8 +1054,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.2
-  m_fontSizeBase: 38.2
+  m_fontSize: 56.3
+  m_fontSizeBase: 56.3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1342,7 +1353,6 @@ GameObject:
   - component: {fileID: 1636035872}
   - component: {fileID: 1636035871}
   - component: {fileID: 1636035870}
-  - component: {fileID: 1636035876}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1417,7 +1427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1474,18 +1484,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1636035876
-MonoBehaviour:
+--- !u!1001 &2000251429
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1636035869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b5a67b4817ace7489242694eb388e55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3979456274876496822, guid: 426429a17a9e8de4ebcc3ba7023a0cde, type: 3}
+      propertyPath: m_Name
+      value: SceneLoadManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201439392981324002, guid: 426429a17a9e8de4ebcc3ba7023a0cde, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 399.84833
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201439392981324002, guid: 426429a17a9e8de4ebcc3ba7023a0cde, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 227.5044
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201439392981324002, guid: 426429a17a9e8de4ebcc3ba7023a0cde, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.49295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201439392981324002, guid: 426429a17a9e8de4ebcc3ba7023a0cde, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201439392981324002, guid: 426429a17a9e8de4ebcc3ba7023a0cde, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201439392981324002, guid: 426429a17a9e8de4ebcc3ba7023a0cde, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201439392981324002, guid: 426429a17a9e8de4ebcc3ba7023a0cde, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201439392981324002, guid: 426429a17a9e8de4ebcc3ba7023a0cde, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201439392981324002, guid: 426429a17a9e8de4ebcc3ba7023a0cde, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7201439392981324002, guid: 426429a17a9e8de4ebcc3ba7023a0cde, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 426429a17a9e8de4ebcc3ba7023a0cde, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1494,3 +1549,4 @@ SceneRoots:
   - {fileID: 1414216032}
   - {fileID: 1636035875}
   - {fileID: 296447437}
+  - {fileID: 2000251429}
