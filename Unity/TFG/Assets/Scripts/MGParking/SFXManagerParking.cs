@@ -4,14 +4,11 @@ using Unity.VisualScripting;
 
 public class SFXManagerParking : MonoBehaviour
 {
-
     [Header("Audio Sources:")]
     public AudioSource audioSourceSFX;  // Un audio source solo puede reproducir un sonido
     public AudioSource engineStaticAudioSource;
     private AudioClip previousAudioClip;
     private float previousACTimeStamp;
-
-
 
     [Header("Audio Clips:")]
     public AudioClip startCar;
@@ -22,64 +19,57 @@ public class SFXManagerParking : MonoBehaviour
     public AudioClip gotIt;
 
 
-    private void OnEnable(){
-        CanvasManagerParking.OnPlay   += OnPlay;
-        CollisionCar.OnCollisionCar   += OnCollisionCar;
-        CollisionCone.OnCollisionCone += OnCollisionCone;
-        ParkingTrigger.OnWellParked   += OnWellParked;
-        ParkingTrigger.OnWrongParked  += OnWrongParked;
-        CanvasManagerParking.OnGotIt  += OnGotIt;
 
-
+    private void OnEnable()
+    {
+        CanvasManagerParking.OnPlay   += HandleOnPlay;
+        CollisionCar.OnCollisionCar   += HandleOnCollisionCar;
+        CollisionCone.OnCollisionCone += HandleOnCollisionCone;
+        ParkingTrigger.OnWellParked   += HandleOnWellParked;
+        ParkingTrigger.OnWrongParked  += HandleOnWrongParked;
+        CanvasManagerParking.OnGotIt  += HandleOnGotIt;
     }
 
-    private void OnDisable(){
-
-        CanvasManagerParking.OnPlay   -= OnPlay;
-        CollisionCar.OnCollisionCar   -= OnCollisionCar;
-        CollisionCone.OnCollisionCone -= OnCollisionCone;
-        ParkingTrigger.OnWellParked   -= OnWellParked;
-        ParkingTrigger.OnWrongParked  -= OnWrongParked;
-        CanvasManagerParking.OnGotIt  -= OnGotIt;
-
+    private void OnDisable()
+    {
+        CanvasManagerParking.OnPlay   -= HandleOnPlay;
+        CollisionCar.OnCollisionCar   -= HandleOnCollisionCar;
+        CollisionCone.OnCollisionCone -= HandleOnCollisionCone;
+        ParkingTrigger.OnWellParked   -= HandleOnWellParked;
+        ParkingTrigger.OnWrongParked  -= HandleOnWrongParked;
+        CanvasManagerParking.OnGotIt  -= HandleOnGotIt;
     }
 
 
 
-
-
-    private void OnPlay(){
+    private void HandleOnPlay(){
         // Sonido de arranque del coche y motor estatico
         StartCoroutine(WaitAndStartMotor(1f)); // 1f porque el sonido de arranque dura un segundo
 
         // El sonido de acelerar (MotorInMotion) lo reproduce CarMovement.cs porque es cuando se pulsa la tecla de avance o retroceso
     }
 
-    private void OnCollisionCar(){
+    private void HandleOnCollisionCar(){
         // Sonido de colision con los coches aparcados
         PlaySFX(collisionCar, 0.1f);
-
     }
 
-
-    private void OnCollisionCone(){
+    private void HandleOnCollisionCone(){
         // Sonido de colision con los conos
         PlaySFX(collisionCone, 0.6f);
     }
 
-
-    private void OnWellParked(GameObject go){
+    private void HandleOnWellParked(GameObject go){
         // Sonido de victoria
         PlaySFX(correctAnswer, 0.3f);        
     }
 
-
-    private void OnWrongParked(GameObject go){
+    private void HandleOnWrongParked(GameObject go){
         // Sonido de derrota
-        PlaySFX(wrongAnswer, 0.2f);        
+        PlaySFX(wrongAnswer, 1);        
     }
 
-    private void OnGotIt(){
+    private void HandleOnGotIt(){
         // Sonido al mostrar el conseguido
         PlaySFX(gotIt, 0.6f);        
     }
@@ -98,6 +88,8 @@ public class SFXManagerParking : MonoBehaviour
         audioSourceSFX.PlayOneShot(audioClip, volume);
     }
 
+
+
     IEnumerator WaitAndStartMotor(float seconds){
         yield return new WaitForSeconds(0.5f);  // Damos medio segundo para que la transicion de FadeInCircle este ya a medias
 
@@ -108,7 +100,6 @@ public class SFXManagerParking : MonoBehaviour
 
         // Activamos el AudioSource puesto en el hijo del coche, y automaticamente empieza a reproducirse, como la musica de fondo
         engineStaticAudioSource.enabled = true;
-        
     }
 
 }

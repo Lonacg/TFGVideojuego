@@ -4902,7 +4902,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3149764308572793243}
   m_Layer: 0
-  m_Name: ConfetiParticles
+  m_Name: ConfettiParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

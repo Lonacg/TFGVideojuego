@@ -7,10 +7,12 @@ public class CollisionCone : MonoBehaviour
   
 
 
-    void OnTriggerEnter(Collider other){
+    void OnTriggerEnter(Collider other)
+    {
         if (other.CompareTag("Player") || other.CompareTag("ImmobileCar")){
             if(OnCollisionCone != null)   
                 OnCollisionCone();
         }
     }
+
 }

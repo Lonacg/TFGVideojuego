@@ -631,8 +631,8 @@ MonoBehaviour:
     m_NormalColor: {r: 0.50980395, g: 0.8156863, b: 0.9529412, a: 1}
     m_HighlightedColor: {r: 0.70980394, g: 0.9529412, b: 0.7058824, a: 1}
     m_PressedColor: {r: 0.03529412, g: 0.8117647, b: 0.105882354, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.019607844, g: 0.6431373, b: 0.03529412, a: 0.5019608}
+    m_SelectedColor: {r: 0.019607844, g: 0.6431373, b: 0.03529412, a: 1}
+    m_DisabledColor: {r: 0.92074585, g: 0.9339623, b: 0.9210783, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -653,7 +653,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 526095115}
         m_TargetAssemblyTypeName: SceneLoadManager, Assembly-CSharp
-        m_MethodName: OnLoadParking
+        m_MethodName: OnLoadParkingButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

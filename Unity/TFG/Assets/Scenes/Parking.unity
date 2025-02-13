@@ -7787,7 +7787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1104338085
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9474,7 +9474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1744762178}
-  confetiParticles: {fileID: 3214434034595576570, guid: 7507c7ba9d312ac4cb889c1445212ba3, type: 3}
+  confettiParticles: {fileID: 3214434034595576570, guid: 7507c7ba9d312ac4cb889c1445212ba3, type: 3}
   xError: {fileID: 999990660591302364, guid: 61e7ef7d8c843b147b338d1f216263ba, type: 3}
   cars:
   - {fileID: 1795280099987595782, guid: 67f99a5d5b6eeb942a2ccaaaa1439027, type: 3}
@@ -10258,7 +10258,7 @@ MonoBehaviour:
   collisionCar: {fileID: 8300000, guid: 0c86a82d02f36984fa014204dae0ab8d, type: 3}
   collisionCone: {fileID: 8300000, guid: c08e229604096204abdb3fa13b85814e, type: 3}
   correctAnswer: {fileID: 8300000, guid: b5d25affd5bccde45b45ab34709120e3, type: 3}
-  wrongAnswer: {fileID: 8300000, guid: d3ff3663cd67fc74b81d7317f400463b, type: 3}
+  wrongAnswer: {fileID: 8300000, guid: 61989334f887a714d8d48ec654cde1f3, type: 3}
   gotIt: {fileID: 8300000, guid: c818446a230aa9d4c8aaa3f2d6552c3e, type: 3}
 --- !u!82 &1838476297
 AudioSource:

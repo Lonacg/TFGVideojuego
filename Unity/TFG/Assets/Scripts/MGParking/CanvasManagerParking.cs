@@ -1,8 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
-using System.Collections.Generic;
-using UnityEngine.SceneManagement;
+
 
 public class CanvasManagerParking : MonoBehaviour
 {
@@ -15,7 +14,6 @@ public class CanvasManagerParking : MonoBehaviour
     [SerializeField] private GameObject operationImage;
     [SerializeField] private GameObject errorImage;
     [SerializeField] private GameObject poolingRoad;
-
 
     [Header("Texts:")]
     [SerializeField] private TextMeshProUGUI operationFirstTryText;
@@ -33,19 +31,48 @@ public class CanvasManagerParking : MonoBehaviour
     public delegate void _OnGotIt();
     public static event _OnGotIt OnGotIt;
 
-
     public delegate void _OnReturnToMenu();
     public static event _OnReturnToMenu OnReturnToMenu;
 
 
-    void OnEnable(){
-        ParkingTrigger.OnWellParked += HandleOnWellParked;
+
+    void Awake()
+    {   
+        // Desactivamos el Script de Player para que no se pueda mover mientras esta el tutorial
+        player.GetComponent<CarMovement>().enabled = false;
+        player.GetComponent<AudioSource>().enabled = false;
+
+        // Vistas activadas
+        tutorialView.SetActive(true);
+
+        // Vistas desactivadas
+        ingameView.SetActive(false);
+        victoryView.SetActive(false);
+        fadeCircle.SetActive(false);
+
+        // Inicializacion de variables
+        spacePressed = false;
+    }
+
+    void OnEnable()
+    {
+        ParkingTrigger.OnWellParked  += HandleOnWellParked;
         ParkingTrigger.OnWrongParked += HandleOnWrongParked;
     }
 
-    void OnDisable(){
-        ParkingTrigger.OnWellParked -= HandleOnWellParked;
+    void OnDisable()
+    {
+        ParkingTrigger.OnWellParked  -= HandleOnWellParked;
         ParkingTrigger.OnWrongParked -= HandleOnWrongParked;
+    }
+
+    void Update()
+    {
+        // Si la ventana de tutorial esta activada y pulsan espacio damos paso al inicio del juego (solo escuchamos el primer pulsado, para que no se retipa el lanzamiento del evento)
+        if(tutorialView.activeSelf && Input.GetKeyDown(KeyCode.Space) && !spacePressed){
+            spacePressed = true;
+            StartCoroutine(StartGame());
+        }
     }
 
 
@@ -68,33 +95,6 @@ public class CanvasManagerParking : MonoBehaviour
 
 
 
-
-    void Awake()
-    {   
-        // Vistas activadas
-        tutorialView.SetActive(true);
-
-        // Vistas desactivadas
-        ingameView.SetActive(false);
-        victoryView.SetActive(false);
-        fadeCircle.SetActive(false);
-
-
-        // Inicializacion de variables
-        spacePressed = false;
-    }
-
-
-    void Update(){
-        // Si la ventana de tutorial esta activada y pulsan espacio damos paso al inicio del juego (solo escuchamos el primer pulsado, para que no se retipa el lanzamiento del evento)
-        if(tutorialView.activeSelf && Input.GetKeyDown(KeyCode.Space) && !spacePressed){
-            spacePressed = true;
-            StartCoroutine(StartGame());
-        }
-    }
-
-
-
     IEnumerator StartGame(){
         // Fade Out
         fadeCircle.SetActive(true);
@@ -111,8 +111,7 @@ public class CanvasManagerParking : MonoBehaviour
         //StartCoroutine(FadeCanvasGroup(tutorialView, fromAlpha: 1, toAlpha: 0));
         //StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1));
 
-
-        // // Avisamos de que empieza el juego
+        // Avisamos de que empieza el juego
         if(OnPlay != null)                          
             OnPlay();
 
@@ -120,26 +119,27 @@ public class CanvasManagerParking : MonoBehaviour
         player.GetComponent<CarMovement>().enabled = true;
         player.GetComponent<AudioSource>().enabled = true;
 
+        //Activamos el pool de objetos para que pasen los vehiculos por la carretera
         poolingRoad.SetActive(true);
     }
 
-
-
     IEnumerator FadeCanvasGroup(GameObject view, float fromAlpha, float toAlpha, float animationTime = 0.3f){ 
         CanvasGroup canvasGroup = view.GetComponent<CanvasGroup>();
+        // En funcion del alpha de la vista deducimos si quiere activarla o desactivarla
         if(toAlpha > 0)
             view.SetActive(true);
 
+        // Cuerpo de la corrutina: modificamos el alpha con Math.Lerp interpolando el alpha
         float elapsedTime = 0;
-
         while(elapsedTime <= animationTime){
             canvasGroup.alpha = Mathf.Lerp(fromAlpha, toAlpha, elapsedTime / animationTime);
             elapsedTime += Time.unscaledDeltaTime;
             yield return 0;
         }
-
+        // Establecemos el valor final deseado para que no haya decimales infinitos
         canvasGroup.alpha = toAlpha;
 
+        // Desactivamos la vista si lo que queriamos era desactivar, es decir, hemos dejado el alpha en 0 con la corrutina
         if(toAlpha == 0)
             view.SetActive(false);
     }
@@ -150,21 +150,35 @@ public class CanvasManagerParking : MonoBehaviour
         player.GetComponent<CarMovement>().enabled = false;
 
         // Mostramos el panel de error  ("Repasa la operacion")
-        float animationsTime = 0.6f;
+        float animationsTime = seconds / 4f;
         StartCoroutine(FadeCanvasGroup(errorImage, fromAlpha: 0, toAlpha: 1, animationTime: animationsTime));
 
         // Actualizacion de la operacion si es el primer fallo
         if(firstTry){
-            yield return new WaitForSeconds(1);
+            // Esperamos la mitad del tiempo y hacemos desaparecer la operacion
+            yield return new WaitForSeconds(seconds / 2);
             StartCoroutine(FadeCanvasGroup(operationImage, fromAlpha: 1, toAlpha: 0, animationTime: animationsTime));
-            yield return new WaitForSeconds(animationsTime);
+
+            // Esperamos el tiempo que tarda la animacion en desaparecer y un pelin extra, para que no haya un epsilon de diferencia y eviar el error de que no aparezca despues
+            yield return new WaitForSeconds(animationsTime + 0.01f);
+
+            // Actualizamos la operacion
             operationFirstTryText.gameObject.SetActive(false);
             operationSecondTryText.gameObject.SetActive(true);
+
+            // Hacemos aparecer la imagen de la operacion
             StartCoroutine(FadeCanvasGroup(operationImage, fromAlpha: 0, toAlpha: 1, animationTime: animationsTime));
+
+            // Tiempo transcurrido = seconds/2 + seconds/4. Luego falta por transcurrir seconds/4 = animationsTime
+            yield return new WaitForSeconds(animationsTime);
+
+            // Actualizamos el bool para que no vuelva a pasar por aqui
             firstTry = false;
         }
+        else{
+            yield return new WaitForSeconds(seconds);
+        }
 
-        yield return new WaitForSeconds(seconds);
         StartCoroutine(FadeCanvasGroup(errorImage, fromAlpha: 1, toAlpha: 0, animationTime: animationsTime));
 
         // Activamos el Script de Player para que vuelva a poder moverse
@@ -172,15 +186,12 @@ public class CanvasManagerParking : MonoBehaviour
         player.GetComponent<AudioSource>().enabled = true;
     }
 
-
     IEnumerator ReturnToMenu(){
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(4.5f);
         
         // Evento para que Load Scene vuelva a la scena del menu principal
         if(OnReturnToMenu != null)  
-            OnReturnToMenu();
-        
-        
+            OnReturnToMenu();  
     }
 
 }

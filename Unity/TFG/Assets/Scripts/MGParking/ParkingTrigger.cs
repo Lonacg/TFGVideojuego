@@ -14,14 +14,16 @@ public class ParkingTrigger : MonoBehaviour
 
 
 
-    void OnTriggerEnter(Collider other){
+    void OnTriggerEnter(Collider other)
+    {
         if (other.tag=="Player"){
             parkingReferences ++;
             CheckParking();
         }
     }
 
-    void OnTriggerExit(Collider other){
+    void OnTriggerExit(Collider other)
+    {
         if (other.tag=="Player"){
             parkingReferences --;
             CheckParking();

@@ -18,14 +18,11 @@ public class SetOperationParking : MonoBehaviour
     [SerializeField] private TextMeshProUGUI operationFirstTryText;
     [SerializeField] private TextMeshProUGUI operationSecondTryText;
 
-
-
     private int firstNumber;
     private int secondNumber;
     private int sol;
     private int numberFreeParkings;
     private int[] incorrectNumbers;
-
     private string symbol;
     private string textFirstTry;
     private string textAfterFail;
@@ -33,12 +30,25 @@ public class SetOperationParking : MonoBehaviour
 
 
 
-    void OnEnable(){
+    void OnEnable()
+    {
         ParkingTrigger.OnWrongParked += HandleOnWrongParked;
     }
 
-    void OnDisable(){
+    void OnDisable()
+    {
         ParkingTrigger.OnWrongParked -= HandleOnWrongParked;
+    }
+
+    void Start()
+    {   
+        parkingNumbers = scriptInstances.pNumbers;
+        parkingLots = scriptInstances.pLots;
+        numberFreeParkings = parkingLots.Count;
+        firstTry = true;
+        
+        GenerateOperation();
+        ChangeNumberParking();
     }
 
 
@@ -52,23 +62,12 @@ public class SetOperationParking : MonoBehaviour
 
 
 
-    void Start(){   
-        parkingNumbers = scriptInstances.pNumbers;
-        parkingLots = scriptInstances.pLots;
-        numberFreeParkings = parkingLots.Count;
-        firstTry = true;
-        
-        GenerateOperation();
-        ChangeNumberParking();
-    }
-
-
-
     public void GenerateOperation(){
         // Generamos un numero aleatorio para decidir si sera una suma o una resta
         int i = Random.Range(0,2);
 
-        if (i == 0){        // Generamos una suma cuyo resultado tenga como maximo 3 cifras
+        if (i == 0){        
+            // Generamos una suma cuyo resultado tenga como maximo 3 cifras
             firstNumber = Random.Range(110, 800);
             int limit = 999 - firstNumber;
             secondNumber = Random.Range(11, limit);
@@ -76,18 +75,18 @@ public class SetOperationParking : MonoBehaviour
             sol = firstNumber + secondNumber;
 
             symbol = "+";
-
         }
-        else{               // Generamos una resta cuyo resultado tenga como maximo 3 cifras
+        else{               
+            // Generamos una resta cuyo resultado tenga como maximo 3 cifras
             firstNumber = Random.Range(501, 999);
             secondNumber = Random.Range(11, firstNumber - 50);
             
             sol = firstNumber - secondNumber;
 
             symbol = "-";
-        
         }
 
+        // Establecemos el texto que tendra el primer intento y el texto que tendran los demas
         textFirstTry = firstNumber + " " + symbol + " " + secondNumber;
         textAfterFail = firstNumber + "\n" + symbol + " " + secondNumber;        
 
@@ -149,17 +148,6 @@ public class SetOperationParking : MonoBehaviour
                 indexWrongN ++; 
             }
         }        
-    }
-
-
-
-    IEnumerator ChangeTextSecondTry(){
-        yield return new WaitForSeconds(1);
-        // Cambiamos la forma en la que esta la operacion para ayudar al jugador
-        operationFirstTryText.gameObject.SetActive(false);
-        operationSecondTryText.text = textAfterFail;
-        operationSecondTryText.gameObject.SetActive(true);
-        
     }
 
 }
