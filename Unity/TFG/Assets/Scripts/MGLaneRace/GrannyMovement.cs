@@ -1,22 +1,21 @@
 using System.Collections;
-using System.Linq;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class GrannyMovement : MonoBehaviour
 {
-    // Para animaciones
+
+
+    [Header("Movement:")]
+    public Transform lanesParent;
+    public Transform[] lanes;
+    private float speed = 8f; 
+    private int currentIndex = 1;
+    private bool canMove;
+    private Transform currentLane;
     private Animator animator;
     private string currentAnimation = "";
 
-    // Para movimiento
-    public Transform lanesParent;
-    public Transform[] lanes;
-    public int currentIndex = 1;
-    public float speed = 8f;
-    public bool canMove;
-    private Transform currentLane;
-    
+
 
 
     public delegate void _OnReady();
@@ -45,6 +44,47 @@ public class GrannyMovement : MonoBehaviour
         TriggerFinalGate.OnFinalLine -= HandleOnFinalLine;
     }
 
+    void Start()
+    {
+        // Llenamos el array de carriles por codigo
+        int totalLanes = lanesParent.childCount;
+        lanes = new Transform[totalLanes];
+        for(int i = 0 ; i < totalLanes ; i++){
+            lanes[i] = lanesParent.GetChild(i);
+        }
+
+        currentLane = lanes[currentIndex];
+
+        // Asignamos el Animator y el Rigidbody
+        animator = GetComponent<Animator>();
+
+        // Impedimos que player se mueva hasta que acaben las animaciones del inicio
+        canMove = false;
+
+        // Asignamos las variables
+        speed = 8f;
+    }
+
+    void Update()
+    {
+        if(canMove){
+            // Entradas del teclado
+            if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)){
+                if(currentIndex > 0)
+                    currentIndex --;
+            }
+            if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)){
+                if(currentIndex < lanesParent.childCount -1)
+                    currentIndex ++;
+            }    
+        }
+        // Actualizamos posicion
+        currentLane = lanes[currentIndex];
+        transform.position = Vector3.MoveTowards(transform.position, currentLane.position, speed * Time.deltaTime);
+    }
+
+
+
 
 
     public void HandleOnStart(){
@@ -66,42 +106,6 @@ public class GrannyMovement : MonoBehaviour
     }
 
 
-
-    void Start()
-    {
-        // Llenamos el array de carriles por codigo
-        int totalLanes = lanesParent.childCount;
-        lanes = new Transform[totalLanes];
-        for(int i = 0 ; i < totalLanes ; i++){
-            lanes[i] = lanesParent.GetChild(i);
-        }
-
-        currentLane = lanes[currentIndex];
-
-        // Asignamos el Animator y el Rigidbody
-        animator = GetComponent<Animator>();
-
-        // Impedimos que player se mueva hasta que acaben las animaciones del inicio
-        canMove = false;
-    }
-
-    void Update()
-    {
-        if(canMove){
-            // Entradas del teclado
-            if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)){
-                if(currentIndex > 0)
-                    currentIndex --;
-            }
-            if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)){
-                if(currentIndex < lanesParent.childCount -1)
-                    currentIndex ++;
-            }    
-        }
-        // Actualizamos posicion
-        currentLane = lanes[currentIndex];
-        transform.position = Vector3.MoveTowards(transform.position, currentLane.position, speed * Time.deltaTime);
-    }
 
 
 

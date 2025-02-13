@@ -6,11 +6,10 @@ using TMPro;
 
 public class SetOperationLaneRace : MonoBehaviour
 {
-    public int firstNumber;
+    public int firstNumber;     // El primer numero, el segundo y el simbolo tienen que ser publicas porque StageManager accede a ellas
     public int secondNumber;
-    public int sol;
     public string symbol = "";
-
+    private int sol;
     private List<GameObject> gates;    
     private int operatorChosen;
     private int totalGates;
@@ -97,7 +96,6 @@ public class SetOperationLaneRace : MonoBehaviour
                 }
             }         
         }
-        // Escribimos la operacion por consola para facilitar el desarrollo del minijuego              
         //Debug.Log("La operacion es: " + firstNumber + symbol + secondNumber + " = " + sol);
     }
     
@@ -121,7 +119,8 @@ public class SetOperationLaneRace : MonoBehaviour
         return wrongSols;
     }
 
-    public int[] IncorrectMultiplication(){ // Tiene la misma estructura que las otras pero cambia respecto a que numero se hace. Se puede refactorifar pasando como parametro los cambios pero creo que pierde mucha legibilidad
+    public int[] IncorrectMultiplication(){ 
+        // Tiene la misma estructura que las otras pero cambia respecto a que numero se hace. Se puede refactorifar pasando como parametro los cambios pero creo que pierde mucha legibilidad
         // Cogemos x numeros que sean la solucion del producto por encima y por debajo de la solucion
         int nElements = totalGates - 1;
         int num = secondNumber - nElements;
@@ -135,7 +134,6 @@ public class SetOperationLaneRace : MonoBehaviour
             i ++;
             num ++;    
         }  
-
         wrongSols = ChooseSomeWrong(nElements);
 
         return wrongSols;
@@ -144,13 +142,10 @@ public class SetOperationLaneRace : MonoBehaviour
     public int[] ChooseSomeWrong(int amount){
         // De las opciones que hay, elegimos TotalGates numeros consecutivos en la lista, para que en el juego sean por ejemplo si hay 3 puertas, nElements es 2:  -, --, sol ; -, sol, + ; sol, +, ++ 
         int start = Random.Range(0, amount);
-        for (int j = 0 ; j < amount ; j ++)
-        {
+        for (int j = 0 ; j < amount ; j ++){
             wrongSols[j] = allWrongSols[start];
             start ++;
-
         }      
-
         ShuffleWrongSols();
 
         return wrongSols;
@@ -164,9 +159,7 @@ public class SetOperationLaneRace : MonoBehaviour
             int indexRandom = Random.Range(0, i + 1); 
 
             // Intercambiamos las posiciones de 2 elementos de la lista en cada vuelta del bucle
-            int aux  = wrongSols[i];
-            wrongSols[i] = wrongSols[indexRandom];
-            wrongSols[indexRandom] = aux;
+            (wrongSols[indexRandom], wrongSols[i]) = (wrongSols[i], wrongSols[indexRandom]);
         }
     }
 
@@ -193,7 +186,3 @@ public class SetOperationLaneRace : MonoBehaviour
     }
     
 }
-
-
-
-

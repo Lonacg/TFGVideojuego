@@ -100,19 +100,21 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 
 
 ### MG LaneRace
-- HECHO: (no se cuenta como acierto ni fallo y el juego sigue correctamente) arreglar problema de que pase entre dos puertas
+- HECHO: (sol= no se cuenta como acierto ni fallo y el juego sigue correctamente) arreglar problema de que pase entre dos puertas
 - HECHO: Cambiar la actualizacion del texto de la operacion del canvas al stage manager
 - HECHO: Poner un terreno infinito de alguna forma
 - HECHO: arreglar el movimiento del terreno y el suelo infinito
-- Añadir "correctos:" a la imagen de score
+- HECHO: Añadir "correctos:" a la imagen de score
+- HECHO: Cambiar fuente del texto
+- HECHO: Hacer el degradado del texto a la vez que se borran las imagenes en el Ready, Steady, Go.
 - Poner particulas brillantes al activarse los botones de correcto e incorrecto
 - Poner arboles y flores en el suelo, algo mas VERDE BRILLANTE, asi queda muy apagado y no pega con Granny
+- (sol: no se le ven los pies en el camino asi que le pongo solo en el arranque)Añadir nubecitas o particulas tipo polvo que salgan en el suelo al correr, cuando corre rapido salen mas y cuando va ams despacio salen menos, como ayuda visual del cambio de velicidad (sol: no se le )
 - Añadir musica
-- Añadir nubecitas o particulas tipo polvo que salgan en el suelo al correr, cuando corre rapido salen mas y cuando va ams despacio salen menos, como ayuda visual del cambio de velicidad
 - Despues del texto de intro, deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
 - Transicion en velolociadad del suelo
 - Valorar el uso de diccionarios
-- Listar las 4 operaciones en Stage manager y que set opetarion coja una de ahi (gestionando correctamente las 3 primeras que se generan al mismo tiempo... posibles poblemas de paralela)
+
 
 
 ### MG DeduceSign

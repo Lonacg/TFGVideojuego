@@ -9,20 +9,24 @@ using System.Collections;
 public class StageManagerLaneRace : MonoBehaviour
 {
     [Header("Variables")]
-    public int numberCorrectAnswers = 0;
-    public int numberIncorrectAnswers = 0;
+    [SerializeField] private int numberCorrectAnswers = 0;
+    [SerializeField] private int numberIncorrectAnswers = 0;
     private int neededScore = 3;
     private int currentGround = 0;
     private int extraTerrainsPlaced = 0;
 
     [Header("Game Objects:")]
-    public GameObject ground;
-    public GameObject terrain;
-    public GameObject extraTerrain;
-    public GameObject grannyPlayer;
-    public GameObject confetyParticles;
-    public GameObject[] gates;
-    public GameObject[] finishGates;
+    [SerializeField] private GameObject ground;
+    [SerializeField] private GameObject terrain;
+    [SerializeField] private GameObject extraTerrain;
+    [SerializeField] private GameObject grannyPlayer;
+    [SerializeField] private GameObject confettiParticles;
+    [SerializeField] private GameObject particlesGreen;
+    [SerializeField] private GameObject particlesRed;
+    [SerializeField] private GameObject[] gates;
+    [SerializeField] private GameObject[] finishGates;
+
+
 
     
     [Header("Text:")]
@@ -54,13 +58,24 @@ public class StageManagerLaneRace : MonoBehaviour
         GrannyMovement.OnParty -= HandleOnParty;
     }
 
+    void Start()
+    {
+        // positionCurrentTerrain = terrain.transform.localPosition;
+        
+        scoreText.text = "0/" + neededScore;
+        numberCorrectAnswers = 0;
+        numberIncorrectAnswers = 0;
+    }
 
+    
 
     private void HandleOnGo(){
         StartCoroutine(WaitXSecondAndChangeOperation(seconds: 1.1f));
     }
 
     private void HandleOnWellSol(){
+        StartCoroutine(LaunchParticles(particlesGreen));
+        
         numberCorrectAnswers ++;
         scoreText.text = numberCorrectAnswers + "/" + neededScore;
 
@@ -71,11 +86,12 @@ public class StageManagerLaneRace : MonoBehaviour
             // Activamos la meta en la siguiente puerta, desactivamos los numeros que tenia y borramos la siguiente linea de puertas
             finishGates[currentGround].SetActive(true);
             gates[currentGround].SetActive(false);
-            if(currentGround == 2)
+            if(currentGround == 2){
                 Destroy(gates[0]);
-            else
+            }
+            else{
                 Destroy(gates[currentGround + 1]);
-
+            }
 
             // Lanzamos el evento de que se ha llegado al maximo de aciertos necesario
             if(OnVictory != null)   
@@ -84,6 +100,8 @@ public class StageManagerLaneRace : MonoBehaviour
     }
 
     private void HandleOnWrongSol(){
+        StartCoroutine(LaunchParticles(particlesRed));
+
         numberIncorrectAnswers ++;
         IncreaseCurrentGround();
 
@@ -117,18 +135,12 @@ public class StageManagerLaneRace : MonoBehaviour
     }
 
     private void HandleOnParty(){
-        confetyParticles.SetActive(true); 
+        confettiParticles.SetActive(true); 
     }
 
 
 
-    void Start(){
-        // positionCurrentTerrain = terrain.transform.localPosition;
-        
-        scoreText.text = "0/" + neededScore;
-        numberCorrectAnswers = 0;
-        numberIncorrectAnswers = 0;
-    }
+
 
 
 
@@ -177,4 +189,12 @@ public class StageManagerLaneRace : MonoBehaviour
             yield return 0;
         }
     }
+
+    IEnumerator LaunchParticles(GameObject particles){
+        particles.SetActive(true); 
+        yield return new WaitForSeconds(1);
+        particles.SetActive(false); 
+    }
+
+
 }

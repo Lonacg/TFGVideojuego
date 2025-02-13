@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroundMovement : MonoBehaviour
 {
-    public float groundSpeed = 5 ;
+    public float groundSpeed = 5 ;  // Tiene que ser publica porque StageManager accede a ella
     private bool wantMove = false;
 
 
@@ -22,6 +22,19 @@ public class GroundMovement : MonoBehaviour
     }
 
 
+    void Start()
+    {
+        wantMove = false;   
+        groundSpeed = 5;     
+    }
+
+    void Update()
+    {
+        if(wantMove)
+            transform.Translate(0, 0, Time.deltaTime * - groundSpeed );
+    }
+
+
 
     public void HandleOnGo(){
         StartCoroutine(WaitXSecondAndGo(seconds: 0.45f));
@@ -33,18 +46,6 @@ public class GroundMovement : MonoBehaviour
 
     public void HandleOnFinalLine(){
         StartCoroutine(StopMovement());
-    }
-
-
-
-    void Start(){
-        wantMove = false;        
-    }
-
-    void Update()
-    {
-        if(wantMove)
-            transform.Translate(0, 0, Time.deltaTime * - groundSpeed );
     }
 
 

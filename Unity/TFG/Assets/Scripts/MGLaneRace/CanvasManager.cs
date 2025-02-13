@@ -35,11 +35,20 @@ public class CanvasManager : MonoBehaviour
 
     private float textSpeed = 0.1f;
     private int indexSentence = 0;
+    private TextMeshProUGUI textChild;
 
 
 
     public delegate void _OnStart();
     public static event _OnStart OnStart;
+
+
+    void Awake()
+    {
+        // Primer dialogo de inicio
+        //string line1 = " ¡Intenta llegar a la meta!";
+        //linesIntroDialogue.Add(line1);
+    }
 
 
 
@@ -64,27 +73,39 @@ public class CanvasManager : MonoBehaviour
         StageManagerLaneRace.OnVictory -= HandleOnVictory;
     }
 
+    void Start()
+    {
+        ingameView.SetActive(false);
+        RSGView.SetActive(true);
+        //introView.SetActive(true);
+        //StartDialogue(introView, introDialoguePlace, linesIntroDialogue);
+
+        // POR NO LANZAR LA INTRO
+        if(OnStart != null)   
+            OnStart();
+    }
+
 
 
     private void HandleOnReady(){
-        StartCoroutine(ShowImageForXSeconds(readyImage, 0.75f));
+        StartCoroutine(ShowImageForXSeconds(readyImage, seconds: 0.75f, hasText: true));
     }
 
     private void HandleOnSteady(){
-        StartCoroutine(ShowImageForXSeconds(steadyImage, 0.75f));
+        StartCoroutine(ShowImageForXSeconds(steadyImage, seconds: 0.75f, hasText: true));
     }
 
     private void HandleOnGo(){
-        StartCoroutine(ShowImageForXSeconds(goImage, 0.4f));
+        StartCoroutine(ShowImageForXSeconds(goImage, seconds: 0.4f, hasText: true));
         StartCoroutine(StartIngameView(waitSeconds: 1.1f));
     }
 
     private void HandleOnWellSol(){
-        StartCoroutine(ShowImageForXSeconds(correctAnswerImage, 1.3f));
+        StartCoroutine(ShowImageForXSeconds(correctAnswerImage, seconds: 0.5f));
     }
     
     private void HandleOnWrongSol(){
-        StartCoroutine(ShowImageForXSeconds(failedAnswerImage, 1.3f));
+        StartCoroutine(ShowImageForXSeconds(failedAnswerImage, seconds: 0.5f));
     }
 
     private void HandleOnVictory(){
@@ -96,19 +117,6 @@ public class CanvasManager : MonoBehaviour
 
 
 
-    void Awake(){
-        // Primer dialogo de inicio
-        string line1 = " ¡Intenta llegar a la meta!";
-        linesIntroDialogue.Add(line1);
-    }
-
-    void Start()
-    {
-        ingameView.SetActive(false);
-        RSGView.SetActive(true);
-        introView.SetActive(true);
-        StartDialogue(introView, introDialoguePlace, linesIntroDialogue);
-    }
 
 
 
@@ -147,6 +155,7 @@ public class CanvasManager : MonoBehaviour
 
 
     IEnumerator FadeCanvasGroup(GameObject view, float fromAlpha, float toAlpha, float animationTime = 0.3f){ 
+        // Corrutina reutilizada de CanvasManagerParking.cs 
         CanvasGroup canvasGroup = view.GetComponent<CanvasGroup>();
         if(toAlpha > 0)
             view.SetActive(true);
@@ -166,10 +175,10 @@ public class CanvasManager : MonoBehaviour
     }
 
 
-    IEnumerator ShowImageForXSeconds(Image imageToShow, float seconds){ 
-        StartCoroutine(FadeImage(imageToShow, fromAlpha: 0, toAlpha: 1, animationTime: 0.3f));
+    IEnumerator ShowImageForXSeconds(Image imageToShow, float seconds, bool hasText = false){ 
+        StartCoroutine(FadeImage(imageToShow, fromAlpha: 0, toAlpha: 1, hasText: hasText, animationTime: 0.3f));
         yield return new WaitForSeconds(seconds);
-        StartCoroutine(FadeImage(imageToShow, fromAlpha: 1, toAlpha: 0, animationTime: 0.5f));
+        StartCoroutine(FadeImage(imageToShow, fromAlpha: 1, toAlpha: 0, hasText: hasText, animationTime: 0.5f));
     }
 
     
@@ -179,16 +188,25 @@ public class CanvasManager : MonoBehaviour
     }
 
 
-    IEnumerator FadeImage(Image imageToShow, float fromAlpha, float toAlpha, float animationTime = 0.5f){
-        float elapsedTime = 0;
-        Color colorImage = imageToShow.color;
+    IEnumerator FadeImage(Image imageToShow, float fromAlpha, float toAlpha, bool hasText = false, float animationTime = 0.5f){   
+        // Corrutina parcialmente reutilizada de CanvasManagerParking.cs 
+        
+        // Si la imagen tiene un hijo texto, tambien tenemos que mostrarlo u ocultarlo suavemente con el alpha
+        if(hasText){
+            textChild = imageToShow.gameObject.transform.GetComponentInChildren<TextMeshProUGUI>();
+        }
 
         if(toAlpha > 0)
             imageToShow.gameObject.SetActive(true);
 
+        float elapsedTime = 0;
+        Color colorImage = imageToShow.color;
         while (elapsedTime < animationTime){
             colorImage.a = Mathf.Lerp(fromAlpha, toAlpha, elapsedTime / animationTime);
             imageToShow.color = colorImage;
+            if(hasText){
+                textChild.color = colorImage;
+            }
 
             elapsedTime += Time.deltaTime;
             yield return 0;
@@ -196,6 +214,9 @@ public class CanvasManager : MonoBehaviour
         
         colorImage.a = toAlpha;
         imageToShow.color = colorImage;
+        if(hasText){
+            textChild.color = colorImage;
+        }        
 
         if(toAlpha == 0){
             imageToShow.gameObject.SetActive(false);

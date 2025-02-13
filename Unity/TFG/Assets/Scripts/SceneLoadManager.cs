@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.TextCore;
 
 public class SceneLoadManager : MonoBehaviour
 {
@@ -32,7 +31,6 @@ public class SceneLoadManager : MonoBehaviour
 
     void HandleOnReturnToMenu(){
         StartCoroutine(LoadScene(sceneString: "MainMenu"));
-
     }
 
 

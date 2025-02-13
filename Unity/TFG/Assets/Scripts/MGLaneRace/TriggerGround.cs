@@ -9,7 +9,8 @@ public class TriggerGround : MonoBehaviour
 
 
 
-    void Start(){
+    void Start()
+    {
         lengthGroundPiece = 30; 
 
         // Pasamos por codigo las referencias al padre y al hijo
@@ -21,7 +22,8 @@ public class TriggerGround : MonoBehaviour
 
 
 
-    void OnTriggerEnter(Collider other){
+    void OnTriggerEnter(Collider other)
+    {
         // Cuando se lanza es porque ya no se ve este suelo
         if (other.tag=="Player"){
             Vector3 newPosition = new Vector3(0, 0, lengthGroundPiece * numberOfPieces);
