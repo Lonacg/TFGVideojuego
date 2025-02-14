@@ -232,7 +232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3787812954335415120, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
       propertyPath: m_Name
-      value: Ground1
+      value: GroundPiece1
       objectReference: {fileID: 0}
     - target: {fileID: 6306782475181079268, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
       propertyPath: m_Name
@@ -3077,7 +3077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3787812954335415120, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
       propertyPath: m_Name
-      value: Ground3
+      value: GroundPiece3
       objectReference: {fileID: 0}
     - target: {fileID: 3787812954335415120, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
       propertyPath: m_IsActive
@@ -3159,7 +3159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3787812954335415120, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
       propertyPath: m_Name
-      value: Ground2
+      value: GroundPiece2
       objectReference: {fileID: 0}
     - target: {fileID: 3787812954335415120, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
       propertyPath: m_IsActive

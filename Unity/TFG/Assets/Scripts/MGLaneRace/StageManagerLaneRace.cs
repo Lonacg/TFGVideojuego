@@ -44,7 +44,8 @@ public class StageManagerLaneRace : MonoBehaviour
         GrannyMovement.OnGo += HandleOnGo;
         TriggerGate.OnWellSol += HandleOnWellSol;
         TriggerGate.OnWrongSol += HandleOnWrongSol;
-        NextOperationTrigger.OnNextOperation += HandleOnNextOperation;
+        TriggerIncreaseCurrentGround.OnIncreaseCurrentGround += HandleOnIncreaseCurrentGround;
+        TriggerNextOperation.OnNextOperation += HandleOnNextOperation;
         TriggerExtraTerrain.OnNewGround += HandleOnNewGround;
         GrannyMovement.OnParty += HandleOnParty;
     }
@@ -53,7 +54,8 @@ public class StageManagerLaneRace : MonoBehaviour
         GrannyMovement.OnGo -= HandleOnGo;
         TriggerGate.OnWellSol -= HandleOnWellSol;
         TriggerGate.OnWrongSol -= HandleOnWrongSol;
-        NextOperationTrigger.OnNextOperation -= HandleOnNextOperation;
+        TriggerIncreaseCurrentGround.OnIncreaseCurrentGround -= HandleOnIncreaseCurrentGround;
+        TriggerNextOperation.OnNextOperation -= HandleOnNextOperation;
         TriggerExtraTerrain.OnNewGround -= HandleOnNewGround;
         GrannyMovement.OnParty -= HandleOnParty;
     }
@@ -79,12 +81,13 @@ public class StageManagerLaneRace : MonoBehaviour
         numberCorrectAnswers ++;
         scoreText.text = numberCorrectAnswers + "/" + neededScore;
 
-        IncreaseCurrentGround();
+        //IncreaseCurrentGround();
+        Debug.Log("currentGround: " + currentGround);
 
         if(numberCorrectAnswers == neededScore){
                     
             // Activamos la meta en la siguiente puerta, desactivamos los numeros que tenia y borramos la siguiente linea de puertas
-            finishGates[currentGround].SetActive(true);
+            finishGates[currentGround].SetActive(true);     // currentGround, porque segun se cruza una puerta se aumenta en uno y estamos en la siguiente
             gates[currentGround].SetActive(false);
             if(currentGround == 2){
                 Destroy(gates[0]);
@@ -103,7 +106,8 @@ public class StageManagerLaneRace : MonoBehaviour
         StartCoroutine(LaunchParticles(particlesRed));
 
         numberIncorrectAnswers ++;
-        IncreaseCurrentGround();
+        //IncreaseCurrentGround();
+        Debug.Log("currentGround: " + currentGround);
 
         // Cuando falla 2 veces, reducimos en 1 la velocidad del movimiento para facilitarselo y cambiamos la animacion de correr
         if(numberIncorrectAnswers  == 2){
@@ -118,6 +122,8 @@ public class StageManagerLaneRace : MonoBehaviour
     }
 
     private void HandleOnNextOperation(){
+        // IncreaseCurrentGround();
+        
         StartCoroutine(ShowNewOperation());
     }
 
@@ -133,6 +139,11 @@ public class StageManagerLaneRace : MonoBehaviour
         // Lo colocamos en la posicion local correcta (para que no sea respecto al padre)
         newTerrain.transform.localPosition = newPosition;
     }
+
+    private void HandleOnIncreaseCurrentGround(){
+        IncreaseCurrentGround();
+    }
+
 
     private void HandleOnParty(){
         confettiParticles.SetActive(true); 

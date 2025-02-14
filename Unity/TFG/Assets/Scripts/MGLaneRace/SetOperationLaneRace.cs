@@ -96,7 +96,7 @@ public class SetOperationLaneRace : MonoBehaviour
                 }
             }         
         }
-        //Debug.Log("La operacion es: " + firstNumber + symbol + secondNumber + " = " + sol);
+        // Debug.Log("La operacion es: " + firstNumber + symbol + secondNumber + " = " + sol);
     }
     
     public int[] IncorrectAdditionSubtractionOrDivision(){
