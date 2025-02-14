@@ -107,9 +107,10 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - HECHO: Añadir "correctos:" a la imagen de score
 - HECHO: Cambiar fuente del texto
 - HECHO: Hacer el degradado del texto a la vez que se borran las imagenes en el Ready, Steady, Go.
-- Poner particulas brillantes al activarse los botones de correcto e incorrecto
+- HECHO: Poner particulas brillantes al activarse los botones de correcto e incorrecto
 - Poner arboles y flores en el suelo, algo mas VERDE BRILLANTE, asi queda muy apagado y no pega con Granny
-- (sol: no se le ven los pies en el camino asi que le pongo solo en el arranque)Añadir nubecitas o particulas tipo polvo que salgan en el suelo al correr, cuando corre rapido salen mas y cuando va ams despacio salen menos, como ayuda visual del cambio de velicidad (sol: no se le )
+-  IMPORTANTE: despues de pasar por el medio de dos puertas pone otra vez la misma operacion en vez de la siguiente, asi que van decaladas
+- Añadir nubecitas o particulas tipo polvo que salgan en el suelo al correr, cuando corre rapido salen mas y cuando va ams despacio salen menos, como ayuda visual del cambio de velicidad (sol: no se le )
 - Añadir musica
 - Despues del texto de intro, deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
 - Transicion en velolociadad del suelo
