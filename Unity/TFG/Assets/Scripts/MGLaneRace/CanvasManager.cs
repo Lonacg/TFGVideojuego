@@ -57,7 +57,7 @@ public class CanvasManager : MonoBehaviour
         GrannyMovement.OnReady += HandleOnReady;
         GrannyMovement.OnSteady += HandleOnSteady;
         GrannyMovement.OnGo += HandleOnGo;
-        TriggerGate.OnWellSol += HandleOnWellSol;
+        TriggerGate.OnCorrectSol += HandleOnCorrectSol;
         TriggerGate.OnWrongSol += HandleOnWrongSol;
         StageManagerLaneRace.OnVictory += HandleOnVictory;
     }
@@ -68,7 +68,7 @@ public class CanvasManager : MonoBehaviour
         GrannyMovement.OnReady -= HandleOnReady;
         GrannyMovement.OnSteady -= HandleOnSteady;
         GrannyMovement.OnGo -= HandleOnGo;
-        TriggerGate.OnWellSol -= HandleOnWellSol;
+        TriggerGate.OnCorrectSol -= HandleOnCorrectSol;
         TriggerGate.OnWrongSol -= HandleOnWrongSol;
         StageManagerLaneRace.OnVictory -= HandleOnVictory;
     }
@@ -100,7 +100,7 @@ public class CanvasManager : MonoBehaviour
         StartCoroutine(StartIngameView(waitSeconds: 1.1f));
     }
 
-    private void HandleOnWellSol(){
+    private void HandleOnCorrectSol(){
         StartCoroutine(ShowImageForXSeconds(correctAnswerImage, seconds: 0.5f));
     }
     

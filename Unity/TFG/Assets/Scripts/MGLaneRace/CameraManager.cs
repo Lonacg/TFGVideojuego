@@ -31,6 +31,8 @@ public class CameraManager : MonoBehaviour
         TriggerFinalGate.OnFinalLine -= HandleOnFinalLine;
     }
 
+
+
     private void HandleOnStart()
     {
         firstMovement = true;
@@ -41,6 +43,8 @@ public class CameraManager : MonoBehaviour
     {
         StartCoroutine(MoveCamera());
     }
+
+
 
     private void Start()
     {

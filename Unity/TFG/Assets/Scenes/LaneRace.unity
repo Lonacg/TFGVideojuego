@@ -190,6 +190,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FinalGate1
       objectReference: {fileID: 0}
+    - target: {fileID: 268257568452750843, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 515375887831757690, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+      propertyPath: m_Name
+      value: IncreaseCurrentGroundTrigger1
+      objectReference: {fileID: 0}
     - target: {fileID: 1816217606813447380, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -237,6 +245,14 @@ PrefabInstance:
     - target: {fileID: 6306782475181079268, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
       propertyPath: m_Name
       value: Gates1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306782475181079268, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8255678710289019493, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+      propertyPath: m_Name
+      value: NextOpTrigger1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2255,6 +2271,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1423374380}
   m_CullTransparentMesh: 1
+--- !u!1 &1502328192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8255678710289019493, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+  m_PrefabInstance: {fileID: 4020620425637635293}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1579157696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8255678710289019493, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+  m_PrefabInstance: {fileID: 12144823}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1614404132
 GameObject:
   m_ObjectHideFlags: 0
@@ -2635,6 +2661,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6306782475181079268, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
   m_PrefabInstance: {fileID: 12144823}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1882029589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8255678710289019493, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+  m_PrefabInstance: {fileID: 3951238029221235194}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1887441142
 PrefabInstance:
@@ -3035,6 +3066,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FinalGate3
       objectReference: {fileID: 0}
+    - target: {fileID: 515375887831757690, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+      propertyPath: m_Name
+      value: IncreaseCurrentGroundTrigger3
+      objectReference: {fileID: 0}
     - target: {fileID: 1816217606813447380, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3091,6 +3126,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gates3
       objectReference: {fileID: 0}
+    - target: {fileID: 8255678710289019493, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+      propertyPath: m_Name
+      value: NextOpTrigger3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3116,6 +3155,10 @@ PrefabInstance:
     - target: {fileID: 268257568452750843, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
       propertyPath: m_Name
       value: FinalGate2
+      objectReference: {fileID: 0}
+    - target: {fileID: 515375887831757690, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+      propertyPath: m_Name
+      value: IncreaseCurrentGroundTrigger2
       objectReference: {fileID: 0}
     - target: {fileID: 1816217606813447380, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3173,8 +3216,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gates2
       objectReference: {fileID: 0}
+    - target: {fileID: 8255678710289019493, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
+      propertyPath: m_Name
+      value: NextOpTrigger2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6079848064530966474, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7303888611341546896, guid: e8afaa3492d044a45bc922e1fc920621, type: 3}
@@ -3378,6 +3426,10 @@ MonoBehaviour:
   - {fileID: 140703194}
   - {fileID: 2912384190921602225}
   - {fileID: 3090033203691334284}
+  nextOpTriggers:
+  - {fileID: 1579157696}
+  - {fileID: 1502328192}
+  - {fileID: 1882029589}
   textOperationPlace: {fileID: 1423374382}
   scoreText: {fileID: 1088790368}
 --- !u!4 &7053514641704719145

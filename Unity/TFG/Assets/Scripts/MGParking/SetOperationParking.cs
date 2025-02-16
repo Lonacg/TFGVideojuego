@@ -26,38 +26,17 @@ public class SetOperationParking : MonoBehaviour
     private string symbol;
     private string textFirstTry;
     private string textAfterFail;
-    private bool firstTry = true;
 
 
-
-    void OnEnable()
-    {
-        ParkingTrigger.OnWrongParked += HandleOnWrongParked;
-    }
-
-    void OnDisable()
-    {
-        ParkingTrigger.OnWrongParked -= HandleOnWrongParked;
-    }
 
     void Start()
     {   
         parkingNumbers = scriptInstances.pNumbers;
         parkingLots = scriptInstances.pLots;
         numberFreeParkings = parkingLots.Count;
-        firstTry = true;
         
         GenerateOperation();
         ChangeNumberParking();
-    }
-
-
-
-    void HandleOnWrongParked (GameObject go){
-        // Actualizamos el texto del segundo intento (CanvasManagerParking es quien lo muestra)
-        if(firstTry){
-            operationSecondTryText.text = textAfterFail;
-        }
     }
 
 
@@ -96,6 +75,7 @@ public class SetOperationParking : MonoBehaviour
 
         // Ponemos en el cuadro de texto la operacion
         operationFirstTryText.text = textFirstTry;
+        operationSecondTryText.text = textAfterFail;
 
         //Debug.Log("Operacion: " + textFirstTry + " = " + sol);          
     }

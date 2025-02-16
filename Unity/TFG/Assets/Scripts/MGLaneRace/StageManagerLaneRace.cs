@@ -11,7 +11,7 @@ public class StageManagerLaneRace : MonoBehaviour
     [Header("Variables")]
     [SerializeField] private int numberCorrectAnswers = 0;
     [SerializeField] private int numberIncorrectAnswers = 0;
-    private int neededScore = 3;
+    private int neededScore = 5;
     private int currentGround = 0;
     private int extraTerrainsPlaced = 0;
 
@@ -25,6 +25,7 @@ public class StageManagerLaneRace : MonoBehaviour
     [SerializeField] private GameObject particlesRed;
     [SerializeField] private GameObject[] gates;
     [SerializeField] private GameObject[] finishGates;
+    [SerializeField] private GameObject[] nextOpTriggers;
 
 
 
@@ -42,7 +43,7 @@ public class StageManagerLaneRace : MonoBehaviour
 
     void OnEnable(){
         GrannyMovement.OnGo += HandleOnGo;
-        TriggerGate.OnWellSol += HandleOnWellSol;
+        TriggerGate.OnCorrectSol += HandleOnCorrectSol;
         TriggerGate.OnWrongSol += HandleOnWrongSol;
         TriggerIncreaseCurrentGround.OnIncreaseCurrentGround += HandleOnIncreaseCurrentGround;
         TriggerNextOperation.OnNextOperation += HandleOnNextOperation;
@@ -52,7 +53,7 @@ public class StageManagerLaneRace : MonoBehaviour
 
     void OnDisable(){
         GrannyMovement.OnGo -= HandleOnGo;
-        TriggerGate.OnWellSol -= HandleOnWellSol;
+        TriggerGate.OnCorrectSol -= HandleOnCorrectSol;
         TriggerGate.OnWrongSol -= HandleOnWrongSol;
         TriggerIncreaseCurrentGround.OnIncreaseCurrentGround -= HandleOnIncreaseCurrentGround;
         TriggerNextOperation.OnNextOperation -= HandleOnNextOperation;
@@ -61,9 +62,7 @@ public class StageManagerLaneRace : MonoBehaviour
     }
 
     void Start()
-    {
-        // positionCurrentTerrain = terrain.transform.localPosition;
-        
+    {        
         scoreText.text = "0/" + neededScore;
         numberCorrectAnswers = 0;
         numberIncorrectAnswers = 0;
@@ -75,20 +74,22 @@ public class StageManagerLaneRace : MonoBehaviour
         StartCoroutine(WaitXSecondAndChangeOperation(seconds: 1.1f));
     }
 
-    private void HandleOnWellSol(){
+    private void HandleOnCorrectSol(){
         StartCoroutine(LaunchParticles(particlesGreen));
         
         numberCorrectAnswers ++;
         scoreText.text = numberCorrectAnswers + "/" + neededScore;
-
-        //IncreaseCurrentGround();
-        Debug.Log("currentGround: " + currentGround);
 
         if(numberCorrectAnswers == neededScore){
                     
             // Activamos la meta en la siguiente puerta, desactivamos los numeros que tenia y borramos la siguiente linea de puertas
             finishGates[currentGround].SetActive(true);     // currentGround, porque segun se cruza una puerta se aumenta en uno y estamos en la siguiente
             gates[currentGround].SetActive(false);
+
+            //Destruimos el trigger de la meta que llama a cambiar la operacion, ya que esa funcion accede a la operacion que genera gates[_], y al borrarla en la siguiente linea, cuando cruza el trigger nos salta un null refence con razon
+            Destroy(nextOpTriggers[currentGround]);
+
+            // Destruimos el siguiente bloque de puertas a la meta para que no se vea al cruzarla 
             if(currentGround == 2){
                 Destroy(gates[0]);
             }
@@ -106,8 +107,6 @@ public class StageManagerLaneRace : MonoBehaviour
         StartCoroutine(LaunchParticles(particlesRed));
 
         numberIncorrectAnswers ++;
-        //IncreaseCurrentGround();
-        Debug.Log("currentGround: " + currentGround);
 
         // Cuando falla 2 veces, reducimos en 1 la velocidad del movimiento para facilitarselo y cambiamos la animacion de correr
         if(numberIncorrectAnswers  == 2){
@@ -121,9 +120,7 @@ public class StageManagerLaneRace : MonoBehaviour
         }
     }
 
-    private void HandleOnNextOperation(){
-        // IncreaseCurrentGround();
-        
+    private void HandleOnNextOperation(){        
         StartCoroutine(ShowNewOperation());
     }
 
@@ -148,10 +145,6 @@ public class StageManagerLaneRace : MonoBehaviour
     private void HandleOnParty(){
         confettiParticles.SetActive(true); 
     }
-
-
-
-
 
 
 
