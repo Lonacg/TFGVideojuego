@@ -97,6 +97,7 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - HECHO: Ajustar mejor la  deteccion de coche aparcado, entrando muy torcido lo damos por bueno
 - HECHO: Añadir música
 - HECHO: Despues del texto de intro, deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
+- Los numero de la operacion en la segunda forma deberian ser un bloque independiente a la raya y el signo, y estar centrado,  porque si aparece un uno ocupa menos y ya no se quedan uno encima del otro bien
 
 
 ### MG LaneRace
@@ -110,11 +111,10 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - HECHO: Poner particulas brillantes al activarse los botones de correcto e incorrecto
 - HECHO: Poner arboles y flores en el suelo, algo mas VERDE BRILLANTE, asi queda muy apagado y no pega con Granny
 - HECHO: Importante! despues de pasar por el medio de dos puertas pone otra vez la misma operacion en vez de la siguiente, asi que van decaladas
-- Añadir nubecitas o particulas tipo polvo que salgan en el suelo al correr, cuando corre rapido salen mas y cuando va ams despacio salen menos, como ayuda visual del cambio de velicidad (sol: no se le )
+- HECHO: Añadir nubecitas o particulas tipo polvo que salgan en el suelo al correr, cuando corre rapido salen mas y cuando va ams despacio salen menos, como ayuda visual del cambio de velicidad
+- HECHO: Hacer una transicion suave cuando el suelo cambia de velocidad
 - Añadir musica
 - Despues del texto de intro, deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
-- Transicion en velolociadad del suelo
-- Valorar el uso de diccionarios
 
 
 

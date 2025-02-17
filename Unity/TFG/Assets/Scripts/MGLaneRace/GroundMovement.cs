@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class GroundMovement : MonoBehaviour
 {
-    public float groundSpeed = 5 ;  // Tiene que ser publica porque StageManager accede a ella
+    public float groundSpeed;  
+    private float maxGroundSpeed = 5 ;  
     private bool wantMove = false;
 
 
 
     void OnEnable(){
         GrannyMovement.OnGo += HandleOnGo;
+        StageManagerLaneRace.OnMiddleVelocity += HandleOnMiddleVelocity;
+        StageManagerLaneRace.OnLowVelocity += HandleOnLowVelocity;
         StageManagerLaneRace.OnVictory += HandleOnVictory;
         TriggerFinalGate.OnFinalLine += HandleOnFinalLine; 
     }
 
     void OnDisable(){
         GrannyMovement.OnGo -= HandleOnGo;
+        StageManagerLaneRace.OnMiddleVelocity -= HandleOnMiddleVelocity;
+        StageManagerLaneRace.OnLowVelocity -= HandleOnLowVelocity;
         StageManagerLaneRace.OnVictory -= HandleOnVictory;
         TriggerFinalGate.OnFinalLine -= HandleOnFinalLine;
     }
@@ -25,7 +30,8 @@ public class GroundMovement : MonoBehaviour
     void Start()
     {
         wantMove = false;   
-        groundSpeed = 5;     
+        maxGroundSpeed = 5;     
+        groundSpeed = maxGroundSpeed;     
     }
 
     void Update()
@@ -40,8 +46,17 @@ public class GroundMovement : MonoBehaviour
         StartCoroutine(WaitXSecondAndGo(seconds: 0.45f));
     }
 
+    public void HandleOnMiddleVelocity(){
+        StartCoroutine(ChangeGroundVelocity(desiredVel: groundSpeed - 1, animationTime: 1f));
+        
+    }
+
+    public void HandleOnLowVelocity(){
+        StartCoroutine(ChangeGroundVelocity(desiredVel: groundSpeed - 0.5f));
+    }
+
     public void HandleOnVictory(){
-        groundSpeed = 5;
+        StartCoroutine(ChangeGroundVelocity(desiredVel: maxGroundSpeed, animationTime: 2f));
     }
 
     public void HandleOnFinalLine(){
@@ -54,6 +69,19 @@ public class GroundMovement : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         wantMove = true;
     }
+
+    IEnumerator ChangeGroundVelocity(float desiredVel, float animationTime = 0.5f){
+        // Corrutina reutilizada parcialmente del parking: ErrorXBehaviour.cs
+        float elapsedTime = 0;
+        float startVel = groundSpeed;
+        while(elapsedTime < animationTime){
+            groundSpeed = Mathf.Lerp(startVel, desiredVel, elapsedTime / animationTime);
+
+            elapsedTime += Time.deltaTime;
+            yield return 0;
+        }
+        groundSpeed = desiredVel;
+    }    
     
     IEnumerator StopMovement(){
         // Slow Running

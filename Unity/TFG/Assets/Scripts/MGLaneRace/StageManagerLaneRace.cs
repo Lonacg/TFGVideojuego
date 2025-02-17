@@ -11,7 +11,7 @@ public class StageManagerLaneRace : MonoBehaviour
     [Header("Variables")]
     [SerializeField] private int numberCorrectAnswers = 0;
     [SerializeField] private int numberIncorrectAnswers = 0;
-    private int neededScore = 5;
+    private readonly int neededScore = 3;
     private int currentGround = 0;
     private int extraTerrainsPlaced = 0;
 
@@ -39,6 +39,12 @@ public class StageManagerLaneRace : MonoBehaviour
     public delegate void _OnVictory();          // El evento de victoria se lanza en el momento en el que se consiguen los aciertos objetivos (3 por defecto) (OnFinalLine es cuando cruza la meta)
     public static event _OnVictory OnVictory;
 
+
+    public delegate void _OnMiddleVelocity();          
+    public static event _OnMiddleVelocity OnMiddleVelocity;
+
+    public delegate void _LowVelocity();          
+    public static event _LowVelocity OnLowVelocity;
 
 
     void OnEnable(){
@@ -110,13 +116,21 @@ public class StageManagerLaneRace : MonoBehaviour
 
         // Cuando falla 2 veces, reducimos en 1 la velocidad del movimiento para facilitarselo y cambiamos la animacion de correr
         if(numberIncorrectAnswers  == 2){
-            ground.GetComponent<GroundMovement>().groundSpeed -= 1;
-            grannyPlayer.GetComponent<GrannyMovement>().ChangeAnimation("Running");
+            // Lanzamos el evento de reducir la velocidad a la intermedia
+            if(OnMiddleVelocity != null)   
+                OnMiddleVelocity();
+
+            // ground.GetComponent<GroundMovement>().groundSpeed -= 1;
+            // grannyPlayer.GetComponent<GrannyMovement>().ChangeAnimation("Running");
         }
         // Cuando falla 4 veces, reducimos en 0.5 mas la velocidad del movimiento y cambiamos la animacion de correr
         if(numberIncorrectAnswers  == 4){
-            ground.GetComponent<GroundMovement>().groundSpeed -= 0.5f;
-            grannyPlayer.GetComponent<GrannyMovement>().ChangeAnimation("SlowRunning");
+            // Lanzamos el evento de reducir la velocidad a la mas baja
+            if(OnLowVelocity != null)   
+                OnLowVelocity();
+
+            //ground.GetComponent<GroundMovement>().groundSpeed -= 0.5f;
+            //grannyPlayer.GetComponent<GrannyMovement>().ChangeAnimation("SlowRunning");
         }
     }
 

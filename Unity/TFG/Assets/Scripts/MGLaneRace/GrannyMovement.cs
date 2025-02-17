@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Runtime.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GrannyMovement : MonoBehaviour
@@ -6,8 +8,10 @@ public class GrannyMovement : MonoBehaviour
 
 
     [Header("Movement:")]
-    public Transform lanesParent;
-    public Transform[] lanes;
+    [SerializeField] private Transform lanesParent;
+    [SerializeField] private Transform[] lanes;
+    [SerializeField] private GameObject runningParticles;
+    private ParticleSystem.EmissionModule runningEmission;  // El valor no se lee, pero si se modifica asi que no hacer caso a la indicacion
     private float speed = 8f; 
     private int currentIndex = 1;
     private bool canMove;
@@ -15,7 +19,7 @@ public class GrannyMovement : MonoBehaviour
     private Animator animator;
     private string currentAnimation = "";
 
-
+    
 
 
     public delegate void _OnReady();
@@ -34,12 +38,16 @@ public class GrannyMovement : MonoBehaviour
 
     void OnEnable(){
         CanvasManager.OnStart += HandleOnStart;
+        StageManagerLaneRace.OnMiddleVelocity += HandleOnMiddleVelocity;
+        StageManagerLaneRace.OnLowVelocity += HandleOnLowVelocity;
         StageManagerLaneRace.OnVictory += HandleOnVictory;
         TriggerFinalGate.OnFinalLine += HandleOnFinalLine;
     }
 
     void OnDisable(){
         CanvasManager.OnStart -= HandleOnStart;
+        StageManagerLaneRace.OnMiddleVelocity -= HandleOnMiddleVelocity;
+        StageManagerLaneRace.OnLowVelocity -= HandleOnLowVelocity;
         StageManagerLaneRace.OnVictory -= HandleOnVictory;
         TriggerFinalGate.OnFinalLine -= HandleOnFinalLine;
     }
@@ -63,6 +71,9 @@ public class GrannyMovement : MonoBehaviour
 
         // Asignamos las variables
         speed = 8f;
+        runningParticles.SetActive(false);
+        runningEmission = runningParticles.GetComponent<ParticleSystem>().emission;
+
     }
 
     void Update()
@@ -92,11 +103,27 @@ public class GrannyMovement : MonoBehaviour
         StartCoroutine(ReadySteadyGo());
     }
 
+    public void HandleOnMiddleVelocity(){
+        // Cambiamos la animacion a correr normal y reducimos las particulas de polvo de los pies
+        ChangeAnimation("Running");
+        runningEmission.rateOverTime = new ParticleSystem.MinMaxCurve(10f);
+    }
+
+    public void HandleOnLowVelocity(){
+        // Cambiamos la animacion a correr despacio y reducimos las particulas de polvo de los pies
+        ChangeAnimation("SlowRunning");
+        runningEmission.rateOverTime = new ParticleSystem.MinMaxCurve(5f);
+    }
+
     public void HandleOnVictory(){
         // Movemos a player al carril central e impedimos su movimiento
         canMove= false;
         speed = 6f;
         ChangeAnimation("FastRunning"); 
+
+        // Aumentamos el valor de las particulas a 15 que es el que deseamos en FastRunning
+        runningEmission.rateOverTime = new ParticleSystem.MinMaxCurve(15f);
+ 
 
         StartCoroutine(WaitAndMoveToCentralGate(seconds: 1.5f));
     }
@@ -109,10 +136,10 @@ public class GrannyMovement : MonoBehaviour
 
 
 
-    public void ChangeAnimation(string animation, float crossfade = 0.2f){
+    public void ChangeAnimation(string animation, float transitionTime = 0.25f){
         if(currentAnimation != animation){
             currentAnimation = animation;
-            animator.CrossFade(animation, crossfade);
+            animator.CrossFade(animation, transitionTime);
         }
     }
 
@@ -140,7 +167,8 @@ public class GrannyMovement : MonoBehaviour
         if(OnGo != null)   
             OnGo();
         yield return new WaitForSeconds(0.4f); // Para que aparezca el GO! justo antes de empezar el mov (GroundMovemetn tambien lo tiene en el HandleOnGo)
-        ChangeAnimation("FastRunning");  
+        ChangeAnimation("FastRunning", transitionTime: 0.1f); 
+        runningParticles.SetActive(true); 
 
         // Permitimos el movimiento del jugador
         canMove = true;
@@ -155,17 +183,19 @@ public class GrannyMovement : MonoBehaviour
         // Impedimos el movimiento del jugador
         canMove = false;
 
-        ChangeAnimation("SlowRunning");        
+        ChangeAnimation("SlowRunning");
+        runningEmission.rateOverTime = new ParticleSystem.MinMaxCurve(5f);        
         yield return new WaitForSeconds(1.5f);
 
-        ChangeAnimation("Walking");        
+        ChangeAnimation("Walking");
+        runningParticles.SetActive(false);        
         yield return new WaitForSeconds(1.5f);
 
-        ChangeAnimation("StrongGesture"); 
+        ChangeAnimation("StrongGesture", transitionTime: 0.2f); 
         yield return new WaitForSeconds(1.7f);
 
 
-        ChangeAnimation("Victory");  
+        ChangeAnimation("Victory", transitionTime: 0.2f);  
         yield return new WaitForSeconds(0.3f);
         if(OnParty != null)   
             OnParty();
