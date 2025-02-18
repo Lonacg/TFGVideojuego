@@ -11,7 +11,7 @@ public class StageManagerLaneRace : MonoBehaviour
     [Header("Variables")]
     [SerializeField] private int numberCorrectAnswers = 0;
     [SerializeField] private int numberIncorrectAnswers = 0;
-    private readonly int neededScore = 3;
+    private readonly int neededScore = 5;
     private int currentGround = 0;
     private int extraTerrainsPlaced = 0;
 

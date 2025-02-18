@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroundMovement : MonoBehaviour
 {
-    public float groundSpeed;  
+    private float groundSpeed;  
     private float maxGroundSpeed = 5 ;  
     private bool wantMove = false;
 

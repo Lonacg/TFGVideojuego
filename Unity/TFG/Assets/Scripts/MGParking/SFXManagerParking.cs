@@ -5,18 +5,22 @@ using Unity.VisualScripting;
 public class SFXManagerParking : MonoBehaviour
 {
     [Header("Audio Sources:")]
-    public AudioSource audioSourceSFX;  // Un audio source solo puede reproducir un sonido
-    public AudioSource engineStaticAudioSource;
+    private AudioSource audioSourceMusic;
+    private AudioSource audioSourceSFX;  // Un audio source solo puede reproducir un sonido
+    [SerializeField] private AudioSource engineStaticAudioSource;
     private AudioClip previousAudioClip;
     private float previousACTimeStamp;
 
+    [Header("Game Objects:")]
+    [SerializeField] private GameObject music;
+
     [Header("Audio Clips:")]
-    public AudioClip startCar;
-    public AudioClip collisionCar;
-    public AudioClip collisionCone;
-    public AudioClip correctAnswer;
-    public AudioClip wrongAnswer;
-    public AudioClip gotIt;
+    [SerializeField] private AudioClip startCar;
+    [SerializeField] private AudioClip collisionCar;
+    [SerializeField] private AudioClip collisionCone;
+    [SerializeField] private AudioClip correctAnswer;
+    [SerializeField] private AudioClip wrongAnswer;
+    [SerializeField] private AudioClip gotIt;
 
 
 
@@ -40,6 +44,12 @@ public class SFXManagerParking : MonoBehaviour
         CanvasManagerParking.OnGotIt  -= HandleOnGotIt;
     }
 
+
+    void Start()
+    {
+        audioSourceSFX = GetComponent<AudioSource>();
+        audioSourceMusic = music.GetComponent<AudioSource>();
+    }
 
 
     private void HandleOnPlay(){
@@ -70,21 +80,26 @@ public class SFXManagerParking : MonoBehaviour
     }
 
     private void HandleOnGotIt(){
-        // Sonido al mostrar el conseguido
-        PlaySFX(gotIt, 0.6f);        
+        // Apagamos la musica de fondo y reproducimos el sonido de victoria
+        StartCoroutine(StopMusic(endVolume: 0f, animationTime: 1f));
+        PlaySFX(gotIt, 0.5f);        
     }
 
 
 
     public void PlaySFX(AudioClip audioClip, float volume = 1){
-        if (previousAudioClip == audioClip){ //Para que 2 sonidos no puedan sonar en el mismo momento y se acople el sonido (se multiplicaria el volumen de ese sonido)
+        // Impedimos que dos clips iguales puedan sonar en el mismo momento y se acople el sonido (se multiplicaria el volumen de ese sonido)
+        if (previousAudioClip == audioClip){ 
             if(Time.time - previousACTimeStamp < 0.05f){
                 return;
             }
         }
+
+        // Guardamos los valores para compararlos con el proximo clip que pidamos reproducir
         previousAudioClip = audioClip;
         previousACTimeStamp = Time.time;
 
+        // Reproducimos el sonido
         audioSourceSFX.PlayOneShot(audioClip, volume);
     }
 
@@ -100,6 +115,17 @@ public class SFXManagerParking : MonoBehaviour
 
         // Activamos el AudioSource puesto en el hijo del coche, y automaticamente empieza a reproducirse, como la musica de fondo
         engineStaticAudioSource.enabled = true;
+    }
+
+    IEnumerator StopMusic(float endVolume, float animationTime = 0.5f){
+        float elapsedTime = 0;
+        float startVolume = audioSourceMusic.volume;
+        while(elapsedTime < animationTime){
+            float newVolume = Mathf.Lerp(startVolume, endVolume, elapsedTime / animationTime);
+            audioSourceMusic.volume = newVolume;
+            elapsedTime += Time.deltaTime;
+            yield return 0;
+        }
     }
 
 }
