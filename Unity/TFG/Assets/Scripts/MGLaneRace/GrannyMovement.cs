@@ -16,15 +16,13 @@ public class GrannyMovement : MonoBehaviour
     private int currentIndex = 1;
     private bool canMove;
     private Transform currentLane;
-    private Animator animator;
-    private string currentAnimation = "";
+    private Animator animatorGranny;
+    private string currentAnimationGranny = "";
 
-    [Header("FootSteps Sound:")]   
-    [SerializeField] private GameObject walkFootsteps;
-    [SerializeField] private GameObject slowFootsteps;
-    [SerializeField] private GameObject middleFootsteps;
-    [SerializeField] private GameObject fastFootsteps;
+    [Header("Footsteps Detector:")]   
+    [SerializeField] private GameObject footstepsDetector;    
 
+    
 
 
     public delegate void _OnReady();
@@ -42,7 +40,15 @@ public class GrannyMovement : MonoBehaviour
     public delegate void _OnParty();
     public static event _OnGo OnParty;
 
+    public delegate void _OnFootstepSound();
+    public static event _OnFootstepSound OnFootstepSound;
 
+
+
+    public void FootstepDone(){
+        if(OnFootstepSound != null)   
+            OnFootstepSound();
+    }
 
     void OnEnable(){
         CanvasManager.OnStart += HandleOnStart;
@@ -71,8 +77,8 @@ public class GrannyMovement : MonoBehaviour
 
         currentLane = lanes[currentIndex];
 
-        // Asignamos el Animator y el Rigidbody
-        animator = GetComponent<Animator>();
+        // Asignamos los Animator
+        animatorGranny = GetComponent<Animator>();
 
         // Impedimos que player se mueva hasta que acaben las animaciones del inicio
         canMove = false;
@@ -115,28 +121,22 @@ public class GrannyMovement : MonoBehaviour
 
     public void HandleOnMiddleVelocity(){
         // Cambiamos la animacion a correr normal y reducimos las particulas de polvo de los pies
-        ChangeAnimation("Running");
+        ChangeAnimationGranny("MiddleRunning");
         runningEmission.rateOverTime = new ParticleSystem.MinMaxCurve(10f);
-        fastFootsteps.SetActive(false);
-        middleFootsteps.SetActive(true);
+ 
     }
 
     public void HandleOnLowVelocity(){
         // Cambiamos la animacion a correr despacio y reducimos las particulas de polvo de los pies
-        ChangeAnimation("SlowRunning");
+        ChangeAnimationGranny("SlowRunning");
         runningEmission.rateOverTime = new ParticleSystem.MinMaxCurve(5f);
-        middleFootsteps.SetActive(false);
-        slowFootsteps.SetActive(true);
     }
 
     public void HandleOnVictory(){
         // Movemos a player al carril central e impedimos su movimiento
         canMove= false;
         speed = 6f;
-        ChangeAnimation("FastRunning"); 
-        slowFootsteps.SetActive(false);
-        middleFootsteps.SetActive(false);
-        fastFootsteps.SetActive(true);
+        ChangeAnimationGranny("FastRunning"); 
 
         // Aumentamos el valor de las particulas a 15 que es el que deseamos en FastRunning
         runningEmission.rateOverTime = new ParticleSystem.MinMaxCurve(15f);
@@ -153,26 +153,27 @@ public class GrannyMovement : MonoBehaviour
 
 
 
-    public void ChangeAnimation(string animation, float transitionTime = 0.25f){
-        if(currentAnimation != animation){
-            currentAnimation = animation;
-            animator.CrossFade(animation, transitionTime);
+    public void ChangeAnimationGranny(string animation, float transitionTime = 0.25f){
+        if(currentAnimationGranny != animation){
+            currentAnimationGranny = animation;
+            animatorGranny.CrossFade(animation, transitionTime);
         }
     }
+
 
 
 
     IEnumerator ReadySteadyGo(){
         yield return new WaitForSeconds(1);
         
-        ChangeAnimation("Greeting");
+        ChangeAnimationGranny("Greeting");
         yield return new WaitForSeconds(5.1f);
 
 
         // READY
         if(OnReady != null)   
             OnReady();
-        ChangeAnimation("Crouched");        
+        ChangeAnimationGranny("Crouched");        
         yield return new WaitForSeconds(2f);
 
         // STEADY (sigue esperando)
@@ -184,10 +185,8 @@ public class GrannyMovement : MonoBehaviour
         if(OnGo != null)   
             OnGo();
         yield return new WaitForSeconds(0.4f); // Para que aparezca el GO! justo antes de empezar el mov (GroundMovemetn tambien lo tiene en el HandleOnGo)
-        ChangeAnimation("FastRunning", transitionTime: 0.1f); 
+        ChangeAnimationGranny("FastRunning", transitionTime: 0.1f); 
         runningParticles.SetActive(true);
-        fastFootsteps.SetActive(true);
-
 
         // Permitimos el movimiento del jugador
         canMove = true;
@@ -203,35 +202,30 @@ public class GrannyMovement : MonoBehaviour
         canMove = false;
 
         // Animacion de correr despacio, reducimos particulas y reducimos sonido
-        ChangeAnimation("SlowRunning");
+        ChangeAnimationGranny("SlowRunning");
         runningEmission.rateOverTime = new ParticleSystem.MinMaxCurve(5f);
-        fastFootsteps.SetActive(false);
-        slowFootsteps.SetActive(true);
         yield return new WaitForSeconds(1.5f);
 
-        ChangeAnimation("Walking");
+        ChangeAnimationGranny("Walking");
         runningParticles.SetActive(false);
-        slowFootsteps.SetActive(false);
-        walkFootsteps.SetActive(true);
 
         yield return new WaitForSeconds(1.5f);
-        walkFootsteps.SetActive(false);
 
         // Musica de conseguido
         if(OnGotIt != null)   
             OnGotIt();
 
-        ChangeAnimation("StrongGesture", transitionTime: 0.2f); 
+        ChangeAnimationGranny("StrongGesture", transitionTime: 0.2f); 
         yield return new WaitForSeconds(1.7f);
 
 
-        ChangeAnimation("Victory", transitionTime: 0.2f);  
+        ChangeAnimationGranny("Victory", transitionTime: 0.2f);  
         yield return new WaitForSeconds(0.3f);
         if(OnParty != null)   
             OnParty();
         yield return new WaitForSeconds(1.2f);
 
-        ChangeAnimation("Idle");     
+        ChangeAnimationGranny("Idle");     
     }
     
 }

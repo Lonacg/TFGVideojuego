@@ -113,7 +113,7 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - HECHO: Importante! despues de pasar por el medio de dos puertas pone otra vez la misma operacion en vez de la siguiente, asi que van decaladas
 - HECHO: Añadir nubecitas o particulas tipo polvo que salgan en el suelo al correr, cuando corre rapido salen mas y cuando va ams despacio salen menos, como ayuda visual del cambio de velicidad
 - HECHO: Hacer una transicion suave cuando el suelo cambia de velocidad
-- Añadir musica
+- HECHO: Añadir musica
 - Despues del texto de intro, deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
 
 

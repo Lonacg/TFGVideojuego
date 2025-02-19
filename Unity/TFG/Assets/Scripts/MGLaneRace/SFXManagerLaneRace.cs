@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class SFXManagerLaneRace : MonoBehaviour
@@ -29,6 +30,7 @@ public class SFXManagerLaneRace : MonoBehaviour
         GrannyMovement.OnReady += HandleOnReady;
         GrannyMovement.OnSteady += HandleOnSteady;
         GrannyMovement.OnGo += HandleOnGo;
+        GrannyMovement.OnFootstepSound += HandleOnFootstepSound;
         TriggerGate.OnCorrectSol += HandleOnCorrectSol;
         TriggerGate.OnWrongSol += HandleOnWrongSol;
         GrannyMovement.OnGotIt += HandleOnGotIt;
@@ -40,6 +42,7 @@ public class SFXManagerLaneRace : MonoBehaviour
         GrannyMovement.OnReady += HandleOnReady;
         GrannyMovement.OnSteady += HandleOnSteady;
         GrannyMovement.OnGo -= HandleOnGo;
+        GrannyMovement.OnFootstepSound -= HandleOnFootstepSound;
         TriggerGate.OnCorrectSol -= HandleOnCorrectSol;
         TriggerGate.OnWrongSol -= HandleOnWrongSol;
         GrannyMovement.OnGotIt -= HandleOnGotIt;        
@@ -53,17 +56,20 @@ public class SFXManagerLaneRace : MonoBehaviour
     }
 
     private void HandleOnReady(){
-        PlaySFX(readySteady);    
+        PlaySFX(readySteady, volume: 0.5f);    
     }
 
     private void HandleOnSteady(){
-        PlaySFX(readySteady, volume: 0.8f);      
+        PlaySFX(readySteady, volume: 0.5f);      
     }
 
     private void HandleOnGo(){
-        // TIENE QUE SER UNA CORRUTINA, PRIMERO EL Piiiiiiii DEL GO Y LUEGO LAS PISADAS
-        PlaySFX(go, volume: 0.8f);
-        //PlaySFX(footstepsRunning, 1);        
+        PlaySFX(go, volume: 0.5f);
+    }
+
+    private void HandleOnFootstepSound(){
+        PlaySFX(footstepsRunning, volume: 0.6f);
+    
     }
 
 
