@@ -4,43 +4,44 @@ using TMPro;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class CanvasManager : MonoBehaviour
+public class CanvasManagerLaneRace : MonoBehaviour
 {
     [Header("Game Objects:")]
-    public GameObject player;
-    public GameObject[] gates;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject[] gates;
+    
 
     
     [Header("Views:")]
-    public GameObject introView;
-    public GameObject RSGView;
-    public GameObject ingameView;
-
+    // public GameObject introView;
+    
+    [SerializeField] private GameObject tutorialView;
+    [SerializeField] private GameObject RSGView;
+    [SerializeField] private GameObject ingameView;
+    [SerializeField] private GameObject fadeCircle;
 
     [Header("Images:")]
-    public Image readyImage;
-    public Image steadyImage;
-    public Image goImage;
-    public Image operationImage;
-    public Image scoreImage;
-    public Image correctAnswerImage;
-    public Image failedAnswerImage;
+    [SerializeField] private Image readyImage;
+    [SerializeField] private Image steadyImage;
+    [SerializeField] private Image goImage;
+    [SerializeField] private Image operationImage;
+    [SerializeField] private Image scoreImage;
+    [SerializeField] private Image correctAnswerImage;
+    [SerializeField] private Image failedAnswerImage;
     
 
     [Header("Text:")] 
-    public TextMeshProUGUI introDialoguePlace;
-    public TextMeshProUGUI textOperationPlace;
-    public List<string> linesIntroDialogue;
+    [SerializeField] private TextMeshProUGUI introDialoguePlace;
+    [SerializeField] private TextMeshProUGUI textOperationPlace;
+    [SerializeField] private List<string> linesIntroDialogue;
 
 
-    private float textSpeed = 0.1f;
-    private int indexSentence = 0;
     private TextMeshProUGUI textChild;
-
 
 
     public delegate void _OnStart();
     public static event _OnStart OnStart;
+
 
 
     void Awake()
@@ -54,6 +55,7 @@ public class CanvasManager : MonoBehaviour
 
 
     void OnEnable(){
+        StageManagerLaneRace.OnFadeToPlay += HandleOnFadeToPlay;
         GrannyMovement.OnReady += HandleOnReady;
         GrannyMovement.OnSteady += HandleOnSteady;
         GrannyMovement.OnGo += HandleOnGo;
@@ -65,6 +67,7 @@ public class CanvasManager : MonoBehaviour
 
 
     void OnDisable(){
+        StageManagerLaneRace.OnFadeToPlay -= HandleOnFadeToPlay;
         GrannyMovement.OnReady -= HandleOnReady;
         GrannyMovement.OnSteady -= HandleOnSteady;
         GrannyMovement.OnGo -= HandleOnGo;
@@ -77,15 +80,20 @@ public class CanvasManager : MonoBehaviour
     {
         ingameView.SetActive(false);
         RSGView.SetActive(true);
+        tutorialView.SetActive(true);
+        fadeCircle.SetActive(false);
         //introView.SetActive(true);
         //StartDialogue(introView, introDialoguePlace, linesIntroDialogue);
 
-        // POR NO LANZAR LA INTRO
-        if(OnStart != null)   
-            OnStart();
     }
 
 
+    private void HandleOnFadeToPlay(){
+        StartCoroutine(FadeOutFadeIn());
+
+
+
+    }
 
     private void HandleOnReady(){
         StartCoroutine(ShowImageForXSeconds(readyImage, seconds: 0.75f, hasText: true));
@@ -120,38 +128,24 @@ public class CanvasManager : MonoBehaviour
 
 
 
-    public void StartDialogue(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){
-        indexSentence = 0;
-        dialoguePlace.text = "";
-        StartCoroutine(WriteLetterByLetter(view, dialoguePlace, lines));
-    }
+IEnumerator FadeOutFadeIn(){
+        // Fade Out
+        fadeCircle.SetActive(true);
+        yield return new WaitForSeconds(1.5f); // El fade out/in del CircleStatic dura 1,5 seg
 
-    public void NextLine(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){
-        if (indexSentence < lines.Count){
-            dialoguePlace.text = "";
-            StartCoroutine(WriteLetterByLetter(view, dialoguePlace, lines));
-        }
-        else{ 
-            // Despues de la ultima linea cerramos el dialogo
-            StartCoroutine(FadeCanvasGroup(view, fromAlpha: 1, toAlpha: 0));
+        // Desactivamos la vista del tutorial
+        tutorialView.SetActive(false);
+        
+        // Fade In
+        fadeCircle.GetComponent<Animator>().SetTrigger("FadeInCircleParking");
 
-            // Lanzamos el evento de que la intro ha terminado
-            if(OnStart != null)   
-                OnStart();
-        }
-    }
+        yield return new WaitForSeconds(1f); // El fade out/in del CircleStatic dura 1,5 seg, quitamos 0.5 para que se visualice como una transicion y vaya fluido al aparecer
+
+        if(OnStart != null)   
+            OnStart();
+}
 
 
-
-    IEnumerator WriteLetterByLetter(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){ 
-        foreach (char letter in lines[indexSentence].ToCharArray()){
-            dialoguePlace.text += letter;
-            yield return new WaitForSeconds(textSpeed);
-        }
-        indexSentence ++;
-        yield return new WaitForSeconds(1);
-        NextLine(view, dialoguePlace, lines);
-    }
 
 
     IEnumerator FadeCanvasGroup(GameObject view, float fromAlpha, float toAlpha, float animationTime = 0.3f){ 

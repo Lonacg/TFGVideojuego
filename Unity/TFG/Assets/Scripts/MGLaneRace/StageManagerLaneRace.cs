@@ -29,12 +29,17 @@ public class StageManagerLaneRace : MonoBehaviour
 
 
 
-    
     [Header("Text:")]
     public TextMeshProUGUI textOperationPlace;
     public TextMeshProUGUI scoreText;
 
+    [Header("Views:")]
+    [SerializeField] private GameObject tutorialView;
+    private bool spacePressed = false;
 
+
+    public delegate void _OnFadeToPlay();
+    public static event _OnFadeToPlay OnFadeToPlay;
 
     public delegate void _OnVictory();          // El evento de victoria se lanza en el momento en el que se consiguen los aciertos objetivos (3 por defecto) (OnFinalLine es cuando cruza la meta)
     public static event _OnVictory OnVictory;
@@ -43,8 +48,11 @@ public class StageManagerLaneRace : MonoBehaviour
     public delegate void _OnMiddleVelocity();          
     public static event _OnMiddleVelocity OnMiddleVelocity;
 
-    public delegate void _LowVelocity();          
-    public static event _LowVelocity OnLowVelocity;
+    public delegate void _OnLowVelocity();          
+    public static event _OnLowVelocity OnLowVelocity;
+
+    public delegate void _OnReturnToMenu();          
+    public static event _OnReturnToMenu OnReturnToMenu;
 
 
     void OnEnable(){
@@ -55,6 +63,7 @@ public class StageManagerLaneRace : MonoBehaviour
         TriggerNextOperation.OnNextOperation += HandleOnNextOperation;
         TriggerExtraTerrain.OnNewGround += HandleOnNewGround;
         GrannyMovement.OnParty += HandleOnParty;
+        GrannyMovement.OnQuitGame += HandleOnQuitGame;
     }
 
     void OnDisable(){
@@ -65,6 +74,7 @@ public class StageManagerLaneRace : MonoBehaviour
         TriggerNextOperation.OnNextOperation -= HandleOnNextOperation;
         TriggerExtraTerrain.OnNewGround -= HandleOnNewGround;
         GrannyMovement.OnParty -= HandleOnParty;
+        GrannyMovement.OnQuitGame -= HandleOnQuitGame;
     }
 
     void Start()
@@ -74,6 +84,16 @@ public class StageManagerLaneRace : MonoBehaviour
         numberIncorrectAnswers = 0;
     }
 
+
+    void Update()
+    {
+        // Si la ventana de tutorial esta activada y pulsan espacio damos paso al inicio del juego (solo escuchamos el primer pulsado, para que no se retipa el lanzamiento del evento)
+        if(tutorialView.activeSelf && Input.GetKeyDown(KeyCode.Space) && !spacePressed){
+            spacePressed = true;
+            if(OnFadeToPlay != null)   
+                OnFadeToPlay();
+        }
+    }
     
 
     private void HandleOnGo(){
@@ -119,18 +139,12 @@ public class StageManagerLaneRace : MonoBehaviour
             // Lanzamos el evento de reducir la velocidad a la intermedia
             if(OnMiddleVelocity != null)   
                 OnMiddleVelocity();
-
-            // ground.GetComponent<GroundMovement>().groundSpeed -= 1;
-            // grannyPlayer.GetComponent<GrannyMovement>().ChangeAnimation("Running");
         }
         // Cuando falla 4 veces, reducimos en 0.5 mas la velocidad del movimiento y cambiamos la animacion de correr
         if(numberIncorrectAnswers  == 4){
             // Lanzamos el evento de reducir la velocidad a la mas baja
             if(OnLowVelocity != null)   
                 OnLowVelocity();
-
-            //ground.GetComponent<GroundMovement>().groundSpeed -= 0.5f;
-            //grannyPlayer.GetComponent<GrannyMovement>().ChangeAnimation("SlowRunning");
         }
     }
 
@@ -160,6 +174,10 @@ public class StageManagerLaneRace : MonoBehaviour
         confettiParticles.SetActive(true); 
     }
 
+    private void HandleOnQuitGame(){
+        StartCoroutine(ReturnToMenu());
+    }
+    
 
 
     public void ChangeOperation(){
@@ -184,6 +202,12 @@ public class StageManagerLaneRace : MonoBehaviour
     }
 
 
+
+    // IEnumerator StartGame(){
+    //     yield return new WaitForSeconds(1.5f);
+    //     if(OnStart != null)   
+    //         OnStart();
+    // }
 
     IEnumerator WaitXSecondAndChangeOperation(float seconds){
         yield return new WaitForSeconds(seconds);
@@ -212,6 +236,14 @@ public class StageManagerLaneRace : MonoBehaviour
         particles.SetActive(true); 
         yield return new WaitForSeconds(1);
         particles.SetActive(false); 
+    }
+
+    IEnumerator ReturnToMenu(){
+        yield return new WaitForSeconds(0.75f);
+        
+        // Evento para que Load Scene vuelva a la scena del menu principal
+        if(OnReturnToMenu != null)  
+            OnReturnToMenu();  
     }
 
 

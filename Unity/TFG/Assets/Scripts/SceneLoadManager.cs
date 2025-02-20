@@ -17,14 +17,15 @@ public class SceneLoadManager : MonoBehaviour
     void OnEnable()
     {
         CanvasManagerParking.OnReturnToMenu += HandleOnReturnToMenu;
+        StageManagerLaneRace.OnReturnToMenu += HandleOnReturnToMenu;
         
-        // Cuando volvemos al menu, mostramos el fadeIn y cambiamos el order in layer del Fade para que se quede por detras y se puedan pulsar los botones de los juegos
-        StartCoroutine(HideFadeBehind());      
+        StartCoroutine(HideFadeBehind());
     } 
 
     void OnDisable()
     {
         CanvasManagerParking.OnReturnToMenu -= HandleOnReturnToMenu;
+        StageManagerLaneRace.OnReturnToMenu -= HandleOnReturnToMenu;
     } 
 
     
@@ -66,6 +67,6 @@ public class SceneLoadManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f); // Tiempo que dura la animacion de FadeInScene
 
         // Situamos el Objeto Face en el orden 0 para que se quede detras del canvas con los botones y que estos puedan pulsarse
-        fadeScene.GetComponent<Canvas>().sortingOrder = 0;
+        fadeScene.GetComponent<Canvas>().sortingOrder = -1;
     }
 }

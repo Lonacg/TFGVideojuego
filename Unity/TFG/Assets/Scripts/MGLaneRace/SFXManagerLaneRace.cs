@@ -39,8 +39,8 @@ public class SFXManagerLaneRace : MonoBehaviour
 
     private void OnDisable()
     {
-        GrannyMovement.OnReady += HandleOnReady;
-        GrannyMovement.OnSteady += HandleOnSteady;
+        GrannyMovement.OnReady -= HandleOnReady;
+        GrannyMovement.OnSteady -= HandleOnSteady;
         GrannyMovement.OnGo -= HandleOnGo;
         GrannyMovement.OnFootstepSound -= HandleOnFootstepSound;
         TriggerGate.OnCorrectSol -= HandleOnCorrectSol;
@@ -68,8 +68,8 @@ public class SFXManagerLaneRace : MonoBehaviour
     }
 
     private void HandleOnFootstepSound(){
-        PlaySFX(footstepsRunning, volume: 0.6f);
-    
+        // Sonido en cada pisada al correr
+        PlaySFX(footstepsRunning, volume: 0.3f);
     }
 
 

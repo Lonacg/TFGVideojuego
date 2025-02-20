@@ -22,12 +22,12 @@ public class CameraManager : MonoBehaviour
 
 
     void OnEnable(){
-        CanvasManager.OnStart += HandleOnStart;
+        CanvasManagerLaneRace.OnStart += HandleOnStart;
         TriggerFinalGate.OnFinalLine += HandleOnFinalLine;
     }
 
     void OnDisable(){
-        CanvasManager.OnStart -= HandleOnStart;
+        CanvasManagerLaneRace   .OnStart -= HandleOnStart;
         TriggerFinalGate.OnFinalLine -= HandleOnFinalLine;
     }
 
@@ -53,8 +53,7 @@ public class CameraManager : MonoBehaviour
         originalPosition = new Vector3(0, 7.71f, -7.73f);
 
         // Posicion inicial
-        transform.position = originalPosition;
-        transform.rotation = orignalRotation;
+        transform.SetPositionAndRotation(originalPosition, orignalRotation);
 
         // Lugar al que apunta la camara
         originalOffset = new Vector3(0, 1.5f, 2.4f);
@@ -69,6 +68,7 @@ public class CameraManager : MonoBehaviour
 
 
     IEnumerator MoveCamera(){
+
         float animationTime = 3;
 
         // Movimiento de la posicion inicial a posicion derecha

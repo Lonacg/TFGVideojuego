@@ -19,8 +19,6 @@ public class GrannyMovement : MonoBehaviour
     private Animator animatorGranny;
     private string currentAnimationGranny = "";
 
-    [Header("Footsteps Detector:")]   
-    [SerializeField] private GameObject footstepsDetector;    
 
     
 
@@ -43,15 +41,13 @@ public class GrannyMovement : MonoBehaviour
     public delegate void _OnFootstepSound();
     public static event _OnFootstepSound OnFootstepSound;
 
+    public delegate void _OnQuitGame();
+    public static event _OnQuitGame OnQuitGame;
 
 
-    public void FootstepDone(){
-        if(OnFootstepSound != null)   
-            OnFootstepSound();
-    }
 
     void OnEnable(){
-        CanvasManager.OnStart += HandleOnStart;
+        CanvasManagerLaneRace.OnStart += HandleOnStart;
         StageManagerLaneRace.OnMiddleVelocity += HandleOnMiddleVelocity;
         StageManagerLaneRace.OnLowVelocity += HandleOnLowVelocity;
         StageManagerLaneRace.OnVictory += HandleOnVictory;
@@ -59,7 +55,7 @@ public class GrannyMovement : MonoBehaviour
     }
 
     void OnDisable(){
-        CanvasManager.OnStart -= HandleOnStart;
+        CanvasManagerLaneRace.OnStart -= HandleOnStart;
         StageManagerLaneRace.OnMiddleVelocity -= HandleOnMiddleVelocity;
         StageManagerLaneRace.OnLowVelocity -= HandleOnLowVelocity;
         StageManagerLaneRace.OnVictory -= HandleOnVictory;
@@ -150,6 +146,10 @@ public class GrannyMovement : MonoBehaviour
     }
 
 
+    public void FootstepDone(){
+        if(OnFootstepSound != null)   
+            OnFootstepSound();
+    }
 
 
 
@@ -164,7 +164,9 @@ public class GrannyMovement : MonoBehaviour
 
 
     IEnumerator ReadySteadyGo(){
-        yield return new WaitForSeconds(1);
+        //yield return new WaitForSeconds(1.5f);   // Tiempo que tarda en aparecer el fade in
+
+         yield return new WaitForSeconds(1);      // Tiempo para que quede bien el saludo mientras se mueve la camara
         
         ChangeAnimationGranny("Greeting");
         yield return new WaitForSeconds(5.1f);
@@ -211,12 +213,14 @@ public class GrannyMovement : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
 
+
+
+        ChangeAnimationGranny("StrongGesture", transitionTime: 0.2f); 
+        yield return new WaitForSeconds(0.2f);  // Para cuadran mejor el sonido de Tanan con el gesto de fuerza
         // Musica de conseguido
         if(OnGotIt != null)   
             OnGotIt();
-
-        ChangeAnimationGranny("StrongGesture", transitionTime: 0.2f); 
-        yield return new WaitForSeconds(1.7f);
+        yield return new WaitForSeconds(1.5f);
 
 
         ChangeAnimationGranny("Victory", transitionTime: 0.2f);  
@@ -225,7 +229,12 @@ public class GrannyMovement : MonoBehaviour
             OnParty();
         yield return new WaitForSeconds(1.2f);
 
-        ChangeAnimationGranny("Idle");     
+        ChangeAnimationGranny("Idle");
+        yield return new WaitForSeconds(0.2f);
+        if(OnQuitGame != null)   
+            OnQuitGame();
+
+
     }
     
 }
