@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GroundMovement : MonoBehaviour
@@ -11,19 +10,19 @@ public class GroundMovement : MonoBehaviour
 
 
     void OnEnable(){
-        GrannyMovement.OnGo += HandleOnGo;
+        GrannyMovement.OnGo                   += HandleOnGo;
         StageManagerLaneRace.OnMiddleVelocity += HandleOnMiddleVelocity;
-        StageManagerLaneRace.OnLowVelocity += HandleOnLowVelocity;
-        StageManagerLaneRace.OnVictory += HandleOnVictory;
-        TriggerFinalGate.OnFinalLine += HandleOnFinalLine; 
+        StageManagerLaneRace.OnLowVelocity    += HandleOnLowVelocity;
+        StageManagerLaneRace.OnVictory        += HandleOnVictory;
+        TriggerFinalGate.OnFinalLine          += HandleOnFinalLine; 
     }
 
     void OnDisable(){
-        GrannyMovement.OnGo -= HandleOnGo;
+        GrannyMovement.OnGo                   -= HandleOnGo;
         StageManagerLaneRace.OnMiddleVelocity -= HandleOnMiddleVelocity;
-        StageManagerLaneRace.OnLowVelocity -= HandleOnLowVelocity;
-        StageManagerLaneRace.OnVictory -= HandleOnVictory;
-        TriggerFinalGate.OnFinalLine -= HandleOnFinalLine;
+        StageManagerLaneRace.OnLowVelocity    -= HandleOnLowVelocity;
+        StageManagerLaneRace.OnVictory        -= HandleOnVictory;
+        TriggerFinalGate.OnFinalLine          -= HandleOnFinalLine;
     }
 
 
@@ -48,7 +47,6 @@ public class GroundMovement : MonoBehaviour
 
     public void HandleOnMiddleVelocity(){
         StartCoroutine(ChangeGroundVelocity(desiredVel: groundSpeed - 1, animationTime: 1f));
-        
     }
 
     public void HandleOnLowVelocity(){

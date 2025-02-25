@@ -17,6 +17,7 @@ public class GrannyMovement : MonoBehaviour
 
 
     
+    // Declaracion de eventos:
     public delegate void _OnReady();
     public static event _OnReady OnReady;
 
@@ -134,12 +135,12 @@ public class GrannyMovement : MonoBehaviour
         StartCoroutine(Winning());
     }
 
+
+
     public void FootstepDone(){
         if(OnFootstepSound != null)   
             OnFootstepSound();
     }
-
-
 
     public void ChangeAnimationGranny(string animation, float transitionTime = 0.25f){
         if(currentAnimationGranny != animation){
@@ -199,8 +200,6 @@ public class GrannyMovement : MonoBehaviour
         runningParticles.SetActive(false);
 
         yield return new WaitForSeconds(1.5f);
-
-
 
         ChangeAnimationGranny("StrongGesture", transitionTime: 0.2f); 
         yield return new WaitForSeconds(0.2f);  // Para cuadran mejor el sonido de Tanan con el gesto de fuerza

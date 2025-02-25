@@ -1,9 +1,6 @@
-using System;
 using UnityEngine;
 using TMPro;
 using System.Collections;
-
-
 
 
 public class StageManagerLaneRace : MonoBehaviour
@@ -11,7 +8,7 @@ public class StageManagerLaneRace : MonoBehaviour
     [Header("Variables")]
     [SerializeField] private int numberCorrectAnswers = 0;
     [SerializeField] private int numberIncorrectAnswers = 0;
-    private readonly int neededScore = 1;
+    private readonly int neededScore = 3;
     private int currentGround = 0;
     private int extraTerrainsPlaced = 0;
 
@@ -27,8 +24,6 @@ public class StageManagerLaneRace : MonoBehaviour
     [SerializeField] private GameObject[] finishGates;
     [SerializeField] private GameObject[] nextOpTriggers;
 
-
-
     [Header("Text:")]
     public TextMeshProUGUI textOperationPlace;
     public TextMeshProUGUI scoreText;
@@ -38,12 +33,12 @@ public class StageManagerLaneRace : MonoBehaviour
     private bool spacePressed = false;
 
 
+    // Declaracion de eventos:
     public delegate void _OnFadeToPlay();
     public static event _OnFadeToPlay OnFadeToPlay;
 
     public delegate void _OnVictory();          // El evento de victoria se lanza en el momento en el que se consiguen los aciertos objetivos (3 por defecto) (OnFinalLine es cuando cruza la meta)
     public static event _OnVictory OnVictory;
-
 
     public delegate void _OnMiddleVelocity();          
     public static event _OnMiddleVelocity OnMiddleVelocity;
@@ -55,7 +50,9 @@ public class StageManagerLaneRace : MonoBehaviour
     public static event _OnReturnToMenu OnReturnToMenu;
 
 
-    void OnEnable(){
+
+    void OnEnable()
+    {
         GrannyMovement.OnGo += HandleOnGo;
         TriggerGate.OnCorrectSol += HandleOnCorrectSol;
         TriggerGate.OnWrongSol += HandleOnWrongSol;
@@ -66,7 +63,8 @@ public class StageManagerLaneRace : MonoBehaviour
         GrannyMovement.OnQuitGame += HandleOnQuitGame;
     }
 
-    void OnDisable(){
+    void OnDisable()
+    {
         GrannyMovement.OnGo -= HandleOnGo;
         TriggerGate.OnCorrectSol -= HandleOnCorrectSol;
         TriggerGate.OnWrongSol -= HandleOnWrongSol;
@@ -84,7 +82,6 @@ public class StageManagerLaneRace : MonoBehaviour
         numberIncorrectAnswers = 0;
     }
 
-
     void Update()
     {
         // Si la ventana de tutorial esta activada y pulsan espacio damos paso al inicio del juego (solo escuchamos el primer pulsado, para que no se retipa el lanzamiento del evento)
@@ -95,6 +92,7 @@ public class StageManagerLaneRace : MonoBehaviour
         }
     }
     
+
 
     private void HandleOnGo(){
         StartCoroutine(WaitXSecondAndChangeOperation(seconds: 1.1f));
@@ -169,7 +167,6 @@ public class StageManagerLaneRace : MonoBehaviour
         IncreaseCurrentGround();
     }
 
-
     private void HandleOnParty(){
         confettiParticles.SetActive(true); 
     }
@@ -202,12 +199,6 @@ public class StageManagerLaneRace : MonoBehaviour
     }
 
 
-
-    // IEnumerator StartGame(){
-    //     yield return new WaitForSeconds(1.5f);
-    //     if(OnStart != null)   
-    //         OnStart();
-    // }
 
     IEnumerator WaitXSecondAndChangeOperation(float seconds){
         yield return new WaitForSeconds(seconds);
@@ -245,6 +236,5 @@ public class StageManagerLaneRace : MonoBehaviour
         if(OnReturnToMenu != null)  
             OnReturnToMenu();  
     }
-
 
 }

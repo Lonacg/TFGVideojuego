@@ -18,7 +18,7 @@ public class SetOperationLaneRace : MonoBehaviour
 
 
 
-    void OnEnable()  // Cada vez que se activa el objeto genera una nueva operacion
+    void OnEnable()  // Cada vez que se activa el objeto generamos una nueva operacion
     {
         // Contamos cuantos carriles tenemos para generalizar y poder ampliarlos en el futuro
         totalGates = transform.childCount;
@@ -26,13 +26,11 @@ public class SetOperationLaneRace : MonoBehaviour
         wrongSols = new int[totalGates -1];
         allWrongSols = new int[(totalGates -1) * 2];
 
-        
         // Asignamos las puertas a una lista
         gates = new List<GameObject>();
         for (int i = 0 ; i < totalGates; i++ ){
             gates.Add(transform.GetChild(i).gameObject); 
         }
-
 
         // Generamos la nueva operacion y actualizamos los numeros de las puertas
         GenerateOperation();

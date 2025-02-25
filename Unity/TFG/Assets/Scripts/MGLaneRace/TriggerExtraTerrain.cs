@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TriggerExtraTerrain : MonoBehaviour
 {
-
+    // Declaracion de eventos:
     public delegate void _OnNewGround();
     public static event _OnNewGround OnNewGround;
   

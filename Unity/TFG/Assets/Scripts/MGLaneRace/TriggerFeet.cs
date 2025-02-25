@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TriggerFeet : MonoBehaviour
 {
+    // Declaracion de eventos:
     public delegate void _OnFeetInGround();
     public static event _OnFeetInGround OnFeetInGround;
   

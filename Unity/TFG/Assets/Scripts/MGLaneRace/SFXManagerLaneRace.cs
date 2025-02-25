@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class SFXManagerLaneRace : MonoBehaviour
@@ -19,35 +18,32 @@ public class SFXManagerLaneRace : MonoBehaviour
     [SerializeField] private AudioClip gotIt;
     [SerializeField] private AudioClip readySteady;
     [SerializeField] private AudioClip go;
-
     [SerializeField] private AudioClip footstepsRunning;
-
 
 
 
     private void OnEnable()
     {
-        GrannyMovement.OnReady += HandleOnReady;
-        GrannyMovement.OnSteady += HandleOnSteady;
-        GrannyMovement.OnGo += HandleOnGo;
+        GrannyMovement.OnReady         += HandleOnReady;
+        GrannyMovement.OnSteady        += HandleOnSteady;
+        GrannyMovement.OnGo            += HandleOnGo;
         GrannyMovement.OnFootstepSound += HandleOnFootstepSound;
-        TriggerGate.OnCorrectSol += HandleOnCorrectSol;
-        TriggerGate.OnWrongSol += HandleOnWrongSol;
-        GrannyMovement.OnGotIt += HandleOnGotIt;
+        TriggerGate.OnCorrectSol       += HandleOnCorrectSol;
+        TriggerGate.OnWrongSol         += HandleOnWrongSol;
+        GrannyMovement.OnGotIt         += HandleOnGotIt;
 
     }
 
     private void OnDisable()
     {
-        GrannyMovement.OnReady -= HandleOnReady;
-        GrannyMovement.OnSteady -= HandleOnSteady;
-        GrannyMovement.OnGo -= HandleOnGo;
+        GrannyMovement.OnReady         -= HandleOnReady;
+        GrannyMovement.OnSteady        -= HandleOnSteady;
+        GrannyMovement.OnGo            -= HandleOnGo;
         GrannyMovement.OnFootstepSound -= HandleOnFootstepSound;
-        TriggerGate.OnCorrectSol -= HandleOnCorrectSol;
-        TriggerGate.OnWrongSol -= HandleOnWrongSol;
-        GrannyMovement.OnGotIt -= HandleOnGotIt;        
+        TriggerGate.OnCorrectSol       -= HandleOnCorrectSol;
+        TriggerGate.OnWrongSol         -= HandleOnWrongSol;
+        GrannyMovement.OnGotIt         -= HandleOnGotIt;        
     }
-
 
     void Start()
     {
@@ -55,15 +51,20 @@ public class SFXManagerLaneRace : MonoBehaviour
         audioSourceMusic = music.GetComponent<AudioSource>();
     }
 
+
+
     private void HandleOnReady(){
+        // Sonido de preparacion de salida
         PlaySFX(readySteady, volume: 0.5f);    
     }
 
     private void HandleOnSteady(){
+        // Sonido de preparacion de salida
         PlaySFX(readySteady, volume: 0.5f);      
     }
 
     private void HandleOnGo(){
+        // Sonido de salida
         PlaySFX(go, volume: 0.5f);
     }
 
@@ -71,7 +72,6 @@ public class SFXManagerLaneRace : MonoBehaviour
         // Sonido en cada pisada al correr
         PlaySFX(footstepsRunning, volume: 0.3f);
     }
-
 
     private void HandleOnCorrectSol(){
         // Sonido de victoria
@@ -117,6 +117,5 @@ public class SFXManagerLaneRace : MonoBehaviour
             yield return 0;
         }
     }
-
 
 }

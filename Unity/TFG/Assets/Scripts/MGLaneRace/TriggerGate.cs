@@ -4,6 +4,7 @@ using System.Collections;
 
 public class TriggerGate : MonoBehaviour
 {
+    // Declaracion de eventos:
     public delegate void _OnCorrectSol();
     public static event _OnCorrectSol OnCorrectSol;
 

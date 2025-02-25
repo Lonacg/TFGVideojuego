@@ -33,6 +33,7 @@ public class CanvasManagerLaneRace : MonoBehaviour
 
 
 
+    // Declaracion de eventos:
     public delegate void _OnStart();
     public static event _OnStart OnStart;
 
