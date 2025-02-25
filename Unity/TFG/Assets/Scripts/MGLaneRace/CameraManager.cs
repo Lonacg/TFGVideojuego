@@ -2,12 +2,10 @@ using UnityEngine;
 using System.Collections;
 
 
-
 public class CameraManager : MonoBehaviour  
 {
-    public GameObject player;
-    public float speed = 0.5f; 
-    
+    [SerializeField] private GameObject player;
+    [SerializeField] private float speed = 0.5f; 
     private Vector3 target;
     private Vector3 originalOffset;
     private Vector3 offset;
@@ -16,35 +14,21 @@ public class CameraManager : MonoBehaviour
     private Vector3 originalPosition;
     private Vector3 RigthPosition;
     private Vector3 LeftPosition;
-    
     private bool firstMovement;
 
 
 
-    void OnEnable(){
+    void OnEnable()
+    {
         CanvasManagerLaneRace.OnStart += HandleOnStart;
-        TriggerFinalGate.OnFinalLine += HandleOnFinalLine;
+        TriggerFinalGate.OnFinalLine  += HandleOnFinalLine;
     }
 
-    void OnDisable(){
-        CanvasManagerLaneRace   .OnStart -= HandleOnStart;
-        TriggerFinalGate.OnFinalLine -= HandleOnFinalLine;
-    }
-
-
-
-    private void HandleOnStart()
+    void OnDisable()
     {
-        firstMovement = true;
-        StartCoroutine(MoveCamera());
+        CanvasManagerLaneRace.OnStart -= HandleOnStart;
+        TriggerFinalGate.OnFinalLine  -= HandleOnFinalLine;
     }
-
-    private void HandleOnFinalLine()
-    {
-        StartCoroutine(MoveCamera());
-    }
-
-
 
     private void Start()
     {
@@ -65,6 +49,18 @@ public class CameraManager : MonoBehaviour
         RigthPosition = new Vector3(2.33f, 1.31f, 1.13f);
         LeftPosition = new Vector3(-2.33f, 1.31f, 1.13f);
     }
+
+
+
+    private void HandleOnStart(){
+        firstMovement = true;
+        StartCoroutine(MoveCamera());
+    }
+
+    private void HandleOnFinalLine(){
+        StartCoroutine(MoveCamera());
+    }
+
 
 
     IEnumerator MoveCamera(){

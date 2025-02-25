@@ -1,12 +1,8 @@
 using System.Collections;
-using System.Runtime.Serialization;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GrannyMovement : MonoBehaviour
 {
-
-
     [Header("Movement:")]
     [SerializeField] private Transform lanesParent;
     [SerializeField] private Transform[] lanes;
@@ -21,8 +17,6 @@ public class GrannyMovement : MonoBehaviour
 
 
     
-
-
     public delegate void _OnReady();
     public static event _OnReady OnReady;
 
@@ -32,34 +26,36 @@ public class GrannyMovement : MonoBehaviour
     public delegate void _OnGo();
     public static event _OnGo OnGo;
 
+    public delegate void _OnFootstepSound();
+    public static event _OnFootstepSound OnFootstepSound;
+
     public delegate void _OnGotIt();
     public static event _OnGotIt OnGotIt;
 
     public delegate void _OnParty();
     public static event _OnGo OnParty;
 
-    public delegate void _OnFootstepSound();
-    public static event _OnFootstepSound OnFootstepSound;
-
     public delegate void _OnQuitGame();
     public static event _OnQuitGame OnQuitGame;
 
 
 
-    void OnEnable(){
-        CanvasManagerLaneRace.OnStart += HandleOnStart;
+    void OnEnable()
+    {
+        CanvasManagerLaneRace.OnStart         += HandleOnStart;
         StageManagerLaneRace.OnMiddleVelocity += HandleOnMiddleVelocity;
-        StageManagerLaneRace.OnLowVelocity += HandleOnLowVelocity;
-        StageManagerLaneRace.OnVictory += HandleOnVictory;
-        TriggerFinalGate.OnFinalLine += HandleOnFinalLine;
+        StageManagerLaneRace.OnLowVelocity    += HandleOnLowVelocity;
+        StageManagerLaneRace.OnVictory        += HandleOnVictory;
+        TriggerFinalGate.OnFinalLine          += HandleOnFinalLine;
     }
 
-    void OnDisable(){
-        CanvasManagerLaneRace.OnStart -= HandleOnStart;
+    void OnDisable()
+    {
+        CanvasManagerLaneRace.OnStart         -= HandleOnStart;
         StageManagerLaneRace.OnMiddleVelocity -= HandleOnMiddleVelocity;
-        StageManagerLaneRace.OnLowVelocity -= HandleOnLowVelocity;
-        StageManagerLaneRace.OnVictory -= HandleOnVictory;
-        TriggerFinalGate.OnFinalLine -= HandleOnFinalLine;
+        StageManagerLaneRace.OnLowVelocity    -= HandleOnLowVelocity;
+        StageManagerLaneRace.OnVictory        -= HandleOnVictory;
+        TriggerFinalGate.OnFinalLine          -= HandleOnFinalLine;
     }
 
     void Start()
@@ -83,9 +79,6 @@ public class GrannyMovement : MonoBehaviour
         speed = 8f;
         runningParticles.SetActive(false);
         runningEmission = runningParticles.GetComponent<ParticleSystem>().emission;
-
-
-
     }
 
     void Update()
@@ -108,8 +101,6 @@ public class GrannyMovement : MonoBehaviour
 
 
 
-
-
     public void HandleOnStart(){
         // Animacion del personaje al empezar
         StartCoroutine(ReadySteadyGo());
@@ -119,7 +110,6 @@ public class GrannyMovement : MonoBehaviour
         // Cambiamos la animacion a correr normal y reducimos las particulas de polvo de los pies
         ChangeAnimationGranny("MiddleRunning");
         runningEmission.rateOverTime = new ParticleSystem.MinMaxCurve(10f);
- 
     }
 
     public void HandleOnLowVelocity(){
@@ -137,14 +127,12 @@ public class GrannyMovement : MonoBehaviour
         // Aumentamos el valor de las particulas a 15 que es el que deseamos en FastRunning
         runningEmission.rateOverTime = new ParticleSystem.MinMaxCurve(15f);
  
-
         StartCoroutine(WaitAndMoveToCentralGate(seconds: 1.5f));
     }
 
     public void HandleOnFinalLine(){
         StartCoroutine(Winning());
     }
-
 
     public void FootstepDone(){
         if(OnFootstepSound != null)   
@@ -159,7 +147,6 @@ public class GrannyMovement : MonoBehaviour
             animatorGranny.CrossFade(animation, transitionTime);
         }
     }
-
 
 
 
@@ -233,8 +220,6 @@ public class GrannyMovement : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         if(OnQuitGame != null)   
             OnQuitGame();
-
-
     }
-    
+
 }

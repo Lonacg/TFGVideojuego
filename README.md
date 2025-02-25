@@ -114,7 +114,7 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - HECHO: Añadir nubecitas o particulas tipo polvo que salgan en el suelo al correr, cuando corre rapido salen mas y cuando va ams despacio salen menos, como ayuda visual del cambio de velicidad
 - HECHO: Hacer una transicion suave cuando el suelo cambia de velocidad
 - HECHO: Añadir musica
-- Despues del texto de intro, deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
+- HECHO: Despues del texto de intro, deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
 
 
 
@@ -125,5 +125,5 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - IMPORTANTE: cuando fallas la ronda, se ven por un momento los intentos de la proxima ronda. Deberia mantenerse o reducirse en uno y mantenerse.
 - Añadir particulas cuando baja un intento
 - Añadir particulas en el boton al ponerse verde
-- ¿El intento deberia bajar en uno cuando se acierta?
+- ¿El intento deberia bajar en uno cuando se acierta? Si
 - Despues del texto de intro, deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar

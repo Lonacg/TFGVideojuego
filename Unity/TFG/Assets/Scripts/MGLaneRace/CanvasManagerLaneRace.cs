@@ -10,11 +10,7 @@ public class CanvasManagerLaneRace : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject[] gates;
     
-
-    
     [Header("Views:")]
-    // public GameObject introView;
-    
     [SerializeField] private GameObject tutorialView;
     [SerializeField] private GameObject RSGView;
     [SerializeField] private GameObject ingameView;
@@ -28,15 +24,13 @@ public class CanvasManagerLaneRace : MonoBehaviour
     [SerializeField] private Image scoreImage;
     [SerializeField] private Image correctAnswerImage;
     [SerializeField] private Image failedAnswerImage;
-    
 
     [Header("Text:")] 
     [SerializeField] private TextMeshProUGUI introDialoguePlace;
     [SerializeField] private TextMeshProUGUI textOperationPlace;
     [SerializeField] private List<string> linesIntroDialogue;
-
-
     private TextMeshProUGUI textChild;
+
 
 
     public delegate void _OnStart();
@@ -44,36 +38,25 @@ public class CanvasManagerLaneRace : MonoBehaviour
 
 
 
-    void Awake()
+    void OnEnable()
     {
-        // Primer dialogo de inicio
-        //string line1 = " ¡Intenta llegar a la meta!";
-        //linesIntroDialogue.Add(line1);
-    }
-
-
-
-
-    void OnEnable(){
         StageManagerLaneRace.OnFadeToPlay += HandleOnFadeToPlay;
-        GrannyMovement.OnReady += HandleOnReady;
-        GrannyMovement.OnSteady += HandleOnSteady;
-        GrannyMovement.OnGo += HandleOnGo;
-        TriggerGate.OnCorrectSol += HandleOnCorrectSol;
-        TriggerGate.OnWrongSol += HandleOnWrongSol;
-        StageManagerLaneRace.OnVictory += HandleOnVictory;
+        GrannyMovement.OnReady            += HandleOnReady;
+        GrannyMovement.OnSteady           += HandleOnSteady;
+        GrannyMovement.OnGo               += HandleOnGo;
+        TriggerGate.OnCorrectSol          += HandleOnCorrectSol;
+        TriggerGate.OnWrongSol            += HandleOnWrongSol;
+        StageManagerLaneRace.OnVictory    += HandleOnVictory;
     }
-
-
 
     void OnDisable(){
         StageManagerLaneRace.OnFadeToPlay -= HandleOnFadeToPlay;
-        GrannyMovement.OnReady -= HandleOnReady;
-        GrannyMovement.OnSteady -= HandleOnSteady;
-        GrannyMovement.OnGo -= HandleOnGo;
-        TriggerGate.OnCorrectSol -= HandleOnCorrectSol;
-        TriggerGate.OnWrongSol -= HandleOnWrongSol;
-        StageManagerLaneRace.OnVictory -= HandleOnVictory;
+        GrannyMovement.OnReady            -= HandleOnReady;
+        GrannyMovement.OnSteady           -= HandleOnSteady;
+        GrannyMovement.OnGo               -= HandleOnGo;
+        TriggerGate.OnCorrectSol          -= HandleOnCorrectSol;
+        TriggerGate.OnWrongSol            -= HandleOnWrongSol;
+        StageManagerLaneRace.OnVictory    -= HandleOnVictory;
     }
 
     void Start()
@@ -82,17 +65,12 @@ public class CanvasManagerLaneRace : MonoBehaviour
         RSGView.SetActive(true);
         tutorialView.SetActive(true);
         fadeCircle.SetActive(false);
-        //introView.SetActive(true);
-        //StartDialogue(introView, introDialoguePlace, linesIntroDialogue);
-
     }
+
 
 
     private void HandleOnFadeToPlay(){
         StartCoroutine(FadeOutFadeIn());
-
-
-
     }
 
     private void HandleOnReady(){
@@ -125,10 +103,7 @@ public class CanvasManagerLaneRace : MonoBehaviour
 
 
 
-
-
-
-IEnumerator FadeOutFadeIn(){
+    IEnumerator FadeOutFadeIn(){
         // Fade Out
         fadeCircle.SetActive(true);
         yield return new WaitForSeconds(1.5f); // El fade out/in del CircleStatic dura 1,5 seg
@@ -143,10 +118,7 @@ IEnumerator FadeOutFadeIn(){
 
         if(OnStart != null)   
             OnStart();
-}
-
-
-
+    }
 
     IEnumerator FadeCanvasGroup(GameObject view, float fromAlpha, float toAlpha, float animationTime = 0.3f){ 
         // Corrutina reutilizada de CanvasManagerParking.cs 
@@ -167,7 +139,6 @@ IEnumerator FadeOutFadeIn(){
         if(toAlpha == 0)
             view.SetActive(false);
     }
-
 
     IEnumerator ShowImageForXSeconds(Image imageToShow, float seconds, bool hasText = false){ 
         StartCoroutine(FadeImage(imageToShow, fromAlpha: 0, toAlpha: 1, hasText: hasText, animationTime: 0.3f));
@@ -216,8 +187,6 @@ IEnumerator FadeOutFadeIn(){
             imageToShow.gameObject.SetActive(false);
         }
     }
-
-
 
     IEnumerator StartIngameView(float waitSeconds = 0){
         yield return new WaitForSeconds(waitSeconds);
