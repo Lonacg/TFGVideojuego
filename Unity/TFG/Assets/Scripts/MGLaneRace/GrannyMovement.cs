@@ -18,6 +18,8 @@ public class GrannyMovement : MonoBehaviour
 
     
     // Declaracion de eventos:
+    public delegate void _OnHi();
+    public static event _OnHi OnHi;
     public delegate void _OnReady();
     public static event _OnReady OnReady;
 
@@ -154,10 +156,13 @@ public class GrannyMovement : MonoBehaviour
     IEnumerator ReadySteadyGo(){
         //yield return new WaitForSeconds(1.5f);   // Tiempo que tarda en aparecer el fade in
 
-         yield return new WaitForSeconds(1);      // Tiempo para que quede bien el saludo mientras se mueve la camara
+        yield return new WaitForSeconds(1);        // Tiempo para que quede bien el saludo mientras se mueve la camara
         
         ChangeAnimationGranny("Greeting");
-        yield return new WaitForSeconds(5.1f);
+        yield return new WaitForSeconds(1.5f);        // Tiempo para que quede bien el sonido de Hi
+        if(OnHi != null)   
+            OnHi();
+        yield return new WaitForSeconds(4.1f);
 
 
         // READY

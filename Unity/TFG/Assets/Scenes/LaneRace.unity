@@ -9498,6 +9498,7 @@ MonoBehaviour:
   correctAnswer: {fileID: 8300000, guid: b5d25affd5bccde45b45ab34709120e3, type: 3}
   wrongAnswer: {fileID: 8300000, guid: 61989334f887a714d8d48ec654cde1f3, type: 3}
   gotIt: {fileID: 8300000, guid: c818446a230aa9d4c8aaa3f2d6552c3e, type: 3}
+  hi: {fileID: 8300000, guid: cb22d0e8b95801641baf49cf1799ec00, type: 3}
   readySteady: {fileID: 8300000, guid: bc9ffa627379d544fa0faba45dac2ee7, type: 3}
   go: {fileID: 8300000, guid: b607976fb4dd7cd49be4c2b625454094, type: 3}
   footstepsRunning: {fileID: 8300000, guid: dd18e5a1482700541bf5a7f1c30cd042, type: 3}

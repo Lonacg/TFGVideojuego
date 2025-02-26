@@ -16,6 +16,7 @@ public class SFXManagerLaneRace : MonoBehaviour
     [SerializeField] private AudioClip correctAnswer;
     [SerializeField] private AudioClip wrongAnswer;
     [SerializeField] private AudioClip gotIt;
+    [SerializeField] private AudioClip hi;
     [SerializeField] private AudioClip readySteady;
     [SerializeField] private AudioClip go;
     [SerializeField] private AudioClip footstepsRunning;
@@ -24,6 +25,7 @@ public class SFXManagerLaneRace : MonoBehaviour
 
     private void OnEnable()
     {
+        GrannyMovement.OnHi            += HandleOnHi;
         GrannyMovement.OnReady         += HandleOnReady;
         GrannyMovement.OnSteady        += HandleOnSteady;
         GrannyMovement.OnGo            += HandleOnGo;
@@ -36,6 +38,7 @@ public class SFXManagerLaneRace : MonoBehaviour
 
     private void OnDisable()
     {
+        GrannyMovement.OnHi            -= HandleOnHi;
         GrannyMovement.OnReady         -= HandleOnReady;
         GrannyMovement.OnSteady        -= HandleOnSteady;
         GrannyMovement.OnGo            -= HandleOnGo;
@@ -52,6 +55,11 @@ public class SFXManagerLaneRace : MonoBehaviour
     }
 
 
+
+    private void HandleOnHi(){
+        // Sonido de saludo
+        PlaySFX(hi, volume: 0.9f);    
+    }
 
     private void HandleOnReady(){
         // Sonido de preparacion de salida
