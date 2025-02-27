@@ -3,16 +3,26 @@ using UnityEngine;
 
 public class PoolingParking : MonoBehaviour
 {
-    [SerializeField] private GameObject[] carsRoad;  // Se rellena desde el inspector de Unity con los 10 prefabs
+    private GameObject[] carsRoad;  
 
 
 
     void Start()
     {
+        FillCarsRoadArray();
         StartCoroutine(RoundCar());
     }
 
     
+
+    void FillCarsRoadArray(){
+        // Rellenamos el array con los hijos que tiene este objeto en la escena
+        int maxCars = transform.childCount;
+        carsRoad = new GameObject[maxCars];
+        for(int i = 0 ; i < maxCars ; i ++){
+            carsRoad[i] = transform.GetChild(i).gameObject;
+        }
+    }
 
     private int RandomSeconds(){
         int seconds = Random.Range(1, 4);

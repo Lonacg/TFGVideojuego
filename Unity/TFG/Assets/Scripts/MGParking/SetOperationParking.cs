@@ -68,14 +68,22 @@ public class SetOperationParking : MonoBehaviour
         // Establecemos el texto que tendra el primer intento y el texto que tendran los demas
         textFirstTry = firstNumber + " " + symbol + " " + secondNumber;
         textAfterFail = firstNumber + "\n" + symbol + " " + secondNumber;        
+        // textAfterFail = firstNumber + "\n" + secondNumber;   
+
+
+
 
         // Rellenamos con espacios a la izq para que el texto AfterFail quede bien representado (secondPart no es igual a la suma, firstPart si)
         if(secondNumber < 100)
             textAfterFail = firstNumber + "\n" + symbol + "  " + secondNumber;  
 
-        // Ponemos en el cuadro de texto la operacion
+        // Actualizamos la operacion en forma lineal
         operationFirstTryText.text = textFirstTry;
+
+        // Actualizamos la operacion en forma vertical
         operationSecondTryText.text = textAfterFail;
+        // TextMeshPro symbolSecondTry = operationSecondTryText.gameObject.transform.GetChild(0).gameObject.transform.GetComponent<TextMeshPro>();
+        // symbolSecondTry.text = symbol;
 
         //Debug.Log("Operacion: " + textFirstTry + " = " + sol);          
     }

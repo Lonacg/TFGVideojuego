@@ -20,7 +20,7 @@ public class CanvasManagerParking : MonoBehaviour
     [SerializeField] private TextMeshProUGUI operationSecondTryText;
 
     //[Header("Variables:")]
-    private bool firstTry= true;
+    private int errorCount= 0;
     private bool spacePressed;
 
 
@@ -44,11 +44,14 @@ public class CanvasManagerParking : MonoBehaviour
 
         // Vistas activadas
         tutorialView.SetActive(true);
+        operationFirstTryText.gameObject.SetActive(true);
+
 
         // Vistas desactivadas
         ingameView.SetActive(false);
         victoryView.SetActive(false);
         fadeCircle.SetActive(false);
+        operationSecondTryText.gameObject.SetActive(false);
 
         // Inicializacion de variables
         spacePressed = false;
@@ -78,6 +81,7 @@ public class CanvasManagerParking : MonoBehaviour
 
 
     void HandleOnWrongParked(GameObject go){
+        errorCount += 1;
         StartCoroutine(ShowErrorImage());
     }
 
@@ -153,8 +157,8 @@ public class CanvasManagerParking : MonoBehaviour
         float animationsTime = seconds / 4f;
         StartCoroutine(FadeCanvasGroup(errorImage, fromAlpha: 0, toAlpha: 1, animationTime: animationsTime));
 
-        // Actualizacion de la operacion si es el primer fallo
-        if(firstTry){
+        // Actualizacion de la operacion si es el segundo fallo
+        if(errorCount == 2){
             // Esperamos la mitad del tiempo y hacemos desaparecer la operacion
             yield return new WaitForSeconds(seconds / 2);
             StartCoroutine(FadeCanvasGroup(operationImage, fromAlpha: 1, toAlpha: 0, animationTime: animationsTime));
@@ -171,9 +175,6 @@ public class CanvasManagerParking : MonoBehaviour
 
             // Tiempo transcurrido = seconds/2 + seconds/4. Luego falta por transcurrir seconds/4 = animationsTime
             yield return new WaitForSeconds(animationsTime);
-
-            // Actualizamos el bool para que no vuelva a pasar por aqui
-            firstTry = false;
         }
         else{
             yield return new WaitForSeconds(seconds);

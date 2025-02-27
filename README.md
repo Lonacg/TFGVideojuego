@@ -97,8 +97,8 @@ Boton de pausa permanente en la esquina superior derecha. Se abre un menú con:
 - HECHO: Ajustar mejor la  deteccion de coche aparcado, entrando muy torcido lo damos por bueno
 - HECHO: Añadir música
 - HECHO: Despues del texto de intro, deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
-- Los numero de la operacion en la segunda forma deberian ser un bloque independiente a la raya y el signo, y estar centrado,  porque si aparece un uno ocupa menos y ya no se quedan uno encima del otro bien
-
+- HECHO: ¿No seria mejor que la ayuda se muestre tras el segundo fallo en vez de tras el primero? Porque hay 6 posibilidades, dar la ayuda en la primera es como regalarlo un poco.
+- Los numero de la operacion en la segunda forma deberian ser un bloque independiente a la raya y el signo, y estar centrado,  porque si aparece un uno ocupa menos y ya no se quedan uno encima del otro bien. NO, PORQUE si estan centrados y son solo 2 cifras malamente. Habria que poner cada numero por separado.
 
 ### MG LaneRace
 - HECHO: (sol= no se cuenta como acierto ni fallo y el juego sigue correctamente) arreglar problema de que pase entre dos puertas

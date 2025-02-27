@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using Unity.VisualScripting;
 
 public class SFXManagerParking : MonoBehaviour
 {
@@ -99,7 +98,7 @@ public class SFXManagerParking : MonoBehaviour
         previousAudioClip = audioClip;
         previousACTimeStamp = Time.time;
 
-        // Reproducimos el sonido
+        // Reproducimos el sonido con el metodo PlayOneShot() que tiene la clase AudioSource
         audioSourceSFX.PlayOneShot(audioClip, volume);
     }
 
