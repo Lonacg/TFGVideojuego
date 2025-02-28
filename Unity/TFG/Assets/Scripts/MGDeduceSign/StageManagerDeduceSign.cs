@@ -168,7 +168,6 @@ public class StageManagerDeduceSign : MonoBehaviour
 
 
     public void ManageCorrectAnswer(GameObject goSign){
-        
 
         MakeButtonGreen(goSign);
 
@@ -188,7 +187,7 @@ public class StageManagerDeduceSign : MonoBehaviour
         else{
             // Ronda e intentos de la siguiente fase
             currentRound ++;
-            SetAttemptsNumber();
+            StartCoroutine(WaitAndChangeAttempts());
             StartCoroutine(WaitAndNewRound());
         }
     }
@@ -209,7 +208,7 @@ public class StageManagerDeduceSign : MonoBehaviour
             StartCoroutine(ShowError());
 
             // Actualizamos el int de intentos para la siguiente ronda
-            SetAttemptsNumber();
+            StartCoroutine(WaitAndChangeAttempts());
         }
         else{
             // Avisamos a los botones para que cambien a true
@@ -229,7 +228,7 @@ public class StageManagerDeduceSign : MonoBehaviour
         // Cambiamos el boton a rojo y deshabilitamos el script
         ButtonBehaviour scriptButton = goSign.GetComponent<ButtonBehaviour>();
 
-        Vector4 darkRed = new Vector4(0.8f, 0, 0, 1);
+        Vector4 darkRed = new(0.8f, 0, 0, 1);
         scriptButton.ChangeButtonColor(darkRed);
         scriptButton.enabled = false; 
     }
@@ -308,6 +307,11 @@ public class StageManagerDeduceSign : MonoBehaviour
     }
 
 
+    IEnumerator WaitAndChangeAttempts(){
+        yield return new WaitForSeconds(2);
+
+        SetAttemptsNumber();
+    }
     IEnumerator ShowError(){
         errorSheet.SetActive(true);
         yield return new WaitForSeconds(3.5f); // 1 FadeIn + 2 Stay + 1 FadeOut - 0,5 de solape de animaciones

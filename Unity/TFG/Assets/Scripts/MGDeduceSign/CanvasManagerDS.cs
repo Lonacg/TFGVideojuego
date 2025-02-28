@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections;
 using TMPro;
 using System.Collections.Generic;
-using UnityEngine.UI;
 
 public class CanvasManagerDS : MonoBehaviour
 {
@@ -43,17 +42,18 @@ public class CanvasManagerDS : MonoBehaviour
 
     void Awake(){
         // Primer dialogo de inicio
-        string line1 = "Adivina el signo     de la operación...       ¡para poder seguir con tu misión!";
-        linesIntroDialogue.Add(line1);
+        //string line1 = "Adivina el signo     de la operación...       ¡para poder seguir con tu misión!";
+        //linesIntroDialogue.Add(line1);
     }
 
 
     void Start()
     {
-        ingameView.SetActive(false);
+        ingameView.SetActive(true);
+        // ingameView.SetActive(false);
         victoryView.SetActive(false);
-        introView.SetActive(true);
-        StartDialogue(introView, introDialoguePlace, linesIntroDialogue);
+        // introView.SetActive(true);
+        // StartDialogue(introView, introDialoguePlace, linesIntroDialogue);
     }
 
 
