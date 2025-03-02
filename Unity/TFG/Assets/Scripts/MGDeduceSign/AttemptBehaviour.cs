@@ -79,7 +79,7 @@ public class AttemptBehaviour : MonoBehaviour
             // Hacemos el fade out del attempt
             gameObject.GetComponent<Animator>().SetTrigger("FadeOut");
             
-            yield return new WaitForSeconds(0.5f); // Tiempo de transicion de la animacion FadeOut (0.29 seg), para que con el restar sea 0.30 seg
+            yield return new WaitForSeconds(1f); // Tiempo de transicion para que no se vea por un momento los intentos de la siguiente ronda hasta que no se oculten del todo
         }
         
         // Actualizamos los intentos disponibles en la proxima ronda

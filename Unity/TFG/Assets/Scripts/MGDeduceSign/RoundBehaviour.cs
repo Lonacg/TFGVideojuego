@@ -129,7 +129,6 @@ public class RoundBehaviour : MonoBehaviour
 
 
     IEnumerator GoOutGoIn(){
-
         // Sale la ronda actual
         StartCoroutine(MoveRound(goingOutPositions[0], goingOutPositions[1], curve));
 
@@ -144,7 +143,6 @@ public class RoundBehaviour : MonoBehaviour
 
 
     IEnumerator GoOut(){
-
         // Sale la ronda actual
         StartCoroutine(MoveRound(goingOutPositions[0], goingOutPositions[1], curve));
 

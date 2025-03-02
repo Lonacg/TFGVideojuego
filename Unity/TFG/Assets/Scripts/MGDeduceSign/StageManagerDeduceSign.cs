@@ -308,7 +308,7 @@ public class StageManagerDeduceSign : MonoBehaviour
 
 
     IEnumerator WaitAndChangeAttempts(){
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(animationsTime);
 
         SetAttemptsNumber();
     }
