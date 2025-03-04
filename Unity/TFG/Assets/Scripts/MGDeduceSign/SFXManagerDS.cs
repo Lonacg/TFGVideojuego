@@ -1,9 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class SFXManagerLaneRace : MonoBehaviour
+public class SFXManagerDS : MonoBehaviour
 {
-    [Header("Audio Sources:")]
+ [Header("Audio Sources:")]
     private AudioSource audioSourceMusic;
     private AudioSource audioSourceSFX;
     private AudioClip previousAudioClip;
@@ -16,36 +16,19 @@ public class SFXManagerLaneRace : MonoBehaviour
     [SerializeField] private AudioClip correctAnswer;
     [SerializeField] private AudioClip wrongAnswer;
     [SerializeField] private AudioClip gotIt;
-    [SerializeField] private AudioClip hi;
-    [SerializeField] private AudioClip readySteady;
-    [SerializeField] private AudioClip go;
-    [SerializeField] private AudioClip footstepsRunning;
+
 
 
 
     private void OnEnable()
     {
-        GrannyMovement.OnHi            += HandleOnHi;
-        GrannyMovement.OnReady         += HandleOnReady;
-        GrannyMovement.OnSteady        += HandleOnSteady;
-        GrannyMovement.OnGo            += HandleOnGo;
-        GrannyMovement.OnFootstepSound += HandleOnFootstepSound;
-        TriggerGate.OnCorrectSol       += HandleOnCorrectSol;
-        TriggerGate.OnWrongSol         += HandleOnWrongSol;
-        GrannyMovement.OnGotIt         += HandleOnGotIt;
+
 
     }
 
     private void OnDisable()
     {
-        GrannyMovement.OnHi            -= HandleOnHi;
-        GrannyMovement.OnReady         -= HandleOnReady;
-        GrannyMovement.OnSteady        -= HandleOnSteady;
-        GrannyMovement.OnGo            -= HandleOnGo;
-        GrannyMovement.OnFootstepSound -= HandleOnFootstepSound;
-        TriggerGate.OnCorrectSol       -= HandleOnCorrectSol;
-        TriggerGate.OnWrongSol         -= HandleOnWrongSol;
-        GrannyMovement.OnGotIt         -= HandleOnGotIt;        
+       
     }
 
     void Start()
@@ -56,30 +39,7 @@ public class SFXManagerLaneRace : MonoBehaviour
 
 
 
-    private void HandleOnHi(){
-        // Sonido de saludo
-        PlaySFX(hi, volume: 0.9f);    
-    }
 
-    private void HandleOnReady(){
-        // Sonido de preparacion de salida
-        PlaySFX(readySteady, volume: 0.5f);    
-    }
-
-    private void HandleOnSteady(){
-        // Sonido de preparacion de salida
-        PlaySFX(readySteady, volume: 0.5f);      
-    }
-
-    private void HandleOnGo(){
-        // Sonido de salida
-        PlaySFX(go, volume: 0.5f);
-    }
-
-    private void HandleOnFootstepSound(){
-        // Sonido en cada pisada al correr
-        PlaySFX(footstepsRunning, volume: 0.3f);
-    }
 
     private void HandleOnCorrectSol(){
         // Sonido de victoria
@@ -93,7 +53,7 @@ public class SFXManagerLaneRace : MonoBehaviour
 
 
     private void HandleOnGotIt(){
-        // Apagamos la música de fondo y repoducimos el sonido de victoria final con el conseguido
+        // Sonido de victoria final con el conseguido
         StartCoroutine(StopMusic(endVolume: 0f));
         PlaySFX(gotIt, 0.5f);        
     }
@@ -125,5 +85,4 @@ public class SFXManagerLaneRace : MonoBehaviour
             yield return 0;
         }
     }
-
 }
