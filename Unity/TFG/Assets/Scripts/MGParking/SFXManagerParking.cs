@@ -60,28 +60,28 @@ public class SFXManagerParking : MonoBehaviour
 
     private void HandleOnCollisionCar(){
         // Sonido de colision con los coches aparcados
-        PlaySFX(collisionCar, 0.1f);
+        PlaySFX(collisionCar, volume: 0.1f);
     }
 
     private void HandleOnCollisionCone(){
         // Sonido de colision con los conos
-        PlaySFX(collisionCone, 0.6f);
+        PlaySFX(collisionCone, volume: 0.6f);
     }
 
     private void HandleOnWellParked(GameObject go){
         // Sonido de victoria
-        PlaySFX(correctAnswer, 0.3f);        
+        PlaySFX(correctAnswer, volume: 0.3f);        
     }
 
     private void HandleOnWrongParked(GameObject go){
         // Sonido de derrota
-        PlaySFX(wrongAnswer, 1);        
+        PlaySFX(wrongAnswer, volume: 1);        
     }
 
     private void HandleOnGotIt(){
         // Apagamos la musica de fondo y reproducimos el sonido de victoria
         StartCoroutine(StopMusic(endVolume: 0f, animationTime: 1f));
-        PlaySFX(gotIt, 0.5f);        
+        PlaySFX(gotIt, volume: 0.5f);        
     }
 
 

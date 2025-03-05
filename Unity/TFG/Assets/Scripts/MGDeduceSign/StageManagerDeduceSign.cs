@@ -36,22 +36,25 @@ public class StageManagerDeduceSign : MonoBehaviour
     public delegate void _OnChangeBoolCanChoose();
     public static event _OnChangeBoolCanChoose OnChangeBoolCanChoose;
 
-
+    public delegate void _OnCorrectAnswer();
+    public static event _OnCorrectAnswer OnCorrectAnswer;
     public delegate void _OnWrongAnswer();
     public static event _OnWrongAnswer OnWrongAnswer;
 
-
-    public delegate void _OnHasWin();
-    public static event _OnHasWin OnHasWin;
-
+    public delegate void _OnFailedRoundSFX();
+    public static event _OnFailedRoundSFX OnFailedRoundSFX;
 
     public delegate void _OnNewRound(bool sameRound);
     public static event _OnNewRound OnNewRound;
 
-
     public delegate void _OnFadeOutAll();
     public static event _OnFadeOutAll OnFadeOutAll;
 
+    public delegate void _OnGotIt();
+    public static event _OnGotIt OnGotIt;
+
+    public delegate void _OnReturnToMenu();          
+    public static event _OnReturnToMenu OnReturnToMenu;
 
 
     void OnEnable(){
@@ -155,6 +158,10 @@ public class StageManagerDeduceSign : MonoBehaviour
         if(goSign.CompareTag(answerSign)){        // Terrible para leer: if((goSign.tag == "Addition" && answerSign == 0) || (goSign.tag == "Subtraction" && answerSign == 1) || (goSign.tag == "Multiplication" && answerSign == 2) || (goSign.tag == "Division" && answerSign == 3));
 
             ManageCorrectAnswer(goSign);
+            
+            if(OnCorrectAnswer != null){
+                OnCorrectAnswer();
+            }
         }
         else{ // Solucion incorrecta
             attemptsNumber --;
@@ -173,16 +180,21 @@ public class StageManagerDeduceSign : MonoBehaviour
 
         if(currentRound == totalRounds){
 
+            // Lanzamos el evento de victoria: canvas muestra el conseguido
+            if(OnGotIt != null) 
+                OnGotIt();
+
             // Vaciamos la pizarra
             if(OnFadeOutAll != null) 
                 OnFadeOutAll();
             FadeOutButtonsAndOperation();
 
-            // Lanzamos el evento de victoria: canvas muestra el conseguido y se lanzan los confeti
-            if(OnHasWin != null) 
-                OnHasWin();
+            // Lanzamos los confeti
+            StartCoroutine(LaunchConfetti());
 
-            StartCoroutine(LaunchFireworks());
+            // Esperamos y volvemos al menu principal de seleccion
+            StartCoroutine(ReturnToMenu());
+            
         }
         else{
             // Ronda e intentos de la siguiente fase
@@ -314,6 +326,10 @@ public class StageManagerDeduceSign : MonoBehaviour
     }
     IEnumerator ShowError(){
         errorSheet.SetActive(true);
+        if(OnFailedRoundSFX != null){
+            OnFailedRoundSFX();
+        }
+
         yield return new WaitForSeconds(3.5f); // 1 FadeIn + 2 Stay + 1 FadeOut - 0,5 de solape de animaciones
 
         if(OnNewRound != null){
@@ -323,8 +339,19 @@ public class StageManagerDeduceSign : MonoBehaviour
     }
 
 
-    IEnumerator LaunchFireworks(){
-        yield return new WaitForSeconds(animationsTime*2);
+    IEnumerator LaunchConfetti(){
+        yield return new WaitForSeconds(animationsTime * 2);    // 1 segundo
         confetyParticles.SetActive(true); 
     }
+
+    IEnumerator ReturnToMenu(){
+        yield return new WaitForSeconds(animationsTime * 7);    // 3.5 segundos
+        
+        // Evento para que Load Scene vuelva a la scena del menu principal
+        if(OnReturnToMenu != null)  
+            OnReturnToMenu();  
+    }
+
 }
+
+

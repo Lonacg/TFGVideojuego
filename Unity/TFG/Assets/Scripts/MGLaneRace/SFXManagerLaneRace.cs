@@ -83,7 +83,7 @@ public class SFXManagerLaneRace : MonoBehaviour
 
     private void HandleOnCorrectSol(){
         // Sonido de victoria
-        PlaySFX(correctAnswer, 0.3f);        
+        PlaySFX(correctAnswer, volume: 0.3f);        
     }
 
     private void HandleOnWrongSol(){

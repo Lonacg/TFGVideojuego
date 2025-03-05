@@ -2989,8 +2989,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7745993595503294459, guid: 668e5c41c543d2444b989f74d1581d8a, type: 2}
-  m_audioClip: {fileID: 8300000, guid: d4a05f7a77b412e4ea78d0fb4d866cd7, type: 3}
-  m_Resource: {fileID: 8300000, guid: d4a05f7a77b412e4ea78d0fb4d866cd7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b7da48c15e710a741842583fac3307c7, type: 3}
+  m_Resource: {fileID: 8300000, guid: b7da48c15e710a741842583fac3307c7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
@@ -3461,6 +3461,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87886006b85df8046bcec409d058826a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  music: {fileID: 1638426446721334180}
+  correctAnswer: {fileID: 8300000, guid: b5d25affd5bccde45b45ab34709120e3, type: 3}
+  wrongAnswer: {fileID: 8300000, guid: 61989334f887a714d8d48ec654cde1f3, type: 3}
+  gotIt: {fileID: 8300000, guid: c818446a230aa9d4c8aaa3f2d6552c3e, type: 3}
+  signChosen: {fileID: 8300000, guid: 7132b5347736c3f48a96059f918323cb, type: 3}
+  failedRound: {fileID: 8300000, guid: d2794afd29a24234b854765ebfe65fef, type: 3}
+  roundMovement: {fileID: 8300000, guid: d2794afd29a24234b854765ebfe65fef, type: 3}
 --- !u!224 &7420864435685091044
 RectTransform:
   m_ObjectHideFlags: 0

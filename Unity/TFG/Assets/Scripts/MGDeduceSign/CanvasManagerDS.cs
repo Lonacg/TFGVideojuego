@@ -24,12 +24,12 @@ public class CanvasManagerDS : MonoBehaviour
 
 
     void OnEnable(){
-        StageManagerDeduceSign.OnHasWin += HandleOnHasWin;
+        StageManagerDeduceSign.OnGotIt += HandleOnHasWin;
     }
 
 
     void OnDisable(){
-        StageManagerDeduceSign.OnHasWin -= HandleOnHasWin;
+        StageManagerDeduceSign.OnGotIt -= HandleOnHasWin;
     }
 
 

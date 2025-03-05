@@ -16,16 +16,18 @@ public class SceneLoadManager : MonoBehaviour
 
     void OnEnable()
     {
-        CanvasManagerParking.OnReturnToMenu += HandleOnReturnToMenu;
-        StageManagerLaneRace.OnReturnToMenu += HandleOnReturnToMenu;
+        CanvasManagerParking.OnReturnToMenu   += HandleOnReturnToMenu;
+        StageManagerLaneRace.OnReturnToMenu   += HandleOnReturnToMenu;
+        StageManagerDeduceSign.OnReturnToMenu += HandleOnReturnToMenu;
         
         StartCoroutine(HideFadeBehind());
     } 
 
     void OnDisable()
     {
-        CanvasManagerParking.OnReturnToMenu -= HandleOnReturnToMenu;
-        StageManagerLaneRace.OnReturnToMenu -= HandleOnReturnToMenu;
+        CanvasManagerParking.OnReturnToMenu   -= HandleOnReturnToMenu;
+        StageManagerLaneRace.OnReturnToMenu   -= HandleOnReturnToMenu;
+        StageManagerDeduceSign.OnReturnToMenu -= HandleOnReturnToMenu;
     } 
 
     

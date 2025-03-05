@@ -16,19 +16,29 @@ public class SFXManagerDS : MonoBehaviour
     [SerializeField] private AudioClip correctAnswer;
     [SerializeField] private AudioClip wrongAnswer;
     [SerializeField] private AudioClip gotIt;
+    [SerializeField] private AudioClip signChosen;
+    [SerializeField] private AudioClip failedRound;
+    [SerializeField] private AudioClip roundMovement;
 
 
 
 
     private void OnEnable()
     {
-
-
+        RoundBehaviour.OnRoundMovementSFX       += HandleOnRoundMovementSFX;
+        StageManagerDeduceSign.OnFailedRoundSFX += HandleOnFailedRoundSFX;
+        StageManagerDeduceSign.OnCorrectAnswer  += HandleOnCorrectAnswer;
+        StageManagerDeduceSign.OnWrongAnswer    += HandleOnWrongAnswer;
+        StageManagerDeduceSign.OnGotIt          += HandleOnGotIt;
     }
 
     private void OnDisable()
     {
-       
+        RoundBehaviour.OnRoundMovementSFX       -= HandleOnRoundMovementSFX;
+        StageManagerDeduceSign.OnFailedRoundSFX -= HandleOnFailedRoundSFX;
+        StageManagerDeduceSign.OnCorrectAnswer  -= HandleOnCorrectAnswer;
+        StageManagerDeduceSign.OnWrongAnswer    -= HandleOnWrongAnswer; 
+        StageManagerDeduceSign.OnGotIt          -= HandleOnGotIt;       
     }
 
     void Start()
@@ -41,17 +51,26 @@ public class SFXManagerDS : MonoBehaviour
 
 
 
-    private void HandleOnCorrectSol(){
+
+    private void HandleOnFailedRoundSFX(){
+        // Sonido de ronda fallida
+        PlaySFX(failedRound, volume: 1f);        
+    }
+
+    private void HandleOnRoundMovementSFX(){
+        // Sonido de movimiento de la ronda
+        PlaySFX(failedRound, volume: 1f);    // HASTA CON EL DE RONDA FALLIDA SIGUE DANDO NULL REFERENCE! SI CUANDO LA RONDA FALLIDA LO HACE BIEN!
+    }
+
+    private void HandleOnCorrectAnswer(){
         // Sonido de victoria
-        PlaySFX(correctAnswer, 0.3f);        
+        PlaySFX(correctAnswer, volume: 0.5f);        
     }
 
-    private void HandleOnWrongSol(){
+    private void HandleOnWrongAnswer(){
         // Sonido de derrota
-        PlaySFX(wrongAnswer);        
+        PlaySFX(wrongAnswer, volume: 1f);        
     }
-
-
     private void HandleOnGotIt(){
         // Sonido de victoria final con el conseguido
         StartCoroutine(StopMusic(endVolume: 0f));

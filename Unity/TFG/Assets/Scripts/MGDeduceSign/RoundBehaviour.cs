@@ -21,7 +21,8 @@ public class RoundBehaviour : MonoBehaviour
     public delegate void _OnShowAttempt();
     public static event _OnShowAttempt OnShowAttempt;
 
-
+    public delegate void _OnRoundMovementSFX();
+    public static event _OnRoundMovementSFX OnRoundMovementSFX;
 
     void OnEnable()
     {
@@ -70,6 +71,11 @@ public class RoundBehaviour : MonoBehaviour
         // Activamos el movimiento del texto Ronda 1
         gameObject.GetComponent<TextMeshProUGUI>().text = "RONDA 1";
         StartCoroutine(MoveRound(goingInPositions[0], goingInPositions[1], curve, mustNotifyAttempt: true));
+        
+        // Avisamos para que se reproduzca el sonido de movimiento
+        if(OnRoundMovementSFX != null){
+            OnRoundMovementSFX();
+        }
     }
 
 
@@ -110,6 +116,12 @@ public class RoundBehaviour : MonoBehaviour
 
 
     IEnumerator MoveRound(Vector3 startPosition, Vector3 endPosition, AnimationCurve curve, bool mustNotifyAttempt = false, float animationTime = 1){
+
+        // // Avisamos para que se reproduzca el sonido de movimiento
+        // if(OnRoundMovementSFX != null){
+        //     OnRoundMovementSFX();
+        // }
+
         // necesitamos mustNotifyAttempt porque esta funcion vale tanto para cuando se va (que no muestra los intentos a continuacion suya), como para cuando llega (que si los muestra) 
         float elapsedTime = 0;
         
