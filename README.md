@@ -7,6 +7,7 @@ TFG - Laura Cano Gómez
 - HECHO: Buscar una fuente bonita para las letras
 - Cambiar LaunchFireworks por LaunchConfetti
 - Unificar nombres de archivos
+- FadeCircle del canvas cambiarlo a FadeCircleView y lo mismo en el codigo
 
 
 ### MG Parking

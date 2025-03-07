@@ -7,13 +7,14 @@ public class CanvasManagerDS : MonoBehaviour
 {
       
     [Header("Views:")]
-    [SerializeField] private GameObject introView;
+    [SerializeField] private GameObject tutorialView;
     [SerializeField] private GameObject ingameView;
     [SerializeField] private GameObject victoryView;
+    [SerializeField] private GameObject fadeCircleView;
 
 
-    [Header("Text:")] 
-    [SerializeField] private TextMeshProUGUI introDialoguePlace;
+    [Header("Game Objects:")] 
+    [SerializeField] private GameObject roundObject;
     [SerializeField] private List<string> linesIntroDialogue;
 
 
@@ -24,15 +25,20 @@ public class CanvasManagerDS : MonoBehaviour
 
 
     void OnEnable(){
+        StageManagerDeduceSign.OnFadeToPlay += HandleOnFadeToPlay;
         StageManagerDeduceSign.OnGotIt += HandleOnHasWin;
+
     }
 
 
     void OnDisable(){
+        StageManagerDeduceSign.OnFadeToPlay -= HandleOnFadeToPlay;
         StageManagerDeduceSign.OnGotIt -= HandleOnHasWin;
     }
 
-
+    private void HandleOnFadeToPlay(){
+        StartCoroutine(FadeOutFadeIn());
+    }
 
     private void HandleOnHasWin(){
         victoryView.SetActive(true);
@@ -49,11 +55,12 @@ public class CanvasManagerDS : MonoBehaviour
 
     void Start()
     {
-        ingameView.SetActive(true);
-        // ingameView.SetActive(false);
+        tutorialView.SetActive(true);
+        ingameView.SetActive(false);
         victoryView.SetActive(false);
-        // introView.SetActive(true);
-        // StartDialogue(introView, introDialoguePlace, linesIntroDialogue);
+        fadeCircleView.SetActive(false);
+        roundObject.SetActive(false);
+
     }
 
 
@@ -77,7 +84,24 @@ public class CanvasManagerDS : MonoBehaviour
         }
     }
 
+    IEnumerator FadeOutFadeIn(){
+        // Fade Out
+        fadeCircleView.SetActive(true);
+        yield return new WaitForSeconds(1.5f); // El fade out/in del CircleStatic dura 1,5 seg
 
+        // Desactivamos la vista del tutorial
+        tutorialView.SetActive(false);
+        ingameView.SetActive(true);
+        
+        // Fade In
+        fadeCircleView.GetComponent<Animator>().SetTrigger("FadeInCircleDeduceSign");
+
+        yield return new WaitForSeconds(1f); 
+
+        // Empezamos el jeugo activando las rondas
+        roundObject.SetActive(true);
+
+    }
 
     IEnumerator WriteLetterByLetter(GameObject view, TextMeshProUGUI dialoguePlace, List<string> lines){ 
         foreach (char letter in lines[indexSentence].ToCharArray()){

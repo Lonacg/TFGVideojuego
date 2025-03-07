@@ -113,7 +113,7 @@ public class CanvasManagerLaneRace : MonoBehaviour
         tutorialView.SetActive(false);
         
         // Fade In
-        fadeCircle.GetComponent<Animator>().SetTrigger("FadeInCircleParking");
+        fadeCircle.GetComponent<Animator>().SetTrigger("FadeInCircleLaneRace");
 
         yield return new WaitForSeconds(1f); // El fade out/in del CircleStatic dura 1,5 seg, quitamos 0.5 para que se visualice como una transicion y vaya fluido al aparecer
 

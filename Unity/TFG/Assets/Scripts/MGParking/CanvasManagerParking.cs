@@ -7,13 +7,15 @@ public class CanvasManagerParking : MonoBehaviour
 {
     [Header("Game Objects:")]
     [SerializeField] private GameObject player;
-    [SerializeField] private GameObject tutorialView;
-    [SerializeField] private GameObject ingameView;
-    [SerializeField] private GameObject victoryView;
-    [SerializeField] private GameObject fadeCircle;
     [SerializeField] private GameObject operationImage;
     [SerializeField] private GameObject errorImage;
     [SerializeField] private GameObject poolingRoad;
+
+    [Header("Views:")]
+    [SerializeField] private GameObject tutorialView;
+    [SerializeField] private GameObject ingameView;
+    [SerializeField] private GameObject victoryView;
+    [SerializeField] private GameObject fadeCircleView;
 
     [Header("Texts:")]
     [SerializeField] private TextMeshProUGUI operationFirstTryText;
@@ -50,7 +52,7 @@ public class CanvasManagerParking : MonoBehaviour
         // Vistas desactivadas
         ingameView.SetActive(false);
         victoryView.SetActive(false);
-        fadeCircle.SetActive(false);
+        fadeCircleView.SetActive(false);
         operationSecondTryText.gameObject.SetActive(false);
 
         // Inicializacion de variables
@@ -101,7 +103,7 @@ public class CanvasManagerParking : MonoBehaviour
 
     IEnumerator StartGame(){
         // Fade Out
-        fadeCircle.SetActive(true);
+        fadeCircleView.SetActive(true);
         yield return new WaitForSeconds(1.5f); // El fade out/in del CircleStatic dura 1,5 seg
 
         // Desactivamos la vista del tutorial y activamos la de juego
@@ -109,7 +111,7 @@ public class CanvasManagerParking : MonoBehaviour
         ingameView.SetActive(true);
         
         // Fade In
-        fadeCircle.GetComponent<Animator>().SetTrigger("FadeInCircleParking");
+        fadeCircleView.GetComponent<Animator>().SetTrigger("FadeInCircleParking");
 
         //Las lineas precedentes se han escrito en lugar de las siguientes, para hacer una transicion mas bonita con el circulo
         //StartCoroutine(FadeCanvasGroup(tutorialView, fromAlpha: 1, toAlpha: 0));

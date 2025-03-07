@@ -16,6 +16,9 @@ public class StageManagerDeduceSign : MonoBehaviour
     private bool firstOperation;
     private float animationsTime = 0.5f;
 
+    [Header("Views:")]
+    [SerializeField] private GameObject tutorialView;
+    private bool spacePressed = false;
 
     [Header("Text References:")]
     [SerializeField] private TextMeshPro firsNumberText;
@@ -23,15 +26,18 @@ public class StageManagerDeduceSign : MonoBehaviour
     [SerializeField] private TextMeshPro resultNumberText;
     [SerializeField] private TextMeshProUGUI attemptPlace;
 
-    
     [Header("GameObjects:")]     
     [SerializeField] private GameObject buttonsParent;     
     [SerializeField] private GameObject operationParent; 
     [SerializeField] private GameObject errorSheet; 
     [SerializeField] private GameObject confetyParticles;
     public List<GameObject> buttonsChosen;                  // Necesita ser publica para la correcta gestion de los botones
+    
 
 
+    // Declaracion de eventos:
+    public delegate void _OnFadeToPlay();
+    public static event _OnFadeToPlay OnFadeToPlay;
 
     public delegate void _OnChangeBoolCanChoose();
     public static event _OnChangeBoolCanChoose OnChangeBoolCanChoose;
@@ -115,14 +121,23 @@ public class StageManagerDeduceSign : MonoBehaviour
     void Start()
     {
         animationsTime = 0.5f;
-        //totalRounds = 3;          // Elegible en el inspector de Unity al ser SerializeField
         firstOperation = true;
+        //totalRounds = 3;          // Elegible en el inspector de Unity al ser SerializeField
         
         // Inicializamos la operacion en "invisible" (escala 0 en y) para que al activarlo no se vea
         operationParent.transform.localScale = new Vector3(1, 0, 1);
     }
 
-
+    void Update()
+    {
+        // Si la ventana de tutorial esta activada y pulsan espacio damos paso al inicio del juego (solo escuchamos el primer pulsado, para que no se retipa el lanzamiento del evento)
+        if(tutorialView.activeSelf && Input.GetKeyDown(KeyCode.Space) && !spacePressed){
+            spacePressed = true;
+            if(OnFadeToPlay != null)   
+                OnFadeToPlay();
+        }
+    }
+    
  
     public void UpdateNumbers(){  
 

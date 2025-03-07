@@ -493,13 +493,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1744762178}
-  tutorialView: {fileID: 3369119796455470475}
-  ingameView: {fileID: 183512955}
-  victoryView: {fileID: 445653416}
-  fadeCircle: {fileID: 8895851911046097571}
   operationImage: {fileID: 1970341272}
   errorImage: {fileID: 2020129630}
   poolingRoad: {fileID: 983381699}
+  tutorialView: {fileID: 3369119796455470475}
+  ingameView: {fileID: 183512955}
+  victoryView: {fileID: 445653416}
+  fadeCircleView: {fileID: 8895851911046097571}
   operationFirstTryText: {fileID: 1319238942}
   operationSecondTryText: {fileID: 1494307500}
 --- !u!1001 &253240013
@@ -9783,8 +9783,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 127332271052737937}
   - {fileID: 4003059107801112410}
+  - {fileID: 127332271052737937}
   - {fileID: 5495819992186002190}
   m_Father: {fileID: 3416440459275829797}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11928,7 +11928,7 @@ GameObject:
   - component: {fileID: 2415050488121811988}
   - component: {fileID: 4122419822423043108}
   m_Layer: 5
-  m_Name: FadeCircle
+  m_Name: FadeCircleView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
