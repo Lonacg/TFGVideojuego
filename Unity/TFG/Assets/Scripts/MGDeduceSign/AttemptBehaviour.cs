@@ -8,9 +8,9 @@ public class AttemptBehaviour : MonoBehaviour
 {
     [Header("Game Objects:")]
     [SerializeField] private GameObject stageManager;
+    [SerializeField] private GameObject flashAtemptParticles;
 
-    [Header("Variables:")]
-    public int currentAttemp;
+    private int currentAttemp;
 
 
 
@@ -38,7 +38,7 @@ public class AttemptBehaviour : MonoBehaviour
 
 
     private void HandleOnWrongAnswer(){
-        UpgradeTextAttempt();
+        UpgradeTextAttempt(wantFlash: true);
     }
 
 
@@ -66,11 +66,21 @@ public class AttemptBehaviour : MonoBehaviour
     }
 
 
-    private void UpgradeTextAttempt(){
+    private void UpgradeTextAttempt(bool wantFlash = false){
         currentAttemp = stageManager.GetComponent<StageManagerDeduceSign>().attemptsNumber;
+        if(wantFlash){
+            StartCoroutine(ShowFlashAttempt());       // El verde es el primer hijo y el rojo el segundo
+        }
         gameObject.GetComponent<TextMeshProUGUI>().text = "Intentos:\n" + currentAttemp.ToString();
     }
 
+    IEnumerator ShowFlashAttempt(){
+        flashAtemptParticles.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+
+        flashAtemptParticles.SetActive(false);
+
+    }
 
 
     IEnumerator RestartAttempt(bool sameRound){

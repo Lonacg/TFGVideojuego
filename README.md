@@ -54,10 +54,11 @@ TFG - Laura Cano Gómez
 - HECHO: Añadir rondas al juego
 - HECHO: Añadir en Stage manager que el totalRounds tenga que ser un numero mayor que 3
 - HECHO: cuando fallas la ronda, se ven por un momento los intentos de la proxima ronda. Deberia mantenerse o reducirse en uno y mantenerse.
-- Añadir particulas cuando baja un intento
-- Añadir particulas en el boton al ponerse verde
+- HECHO: Añadir particulas cuando baja un intento
+- HECHO: Añadir particulas en el boton al ponerse verde
 - Añadir musica
-- Deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
+- HECHO: Deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
+- Hacer prefab las particulas de los intentos
 
 
 

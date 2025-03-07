@@ -18,6 +18,7 @@ public class RoundBehaviour : MonoBehaviour
 
 
 
+
     public delegate void _OnShowAttempt();
     public static event _OnShowAttempt OnShowAttempt;
 
@@ -117,12 +118,14 @@ public class RoundBehaviour : MonoBehaviour
 
     IEnumerator MoveRound(Vector3 startPosition, Vector3 endPosition, AnimationCurve curve, bool mustNotifyAttempt = false, float animationTime = 1){
 
-        // // Avisamos para que se reproduzca el sonido de movimiento
-        // if(OnRoundMovementSFX != null){
-        //     OnRoundMovementSFX();
-        // }
+        // Necesitamos mustNotifyAttempt porque esta funcion vale tanto para cuando se va (que no muestra los intentos a continuacion suya), como para cuando llega (que si los muestra) 
 
-        // necesitamos mustNotifyAttempt porque esta funcion vale tanto para cuando se va (que no muestra los intentos a continuacion suya), como para cuando llega (que si los muestra) 
+        // Avisamos para que se reproduzca el sonido de movimiento, aprovechando mustNotifyAttempt para reproducirlo solo cuando llega
+        if(OnRoundMovementSFX != null && mustNotifyAttempt){
+            OnRoundMovementSFX();
+        }
+
+        
         float elapsedTime = 0;
         
         while(elapsedTime < animationTime){

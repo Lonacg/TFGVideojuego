@@ -247,7 +247,9 @@ public class StageManagerDeduceSign : MonoBehaviour
 
 
     public void MakeButtonGreen(GameObject goSign){
+        StartCoroutine(ShowFlashButton(goSign, childNumber: 1));       // El verde es el segundo hijo (1) y el rojo el tercero
         goSign.GetComponent<ButtonBehaviour>().ChangeButtonColor(Color.green);
+
     }
 
 
@@ -256,6 +258,7 @@ public class StageManagerDeduceSign : MonoBehaviour
         ButtonBehaviour scriptButton = goSign.GetComponent<ButtonBehaviour>();
 
         Vector4 darkRed = new(0.8f, 0, 0, 1);
+        StartCoroutine(ShowFlashButton(goSign, childNumber: 2));       // El verde es el segundo hijo y el rojo el tercero (2)
         scriptButton.ChangeButtonColor(darkRed);
         scriptButton.enabled = false; 
     }
@@ -279,6 +282,15 @@ public class StageManagerDeduceSign : MonoBehaviour
     }
 
 
+     IEnumerator ShowFlashButton(GameObject goSign, int childNumber){
+        GameObject flashParticles = goSign.transform.GetChild(childNumber).gameObject;
+        flashParticles.SetActive(true);
+
+        yield return new WaitForSeconds(0.5f);
+        flashParticles.SetActive(false);
+        
+
+     }
 
     IEnumerator TransformSizeOperation(float startSize, float endSize, float animationTime){
         // Funcion reutilizada de MGLaneRace
@@ -339,6 +351,7 @@ public class StageManagerDeduceSign : MonoBehaviour
 
         SetAttemptsNumber();
     }
+    
     IEnumerator ShowError(){
         errorSheet.SetActive(true);
         if(OnFailedRoundSFX != null){

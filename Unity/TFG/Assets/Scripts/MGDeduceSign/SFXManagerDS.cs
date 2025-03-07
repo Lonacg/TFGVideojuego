@@ -59,7 +59,7 @@ public class SFXManagerDS : MonoBehaviour
 
     private void HandleOnRoundMovementSFX(){
         // Sonido de movimiento de la ronda
-        PlaySFX(failedRound, volume: 1f);    // HASTA CON EL DE RONDA FALLIDA SIGUE DANDO NULL REFERENCE! SI CUANDO LA RONDA FALLIDA LO HACE BIEN!
+        PlaySFX(roundMovement, volume: 1f);    
     }
 
     private void HandleOnCorrectAnswer(){
