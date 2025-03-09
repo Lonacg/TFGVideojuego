@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class RoundBehaviour : MonoBehaviour
 {
-
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     [Header("References:")]
     [SerializeField] private AnimationCurve curve;
     [SerializeField] private TextMeshProUGUI attempText;
     [SerializeField] private GameObject stageManager;
-
 
     [Header("Variables:")]
     private int totalRounds;
@@ -18,13 +17,15 @@ public class RoundBehaviour : MonoBehaviour
 
 
 
-
+    // DECLARACIÓN DE EVENTOS
     public delegate void _OnShowAttempt();
     public static event _OnShowAttempt OnShowAttempt;
 
     public delegate void _OnRoundMovementSFX();
     public static event _OnRoundMovementSFX OnRoundMovementSFX;
 
+
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void OnEnable()
     {
         StageManagerDeduceSign.OnNewRound += HandleOnNewRound;
@@ -32,32 +33,14 @@ public class RoundBehaviour : MonoBehaviour
     }
 
 
-    void OnDisable(){
+    void OnDisable()
+    {
         StageManagerDeduceSign.OnNewRound -= HandleOnNewRound;
         StageManagerDeduceSign.OnFadeOutAll -= HandleOnFadeOutAll;
     }
 
-
-
-    private void HandleOnNewRound(bool sameRound){
-
-        if(sameRound){
-            StartCoroutine(GoIn());  
-
-        }
-        else{
-            StartCoroutine(GoOutGoIn());              
-        }
-    }
-
-
-    private void HandleOnFadeOutAll(){
-        StartCoroutine(GoOut()); 
-    }
-
-
-
-    void Start(){
+    void Start()
+    {
 
         // Inicializamos variables
         goingInPositions = new Vector3[2];
@@ -81,6 +64,25 @@ public class RoundBehaviour : MonoBehaviour
 
 
 
+    // MÉTODOS EN RESPUESTA A EVENTOS
+    private void HandleOnNewRound(bool sameRound){
+
+        if(sameRound){
+            StartCoroutine(GoIn());  
+
+        }
+        else{
+            StartCoroutine(GoOutGoIn());              
+        }
+    }
+
+    private void HandleOnFadeOutAll(){
+        StartCoroutine(GoOut()); 
+    }
+
+
+
+    // MÉTODOS DE ESTA CLASE
     private void SetPositionsRound(){
         
         Vector3 startPosition = transform.localPosition;
@@ -101,7 +103,6 @@ public class RoundBehaviour : MonoBehaviour
         goingOutPositions[1] = endPosition;    
     }
 
-
     private void NewRoundText(){
 
         int currentRound = stageManager.GetComponent<StageManagerDeduceSign>().currentRound;
@@ -116,6 +117,7 @@ public class RoundBehaviour : MonoBehaviour
 
 
 
+    // CORRUTINAS
     IEnumerator MoveRound(Vector3 startPosition, Vector3 endPosition, AnimationCurve curve, bool mustNotifyAttempt = false, float animationTime = 1){
 
         // Necesitamos mustNotifyAttempt porque esta funcion vale tanto para cuando se va (que no muestra los intentos a continuacion suya), como para cuando llega (que si los muestra) 
@@ -142,7 +144,6 @@ public class RoundBehaviour : MonoBehaviour
             OnShowAttempt();
     }
 
-
     IEnumerator GoOutGoIn(){
         // Sale la ronda actual
         StartCoroutine(MoveRound(goingOutPositions[0], goingOutPositions[1], curve));
@@ -156,14 +157,12 @@ public class RoundBehaviour : MonoBehaviour
         StartCoroutine(MoveRound(goingInPositions[0], goingInPositions[1], curve, mustNotifyAttempt: true));
     }
 
-
     IEnumerator GoOut(){
         // Sale la ronda actual
         StartCoroutine(MoveRound(goingOutPositions[0], goingOutPositions[1], curve));
 
         yield return 0;
     }
-
 
     IEnumerator GoIn(){
         // Actualizamos el numero de ronda
@@ -173,6 +172,5 @@ public class RoundBehaviour : MonoBehaviour
         StartCoroutine(MoveRound(goingInPositions[0], goingInPositions[1], curve, mustNotifyAttempt: true));
         yield return 0; 
     } 
+    
 }
-
-

@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class SFXManagerDS : MonoBehaviour
 {
- [Header("Audio Sources:")]
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
+    [Header("Audio Sources:")]
     private AudioSource audioSourceMusic;
     private AudioSource audioSourceSFX;
     private AudioClip previousAudioClip;
@@ -23,14 +24,12 @@ public class SFXManagerDS : MonoBehaviour
     
 
 
-
-
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     private void OnEnable()
     {
         RoundBehaviour.OnRoundMovementSFX       += HandleOnRoundMovementSFX;
         RoundBehaviour.OnShowAttempt            += HandleOnShowAttempt;
         AttemptBehaviour.OnAttemptMovementSFX   += HandleOnAttemptMovementSFX;
-
         StageManagerDeduceSign.OnFailedRoundSFX += HandleOnFailedRoundSFX;
         StageManagerDeduceSign.OnCorrectAnswer  += HandleOnCorrectAnswer;
         StageManagerDeduceSign.OnWrongAnswer    += HandleOnWrongAnswer;
@@ -56,12 +55,11 @@ public class SFXManagerDS : MonoBehaviour
 
 
 
+    // MÉTODOS EN RESPUESTA A EVENTOS
     private void HandleOnRoundMovementSFX(){
         // Sonido de movimiento de la ronda
         PlaySFX(roundMovement, volume: 1f);    
     }
-
-
 
     private void HandleOnShowAttempt(){
         // Sonido de presentacion de los intentos
@@ -74,9 +72,8 @@ public class SFXManagerDS : MonoBehaviour
     }
     private void HandleOnFailedRoundSFX(){
         // Sonido de ronda fallida
-        PlaySFX(failedRound, volume: 0.2f);        
+        PlaySFX(failedRound, volume: 0.3f);         
     }
-
 
     private void HandleOnCorrectAnswer(){
         // Sonido de victoria
@@ -87,6 +84,7 @@ public class SFXManagerDS : MonoBehaviour
         // Sonido de derrota
         PlaySFX(wrongAnswer, volume: 1f);        
     }
+
     private void HandleOnGotIt(){
         // Sonido de victoria final con el conseguido
         StartCoroutine(StopMusic(endVolume: 0f));
@@ -94,6 +92,8 @@ public class SFXManagerDS : MonoBehaviour
     }
 
 
+
+    // MÉTODOS DE ESTA CLASE
     public void PlaySFX(AudioClip audioClip, float volume = 1){
         // Impedimos que dos clips iguales puedan sonar en el mismo momento y se acople el sonido (se multiplicaria el volumen de ese sonido)
         if (previousAudioClip == audioClip){ 
@@ -110,6 +110,9 @@ public class SFXManagerDS : MonoBehaviour
         audioSourceSFX.PlayOneShot(audioClip, volume);
     }
 
+
+
+    // CORRUTINAS
     IEnumerator StopMusic(float endVolume, float animationTime = 1f){
         float elapsedTime = 0;
         float startVolume = audioSourceMusic.volume;
@@ -120,4 +123,5 @@ public class SFXManagerDS : MonoBehaviour
             yield return 0;
         }
     }
+    
 }

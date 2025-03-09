@@ -6,12 +6,12 @@ using System.Collections.Generic;
 
 public class StageManagerDeduceSign : MonoBehaviour
 {
-   
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     [Header("Variables:")]
     [SerializeField, Min(2)] public int totalRounds = 3;    // Necesita ser publica para que RoundBehaviour acceda a ella
     public int maxAttempts;                                 // Necesita ser publica para que AttemptBehaviour acceda a ella
     public int attemptsNumber;                              // Necesita ser publica para que AttemptBehaviour acceda a ella
-    public int currentRound;
+    public int currentRound;                                // Necesita ser publica para que RoundBehaviour acceda a ella
     private string answerSign;
     private bool firstOperation;
     private float animationsTime = 0.5f;
@@ -35,7 +35,7 @@ public class StageManagerDeduceSign : MonoBehaviour
     
 
 
-    // Declaracion de eventos:
+    // DECLARACIÓN DE EVENTOS
     public delegate void _OnFadeToPlay();
     public static event _OnFadeToPlay OnFadeToPlay;
 
@@ -63,52 +63,24 @@ public class StageManagerDeduceSign : MonoBehaviour
     public static event _OnReturnToMenu OnReturnToMenu;
 
 
-    void OnEnable(){
+
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
+    void OnEnable()
+    {
         ButtonBehaviour.OnSignChosen += HandleOnSignChosen;
         RoundBehaviour.OnShowAttempt += HandleOnShowAttempt;
         AttemptBehaviour.OnPlaying += HandleOnPlaying;
     }
 
-    void OnDisable(){
+    void OnDisable()
+    {
         ButtonBehaviour.OnSignChosen -= HandleOnSignChosen;
         RoundBehaviour.OnShowAttempt -= HandleOnShowAttempt;
         AttemptBehaviour.OnPlaying -= HandleOnPlaying;
     }
 
-
-
-    private void HandleOnSignChosen(GameObject buttonChosenGO){
-
-        // Metemos el boton en una lista para luego volver a activarles el script
-        buttonsChosen.Add(buttonChosenGO.gameObject); // Aunque goSing sea un game object, cuando se mete a la lista tenemos que decir que queremos meterlo como .gameObject porque si no nos da null reference
-        
-        // Avisamos a los botones para que cambien a false
-        if(OnChangeBoolCanChoose != null){
-            OnChangeBoolCanChoose();
-        }
-
-        // Comprobamos si el simbolo escogido es el correcto
-        CheckAnswer(buttonChosenGO);
-    }
-    
-    private void HandleOnShowAttempt(){
-        attemptPlace.gameObject.SetActive(false);
-        attemptPlace.gameObject.SetActive(true);
-    }
-
-
-    private void HandleOnPlaying(){
-        buttonsParent.SetActive(false);
-        buttonsParent.SetActive(true);
-
-        operationParent.SetActive(false);
-        operationParent.SetActive(true);
-        StartCoroutine(FadeInOperation(animationsTime));
-    }
-
-
-
-    void Awake(){
+    void Awake()
+    {
         currentRound = 1;
         buttonsParent.SetActive(false);
         operationParent.SetActive(false);
@@ -116,7 +88,6 @@ public class StageManagerDeduceSign : MonoBehaviour
 
         SetAttemptsNumber();
     }
-
 
     void Start()
     {
@@ -137,8 +108,41 @@ public class StageManagerDeduceSign : MonoBehaviour
                 OnFadeToPlay();
         }
     }
+
+
+
+    // MÉTODOS EN RESPUESTA A EVENTOS
+    private void HandleOnSignChosen(GameObject buttonChosenGO){
+
+        // Metemos el boton en una lista para luego volver a activarles el script
+        buttonsChosen.Add(buttonChosenGO.gameObject); // Aunque goSing sea un game object, cuando se mete a la lista tenemos que decir que queremos meterlo como .gameObject porque si no nos da null reference
+        
+        // Avisamos a los botones para que cambien a false
+        if(OnChangeBoolCanChoose != null){
+            OnChangeBoolCanChoose();
+        }
+
+        // Comprobamos si el simbolo escogido es el correcto
+        CheckAnswer(buttonChosenGO);
+    }
     
- 
+    private void HandleOnShowAttempt(){
+        attemptPlace.gameObject.SetActive(false);
+        attemptPlace.gameObject.SetActive(true);
+    }
+
+    private void HandleOnPlaying(){
+        buttonsParent.SetActive(false);
+        buttonsParent.SetActive(true);
+
+        operationParent.SetActive(false);
+        operationParent.SetActive(true);
+        StartCoroutine(FadeInOperation(animationsTime));
+    }
+
+
+
+    // MÉTODOS DE ESTA CLASE
     public void UpdateNumbers(){  
 
         // Buscamos los nuevos numeros generados en el script SetOperation
@@ -154,7 +158,6 @@ public class StageManagerDeduceSign : MonoBehaviour
         resultNumberText.text = resultNumber.ToString();
     }
 
-
     private void SetAttemptsNumber(){
         if(totalRounds - currentRound >= 4){
             maxAttempts = 4;
@@ -165,7 +168,6 @@ public class StageManagerDeduceSign : MonoBehaviour
 
         attemptsNumber = maxAttempts;
     }
-
 
     public void CheckAnswer(GameObject goSign){
         
@@ -187,7 +189,6 @@ public class StageManagerDeduceSign : MonoBehaviour
             }
         }
     }
-
 
     public void ManageCorrectAnswer(GameObject goSign){
 
@@ -219,7 +220,6 @@ public class StageManagerDeduceSign : MonoBehaviour
         }
     }
 
-
     public void ManageWrongAnswer(GameObject goSign){
         
         MakeButtonRed(goSign);
@@ -245,7 +245,6 @@ public class StageManagerDeduceSign : MonoBehaviour
         }
     } 
 
-
     public void MakeButtonGreen(GameObject goSign){
         StartCoroutine(ShowFlashButton(goSign, childNumber: 1));       // El verde es el segundo hijo (1) y el rojo el tercero
         goSign.GetComponent<ButtonBehaviour>().ChangeButtonColor(Color.green);
@@ -263,7 +262,6 @@ public class StageManagerDeduceSign : MonoBehaviour
         scriptButton.enabled = false; 
     }
 
-
     public void RestartButtons(){
         if(buttonsChosen[0] != null){
             foreach(GameObject goSign in buttonsChosen){
@@ -275,22 +273,21 @@ public class StageManagerDeduceSign : MonoBehaviour
         }
     }
 
-
     private void FadeOutButtonsAndOperation(){
         buttonsParent.GetComponent<Animator>().SetTrigger("FadeOut");
         StartCoroutine(FadeOutOperation(animationsTime));
     }
 
 
+
+    // CORRUTINAS
      IEnumerator ShowFlashButton(GameObject goSign, int childNumber){
         GameObject flashParticles = goSign.transform.GetChild(childNumber).gameObject;
         flashParticles.SetActive(true);
 
         yield return new WaitForSeconds(0.5f);
         flashParticles.SetActive(false);
-        
-
-     }
+    }
 
     IEnumerator TransformSizeOperation(float startSize, float endSize, float animationTime){
         // Funcion reutilizada de MGLaneRace
@@ -305,7 +302,6 @@ public class StageManagerDeduceSign : MonoBehaviour
         }
         operationParent.transform.localScale = new Vector3(1, endSize, 1);
     }
-
 
     IEnumerator FadeInOperation(float animationTime){
 
@@ -327,13 +323,11 @@ public class StageManagerDeduceSign : MonoBehaviour
         }
     }
 
-
     IEnumerator FadeOutOperation(float animationTime){
 
         StartCoroutine(TransformSizeOperation(startSize: 1, endSize: 0, animationTime: animationTime));
         yield return 0;
     }
-
 
     IEnumerator WaitAndNewRound(){
         yield return new WaitForSeconds(animationsTime);
@@ -344,7 +338,6 @@ public class StageManagerDeduceSign : MonoBehaviour
 
         FadeOutButtonsAndOperation();
     }
-
 
     IEnumerator WaitAndChangeAttempts(){
         yield return new WaitForSeconds(animationsTime);
@@ -384,5 +377,3 @@ public class StageManagerDeduceSign : MonoBehaviour
     }
 
 }
-
-

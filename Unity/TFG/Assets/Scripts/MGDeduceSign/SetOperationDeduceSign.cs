@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class SetOperationDeduceSign : MonoBehaviour
 {
-    // Definimos las variables publicas para que StageManager pueda acceder a ellas
-    [Header("Variables:")]
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
+    [Header("Variables:")] // Definimos las variables publicas para que StageManager pueda acceder a ellas
     public int firstNumber;
     public int secondNumber;
     public int resultNumber;
@@ -11,11 +11,15 @@ public class SetOperationDeduceSign : MonoBehaviour
 
 
 
-    void OnEnable(){
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
+    void OnEnable()
+    {
         GenerateOperation();
     }
 
 
+
+    // MÉTODOS DE ESTA CLASE
     public void GenerateOperation(){
         int operatorChosen = Random.Range(0,4);
         
@@ -65,8 +69,5 @@ public class SetOperationDeduceSign : MonoBehaviour
         // Escribimos la operacion por consola para facilitar el desarrollo del minijuego              
         //Debug.Log("La operacion es: " + firstNumber + answerSign + secondNumber + " = " + resultNumber);
     }   
+
 }
-
-
-
-

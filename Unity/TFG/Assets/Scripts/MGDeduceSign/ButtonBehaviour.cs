@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ButtonBehaviour : MonoBehaviour
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     [Header("Sprites:")]
     private SpriteRenderer spriteRendererBase;
     private SpriteRenderer spriteRendererSign;
-
 
     [Header("Variables:")]
     private Color lightGreen;
@@ -15,12 +15,15 @@ public class ButtonBehaviour : MonoBehaviour
 
 
 
+    // DECLARACIÓN DE EVENTOS
     public delegate void _OnSignChosen(GameObject gameObject);
     public static event _OnSignChosen OnSignChosen;
     
 
 
-    void OnEnable(){
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
+    void OnEnable()
+    {
         // Inicializamos que no se pueden elegir los botones al activarse
         canChooseButton = false;
 
@@ -28,22 +31,14 @@ public class ButtonBehaviour : MonoBehaviour
         StageManagerDeduceSign.OnChangeBoolCanChoose += HandleOnChangeBoolCanChoose;
     }
 
-
-    void OnDisable(){
+    void OnDisable()
+    {
 
         StageManagerDeduceSign.OnChangeBoolCanChoose -= HandleOnChangeBoolCanChoose;
     }
 
-
-
-    private void HandleOnChangeBoolCanChoose(){
-        canChooseButton = !canChooseButton;
-    }
-
-
-
-    void Start(){
-
+    void Start()
+    {
         // Asignamos el componente del color del sprite
         spriteRendererBase = gameObject.GetComponent<SpriteRenderer>();
         spriteRendererSign = gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>();
@@ -52,27 +47,24 @@ public class ButtonBehaviour : MonoBehaviour
         lightGreen = new Vector4(0.65f, 1, 0.65f, 1);
     }
 
-
-    
-    private void OnMouseOver(){
+    private void OnMouseOver()
+    {
         // Se usa esta en vez de OnMouseEnter(), aunque conlleve mas coste, porque si ha hecho click encima de la correcta en la pantalla anterior y no ha movido el raton, cuando aparece el boton en la siguiente ronda sigue ahi encima, y con OnMouseEnter no se colorea porque realmente no ha entrado, ya estaba ahi
         if(canChooseButton && spriteRendererBase.color == Color.white){
             spriteRendererBase.color = lightGreen;
         }
     }
 
-
-    private void  OnMouseExit(){
-
+    private void  OnMouseExit()
+    {
         //  Cuando el raton sale del boton lo volvemos a blanco
         if(canChooseButton){
             spriteRendererBase.color = Color.white;
         }
     }
 
-
-    private void OnMouseDown(){
-
+    private void OnMouseDown()
+    {
         if(canChooseButton){
             StartCoroutine(ClickAnimation(seconds: 0.2f));
             
@@ -84,7 +76,14 @@ public class ButtonBehaviour : MonoBehaviour
         }
     }
 
- 
+
+    // MÉTODOS EN RESPUESTA A EVENTOS
+    private void HandleOnChangeBoolCanChoose(){
+        canChooseButton = !canChooseButton;
+    }
+
+
+    // MÉTODOS DE ESTA CLASE
     public void ChangeButtonColor(Color newColor){
         Vector4 blackboardColor = new Vector4(0.063f, 0.29f, 0.386f, 1);
         spriteRendererBase.color = newColor;
@@ -95,7 +94,7 @@ public class ButtonBehaviour : MonoBehaviour
     }
 
 
-
+    // CORRUTINAS
     IEnumerator ClickAnimation(float seconds){
 
         float originalScale = gameObject.transform.localScale.x;
@@ -106,7 +105,6 @@ public class ButtonBehaviour : MonoBehaviour
         yield return new WaitForSeconds(animTime);
         StartCoroutine(TransformSizeButtom(startSize: desiredScale, endSize: originalScale, animationTime: animTime));
     }
-
 
     IEnumerator TransformSizeButtom(float startSize, float endSize, float animationTime){
         // Funcion reutilizada de MGLaneRace
@@ -121,4 +119,5 @@ public class ButtonBehaviour : MonoBehaviour
         }
         gameObject.transform.localScale = new Vector3(endSize, endSize, 1);;
     }
+    
 }
