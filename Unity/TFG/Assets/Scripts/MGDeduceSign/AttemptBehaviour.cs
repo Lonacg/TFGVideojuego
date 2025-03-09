@@ -17,7 +17,8 @@ public class AttemptBehaviour : MonoBehaviour
     public delegate void _OnPlaying();
     public static event _OnPlaying OnPlaying;
 
-
+    public delegate void _OnAttemptMovementSFX();
+    public static event _OnAttemptMovementSFX OnAttemptMovementSFX;
 
     void OnEnable()
     {
@@ -59,6 +60,11 @@ public class AttemptBehaviour : MonoBehaviour
     }
 
 
+    private void AttemptMovementSFX(){
+        // La llama automáticamente un evento puesto en la animacion del movimiento, en el frimer frame
+        if(OnAttemptMovementSFX != null)   
+            OnAttemptMovementSFX();
+    }
 
     private void ShowAttempt(){
 

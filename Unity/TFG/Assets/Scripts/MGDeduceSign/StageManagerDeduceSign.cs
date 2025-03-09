@@ -354,11 +354,14 @@ public class StageManagerDeduceSign : MonoBehaviour
     
     IEnumerator ShowError(){
         errorSheet.SetActive(true);
+
+        // Las esperas en total son 3.5 seg: 1 FadeIn + 2 Stay + 1 FadeOut - 0,5 de solape de animaciones ()
+        yield return new WaitForSeconds(0.5f);
         if(OnFailedRoundSFX != null){
             OnFailedRoundSFX();
         }
 
-        yield return new WaitForSeconds(3.5f); // 1 FadeIn + 2 Stay + 1 FadeOut - 0,5 de solape de animaciones
+        yield return new WaitForSeconds(3f);
 
         if(OnNewRound != null){
             OnNewRound(sameRound: true);

@@ -16,9 +16,11 @@ public class SFXManagerDS : MonoBehaviour
     [SerializeField] private AudioClip correctAnswer;
     [SerializeField] private AudioClip wrongAnswer;
     [SerializeField] private AudioClip gotIt;
-    [SerializeField] private AudioClip signChosen;
-    [SerializeField] private AudioClip failedRound;
     [SerializeField] private AudioClip roundMovement;
+    [SerializeField] private AudioClip attemptPresentation;
+    [SerializeField] private AudioClip attemptMovement;
+    [SerializeField] private AudioClip failedRound;
+    
 
 
 
@@ -26,6 +28,9 @@ public class SFXManagerDS : MonoBehaviour
     private void OnEnable()
     {
         RoundBehaviour.OnRoundMovementSFX       += HandleOnRoundMovementSFX;
+        RoundBehaviour.OnShowAttempt            += HandleOnShowAttempt;
+        AttemptBehaviour.OnAttemptMovementSFX   += HandleOnAttemptMovementSFX;
+
         StageManagerDeduceSign.OnFailedRoundSFX += HandleOnFailedRoundSFX;
         StageManagerDeduceSign.OnCorrectAnswer  += HandleOnCorrectAnswer;
         StageManagerDeduceSign.OnWrongAnswer    += HandleOnWrongAnswer;
@@ -35,6 +40,8 @@ public class SFXManagerDS : MonoBehaviour
     private void OnDisable()
     {
         RoundBehaviour.OnRoundMovementSFX       -= HandleOnRoundMovementSFX;
+        RoundBehaviour.OnShowAttempt            -= HandleOnShowAttempt;
+        AttemptBehaviour.OnAttemptMovementSFX   -= HandleOnAttemptMovementSFX;
         StageManagerDeduceSign.OnFailedRoundSFX -= HandleOnFailedRoundSFX;
         StageManagerDeduceSign.OnCorrectAnswer  -= HandleOnCorrectAnswer;
         StageManagerDeduceSign.OnWrongAnswer    -= HandleOnWrongAnswer; 
@@ -49,18 +56,27 @@ public class SFXManagerDS : MonoBehaviour
 
 
 
-
-
-
-    private void HandleOnFailedRoundSFX(){
-        // Sonido de ronda fallida
-        PlaySFX(failedRound, volume: 1f);        
-    }
-
     private void HandleOnRoundMovementSFX(){
         // Sonido de movimiento de la ronda
         PlaySFX(roundMovement, volume: 1f);    
     }
+
+
+
+    private void HandleOnShowAttempt(){
+        // Sonido de presentacion de los intentos
+        PlaySFX(attemptPresentation, volume: 0.7f);    
+    }
+
+    private void HandleOnAttemptMovementSFX(){
+        // Sonido de movimiento de los intentos
+        PlaySFX(attemptMovement, volume: 0.2f);    
+    }
+    private void HandleOnFailedRoundSFX(){
+        // Sonido de ronda fallida
+        PlaySFX(failedRound, volume: 0.2f);        
+    }
+
 
     private void HandleOnCorrectAnswer(){
         // Sonido de victoria
