@@ -4,7 +4,7 @@ using System.Collections;
 
 public class TriggerGate : MonoBehaviour
 {
-    // Declaracion de eventos:
+    // DECLARACIÓN DE EVENTOS
     public delegate void _OnCorrectSol();
     public static event _OnCorrectSol OnCorrectSol;
 
@@ -13,6 +13,7 @@ public class TriggerGate : MonoBehaviour
   
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void OnTriggerEnter(Collider other){
         if (other.CompareTag("Player")){
             if(gameObject.CompareTag("CorrectAnswer")){

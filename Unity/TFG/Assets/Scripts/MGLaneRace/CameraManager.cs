@@ -4,6 +4,7 @@ using System.Collections;
 
 public class CameraManager : MonoBehaviour  
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     [SerializeField] private GameObject player;
     [SerializeField] private float speed = 0.5f; 
     private Vector3 target;
@@ -18,6 +19,7 @@ public class CameraManager : MonoBehaviour
 
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void OnEnable()
     {
         CanvasManagerLaneRace.OnStart += HandleOnStart;
@@ -52,6 +54,7 @@ public class CameraManager : MonoBehaviour
 
 
 
+    // MÉTODOS EN RESPUESTA A EVENTOS
     private void HandleOnStart(){
         firstMovement = true;
         StartCoroutine(MoveCamera());
@@ -63,6 +66,7 @@ public class CameraManager : MonoBehaviour
 
 
 
+    // CORRUTINAS
     IEnumerator MoveCamera(){
 
         float animationTime = 3;

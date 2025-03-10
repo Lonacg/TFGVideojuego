@@ -28,8 +28,8 @@ TFG - Laura Cano Gómez
 - HECHO: Añadir música
 - HECHO: Despues del texto de intro, deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
 - HECHO: ¿No seria mejor que la ayuda se muestre tras el segundo fallo en vez de tras el primero? Porque hay 6 posibilidades, dar la ayuda en la primera es como regalarlo un poco.
+- HECHO: Apagar el sonido del motor en marcha cuando apagamos la musica en la vistoria
 - Cuando aparece un 1 en la operacion se descolocan las columnas de la segunda forma
-- Apagar el sonido del motor en marcha cuando apagamos la musica en la vistoria
 
 ### MG LaneRace
 - HECHO: (sol= no se cuenta como acierto ni fallo y el juego sigue correctamente) arreglar problema de que pase entre dos puertas
@@ -46,6 +46,7 @@ TFG - Laura Cano Gómez
 - HECHO: Hacer una transicion suave cuando el suelo cambia de velocidad
 - HECHO: Añadir musica
 - HECHO: Deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
+- Decidir que si queremos el audio de saludo o no
 
 
 
@@ -55,11 +56,10 @@ TFG - Laura Cano Gómez
 - HECHO: Añadir en Stage manager que el totalRounds tenga que ser un numero mayor que 3
 - HECHO: cuando fallas la ronda, se ven por un momento los intentos de la proxima ronda. Deberia mantenerse o reducirse en uno y mantenerse.
 - HECHO: Añadir particulas cuando baja un intento
-- HECHO: Añadir particulas en el boton al ponerse verde
+- HECHO: Añadir particulas en el boton al ponerse verde o rojo
 - HECHO: Añadir musica
 - HECHO: Deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
 - Hacer prefab las particulas de los intentos
-
 
 
 ### MG Klotski

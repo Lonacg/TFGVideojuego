@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class SFXManagerLaneRace : MonoBehaviour
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     [Header("Audio Sources:")]
     private AudioSource audioSourceMusic;
     private AudioSource audioSourceSFX;
@@ -23,6 +24,7 @@ public class SFXManagerLaneRace : MonoBehaviour
 
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     private void OnEnable()
     {
         GrannyMovement.OnHi            += HandleOnHi;
@@ -56,9 +58,10 @@ public class SFXManagerLaneRace : MonoBehaviour
 
 
 
+    // MÉTODOS EN RESPUESTA A EVENTOS
     private void HandleOnHi(){
         // Sonido de saludo
-        PlaySFX(hi, volume: 0.9f);    
+        // PlaySFX(hi, volume: 0.9f);    // Lo quitamos de momento
     }
 
     private void HandleOnReady(){
@@ -99,6 +102,8 @@ public class SFXManagerLaneRace : MonoBehaviour
     }
 
 
+
+    // MÉTODOS DE ESTA CLASE
     public void PlaySFX(AudioClip audioClip, float volume = 1){
         // Impedimos que dos clips iguales puedan sonar en el mismo momento y se acople el sonido (se multiplicaria el volumen de ese sonido)
         if (previousAudioClip == audioClip){ 
@@ -115,6 +120,9 @@ public class SFXManagerLaneRace : MonoBehaviour
         audioSourceSFX.PlayOneShot(audioClip, volume);
     }
 
+
+
+    // CORRUTINAS
     IEnumerator StopMusic(float endVolume, float animationTime = 1f){
         float elapsedTime = 0;
         float startVolume = audioSourceMusic.volume;

@@ -5,6 +5,7 @@ using System.Collections;
 
 public class StageManagerLaneRace : MonoBehaviour
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     [Header("Variables")]
     [SerializeField] private int numberCorrectAnswers = 0;
     [SerializeField] private int numberIncorrectAnswers = 0;
@@ -33,7 +34,8 @@ public class StageManagerLaneRace : MonoBehaviour
     private bool spacePressed = false;
 
 
-    // Declaracion de eventos:
+
+    // DECLARACIÓN DE EVENTOS
     public delegate void _OnFadeToPlay();
     public static event _OnFadeToPlay OnFadeToPlay;
 
@@ -51,6 +53,7 @@ public class StageManagerLaneRace : MonoBehaviour
 
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void OnEnable()
     {
         GrannyMovement.OnGo += HandleOnGo;
@@ -94,6 +97,7 @@ public class StageManagerLaneRace : MonoBehaviour
     
 
 
+    // MÉTODOS EN RESPUESTA A EVENTOS
     private void HandleOnGo(){
         StartCoroutine(WaitXSecondAndChangeOperation(seconds: 1.1f));
     }
@@ -177,6 +181,7 @@ public class StageManagerLaneRace : MonoBehaviour
     
 
 
+    // MÉTODOS DE ESTA CLASE
     public void ChangeOperation(){
         GameObject currentGate = gates[currentGround];
         SetOperationLaneRace scriptSetOperation = currentGate.GetComponent<SetOperationLaneRace>();
@@ -200,6 +205,7 @@ public class StageManagerLaneRace : MonoBehaviour
 
 
 
+    // CORRUTINAS
     IEnumerator WaitXSecondAndChangeOperation(float seconds){
         yield return new WaitForSeconds(seconds);
         ChangeOperation();

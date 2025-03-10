@@ -6,6 +6,7 @@ using TMPro;
 
 public class SetOperationLaneRace : MonoBehaviour
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     public int firstNumber;     // El primer numero, el segundo y el simbolo tienen que ser publicas porque StageManager accede a ellas
     public int secondNumber;
     public string symbol = "";
@@ -18,7 +19,8 @@ public class SetOperationLaneRace : MonoBehaviour
 
 
 
-    void OnEnable()  // Cada vez que se activa el objeto generamos una nueva operacion
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
+    void Awake()
     {
         // Contamos cuantos carriles tenemos para generalizar y poder ampliarlos en el futuro
         totalGates = transform.childCount;
@@ -30,15 +32,19 @@ public class SetOperationLaneRace : MonoBehaviour
         gates = new List<GameObject>();
         for (int i = 0 ; i < totalGates; i++ ){
             gates.Add(transform.GetChild(i).gameObject); 
-        }
+        }        
+    }
 
-        // Generamos la nueva operacion y actualizamos los numeros de las puertas
+    void OnEnable()  
+    {
+        // Generamos la nueva operacion y actualizamos los numeros de las puertas cada vez que se ativa el objeto que lleva el script
         GenerateOperation();
         WriteNumbers();
     }
 
 
 
+    // MÉTODOS DE ESTA CLASE
     public void GenerateOperation(){
 
         operatorChosen = Random.Range(0,4);

@@ -3,12 +3,14 @@ using UnityEngine;
 
 public class GroundMovement : MonoBehaviour
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     private float groundSpeed;  
     private float maxGroundSpeed = 5 ;  
     private bool wantMove = false;
 
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void OnEnable(){
         GrannyMovement.OnGo                   += HandleOnGo;
         StageManagerLaneRace.OnMiddleVelocity += HandleOnMiddleVelocity;
@@ -25,7 +27,6 @@ public class GroundMovement : MonoBehaviour
         TriggerFinalGate.OnFinalLine          -= HandleOnFinalLine;
     }
 
-
     void Start()
     {
         wantMove = false;   
@@ -41,6 +42,7 @@ public class GroundMovement : MonoBehaviour
 
 
 
+    // MÉTODOS EN RESPUESTA A EVENTOS
     public void HandleOnGo(){
         StartCoroutine(WaitXSecondAndGo(seconds: 0.45f));
     }
@@ -63,6 +65,7 @@ public class GroundMovement : MonoBehaviour
 
 
 
+    // CORRUTINAS
     IEnumerator WaitXSecondAndGo(float seconds){
         yield return new WaitForSeconds(seconds);
         wantMove = true;

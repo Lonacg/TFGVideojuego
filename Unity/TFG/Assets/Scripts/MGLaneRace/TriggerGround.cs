@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TriggerGround : MonoBehaviour
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     private int lengthGroundPiece = 30;
     private int numberOfPieces;
     private GameObject parent;
@@ -9,6 +10,7 @@ public class TriggerGround : MonoBehaviour
 
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void Start()
     {
         lengthGroundPiece = 30; 
@@ -19,8 +21,6 @@ public class TriggerGround : MonoBehaviour
 
         childrenGates = transform.GetChild(0).gameObject;
     }
-
-
 
     void OnTriggerEnter(Collider other)
     {

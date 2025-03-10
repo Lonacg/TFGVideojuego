@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class CanvasManagerLaneRace : MonoBehaviour
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     [Header("Game Objects:")]
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject[] gates;
@@ -33,12 +34,13 @@ public class CanvasManagerLaneRace : MonoBehaviour
 
 
 
-    // Declaracion de eventos:
+    // DECLARACIÓN DE EVENTOS
     public delegate void _OnStart();
     public static event _OnStart OnStart;
 
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void OnEnable()
     {
         StageManagerLaneRace.OnFadeToPlay += HandleOnFadeToPlay;
@@ -70,6 +72,7 @@ public class CanvasManagerLaneRace : MonoBehaviour
 
 
 
+    // MÉTODOS EN RESPUESTA A EVENTOS
     private void HandleOnFadeToPlay(){
         StartCoroutine(FadeOutFadeIn());
     }
@@ -104,6 +107,7 @@ public class CanvasManagerLaneRace : MonoBehaviour
 
 
 
+    // CORRUTINAS
     IEnumerator FadeOutFadeIn(){
         // Fade Out
         fadeCircle.SetActive(true);
@@ -147,12 +151,10 @@ public class CanvasManagerLaneRace : MonoBehaviour
         StartCoroutine(FadeImage(imageToShow, fromAlpha: 1, toAlpha: 0, hasText: hasText, animationTime: 0.5f));
     }
 
-    
     IEnumerator WaitAndFadeImage(Image imageWanted, float seconds){ 
         yield return new WaitForSeconds(seconds);
         StartCoroutine(FadeImage(imageWanted, fromAlpha: 1, toAlpha: 0, animationTime: 0.5f));
     }
-
 
     IEnumerator FadeImage(Image imageToShow, float fromAlpha, float toAlpha, bool hasText = false, float animationTime = 0.5f){   
         // Corrutina parcialmente reutilizada de CanvasManagerParking.cs 

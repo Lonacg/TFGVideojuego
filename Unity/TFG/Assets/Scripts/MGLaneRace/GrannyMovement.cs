@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GrannyMovement : MonoBehaviour
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     [Header("Movement:")]
     [SerializeField] private Transform lanesParent;
     [SerializeField] private Transform[] lanes;
@@ -17,7 +18,7 @@ public class GrannyMovement : MonoBehaviour
 
 
     
-    // Declaracion de eventos:
+    // DECLARACIÓN DE EVENTOS
     public delegate void _OnHi();
     public static event _OnHi OnHi;
     public delegate void _OnReady();
@@ -43,6 +44,7 @@ public class GrannyMovement : MonoBehaviour
 
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void OnEnable()
     {
         CanvasManagerLaneRace.OnStart         += HandleOnStart;
@@ -104,6 +106,7 @@ public class GrannyMovement : MonoBehaviour
 
 
 
+    // MÉTODOS EN RESPUESTA A EVENTOS
     public void HandleOnStart(){
         // Animacion del personaje al empezar
         StartCoroutine(ReadySteadyGo());
@@ -139,6 +142,7 @@ public class GrannyMovement : MonoBehaviour
 
 
 
+    // MÉTODOS DE ESTA CLASE
     public void FootstepDone(){
         if(OnFootstepSound != null)   
             OnFootstepSound();
@@ -153,6 +157,7 @@ public class GrannyMovement : MonoBehaviour
 
 
 
+    // CORRUTINAS
     IEnumerator ReadySteadyGo(){
         //yield return new WaitForSeconds(1.5f);   // Tiempo que tarda en aparecer el fade in
 
