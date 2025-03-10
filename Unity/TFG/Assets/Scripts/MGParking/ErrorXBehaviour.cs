@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class ErrorXBehaviour : MonoBehaviour
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     private TextMeshPro textX;
     private float biggerSize = 60;
     private float endSize = 30;
 
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void OnEnable()
     {
         textX = GetComponentInChildren<TextMeshPro>();
@@ -22,6 +24,9 @@ public class ErrorXBehaviour : MonoBehaviour
         endSize = 30;
     }
 
+
+
+    // CORRUTINAS
     IEnumerator MakeAppearance(){
         StartCoroutine(TransformSizeFont(0, biggerSize));
         yield return new WaitForSeconds(1f);

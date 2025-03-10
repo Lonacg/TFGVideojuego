@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CarMovement : MonoBehaviour
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     [SerializeField] private float movSpeed = 150;
     [SerializeField] private float rotationSpeed = 150;
     [SerializeField] private Transform[] frontWheels;
@@ -12,6 +13,7 @@ public class CarMovement : MonoBehaviour
     
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void Start()
     {
         // Asignamos el Rigidbody y las variables iniciales
@@ -62,7 +64,7 @@ public class CarMovement : MonoBehaviour
     }
 
 
-
+    // MÉTODOS DE ESTA CLASE
     private void SpeedUpEngine(){   
         // Para el sonido del motor en movimiento, clampeamos el valor para luego cambiar el pitch y que se oiga mas fuerte cuanto mas acelere
         engineSpeed = Mathf.Clamp01(engineSpeed + Time.deltaTime * 4);

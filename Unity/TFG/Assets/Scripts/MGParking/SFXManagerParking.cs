@@ -3,12 +3,13 @@ using System.Collections;
 
 public class SFXManagerParking : MonoBehaviour
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     [Header("Audio Sources:")]
     private AudioSource audioSourceMusic;
     private AudioSource audioSourceSFX;  // Un audio source solo puede reproducir un sonido
-    [SerializeField] private AudioSource engineStaticAudioSource;
     private AudioClip previousAudioClip;
     private float previousACTimeStamp;
+    [SerializeField] private AudioSource engineStaticAudioSource;
 
     [Header("Game Objects:")]
     [SerializeField] private GameObject music;
@@ -23,6 +24,7 @@ public class SFXManagerParking : MonoBehaviour
 
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     private void OnEnable()
     {
         CanvasManagerParking.OnPlay   += HandleOnPlay;
@@ -43,7 +45,6 @@ public class SFXManagerParking : MonoBehaviour
         CanvasManagerParking.OnGotIt  -= HandleOnGotIt;
     }
 
-
     void Start()
     {
         audioSourceSFX = GetComponent<AudioSource>();
@@ -51,6 +52,8 @@ public class SFXManagerParking : MonoBehaviour
     }
 
 
+
+    // MÉTODOS EN RESPUESTA A EVENTOS
     private void HandleOnPlay(){
         // Sonido de arranque del coche y motor estatico
         StartCoroutine(WaitAndStartMotor(1f)); // 1f porque el sonido de arranque dura un segundo
@@ -80,12 +83,13 @@ public class SFXManagerParking : MonoBehaviour
 
     private void HandleOnGotIt(){
         // Apagamos la musica de fondo y reproducimos el sonido de victoria
-        StartCoroutine(StopMusic(endVolume: 0f, animationTime: 1f));
+        StartCoroutine(StopMusic(endVolume: 0, animationTime: 1));
         PlaySFX(gotIt, volume: 0.5f);        
     }
 
 
 
+    // MÉTODOS DE ESTA CLASE
     public void PlaySFX(AudioClip audioClip, float volume = 1){
         // Impedimos que dos clips iguales puedan sonar en el mismo momento y se acople el sonido (se multiplicaria el volumen de ese sonido)
         if (previousAudioClip == audioClip){ 
@@ -104,6 +108,7 @@ public class SFXManagerParking : MonoBehaviour
 
 
 
+    // CORRUTINAS
     IEnumerator WaitAndStartMotor(float seconds){
         yield return new WaitForSeconds(0.5f);  // Damos medio segundo para que la transicion de FadeInCircle este ya a medias
 
@@ -125,6 +130,10 @@ public class SFXManagerParking : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return 0;
         }
+        audioSourceMusic.volume = 0;
+        
+        // Desctivamos el AudioSource puesto en el hijo del coche, quees el sonido del motor en marcha
+        engineStaticAudioSource.enabled = true;
     }
 
 }

@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class ParkingTrigger : MonoBehaviour
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     private int parkingReferences = 0; // Variable para contar los collider (sensores de aparcamiento) en los que esta dentro player
 
 
 
+    // DECLARACIÓN DE EVENTOS
     public delegate void _OnWellParked(GameObject go);
     public static event _OnWellParked OnWellParked;
 
@@ -14,6 +16,7 @@ public class ParkingTrigger : MonoBehaviour
 
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void OnTriggerEnter(Collider other)
     {
         if (other.tag=="Player"){
@@ -32,6 +35,7 @@ public class ParkingTrigger : MonoBehaviour
 
 
 
+    // MÉTODOS DE ESTA CLASE
     public void CheckParking(){
         if(parkingReferences == 4){
 

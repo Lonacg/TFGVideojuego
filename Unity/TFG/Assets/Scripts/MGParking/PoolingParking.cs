@@ -3,10 +3,12 @@ using UnityEngine;
 
 public class PoolingParking : MonoBehaviour
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     private GameObject[] carsRoad;  
 
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void Start()
     {
         FillCarsRoadArray();
@@ -15,6 +17,7 @@ public class PoolingParking : MonoBehaviour
 
     
 
+    // MÉTODOS DE ESTA CLASE
     void FillCarsRoadArray(){
         // Rellenamos el array con los hijos que tiene este objeto en la escena
         int maxCars = transform.childCount;
@@ -41,6 +44,7 @@ public class PoolingParking : MonoBehaviour
 
 
 
+    // CORRUTINAS
     IEnumerator RoundCar(bool firstCarAfterRound = false){
         // Desordenamos el array de prefabs 
         Shuffle();

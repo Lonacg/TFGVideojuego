@@ -5,6 +5,7 @@ using TMPro;
 
 public class CanvasManagerParking : MonoBehaviour
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     [Header("Game Objects:")]
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject operationImage;
@@ -21,12 +22,13 @@ public class CanvasManagerParking : MonoBehaviour
     [SerializeField] private TextMeshProUGUI operationFirstTryText;
     [SerializeField] private TextMeshProUGUI operationSecondTryText;
 
-    //[Header("Variables:")]
+    [Header("Variables:")]
     private int errorCount= 0;
     private bool spacePressed;
 
 
 
+    // DECLARACIÓN DE EVENTOS
     public delegate void _OnPlay();
     public static event _OnPlay OnPlay;
 
@@ -38,6 +40,7 @@ public class CanvasManagerParking : MonoBehaviour
 
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void Awake()
     {   
         // Desactivamos el Script de Player para que no se pueda mover mientras esta el tutorial
@@ -82,6 +85,7 @@ public class CanvasManagerParking : MonoBehaviour
 
 
 
+    // MÉTODOS EN RESPUESTA A EVENTOS
     void HandleOnWrongParked(GameObject go){
         errorCount += 1;
         StartCoroutine(ShowErrorImage());
@@ -100,7 +104,7 @@ public class CanvasManagerParking : MonoBehaviour
     }
 
 
-
+    // CORRUTINAS
     IEnumerator StartGame(){
         // Fade Out
         fadeCircleView.SetActive(true);

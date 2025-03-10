@@ -3,12 +3,14 @@ using UnityEngine;
 
 public class CarTravelling : MonoBehaviour
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     private Vector3 startPosition;
     private Vector3 endPosition;
     private int timeTravelling;
     
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void Awake()
     {
         startPosition = Vector3.zero;
@@ -23,6 +25,7 @@ public class CarTravelling : MonoBehaviour
 
 
 
+    // MÉTODOS DE ESTA CLASE
     void RestartPosition(){
         transform.localPosition = startPosition;
         gameObject.SetActive(false);
@@ -30,6 +33,7 @@ public class CarTravelling : MonoBehaviour
 
 
 
+    // CORRUTINAS
     IEnumerator Travelling(){
         // Cuerpo general de una corrutina, con la posicion local de los vehiculos en vez de la global (mas simple el montaje de la escena en este caso)
         float elapsedTime = 0;

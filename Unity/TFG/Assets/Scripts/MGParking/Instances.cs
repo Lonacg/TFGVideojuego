@@ -5,6 +5,7 @@ using System.Collections;
 
 public class Instances : MonoBehaviour
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject confettiParticles;
     [SerializeField] private GameObject xError;
@@ -12,14 +13,12 @@ public class Instances : MonoBehaviour
     [SerializeField] private GameObject parkingNumbers;
     //private string pNum = "ParkingNumbers";
     private bool inLowerParking;
-
-
-
     public List<GameObject> pLots;       // Necesita ser publica porque SetOperationParking accede a ella
     public List<GameObject> pNumbers;    // Necesita ser publica porque SetOperationParking accede a ella
 
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void Awake()
     {
         InstanciateCars();
@@ -39,6 +38,7 @@ public class Instances : MonoBehaviour
 
 
 
+    // MÉTODOS EN RESPUESTA A EVENTOS
     private void HandleOnWrongParked(GameObject go){
         Instantiate(xError, go.transform.position,  Quaternion.Euler(0, 0, 0));
     }
@@ -50,6 +50,7 @@ public class Instances : MonoBehaviour
 
 
 
+    // MÉTODOS DE ESTA CLASE
     public void InstanciateCars(){
 
         // Opcional: asignar el objeto por codigo en vez de en el inspector (es menos coste como esta hecho, por evitar el .Find() )

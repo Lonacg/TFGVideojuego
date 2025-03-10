@@ -65,6 +65,16 @@ public class StageManagerDeduceSign : MonoBehaviour
 
 
     // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
+    void Awake()
+    {
+        currentRound = 1;
+        buttonsParent.SetActive(false);
+        operationParent.SetActive(false);
+        attemptPlace.gameObject.SetActive(false);
+
+        SetAttemptsNumber();
+    }
+
     void OnEnable()
     {
         ButtonBehaviour.OnSignChosen += HandleOnSignChosen;
@@ -77,16 +87,6 @@ public class StageManagerDeduceSign : MonoBehaviour
         ButtonBehaviour.OnSignChosen -= HandleOnSignChosen;
         RoundBehaviour.OnShowAttempt -= HandleOnShowAttempt;
         AttemptBehaviour.OnPlaying -= HandleOnPlaying;
-    }
-
-    void Awake()
-    {
-        currentRound = 1;
-        buttonsParent.SetActive(false);
-        operationParent.SetActive(false);
-        attemptPlace.gameObject.SetActive(false);
-
-        SetAttemptsNumber();
     }
 
     void Start()

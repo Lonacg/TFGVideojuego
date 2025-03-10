@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 
 public class SetOperationParking : MonoBehaviour
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     [Header("Scripts:")]
     [SerializeField] private Instances scriptInstances;
 
@@ -29,6 +30,7 @@ public class SetOperationParking : MonoBehaviour
 
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void Start()
     {   
         parkingNumbers = scriptInstances.pNumbers;
@@ -41,6 +43,7 @@ public class SetOperationParking : MonoBehaviour
 
 
 
+    // MÉTODOS DE ESTA CLASE
     public void GenerateOperation(){
         // Generamos un numero aleatorio para decidir si sera una suma o una resta
         int i = Random.Range(0,2);
@@ -65,25 +68,17 @@ public class SetOperationParking : MonoBehaviour
             symbol = "-";
         }
 
-        // Establecemos el texto que tendra el primer intento y el texto que tendran los demas
+        // Establecemos el texto que tendra la operacion en formato lineal y en formato vertical
         textFirstTry = firstNumber + " " + symbol + " " + secondNumber;
         textAfterFail = firstNumber + "\n" + symbol + " " + secondNumber;        
-        // textAfterFail = firstNumber + "\n" + secondNumber;   
-
-
-
 
         // Rellenamos con espacios a la izq para que el texto AfterFail quede bien representado (secondPart no es igual a la suma, firstPart si)
         if(secondNumber < 100)
             textAfterFail = firstNumber + "\n" + symbol + "  " + secondNumber;  
 
-        // Actualizamos la operacion en forma lineal
+        // Actualizamos la operacion en forma lineal y vertical
         operationFirstTryText.text = textFirstTry;
-
-        // Actualizamos la operacion en forma vertical
         operationSecondTryText.text = textAfterFail;
-        // TextMeshPro symbolSecondTry = operationSecondTryText.gameObject.transform.GetChild(0).gameObject.transform.GetComponent<TextMeshPro>();
-        // symbolSecondTry.text = symbol;
 
         //Debug.Log("Operacion: " + textFirstTry + " = " + sol);          
     }
