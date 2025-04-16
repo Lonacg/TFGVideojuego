@@ -1,5 +1,5 @@
 # TFGVideojuego
-TFG - Laura Cano Gómez
+** Pendiente modificar este documento como guía para el tribunal **
 
 
 
@@ -46,14 +46,13 @@ TFG - Laura Cano Gómez
 - HECHO: Hacer una transicion suave cuando el suelo cambia de velocidad
 - HECHO: Añadir musica
 - HECHO: Deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
-- Decidir que si queremos el audio de saludo o no
 
 
 
 ### MG DeduceSign
 - HECHO: Impedir que se pueda pasar el raton por algun boton (ni pulsar) hasta que la operacion sea completamente visible
 - HECHO: Añadir rondas al juego
-- HECHO: Añadir en Stage manager que el totalRounds tenga que ser un numero mayor que 3
+- HECHO: Añadir en Stage manager que el totalRounds tenga que ser un numero mayor que 2
 - HECHO: cuando fallas la ronda, se ven por un momento los intentos de la proxima ronda. Deberia mantenerse o reducirse en uno y mantenerse.
 - HECHO: Añadir particulas cuando baja un intento
 - HECHO: Añadir particulas en el boton al ponerse verde o rojo
@@ -62,7 +61,7 @@ TFG - Laura Cano Gómez
 - Hacer prefab las particulas de los intentos
 
 
-### MG Klotski
+### MG Puzzle
 - 
 
 

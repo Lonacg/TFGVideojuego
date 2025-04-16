@@ -55,11 +55,8 @@ public class SetOperationDeduceSign : MonoBehaviour
 
                 // DIVISION
                 if(operatorChosen == 3 ){
-                    int aux = firstNumber;
 
-                    firstNumber = resultNumber;
-                    resultNumber = secondNumber;
-                    secondNumber = aux;
+                    (firstNumber, secondNumber, resultNumber) = (resultNumber, firstNumber, secondNumber);
 
                     answerSign = "Division";
                 }

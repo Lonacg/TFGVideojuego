@@ -4,15 +4,19 @@ using UnityEngine;
 public class GrannyMovement : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES
-    [Header("Movement:")]
+    [Header("Game Objects:")]
     [SerializeField] private Transform lanesParent;
-    [SerializeField] private Transform[] lanes;
     [SerializeField] private GameObject runningParticles;
-    private ParticleSystem.EmissionModule runningEmission;  // El valor no se lee, pero si se modifica asi que no hacer caso a la indicacion
+    private Transform[] lanes;
+
+    [Header("Movement:")]
     private float speed = 8f; 
     private int currentIndex = 1;
     private bool canMove;
     private Transform currentLane;
+    private ParticleSystem.EmissionModule runningEmission;  // El valor no se lee, pero si se modifica asi que no hacer caso a la indicacion
+
+    [Header("Animations:")]
     private Animator animatorGranny;
     private string currentAnimationGranny = "";
 
@@ -223,7 +227,7 @@ public class GrannyMovement : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         if(OnParty != null)   
             OnParty();
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1.1f);
 
         ChangeAnimationGranny("Idle");
         yield return new WaitForSeconds(0.2f);

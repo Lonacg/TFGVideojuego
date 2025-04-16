@@ -29,7 +29,6 @@ public class ParkingTrigger : MonoBehaviour
     {
         if (other.tag=="Player"){
             parkingReferences --;
-            CheckParking();
         }
     }
 
@@ -37,6 +36,7 @@ public class ParkingTrigger : MonoBehaviour
 
     // MÉTODOS DE ESTA CLASE
     public void CheckParking(){
+        
         if(parkingReferences == 4){
 
             if( gameObject.CompareTag("CorrectAnswer") ){       

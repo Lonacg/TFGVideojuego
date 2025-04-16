@@ -88,11 +88,8 @@ public class SetOperationLaneRace : MonoBehaviour
 
                 // DIVISION
                 if(operatorChosen == 3 ){
-                    int aux = firstNumber;
 
-                    firstNumber = sol;
-                    sol = secondNumber;
-                    secondNumber = aux;
+                    (firstNumber, secondNumber, sol) = (sol, firstNumber, secondNumber);
 
                     symbol = " / ";
 
@@ -104,7 +101,7 @@ public class SetOperationLaneRace : MonoBehaviour
     }
     
     public int[] IncorrectAdditionSubtractionOrDivision(){
-        // Cogemos x numeros inmediatamente inferiores y superiores a la solucion, con x el numero de pasillos incorrectos que hay
+        // Cogemos nElements numeros inmediatamente inferiores y superiores a la solucion, con nElements el numero de pasillos incorrectos que hay
         int nElements = totalGates - 1;
         int num = sol - nElements;
         int i = 0;
@@ -144,10 +141,10 @@ public class SetOperationLaneRace : MonoBehaviour
     }
 
     public int[] ChooseSomeWrong(int amount){
-        // De las opciones que hay, elegimos TotalGates numeros consecutivos en la lista, para que en el juego sean por ejemplo si hay 3 puertas, nElements es 2:  -, --, sol ; -, sol, + ; sol, +, ++ 
+        // De las opciones que hay, elegimos TotalGates numeros consecutivos en la lista, para que en el juego sean por ejemplo si hay 3 puertas, nElements es 2:  --, -, sol ; -, sol, + ; sol, +, ++ 
         int start = Random.Range(0, amount);
-        for (int j = 0 ; j < amount ; j ++){
-            wrongSols[j] = allWrongSols[start];
+        for(int i = 0 ; i < amount ; i ++){
+            wrongSols[i] = allWrongSols[start];
             start ++;
         }      
         ShuffleWrongSols();

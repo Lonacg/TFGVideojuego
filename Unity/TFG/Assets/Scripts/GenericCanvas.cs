@@ -2,6 +2,9 @@ using UnityEngine;
 using System.Collections;
 using TMPro;
 using System.Collections.Generic;
+
+
+
 public class GenericCanvas : MonoBehaviour
 {
     [Header("Game Objects:")]

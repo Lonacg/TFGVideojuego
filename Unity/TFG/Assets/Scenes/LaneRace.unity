@@ -700,6 +700,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneLoadManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3979456274876496822, guid: 426429a17a9e8de4ebcc3ba7023a0cde, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7201439392981324002, guid: 426429a17a9e8de4ebcc3ba7023a0cde, type: 3}
       propertyPath: m_LocalPosition.x
       value: 399.84833
@@ -740,6 +744,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7583405702073817483, guid: 426429a17a9e8de4ebcc3ba7023a0cde, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -761,7 +769,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &695104539
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1900,7 +1908,7 @@ GameObject:
   - component: {fileID: 1310010534}
   - component: {fileID: 1310010537}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3014,8 +3022,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 292873663018299950}
-  - component: {fileID: 6536814534332919912}
   - component: {fileID: 6536814534332919913}
+  - component: {fileID: 6536814534332919912}
   m_Layer: 0
   m_Name: SFXManager
   m_TagString: Untagged
@@ -3139,10 +3147,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8015669186314458681}
-  - component: {fileID: 5040406980006361836}
+  - component: {fileID: 4462795591649578436}
   - component: {fileID: 5608038936223063511}
   - component: {fileID: 5959688651853037657}
-  - component: {fileID: 4462795591649578436}
+  - component: {fileID: 5040406980006361836}
   m_Layer: 0
   m_Name: GrannyPlayer
   m_TagString: Player
@@ -8063,7 +8071,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &2836705622607228416
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8590,7 +8598,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lanesParent: {fileID: 2010528752}
-  lanes: []
   runningParticles: {fileID: 1487843510012040034}
 --- !u!4 &4545235434024135872
 Transform:
