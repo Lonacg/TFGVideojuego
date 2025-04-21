@@ -1,31 +1,89 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StageManagerPuzzle : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [Header("Views:")]
+    [SerializeField] private GameObject fadeCircleViewEasy;
+    [SerializeField] private GameObject fadeCircleViewMedium;
+    [SerializeField] private GameObject fadeCircleViewHard;
+
+    [Header("Game Objects:")]
+    [SerializeField] private GameObject backgroundPuzzle;
+    [SerializeField] private GameObject sampleImage;
+    [SerializeField] private GameObject easyPuzzle;
+    [SerializeField] private GameObject mediumPuzzle;
+    [SerializeField] private GameObject hardPuzzle;
+
+    [Header("Sprites:")]
+    [SerializeField] private Sprite easyBackground;
+    [SerializeField] private Sprite mediumBackground;
+    [SerializeField] private Sprite hardBackground;
+    [SerializeField] private Sprite sampleEasy;
+    [SerializeField] private Sprite sampleMedium;
+    [SerializeField] private Sprite sampleHard;
+
+
+
+    public delegate void _OnFadeToPlay(GameObject fadeCircleView);
+    public static event _OnFadeToPlay OnFadeToPlay;
+
+
+    void Awake()
     {
-        
+        // Inicializamos los objetos de la escena como deben estar
+        fadeCircleViewEasy.SetActive(false);
+        fadeCircleViewMedium.SetActive(false);
+        fadeCircleViewHard.SetActive(false);
+        easyPuzzle.SetActive(false);
+        mediumPuzzle.SetActive(false);
+        hardPuzzle.SetActive(false);
+
+
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
 
     public void OnEasyButton(){
-        
+        StartLevelGame(easyPuzzle, easyBackground, sampleEasy, fadeCircleViewEasy);
+        mediumPuzzle.SetActive(false);
+        hardPuzzle.SetActive(false);
+
     }
 
     public void OnMediumButton(){
-
+        StartLevelGame(mediumPuzzle, mediumBackground, sampleMedium, fadeCircleViewMedium);
+        easyPuzzle.SetActive(false);
+        hardPuzzle.SetActive(false);
     }
 
 
     public void OnHardButton(){
-
+        StartLevelGame(hardPuzzle, hardBackground, sampleHard, fadeCircleViewHard);
+        easyPuzzle.SetActive(false);
+        mediumPuzzle.SetActive(false);        
     }
+
+
+
+    void StartLevelGame(GameObject puzzle, Sprite background, Sprite sample, GameObject fadeCircleView){
+
+        // Cambiar el sprite del fondo de estrellas y la imagen de muestra
+        backgroundPuzzle.GetComponent<SpriteRenderer>().sprite = background;
+        sampleImage.GetComponent<Image>().sprite = sample;
+    
+
+        // Activar el game object del puzzle
+        puzzle.SetActive(true);
+
+        // Lanzamos el evento para que el canvas cambie de pantalla 
+        if(OnFadeToPlay != null)                          
+            OnFadeToPlay(fadeCircleView);
+    }
+
 
 
 }

@@ -3,13 +3,16 @@ using UnityEngine;
 public class EasyLevel : PieceCheck
 {
 
-
+    void OnEnable()  // Cambiar a Awake despues de las pruebas
+    {
+        StartLevel();
+    }
 
     public override void StartLevel()
     {
-        base.StartLevel();   // Llama al StartLevel de PieceCheck
+        base.StartLevel();   //     Ejecuta el StartLevel de PieceCheck
 
-        easyWidth = 1.5f;
+        levelWidth = 1.5f;
    
     }
 

@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class HardLevel : PieceCheck
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void OnEnable()  // Cambiar a Awake despues de las pruebas
     {
-        
+        StartLevel();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void StartLevel()
     {
-        
+        base.StartLevel();   //     Ejecuta el StartLevel de PieceCheck
+
+        levelWidth = 0.9f;
+   
     }
 }

@@ -68,7 +68,7 @@ public class CanvasManagerDS : MonoBehaviour
 
         yield return new WaitForSeconds(1f); 
 
-        // Empezamos el jeugo activando las rondas
+        // Empezamos el juego activando las rondas
         roundObject.SetActive(true);
     }
 

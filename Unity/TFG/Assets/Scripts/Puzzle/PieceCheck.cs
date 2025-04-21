@@ -4,13 +4,11 @@ using UnityEngine;
 public class PieceCheck : MonoBehaviour
 {
     private float rayOffset;
-    private Vector2 rigthDirection;
-    private Vector2 leftDirection;
+
 
     [Header("Tiles Width:")]
-    protected float easyWidth = 1.5f; 
-    private float mediumWidth = 1.5f; 
-    private float hardWidth = 1.5f; 
+    protected float levelWidth; 
+
 
     protected bool easyLevel;
     protected bool mediumLevel;
@@ -23,20 +21,11 @@ public class PieceCheck : MonoBehaviour
 
     private bool canClic= true;
 
-    void Awake()
-    {
-        canClic = true;
 
-        easyLevel = true;
-        mediumLevel =false;
-        hardLevel = false;
-
-
-    }
 
     public virtual void StartLevel()
     {
-
+        canClic = true;
     }
 
     void Update()
@@ -48,10 +37,7 @@ public class PieceCheck : MonoBehaviour
 
 
     private void OnMouseDown()
-    {
-        // Impedimos que se pueda pulsar este boton mientras realizamos el movimiento
-        canClic = false;
-        
+    {        
         UpdateRayOrigin();
 
         // Creamos un rayo para cada direccion y detectamos si está colisionando con algo o esta libre
@@ -61,56 +47,51 @@ public class PieceCheck : MonoBehaviour
         RaycastHit2D leftHit = Physics2D.Raycast(rayOriginLeft, Vector2.left, 0.2f);
         
         
-        
-        if(upHit && downHit && rightHit && leftHit){
-            // Choca con todos asi que no hay ningun hueco libre contiguo
+        if(canClic){
+            if(upHit && downHit && rightHit && leftHit){
+                // Choca con todos asi que no hay ningun hueco libre contiguo
 
-            // HACER SHAKE
-            Debug.Log("NO ME PUEDO MOVER");
-        }
-        else{
-            // Hay un hueco libre luego comprobamos cual es y movemos la pieza a ese lugar
-            if(!upHit){
-                // Arriba esta libre
-                StartCoroutine(MovePiece(Vector3.up));
+                // HACER SHAKE
+                Debug.Log("NO ME PUEDO MOVER");
             }
             else{
-                if(!downHit){
-                    // Abajo esta libre
-                    StartCoroutine(MovePiece(Vector3.down));
+                // Hay un hueco libre luego comprobamos cual es y movemos la pieza a ese lugar
+                if(!upHit){
+                    // Arriba esta libre
+                    StartCoroutine(MovePiece(Vector3.up));
                 }
                 else{
-                    if(!rightHit){
-                        // A la derecha esta libre
-                        StartCoroutine(MovePiece(Vector3.right));
-
+                    if(!downHit){
+                        // Abajo esta libre
+                        StartCoroutine(MovePiece(Vector3.down));
                     }
                     else{
-                        // A la izquieda esta libre
-                        StartCoroutine(MovePiece(Vector3.left));
-
+                        if(!rightHit){
+                            // A la derecha esta libre
+                            StartCoroutine(MovePiece(Vector3.right));
+                        }
+                        else{
+                            // A la izquieda esta libre
+                            StartCoroutine(MovePiece(Vector3.left));
+                        }
                     }
                 }
             }
-            
-        
         }
+
         
-
-
-    
 
     }
 
 
     private void UpdateRayOrigin()
     {
-        if(easyLevel){
-            rayOriginUp = (Vector2)transform.position + Vector2.up * easyWidth;
-            rayOriginDown = (Vector2)transform.position + Vector2.down * easyWidth;
-            rayOriginRight = (Vector2)transform.position + Vector2.right * easyWidth;
-            rayOriginLeft = (Vector2)transform.position + Vector2.left * easyWidth;
-        }
+
+        rayOriginUp = (Vector2)transform.position + Vector2.up * levelWidth;
+        rayOriginDown = (Vector2)transform.position + Vector2.down * levelWidth;
+        rayOriginRight = (Vector2)transform.position + Vector2.right * levelWidth;
+        rayOriginLeft = (Vector2)transform.position + Vector2.left * levelWidth;
+
 
     }
 
@@ -127,12 +108,13 @@ public class PieceCheck : MonoBehaviour
 
     IEnumerator MovePiece(Vector3 direction){
         // Impedimos que se pueda pulsar este boton mientras realizamos el movimiento
+        canClic = false;
 
         float elapsedTime = 0;
         float animationTime = 0.5f;
 
         Vector3 startPosition = transform.position;
-        Vector3 endPosition = transform.position + 2 * easyWidth * direction;
+        Vector3 endPosition = transform.position + 2 * levelWidth * direction;
         while(elapsedTime < animationTime){
             
             transform.position = Vector3.Lerp(startPosition, endPosition, elapsedTime / animationTime);

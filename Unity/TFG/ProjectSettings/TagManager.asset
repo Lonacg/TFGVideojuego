@@ -12,7 +12,6 @@ TagManager:
   - Division
   - ImmobileCar
   - Ground
-  - Obstacle
   layers:
   - Default
   - TransparentFX
