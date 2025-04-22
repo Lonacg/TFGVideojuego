@@ -3,30 +3,40 @@ using UnityEngine;
 
 public class PieceCheck : MonoBehaviour
 {
-    private float rayOffset;
 
 
     [Header("Tiles Width:")]
     protected float levelWidth; 
 
-
-    protected bool easyLevel;
-    protected bool mediumLevel;
-    protected bool hardLevel;
-
+    [Header("Vectors:")]
     private Vector2 rayOriginUp;
     private Vector2 rayOriginDown;
     private Vector2 rayOriginRight;
     private Vector2 rayOriginLeft;
-
+    [Header("Variables:")]
     private bool canClic= true;
+    private bool movingPiece= false;
+    [Header("Game Objects:")]
+    [SerializeField] private GameObject stageManager;
+    private StageManagerPuzzle scriptStageManager;
 
+
+    public delegate void _OnMovingPiece();
+    public static event _OnMovingPiece OnMovingPiece;
 
 
     public virtual void StartLevel()
     {
-        canClic = true;
+        // Se sobreescribe en cada clase que hereda de esta
     }
+
+
+    void Awake()
+    {
+        scriptStageManager = stageManager.GetComponent<StageManagerPuzzle>();
+    }
+
+
 
     void Update()
     {      
@@ -37,17 +47,21 @@ public class PieceCheck : MonoBehaviour
 
 
     private void OnMouseDown()
-    {        
-        UpdateRayOrigin();
+    {
+        movingPiece = scriptStageManager.movingPiece;
 
-        // Creamos un rayo para cada direccion y detectamos si está colisionando con algo o esta libre
-        RaycastHit2D upHit = Physics2D.Raycast(rayOriginUp, Vector2.up, 0.2f);
-        RaycastHit2D downHit = Physics2D.Raycast(rayOriginDown, Vector2.down, 0.2f);
-        RaycastHit2D rightHit = Physics2D.Raycast(rayOriginRight, Vector2.right, 0.2f);
-        RaycastHit2D leftHit = Physics2D.Raycast(rayOriginLeft, Vector2.left, 0.2f);
+        if(!movingPiece){ 
+
+            UpdateRayOrigin();
+
+            // Creamos un rayo para cada direccion y detectamos si está colisionando con algo o esta libre
+            RaycastHit2D upHit = Physics2D.Raycast(rayOriginUp, Vector2.up, 0.2f);
+            RaycastHit2D downHit = Physics2D.Raycast(rayOriginDown, Vector2.down, 0.2f);
+            RaycastHit2D rightHit = Physics2D.Raycast(rayOriginRight, Vector2.right, 0.2f);
+            RaycastHit2D leftHit = Physics2D.Raycast(rayOriginLeft, Vector2.left, 0.2f);
         
         
-        if(canClic){
+        
             if(upHit && downHit && rightHit && leftHit){
                 // Choca con todos asi que no hay ningun hueco libre contiguo
 
@@ -55,7 +69,11 @@ public class PieceCheck : MonoBehaviour
                 Debug.Log("NO ME PUEDO MOVER");
             }
             else{
-                // Hay un hueco libre luego comprobamos cual es y movemos la pieza a ese lugar
+                // Hay un hueco libre luego comprobamos cual es, movemos la pieza a ese lugar y lanzamos el evento a StageManager para que cambie su bool movingPiece a true
+                if(OnMovingPiece != null)                          
+                    OnMovingPiece();
+
+
                 if(!upHit){
                     // Arriba esta libre
                     StartCoroutine(MovePiece(Vector3.up));
@@ -112,6 +130,7 @@ public class PieceCheck : MonoBehaviour
 
         float elapsedTime = 0;
         float animationTime = 0.5f;
+        bool notified = false;
 
         Vector3 startPosition = transform.position;
         Vector3 endPosition = transform.position + 2 * levelWidth * direction;
@@ -119,14 +138,20 @@ public class PieceCheck : MonoBehaviour
             
             transform.position = Vector3.Lerp(startPosition, endPosition, elapsedTime / animationTime);
 
+            // Cuando ya ha hecho mas de la mitad del recorrido, lanzamos el evento para que puedan moverse otras piezas, ya que lo que falta de reorrido no afecta (el rayo de deteccion sale en la mediatriz de cada arista)
+            if( elapsedTime * 2 > animationTime && OnMovingPiece != null && !notified){
+                OnMovingPiece();
+                notified = true;
+            }                          
+                
             elapsedTime += Time.deltaTime;
             yield return 0;
         }
         transform.position = endPosition;
 
 
-        // Volvemos a permitir el pulsado
-        canClic = true;
+
+
     }
 
 

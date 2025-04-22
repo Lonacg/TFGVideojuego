@@ -23,10 +23,36 @@ public class StageManagerPuzzle : MonoBehaviour
     [SerializeField] private Sprite sampleMedium;
     [SerializeField] private Sprite sampleHard;
 
+    [Header("Variables:")]
+    public bool movingPiece;        // Debe ser publica porque PieceCheck accede a ella
+    
+
 
 
     public delegate void _OnFadeToPlay(GameObject fadeCircleView);
     public static event _OnFadeToPlay OnFadeToPlay;
+
+
+
+    void OnEnable()
+    {
+        PieceCheck.OnMovingPiece += HandleOnMovingPiece;
+    }
+
+
+    void OnDisable()
+    {
+        PieceCheck.OnMovingPiece -= HandleOnMovingPiece;
+    }
+
+
+    private void HandleOnMovingPiece(){
+        movingPiece = !movingPiece;
+    }
+
+
+
+
 
 
     void Awake()
@@ -39,6 +65,9 @@ public class StageManagerPuzzle : MonoBehaviour
         mediumPuzzle.SetActive(false);
         hardPuzzle.SetActive(false);
 
+        // Inicializamos las variables
+        movingPiece = false;
+
 
     }
 
@@ -46,6 +75,7 @@ public class StageManagerPuzzle : MonoBehaviour
     {
         
     }
+
 
     public void OnEasyButton(){
         StartLevelGame(easyPuzzle, easyBackground, sampleEasy, fadeCircleViewEasy);
