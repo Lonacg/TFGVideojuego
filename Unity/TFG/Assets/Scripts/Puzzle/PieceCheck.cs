@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.ProjectWindowCallback;
 using UnityEngine;
 
 public class PieceCheck : MonoBehaviour
@@ -14,15 +15,18 @@ public class PieceCheck : MonoBehaviour
     private Vector2 rayOriginRight;
     private Vector2 rayOriginLeft;
     [Header("Variables:")]
-    private bool canClic= true;
-    private bool movingPiece= false;
+    private bool movingThisPiece = false;       // Bool para que una misma pieza no se pulse dos veces seguidas y reproduzca varias veces su movimiento
+    private bool movingSomePiece= false;        // Bool para que otras piezas no puedan moverse hasta que esta este terminando
     [Header("Game Objects:")]
     [SerializeField] private GameObject stageManager;
     private StageManagerPuzzle scriptStageManager;
 
 
-    public delegate void _OnMovingPiece();
-    public static event _OnMovingPiece OnMovingPiece;
+    public delegate void _OnMovingSomePiece();
+    public static event _OnMovingSomePiece OnMovingSomePiece;
+
+    public delegate void _OnMoveMade();
+    public static event _OnMoveMade OnMoveMade;
 
 
     public virtual void StartLevel()
@@ -34,6 +38,7 @@ public class PieceCheck : MonoBehaviour
     void Awake()
     {
         scriptStageManager = stageManager.GetComponent<StageManagerPuzzle>();
+        movingThisPiece = false;
     }
 
 
@@ -48,88 +53,95 @@ public class PieceCheck : MonoBehaviour
 
     private void OnMouseDown()
     {
-        movingPiece = scriptStageManager.movingPiece;
+        movingSomePiece = scriptStageManager.movingSomePiece;
 
-        if(!movingPiece){ 
-
-            UpdateRayOrigin();
-
-            // Creamos un rayo para cada direccion y detectamos si está colisionando con algo o esta libre
-            RaycastHit2D upHit = Physics2D.Raycast(rayOriginUp, Vector2.up, 0.2f);
-            RaycastHit2D downHit = Physics2D.Raycast(rayOriginDown, Vector2.down, 0.2f);
-            RaycastHit2D rightHit = Physics2D.Raycast(rayOriginRight, Vector2.right, 0.2f);
-            RaycastHit2D leftHit = Physics2D.Raycast(rayOriginLeft, Vector2.left, 0.2f);
-        
-        
-        
-            if(upHit && downHit && rightHit && leftHit){
-                // Choca con todos asi que no hay ningun hueco libre contiguo
-
-                // HACER SHAKE
-                Debug.Log("NO ME PUEDO MOVER");
-            }
-            else{
-                // Hay un hueco libre luego comprobamos cual es, movemos la pieza a ese lugar y lanzamos el evento a StageManager para que cambie su bool movingPiece a true
-                if(OnMovingPiece != null)                          
-                    OnMovingPiece();
-
-
-                if(!upHit){
-                    // Arriba esta libre
-                    StartCoroutine(MovePiece(Vector3.up));
-                }
-                else{
-                    if(!downHit){
-                        // Abajo esta libre
-                        StartCoroutine(MovePiece(Vector3.down));
-                    }
-                    else{
-                        if(!rightHit){
-                            // A la derecha esta libre
-                            StartCoroutine(MovePiece(Vector3.right));
-                        }
-                        else{
-                            // A la izquieda esta libre
-                            StartCoroutine(MovePiece(Vector3.left));
-                        }
-                    }
-                }
-            }
+        if(!movingSomePiece && !movingThisPiece){ 
+            movingThisPiece = true;
+            PieceMovement();
         }
-
-        
-
     }
 
 
+
+
+    private void PieceMovement(){
+        
+        // Creamos un rayo para cada direccion y detectamos si está colisionando con algo, para saber si tiene la pieza libre al lado o no
+        UpdateRayOrigin();
+        float rayOffset = levelWidth / 2;
+        RaycastHit2D upHit = Physics2D.Raycast(rayOriginUp, Vector2.up, rayOffset);
+        RaycastHit2D downHit = Physics2D.Raycast(rayOriginDown, Vector2.down, rayOffset);
+        RaycastHit2D rightHit = Physics2D.Raycast(rayOriginRight, Vector2.right, rayOffset);
+        RaycastHit2D leftHit = Physics2D.Raycast(rayOriginLeft, Vector2.left, rayOffset);
+    
+        if(upHit && downHit && rightHit && leftHit){
+            // Choca con todos asi que no hay ningun hueco libre contiguo
+
+            // HACER SHAKE
+            StartCoroutine(ShakePiece());
+            Debug.Log("NO ME PUEDO MOVER");
+            
+
+        }
+        else{
+            // Hay un hueco libre luego comprobamos cual es, movemos la pieza a ese lugar y lanzamos el evento a StageManager para que cambie su bool movingSomePiece a true
+            if(OnMovingSomePiece != null)                          
+                OnMovingSomePiece();
+
+            if(!upHit){
+                // Arriba esta libre
+                StartCoroutine(MovePiece(Vector3.up));
+            }
+            else{
+                if(!downHit){
+                    // Abajo esta libre
+                    StartCoroutine(MovePiece(Vector3.down));
+                }
+                else{
+                    if(!rightHit){
+                        // A la derecha esta libre
+                        StartCoroutine(MovePiece(Vector3.right));
+                    }
+                    else{
+                        // A la izquieda esta libre
+                        StartCoroutine(MovePiece(Vector3.left));
+                    }
+                }
+            }
+            
+
+        }
+
+    }
+
     private void UpdateRayOrigin()
     {
-
         rayOriginUp = (Vector2)transform.position + Vector2.up * levelWidth;
         rayOriginDown = (Vector2)transform.position + Vector2.down * levelWidth;
         rayOriginRight = (Vector2)transform.position + Vector2.right * levelWidth;
         rayOriginLeft = (Vector2)transform.position + Vector2.left * levelWidth;
-
 
     }
 
     private void ShowRaycast(){
 
         UpdateRayOrigin();
-
-        Debug.DrawLine(rayOriginUp, rayOriginUp + Vector2.up * 0.2f, Color.magenta);
-        Debug.DrawLine(rayOriginDown, rayOriginDown + Vector2.down * 0.2f, Color.yellow);
-        Debug.DrawLine(rayOriginRight, rayOriginRight + Vector2.right * 0.2f, Color.blue);
-        Debug.DrawLine(rayOriginLeft, rayOriginLeft + Vector2.left * 0.2f, Color.green);
+        float rayOffset = levelWidth;
+        Debug.DrawLine(rayOriginUp, rayOriginUp + Vector2.up * rayOffset, Color.magenta);
+        Debug.DrawLine(rayOriginDown, rayOriginDown + Vector2.down * rayOffset, Color.yellow);
+        Debug.DrawLine(rayOriginRight, rayOriginRight + Vector2.right * rayOffset, Color.blue);
+        Debug.DrawLine(rayOriginLeft, rayOriginLeft + Vector2.left * rayOffset, Color.green);
     }
 
 
     IEnumerator MovePiece(Vector3 direction){
-        // Impedimos que se pueda pulsar este boton mientras realizamos el movimiento
-        canClic = false;
+        // Notificamos para aumentar el contador de movimientos
+        if(OnMoveMade != null)                          
+            OnMoveMade();
 
+        // Corrutina de movimiento
         float elapsedTime = 0;
-        float animationTime = 0.5f;
+        float animationTime = 0.4f;
         bool notified = false;
 
         Vector3 startPosition = transform.position;
@@ -139,8 +151,8 @@ public class PieceCheck : MonoBehaviour
             transform.position = Vector3.Lerp(startPosition, endPosition, elapsedTime / animationTime);
 
             // Cuando ya ha hecho mas de la mitad del recorrido, lanzamos el evento para que puedan moverse otras piezas, ya que lo que falta de reorrido no afecta (el rayo de deteccion sale en la mediatriz de cada arista)
-            if( elapsedTime * 2 > animationTime && OnMovingPiece != null && !notified){
-                OnMovingPiece();
+            if(!notified && elapsedTime > animationTime * 2 / 3 && OnMovingSomePiece != null){
+                OnMovingSomePiece();
                 notified = true;
             }                          
                 
@@ -148,11 +160,34 @@ public class PieceCheck : MonoBehaviour
             yield return 0;
         }
         transform.position = endPosition;
-
-
-
-
+        movingThisPiece = false;
     }
 
+
+    IEnumerator ShakePiece(){
+        Vector3 originalPosition = transform.position;
+        Vector3 startPosition;
+        Vector3[] directions = new Vector3[]{Vector3.up, Vector3.right, Vector3.down, Vector3.left, Vector3.up, Vector3.down};
+
+        for(int i = 0 ; i < 6; i++ ){
+            startPosition = transform.position;
+            Vector3 endPosition = originalPosition + directions[i] * (levelWidth / 9f);   // (levelWidth / 7.5f) para que el movimiento sea proporcional al tamaño de la pieza
+
+            float elapsedTime = 0;
+            float animationTime = 0.05f;
+            while(elapsedTime < animationTime){
+                
+                transform.position = Vector3.Lerp(startPosition, endPosition, elapsedTime / animationTime);
+                        
+                elapsedTime += Time.deltaTime;
+                yield return 0;
+            }
+            
+        }
+        transform.position = originalPosition;
+
+        movingThisPiece = false;
+
+    }
 
 }

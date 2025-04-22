@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using System.Net.Http.Headers;
 
 public class StageManagerPuzzle : MonoBehaviour
 {
@@ -24,9 +26,11 @@ public class StageManagerPuzzle : MonoBehaviour
     [SerializeField] private Sprite sampleHard;
 
     [Header("Variables:")]
-    public bool movingPiece;        // Debe ser publica porque PieceCheck accede a ella
+    public bool movingSomePiece;        // Debe ser publica porque PieceCheck accede a ella
+    private int counter;
     
-
+    [Header("Text:")]
+    [SerializeField] private TextMeshProUGUI counterText;
 
 
     public delegate void _OnFadeToPlay(GameObject fadeCircleView);
@@ -36,21 +40,28 @@ public class StageManagerPuzzle : MonoBehaviour
 
     void OnEnable()
     {
-        PieceCheck.OnMovingPiece += HandleOnMovingPiece;
+        PieceCheck.OnMovingSomePiece += HandleOnMovingSomePiece;
+        PieceCheck.OnMoveMade += HandleOnMoveMade;
     }
 
 
     void OnDisable()
     {
-        PieceCheck.OnMovingPiece -= HandleOnMovingPiece;
+        PieceCheck.OnMovingSomePiece -= HandleOnMovingSomePiece;
+        PieceCheck.OnMoveMade -= HandleOnMoveMade;
     }
 
 
-    private void HandleOnMovingPiece(){
-        movingPiece = !movingPiece;
+    private void HandleOnMovingSomePiece(){
+        // Cambiamos el bool al que acceden el resto de piezas para impedir o permitir su movimiento
+        movingSomePiece = !movingSomePiece;
     }
 
-
+    private void HandleOnMoveMade(){
+        // Aumentamos en uno el contador y actualizamos el valor en la escena
+        counter += 1;
+        counterText.text = counter.ToString();
+    }
 
 
 
@@ -66,7 +77,9 @@ public class StageManagerPuzzle : MonoBehaviour
         hardPuzzle.SetActive(false);
 
         // Inicializamos las variables
-        movingPiece = false;
+        movingSomePiece = false;
+        counter = 0;
+        counterText.text = counter.ToString();
 
 
     }
