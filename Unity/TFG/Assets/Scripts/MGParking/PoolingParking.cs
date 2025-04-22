@@ -34,7 +34,7 @@ public class PoolingParking : MonoBehaviour
 
     private void Shuffle(){
         // Usamos una variante del algoritmo de Fisher-Yates para desordenar el array y que los prefabs se coloquen de forma aleatoria
-        for(int i = carsRoad.Length - 1 ; i > 0 ; i --){
+        for(int i = carsRoad.Length - 1 ; i > 0 ; i-- ){
             int indexRandom = Random.Range(0, i + 1);
 
             // Intercambiamos las posiciones de 2 elementos de la lista en cada vuelta del bucle

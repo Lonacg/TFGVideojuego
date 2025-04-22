@@ -58,11 +58,11 @@
 - HECHO: Añadir particulas en el boton al ponerse verde o rojo
 - HECHO: Añadir musica
 - HECHO: Deberia haber una imagen con la explicacion de los controles, y que tenga que pulsar una tecla para continuar
-- Hacer prefab las particulas de los intentos
+- HECHO: Hacer prefab las particulas de los intentos
 
 
 ### MG Puzzle
-- 
+-  Añadir una estrella en la esquina del Easy ( y revisar los bordes exteriores del easy y del medium)
 
 
 ### Menu principal

@@ -16,6 +16,7 @@ public class StageManagerPuzzle : MonoBehaviour
     [SerializeField] private GameObject easyPuzzle;
     [SerializeField] private GameObject mediumPuzzle;
     [SerializeField] private GameObject hardPuzzle;
+    [SerializeField] private GameObject confettiParticles;
 
     [Header("Sprites:")]
     [SerializeField] private Sprite easyBackground;
@@ -41,14 +42,18 @@ public class StageManagerPuzzle : MonoBehaviour
     void OnEnable()
     {
         PieceCheck.OnMovingSomePiece += HandleOnMovingSomePiece;
-        PieceCheck.OnMoveMade += HandleOnMoveMade;
+        PieceCheck.OnStartingMovement += HandleOnStartingMovement;
+        PuzzleCheck.OnGotIt += HandleOnGotIt;
+        
     }
 
 
     void OnDisable()
     {
         PieceCheck.OnMovingSomePiece -= HandleOnMovingSomePiece;
-        PieceCheck.OnMoveMade -= HandleOnMoveMade;
+        PieceCheck.OnStartingMovement -= HandleOnStartingMovement;
+        PuzzleCheck.OnGotIt -= HandleOnGotIt;
+        
     }
 
 
@@ -57,10 +62,16 @@ public class StageManagerPuzzle : MonoBehaviour
         movingSomePiece = !movingSomePiece;
     }
 
-    private void HandleOnMoveMade(){
+
+    private void HandleOnStartingMovement(){
         // Aumentamos en uno el contador y actualizamos el valor en la escena
         counter += 1;
         counterText.text = counter.ToString();
+    }
+
+
+    private void HandleOnGotIt(){
+        confettiParticles.SetActive(true); 
     }
 
 
@@ -119,8 +130,10 @@ public class StageManagerPuzzle : MonoBehaviour
         sampleImage.GetComponent<Image>().sprite = sample;
     
 
-        // Activar el game object del puzzle
+        // Activamos el game object del puzzle
         puzzle.SetActive(true);
+
+        
 
         // Lanzamos el evento para que el canvas cambie de pantalla 
         if(OnFadeToPlay != null)                          

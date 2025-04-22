@@ -8,6 +8,7 @@ public class CanvasManagerPuzzle : MonoBehaviour
     [SerializeField] private GameObject tutorialView;
     [SerializeField] private GameObject levelsView;
     [SerializeField] private GameObject ingameView;
+    [SerializeField] private GameObject victoryView;
 
 
 
@@ -15,11 +16,13 @@ public class CanvasManagerPuzzle : MonoBehaviour
     void OnEnable()
     {
         StageManagerPuzzle.OnFadeToPlay += HandleOnFadeToPlay;
+        PuzzleCheck.OnGotIt += HandleOnGotIt;
     }
 
     void OnDisable()
     {
         StageManagerPuzzle.OnFadeToPlay -= HandleOnFadeToPlay;
+        PuzzleCheck.OnGotIt -= HandleOnGotIt;
     }
 
 
@@ -28,6 +31,9 @@ public class CanvasManagerPuzzle : MonoBehaviour
         StartCoroutine(FadeOutFadeIn(fadecircleView));
     }
 
+    private void HandleOnGotIt(){
+        StartCoroutine(StartVictoryView());
+    }
 
     void Awake()
     {
@@ -35,6 +41,7 @@ public class CanvasManagerPuzzle : MonoBehaviour
         // tutorialView.SetActive(true);
         // levelsView.SetActive(false);
         // ingameView.SetActive(false);
+        // victoryView.SetActive(false);
         // fadecircleViewEasy.SetActive(false);
         // fadecircleViewMedium.SetActive(false);
         // fadecircleViewHard.SetActive(false);
@@ -43,6 +50,7 @@ public class CanvasManagerPuzzle : MonoBehaviour
         tutorialView.SetActive(false);
         levelsView.SetActive(true);
         ingameView.SetActive(false);
+        victoryView.SetActive(false);
       
 
     }
@@ -94,12 +102,10 @@ public class CanvasManagerPuzzle : MonoBehaviour
 
 
 
-    IEnumerator StartIngameView(float waitSeconds = 0){
-        yield return new WaitForSeconds(waitSeconds);
-        StartCoroutine(FadeCanvasGroup(ingameView, fromAlpha: 0, toAlpha: 1, animationTime: 0.5f));
+    IEnumerator StartVictoryView(){
+        yield return new WaitForSeconds(1);
+        victoryView.SetActive(true);
     }
-
-
 
 
 

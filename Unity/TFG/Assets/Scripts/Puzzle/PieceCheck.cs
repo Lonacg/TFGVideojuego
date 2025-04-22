@@ -25,14 +25,43 @@ public class PieceCheck : MonoBehaviour
     public delegate void _OnMovingSomePiece();
     public static event _OnMovingSomePiece OnMovingSomePiece;
 
-    public delegate void _OnMoveMade();
+    public delegate void _OnStartingMovement();
+    public static event _OnStartingMovement OnStartingMovement;
+    public delegate void _OnMoveMade(GameObject pieceMoved);
     public static event _OnMoveMade OnMoveMade;
+
+
+
+    void OnEnable()
+    {
+
+        PuzzleCheck.OnGotIt += HandleOnGotIt;
+        
+    }
+
+
+    void OnDisable()
+    {
+
+        PuzzleCheck.OnGotIt -= HandleOnGotIt;
+        
+    }
+
+
+    private void HandleOnGotIt(){
+        // Impedimos que se pulsen mas piezas
+        movingThisPiece = true;
+    }
 
 
     public virtual void StartLevel()
     {
         // Se sobreescribe en cada clase que hereda de esta
     }
+
+
+
+
 
 
     void Awake()
@@ -76,12 +105,7 @@ public class PieceCheck : MonoBehaviour
     
         if(upHit && downHit && rightHit && leftHit){
             // Choca con todos asi que no hay ningun hueco libre contiguo
-
-            // HACER SHAKE
             StartCoroutine(ShakePiece());
-            Debug.Log("NO ME PUEDO MOVER");
-            
-
         }
         else{
             // Hay un hueco libre luego comprobamos cual es, movemos la pieza a ese lugar y lanzamos el evento a StageManager para que cambie su bool movingSomePiece a true
@@ -109,7 +133,6 @@ public class PieceCheck : MonoBehaviour
                 }
             }
             
-
         }
 
     }
@@ -136,8 +159,8 @@ public class PieceCheck : MonoBehaviour
  
     IEnumerator MovePiece(Vector3 direction){
         // Notificamos para aumentar el contador de movimientos
-        if(OnMoveMade != null)                          
-            OnMoveMade();
+        if(OnStartingMovement != null)                          
+            OnStartingMovement();
 
         // Corrutina de movimiento
         float elapsedTime = 0;
@@ -160,7 +183,11 @@ public class PieceCheck : MonoBehaviour
             yield return 0;
         }
         transform.position = endPosition;
+        
         movingThisPiece = false;
+
+        if(OnMoveMade != null)                          
+            OnMoveMade(gameObject);        
     }
 
 
