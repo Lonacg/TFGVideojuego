@@ -133,7 +133,7 @@ public class PieceCheck : MonoBehaviour
         Debug.DrawLine(rayOriginLeft, rayOriginLeft + Vector2.left * rayOffset, Color.green);
     }
 
-
+ 
     IEnumerator MovePiece(Vector3 direction){
         // Notificamos para aumentar el contador de movimientos
         if(OnMoveMade != null)                          
