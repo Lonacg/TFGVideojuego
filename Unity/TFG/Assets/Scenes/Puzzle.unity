@@ -3413,6 +3413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c71ef91f1db784f9e1d3c91198708b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageManager: {fileID: 1497017776}
 --- !u!1001 &1081387678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6119,6 +6120,7 @@ MonoBehaviour:
   sampleMedium: {fileID: 21300000, guid: 50e26215a78194c4f814c3c553549753, type: 3}
   sampleHard: {fileID: 21300000, guid: d7e1a2a02c517104dbd68b5e37e11c13, type: 3}
   movingSomePiece: 0
+  transpositions: 0
   counterText: {fileID: 1519069406}
 --- !u!4 &1497017778
 Transform:
@@ -6883,6 +6885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c71ef91f1db784f9e1d3c91198708b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageManager: {fileID: 1497017776}
 --- !u!1 &1666248165
 GameObject:
   m_ObjectHideFlags: 0
@@ -8957,6 +8960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c71ef91f1db784f9e1d3c91198708b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageManager: {fileID: 1497017776}
 --- !u!1 &2046770744
 GameObject:
   m_ObjectHideFlags: 0

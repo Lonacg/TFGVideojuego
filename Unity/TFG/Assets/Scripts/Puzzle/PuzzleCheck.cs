@@ -6,6 +6,12 @@ public class PuzzleCheck : MonoBehaviour
 {
 
 
+    [Header("Game Objects:")]
+    [SerializeField] private GameObject stageManager;
+
+
+
+
     public delegate void _OnGotIt();
     public static event _OnGotIt OnGotIt;
 
@@ -14,11 +20,6 @@ public class PuzzleCheck : MonoBehaviour
     public Dictionary<string, Vector3> puzzleMerged = new();
     public Dictionary<string, Vector3> puzzlePlaying = new();   // Añadimos esta variable para guardar la configuracion del empiece, por si queremos poner el boton de deshacer todo en el futuro
 
-    void Awake()
-    {
-
-            
-    }
 
 
     void OnEnable()
@@ -95,11 +96,16 @@ public class PuzzleCheck : MonoBehaviour
     }
 
 
-    void MergePuzzle(){
-        // Variante de Fisher-Yates para diccionarios
-        for(int piece = gameObject.transform.childCount - 1; piece > 0 ; piece-- ){ 
+    private void MergePuzzle(){
 
-            int pieceRandom = Random.Range(1, piece + 1);       // La pieza cero no se cambia porque es el hueco libre y debe estar en la misma posicion al empezar
+        // Accedemos al numero de trasposiciones que haremos para mezclar el puzzle, en funcion de la dificultad escogida
+         int transpositions = stageManager.GetComponent<StageManagerPuzzle>().transpositions;
+
+
+        // Cambiamos las posiciones de las piezas un numero par de veces, dejando la libre en su sitio
+        for(int piece = 1 ; piece <= transpositions ; piece++ ){ 
+
+            int pieceRandom = ChooseRandom(samplePiece: piece);
 
             // Guardamos los valores de los vectores posicion de cada ficha
             puzzleMerged.TryGetValue(piece.ToString(), out Vector3 vectorPiece);
@@ -118,7 +124,19 @@ public class PuzzleCheck : MonoBehaviour
         puzzlePlaying = new Dictionary<string, Vector3>(puzzleMerged); 
     }
 
+    private int ChooseRandom(int samplePiece){
+        
+        int pieceRandom = Random.Range(1, gameObject.transform.childCount);  // No cambiamos la posicion de la vacia y es hasta el numero de hijos porque el ultimo no se incluye (Ej para 9 piezas (9 hijos): la 0 no, y de la 1 a la 8 si)
 
+        // Tenemos que impedir las trasposiciones de cada pieza consigo misma, porque eso haria que no cuenten y podriamos obtener un numero total de trasposiciones impar
+        if(pieceRandom == samplePiece){
+            return ChooseRandom(samplePiece);
+        }
+        else{
+            return pieceRandom;
+        }
+
+    }
 
 
 }

@@ -29,6 +29,7 @@ public class StageManagerPuzzle : MonoBehaviour
     [Header("Variables:")]
     public bool movingSomePiece;        // Debe ser publica porque PieceCheck accede a ella
     private int counter;
+    public int transpositions;          // Debe ser publica porque PuzzleCheck accede a ella
     
     [Header("Text:")]
     [SerializeField] private TextMeshProUGUI counterText;
@@ -105,6 +106,7 @@ public class StageManagerPuzzle : MonoBehaviour
         StartLevelGame(easyPuzzle, easyBackground, sampleEasy, fadeCircleViewEasy);
         mediumPuzzle.SetActive(false);
         hardPuzzle.SetActive(false);
+        transpositions = 8;     // Son 9 piezas
 
     }
 
@@ -112,13 +114,15 @@ public class StageManagerPuzzle : MonoBehaviour
         StartLevelGame(mediumPuzzle, mediumBackground, sampleMedium, fadeCircleViewMedium);
         easyPuzzle.SetActive(false);
         hardPuzzle.SetActive(false);
+        transpositions = 14;     // Son 16 piezas
     }
 
 
     public void OnHardButton(){
         StartLevelGame(hardPuzzle, hardBackground, sampleHard, fadeCircleViewHard);
         easyPuzzle.SetActive(false);
-        mediumPuzzle.SetActive(false);        
+        mediumPuzzle.SetActive(false);   
+        transpositions = 24;     // Son 25 piezas     
     }
 
 
