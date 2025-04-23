@@ -19,6 +19,7 @@ public class SceneLoadManager : MonoBehaviour
         CanvasManagerParking.OnReturnToMenu   += HandleOnReturnToMenu;
         StageManagerLaneRace.OnReturnToMenu   += HandleOnReturnToMenu;
         StageManagerDeduceSign.OnReturnToMenu += HandleOnReturnToMenu;
+        StageManagerPuzzle.OnReturnToMenu     += HandleOnReturnToMenu;
         
         StartCoroutine(HideFadeBehind());
     } 
@@ -28,6 +29,7 @@ public class SceneLoadManager : MonoBehaviour
         CanvasManagerParking.OnReturnToMenu   -= HandleOnReturnToMenu;
         StageManagerLaneRace.OnReturnToMenu   -= HandleOnReturnToMenu;
         StageManagerDeduceSign.OnReturnToMenu -= HandleOnReturnToMenu;
+        StageManagerPuzzle.OnReturnToMenu     -= HandleOnReturnToMenu;
     } 
 
     
@@ -50,6 +52,9 @@ public class SceneLoadManager : MonoBehaviour
         StartCoroutine(LoadScene(sceneString: "DeduceSign"));
     }
 
+    public void OnPuzzleButton(){
+        StartCoroutine(LoadScene(sceneString: "Puzzle"));
+    }
 
 
     IEnumerator LoadScene(string sceneString){

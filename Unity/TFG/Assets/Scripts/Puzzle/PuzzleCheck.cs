@@ -37,7 +37,7 @@ public class PuzzleCheck : MonoBehaviour
     private void HandleOnMoveMade(GameObject pieceMoved){
         ExchangePositionWithEmpty(pieceMoved);
 
-        bool gotIt = CheckDictionary();
+        bool gotIt = CheckDictionary(newDictionary: puzzlePlaying);
         if(gotIt){
             if(OnGotIt != null)                          
                 OnGotIt();
@@ -46,11 +46,11 @@ public class PuzzleCheck : MonoBehaviour
     }
 
 
-    private bool CheckDictionary(){
+    private bool CheckDictionary(Dictionary<string, Vector3>  newDictionary){
         // Empezamos a comprobar los primeros numeros, que son las fichas superiores, y las ultimas en ser colocadas para resolverlo
         for( int piece = 0 ; piece < gameObject.transform.childCount ; piece++ ){
 
-            puzzlePlaying.TryGetValue(piece.ToString(), out Vector3 vectorPiece);
+            newDictionary.TryGetValue(piece.ToString(), out Vector3 vectorPiece);
             puzzleSolution.TryGetValue(piece.ToString(), out Vector3 vectorCorrect);
 
             // Si una sola clave es diferente paramos de comprobar, ya son distintos
@@ -122,6 +122,13 @@ public class PuzzleCheck : MonoBehaviour
 
         }
         puzzlePlaying = new Dictionary<string, Vector3>(puzzleMerged); 
+
+        // Comprobamos que el diccionario resultado no haya quedado igual a la solucion por azar. En el improbable caso de que si lo volvemos a mezclar
+        bool samePuzzle = CheckDictionary(newDictionary: puzzleMerged);
+        if(samePuzzle){
+            MergePuzzle();
+        }
+
     }
 
     private int ChooseRandom(int samplePiece){

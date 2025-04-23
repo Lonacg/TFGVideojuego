@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Net.Http.Headers;
+using System.Collections;
 
 public class StageManagerPuzzle : MonoBehaviour
 {
@@ -18,6 +18,7 @@ public class StageManagerPuzzle : MonoBehaviour
     [SerializeField] private GameObject hardPuzzle;
     [SerializeField] private GameObject confettiParticles;
 
+
     [Header("Sprites:")]
     [SerializeField] private Sprite easyBackground;
     [SerializeField] private Sprite mediumBackground;
@@ -25,19 +26,24 @@ public class StageManagerPuzzle : MonoBehaviour
     [SerializeField] private Sprite sampleEasy;
     [SerializeField] private Sprite sampleMedium;
     [SerializeField] private Sprite sampleHard;
-
+    
+    [Header("Text:")]
+    [SerializeField] private TextMeshProUGUI counterText;
     [Header("Variables:")]
     public bool movingSomePiece;        // Debe ser publica porque PieceCheck accede a ella
     private int counter;
     public int transpositions;          // Debe ser publica porque PuzzleCheck accede a ella
     
-    [Header("Text:")]
-    [SerializeField] private TextMeshProUGUI counterText;
+
+
+
 
 
     public delegate void _OnFadeToPlay(GameObject fadeCircleView);
     public static event _OnFadeToPlay OnFadeToPlay;
 
+    public delegate void _OnReturnToMenu();          
+    public static event _OnReturnToMenu OnReturnToMenu;
 
 
     void OnEnable()
@@ -72,7 +78,14 @@ public class StageManagerPuzzle : MonoBehaviour
 
 
     private void HandleOnGotIt(){
+        // Bloqueamos el movimiento y lanzamos los confeti
+        movingSomePiece =true;
         confettiParticles.SetActive(true); 
+
+        // Esperamos y salimos al menu principal
+        StartCoroutine(ReturnToMenu());
+
+
     }
 
 
@@ -101,7 +114,7 @@ public class StageManagerPuzzle : MonoBehaviour
         
     }
 
-
+    // Las funciones de respuesta a los botones deben ser publicas para que aparezcan en el inspector
     public void OnEasyButton(){
         StartLevelGame(easyPuzzle, easyBackground, sampleEasy, fadeCircleViewEasy);
         mediumPuzzle.SetActive(false);
@@ -129,21 +142,29 @@ public class StageManagerPuzzle : MonoBehaviour
 
     void StartLevelGame(GameObject puzzle, Sprite background, Sprite sample, GameObject fadeCircleView){
 
-        // Cambiar el sprite del fondo de estrellas y la imagen de muestra
+
+        // Cambiamos el sprite del fondo de estrellas y la imagen de muestra
         backgroundPuzzle.GetComponent<SpriteRenderer>().sprite = background;
         sampleImage.GetComponent<Image>().sprite = sample;
     
-
         // Activamos el game object del puzzle
         puzzle.SetActive(true);
 
-        
-
-        // Lanzamos el evento para que el canvas cambie de pantalla 
+        // Lanzamos el evento para que el canvas cambie de pantalla y tambien se cambie la musica de fondo
         if(OnFadeToPlay != null)                          
             OnFadeToPlay(fadeCircleView);
     }
 
 
+
+
+
+    IEnumerator ReturnToMenu(){
+        yield return new WaitForSeconds(6.5f);
+        
+        // Evento para que Load Scene vuelva a la scena del menu principal
+        if(OnReturnToMenu != null)  
+            OnReturnToMenu();  
+    }
 
 }

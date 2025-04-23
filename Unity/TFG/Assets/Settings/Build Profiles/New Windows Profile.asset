@@ -19,15 +19,11 @@ MonoBehaviour:
     rid: 912000060702064640
   m_Scenes:
   - m_enabled: 1
-    m_path: Assets/Scenes/MainMenu.unity
-  - m_enabled: 1
     m_path: Assets/Scenes/Parking.unity
   - m_enabled: 1
     m_path: Assets/Scenes/LaneRace.unity
   - m_enabled: 1
     m_path: Assets/Scenes/DeduceSIgn.unity
-  - m_enabled: 1
-    m_path: Assets/Scenes/Puzzle.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings: []

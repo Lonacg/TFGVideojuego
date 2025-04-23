@@ -27,6 +27,9 @@ public class PieceCheck : MonoBehaviour
 
     public delegate void _OnStartingMovement();
     public static event _OnStartingMovement OnStartingMovement;
+
+    public delegate void _OnShakePiece();
+    public static event _OnShakePiece OnShakePiece;
     public delegate void _OnMoveMade(GameObject pieceMoved);
     public static event _OnMoveMade OnMoveMade;
 
@@ -74,8 +77,6 @@ public class PieceCheck : MonoBehaviour
 
     void Update()
     {      
-
-    
         //ShowRaycast();
     }
 
@@ -158,7 +159,7 @@ public class PieceCheck : MonoBehaviour
 
  
     IEnumerator MovePiece(Vector3 direction){
-        // Notificamos para aumentar el contador de movimientos
+        // Notificamos para aumentar el contador de movimientos y reproducir el sonido
         if(OnStartingMovement != null)                          
             OnStartingMovement();
 
@@ -192,6 +193,10 @@ public class PieceCheck : MonoBehaviour
 
 
     IEnumerator ShakePiece(){
+        // Notificamos para reproducir el sonido
+        if(OnShakePiece != null)                          
+            OnShakePiece();
+
         Vector3 originalPosition = transform.position;
         Vector3 startPosition;
         Vector3[] directions = new Vector3[]{Vector3.up, Vector3.right, Vector3.down, Vector3.left, Vector3.up, Vector3.down};
