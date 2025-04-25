@@ -16,10 +16,12 @@ public class SFXManagerPuzzle : MonoBehaviour
     [SerializeField] private GameObject musicGame;  
 
     [Header("Audio Clips:")]
+    [SerializeField] private AudioClip clicLevel;
     [SerializeField] private AudioClip movementPiece;
     [SerializeField] private AudioClip shakePiece;
-    [SerializeField] private AudioClip clicLevel;
+    [SerializeField] private AudioClip stamp;
     [SerializeField] private AudioClip gotIt;
+    [SerializeField] private AudioClip lastShine;
 
 
 
@@ -30,8 +32,9 @@ public class SFXManagerPuzzle : MonoBehaviour
         StageManagerPuzzle.OnFadeToPlay   += HandleOnFadeToPlay;
         PieceCheck.OnStartingMovement   += HandleOnStartingMovement;
         PieceCheck.OnShakePiece   += HandleOnShakePiece;
-        PuzzleCheck.OnGotIt += HandleOnGotIt;
-
+        HandAnimation.OnStampSound += HandleOnStampSound;
+        PuzzleCheck.OnGotIt += HandleOnGotIt;        
+        StageManagerPuzzle.OnLastShine += HandleOnLastShine;
 
     }
 
@@ -40,8 +43,9 @@ public class SFXManagerPuzzle : MonoBehaviour
         StageManagerPuzzle.OnFadeToPlay   -= HandleOnFadeToPlay;
         PieceCheck.OnStartingMovement   -= HandleOnStartingMovement;
         PieceCheck.OnShakePiece   -= HandleOnShakePiece;
+        HandAnimation.OnStampSound += HandleOnStampSound;
         PuzzleCheck.OnGotIt -= HandleOnGotIt;
-
+        StageManagerPuzzle.OnLastShine += HandleOnLastShine;
     }
 
     void Start()
@@ -69,14 +73,24 @@ public class SFXManagerPuzzle : MonoBehaviour
     }
 
 
+    private void HandleOnStampSound(){
+        // Sonido al poner el sello
+        PlaySFX(stamp, volume: 0.8f);        
+    }
+
     private void HandleOnGotIt(){
         // Apagamos la musica de fondo y reproducimos el sonido de victoria
         StartCoroutine(ChangeVolumeMusic(startVolume: audioSourceMusicGame.volume, endVolume: 0, audioSource: audioSourceMusicGame, animationTime: 1));
         PlaySFX(gotIt, volume: 0.5f);        
     }
+    private void HandleOnLastShine(){
+        // Apagamos la musica de fondo y reproducimos el sonido de victoria
+        StartCoroutine(ChangeVolumeMusic(startVolume: audioSourceMusicGame.volume, endVolume: 0, audioSource: audioSourceMusicGame, animationTime: 1));
+        PlaySFX(lastShine, volume: 1f);        
+    }
+
 
     // MÉTODOS DE ESTA CLASE
-
     public void OnSoundClic(){
         // Sonido de pulsado del boton en la seleccion de dificultad
         PlaySFX(clicLevel, volume: 0.3f);
@@ -122,7 +136,7 @@ public class SFXManagerPuzzle : MonoBehaviour
 
         // Encendemo la musica del juego
         musicGame.SetActive(true);
-        StartCoroutine(ChangeVolumeMusic(startVolume: 0, endVolume: 0.3f, audioSource: audioSourceMusicLevel, animationTime));
+        StartCoroutine(ChangeVolumeMusic(startVolume: 0, endVolume: 0.5f, audioSource: audioSourceMusicLevel, animationTime));
     }
 
 }

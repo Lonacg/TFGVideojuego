@@ -16,7 +16,7 @@ MonoBehaviour:
   m_Subtarget: 2
   m_PlatformId: 4e3c793746204150860bf175a9a41a05
   m_PlatformBuildProfile:
-    rid: 912000060702064640
+    rid: 6445301432312135768
   m_Scenes:
   - m_enabled: 1
     m_path: Assets/Scenes/Parking.unity
@@ -24,13 +24,15 @@ MonoBehaviour:
     m_path: Assets/Scenes/LaneRace.unity
   - m_enabled: 1
     m_path: Assets/Scenes/DeduceSIgn.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Puzzle.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings: []
   references:
     version: 2
     RefIds:
-    - rid: 912000060702064640
+    - rid: 6445301432312135768
       type: {class: WindowsPlatformSettings, ns: UnityEditor.WindowsStandalone, asm: UnityEditor.WindowsStandalone.Extensions}
       data:
         m_Development: 0
@@ -46,7 +48,7 @@ MonoBehaviour:
         m_InstallInBuildFolder: 0
         m_WindowsBuildAndRunDeployTarget: 0
         m_Architecture: 0
-        m_CreateSolution: 1
+        m_CreateSolution: 0
         m_CopyPDBFiles: 0
         m_WindowsDevicePortalAddress: 
         m_WindowsDevicePortalUsername: 

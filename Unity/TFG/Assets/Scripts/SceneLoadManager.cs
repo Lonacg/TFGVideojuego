@@ -74,6 +74,6 @@ public class SceneLoadManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f); // Tiempo que dura la animacion de FadeInScene
 
         // Situamos el Objeto Face en el orden 0 para que se quede detras del canvas con los botones y que estos puedan pulsarse
-        fadeScene.GetComponent<Canvas>().sortingOrder = -1;
+        fadeScene.GetComponent<Canvas>().sortingOrder = -3;
     }
 }

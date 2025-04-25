@@ -9,23 +9,32 @@ public class CanvasManagerPuzzle : MonoBehaviour
     [SerializeField] private GameObject levelsView;
     [SerializeField] private GameObject ingameView;
     [SerializeField] private GameObject victoryView;
+    [SerializeField] private GameObject fadeScene;
 
 
 
 
     void OnEnable()
     {
+
+        StageManagerPuzzle.OnFadeToLevels += HandleOnFadeToLevels;
         StageManagerPuzzle.OnFadeToPlay += HandleOnFadeToPlay;
         PuzzleCheck.OnGotIt += HandleOnGotIt;
     }
 
     void OnDisable()
     {
+        StageManagerPuzzle.OnFadeToLevels -= HandleOnFadeToLevels;
         StageManagerPuzzle.OnFadeToPlay -= HandleOnFadeToPlay;
         PuzzleCheck.OnGotIt -= HandleOnGotIt;
     }
 
 
+
+    private void HandleOnFadeToLevels(){
+        StartCoroutine(FadeToLevels());
+        
+    }
 
     private void HandleOnFadeToPlay(GameObject fadecircleView){
         StartCoroutine(FadeOutFadeIn(fadecircleView));
@@ -37,21 +46,12 @@ public class CanvasManagerPuzzle : MonoBehaviour
 
     void Awake()
     {
-        // Orden final
-        // tutorialView.SetActive(true);
-        // levelsView.SetActive(false);
-        // ingameView.SetActive(false);
-        // victoryView.SetActive(false);
-        // fadecircleViewEasy.SetActive(false);
-        // fadecircleViewMedium.SetActive(false);
-        // fadecircleViewHard.SetActive(false);
-
-        // Pruebas:
-        tutorialView.SetActive(false);
-        levelsView.SetActive(true);
+        // Inicializamos las varibles
+        tutorialView.SetActive(true);
+        levelsView.SetActive(false);
         ingameView.SetActive(false);
-        victoryView.SetActive(false);
-      
+        victoryView.SetActive(true); // Debe ser true siempre
+
 
     }
 
@@ -105,6 +105,25 @@ public class CanvasManagerPuzzle : MonoBehaviour
     IEnumerator StartVictoryView(){
         yield return new WaitForSeconds(1);
         victoryView.SetActive(true);
+    }
+
+
+    IEnumerator FadeToLevels(){
+
+        // Situamos el objeto Fade en el orden uno para que se muestre delante del canvas y se vea el oscurecimiento de la pantalla
+        fadeScene.GetComponent<Canvas>().sortingOrder = 1;
+
+        // Activamos la animacion de oscurecer la pantalla
+        fadeScene.GetComponent<Animator>().SetTrigger("FadeOutScene");
+
+        yield return new WaitForSeconds(1.5f); // Tiempo que dura la animacion de FadeOutScene
+
+        tutorialView.SetActive(false);
+        levelsView.SetActive(true);
+        fadeScene.GetComponent<Animator>().SetTrigger("FadeInScene");
+        yield return new WaitForSeconds(1.5f); // Tiempo que dura la animacion de FadeOutScene        
+
+        fadeScene.GetComponent<Canvas>().sortingOrder = -3;
     }
 
 

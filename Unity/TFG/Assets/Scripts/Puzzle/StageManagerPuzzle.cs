@@ -6,17 +6,22 @@ using System.Collections;
 public class StageManagerPuzzle : MonoBehaviour
 {
     [Header("Views:")]
+    [SerializeField] private GameObject tutorialView;
     [SerializeField] private GameObject fadeCircleViewEasy;
     [SerializeField] private GameObject fadeCircleViewMedium;
     [SerializeField] private GameObject fadeCircleViewHard;
 
     [Header("Game Objects:")]
     [SerializeField] private GameObject backgroundPuzzle;
-    [SerializeField] private GameObject sampleImage;
+    [SerializeField] private GameObject samplePuzzle;
+    [SerializeField] private GameObject finalPuzzle;
     [SerializeField] private GameObject easyPuzzle;
     [SerializeField] private GameObject mediumPuzzle;
     [SerializeField] private GameObject hardPuzzle;
+    [SerializeField] private GameObject handStamp;
+
     [SerializeField] private GameObject confettiParticles;
+    [SerializeField] private GameObject fireworks;
 
 
     [Header("Sprites:")]
@@ -26,6 +31,9 @@ public class StageManagerPuzzle : MonoBehaviour
     [SerializeField] private Sprite sampleEasy;
     [SerializeField] private Sprite sampleMedium;
     [SerializeField] private Sprite sampleHard;
+    [SerializeField] private Sprite finalPuzzleEasy;
+    [SerializeField] private Sprite finalPuzzleMedium;
+    [SerializeField] private Sprite finalPuzzleHard;
     
     [Header("Text:")]
     [SerializeField] private TextMeshProUGUI counterText;
@@ -33,11 +41,12 @@ public class StageManagerPuzzle : MonoBehaviour
     public bool movingSomePiece;        // Debe ser publica porque PieceCheck accede a ella
     private int counter;
     public int transpositions;          // Debe ser publica porque PuzzleCheck accede a ella
-    
+    private bool spacePressed = false;
 
 
 
-
+    public delegate void _OnFadeToLevels();
+    public static event _OnFadeToLevels OnFadeToLevels;
 
     public delegate void _OnFadeToPlay(GameObject fadeCircleView);
     public static event _OnFadeToPlay OnFadeToPlay;
@@ -45,6 +54,8 @@ public class StageManagerPuzzle : MonoBehaviour
     public delegate void _OnReturnToMenu();          
     public static event _OnReturnToMenu OnReturnToMenu;
 
+    public delegate void _OnLastShine();          
+    public static event _OnLastShine OnLastShine;
 
     void OnEnable()
     {
@@ -82,6 +93,8 @@ public class StageManagerPuzzle : MonoBehaviour
         movingSomePiece =true;
         confettiParticles.SetActive(true); 
 
+        StartCoroutine(WaitAndActiveHand());
+
         // Esperamos y salimos al menu principal
         StartCoroutine(ReturnToMenu());
 
@@ -100,23 +113,35 @@ public class StageManagerPuzzle : MonoBehaviour
         easyPuzzle.SetActive(false);
         mediumPuzzle.SetActive(false);
         hardPuzzle.SetActive(false);
+        handStamp.SetActive(true);
+        confettiParticles.SetActive(false);
+        fireworks.SetActive(false);
+
+
 
         // Inicializamos las variables
         movingSomePiece = false;
         counter = 0;
         counterText.text = counter.ToString();
+        spacePressed = false;
 
 
     }
 
     void Update()
     {
-        
+        // Si la ventana de tutorial esta activada y pulsan espacio damos paso al inicio del juego (solo escuchamos el primer pulsado, para que no se retipa el lanzamiento del evento)
+        if(tutorialView.activeSelf && Input.GetKeyDown(KeyCode.Space) && !spacePressed){
+            spacePressed = true;
+            if(OnFadeToLevels != null)   
+                OnFadeToLevels();
+        }
     }
+    
 
     // Las funciones de respuesta a los botones deben ser publicas para que aparezcan en el inspector
     public void OnEasyButton(){
-        StartLevelGame(easyPuzzle, easyBackground, sampleEasy, fadeCircleViewEasy);
+        StartLevelGame(easyPuzzle, easyBackground, sampleEasy, finalPuzzleEasy,fadeCircleViewEasy);
         mediumPuzzle.SetActive(false);
         hardPuzzle.SetActive(false);
         transpositions = 8;     // Son 9 piezas
@@ -124,7 +149,7 @@ public class StageManagerPuzzle : MonoBehaviour
     }
 
     public void OnMediumButton(){
-        StartLevelGame(mediumPuzzle, mediumBackground, sampleMedium, fadeCircleViewMedium);
+        StartLevelGame(mediumPuzzle, mediumBackground, sampleMedium, finalPuzzleMedium, fadeCircleViewMedium);
         easyPuzzle.SetActive(false);
         hardPuzzle.SetActive(false);
         transpositions = 14;     // Son 16 piezas
@@ -132,7 +157,7 @@ public class StageManagerPuzzle : MonoBehaviour
 
 
     public void OnHardButton(){
-        StartLevelGame(hardPuzzle, hardBackground, sampleHard, fadeCircleViewHard);
+        StartLevelGame(hardPuzzle, hardBackground, sampleHard, finalPuzzleHard, fadeCircleViewHard);
         easyPuzzle.SetActive(false);
         mediumPuzzle.SetActive(false);   
         transpositions = 24;     // Son 25 piezas     
@@ -140,12 +165,13 @@ public class StageManagerPuzzle : MonoBehaviour
 
 
 
-    void StartLevelGame(GameObject puzzle, Sprite background, Sprite sample, GameObject fadeCircleView){
+    void StartLevelGame(GameObject puzzle, Sprite background, Sprite sample, Sprite finalPuzzleSprite, GameObject fadeCircleView){
 
 
-        // Cambiamos el sprite del fondo de estrellas y la imagen de muestra
+        // Cambiamos el sprite del fondo de estrellas,la imagen de muestra y la imagen del final del puzzle resuelto
         backgroundPuzzle.GetComponent<SpriteRenderer>().sprite = background;
-        sampleImage.GetComponent<Image>().sprite = sample;
+        samplePuzzle.GetComponent<Image>().sprite = sample;
+        finalPuzzle.GetComponent<SpriteRenderer>().sprite = finalPuzzleSprite;
     
         // Activamos el game object del puzzle
         puzzle.SetActive(true);
@@ -159,12 +185,45 @@ public class StageManagerPuzzle : MonoBehaviour
 
 
 
-    IEnumerator ReturnToMenu(){
-        yield return new WaitForSeconds(6.5f);
+    IEnumerator WaitAndActiveHand(){
+        yield return new WaitForSeconds(1f);
         
+        handStamp.GetComponent<Animator>().SetTrigger("HandIn");
+    }
+    IEnumerator ReturnToMenu(){
+        // Espera de 6.5 seg en total antes de salir
+        yield return new WaitForSeconds(4f);
+
+        if(OnLastShine != null)                          
+            OnLastShine();        
+        StartCoroutine(FadeInImage(finalPuzzle));
+        fireworks.SetActive(true);
+        
+        yield return new WaitForSeconds(3.5f);
+        
+
         // Evento para que Load Scene vuelva a la scena del menu principal
         if(OnReturnToMenu != null)  
             OnReturnToMenu();  
+    }
+
+    IEnumerator FadeInImage(GameObject finalPuzzle){
+        finalPuzzle.SetActive(true);
+        Color newColor = finalPuzzle.GetComponent<SpriteRenderer>().color;
+
+        float elapsedTime = 0;
+        float animationTime = 1f;
+        
+        while(elapsedTime <= animationTime){
+            newColor.a = Mathf.Lerp(0, 1, elapsedTime / animationTime);
+
+            finalPuzzle.GetComponent<SpriteRenderer>().color = newColor;
+
+            elapsedTime += Time.unscaledDeltaTime;
+            yield return 0;
+        }
+        newColor.a = 1;
+        finalPuzzle.GetComponent<SpriteRenderer>().color = newColor;
     }
 
 }

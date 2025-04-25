@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using JetBrains.Annotations;
+using System.Collections;
 using UnityEngine;
 
 public class PuzzleCheck : MonoBehaviour
@@ -25,6 +25,8 @@ public class PuzzleCheck : MonoBehaviour
     void OnEnable()
     {
         PieceCheck.OnMoveMade += HandleOnMoveMade;
+
+        // StartCoroutine(VictoryProof());
     }
 
     void OnDisable()
@@ -145,5 +147,11 @@ public class PuzzleCheck : MonoBehaviour
 
     }
 
+
+    IEnumerator VictoryProof(){
+        yield return new WaitForSeconds(2);
+        if(OnGotIt != null)                          
+                OnGotIt();
+    }
 
 }
