@@ -43,6 +43,9 @@ public class CanvasManagerParking : MonoBehaviour
     // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void Awake()
     {   
+        // Accedemos al singleton para comunicar que se ha iniciado este minijuego
+        GameChecker.Instance.LaneRacePlayed();
+
         // Desactivamos el Script de Player para que no se pueda mover mientras esta el tutorial
         player.GetComponent<CarMovement>().enabled = false;
         player.GetComponent<AudioSource>().enabled = false;
@@ -50,7 +53,6 @@ public class CanvasManagerParking : MonoBehaviour
         // Vistas activadas
         tutorialView.SetActive(true);
         operationFirstTryText.gameObject.SetActive(true);
-
 
         // Vistas desactivadas
         ingameView.SetActive(false);

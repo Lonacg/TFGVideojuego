@@ -54,6 +54,12 @@ public class StageManagerLaneRace : MonoBehaviour
 
 
     // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
+    void Awake()
+    {
+        // Accedemos al singleton para comunicar que se ha iniciado este minijuego
+        GameChecker.Instance.LaneRacePlayed();
+    }
+
     void OnEnable()
     {
         GrannyMovement.OnGo += HandleOnGo;
