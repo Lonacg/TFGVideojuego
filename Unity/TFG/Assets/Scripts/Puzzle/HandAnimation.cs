@@ -24,7 +24,6 @@ public class HandAnimation : MonoBehaviour
         
         gameObject.GetComponent<Animator>().SetTrigger("HandOut");
 
-        //yield return new WaitForSeconds(1f);
         backgroundStamp.SetActive(true); 
     }
     

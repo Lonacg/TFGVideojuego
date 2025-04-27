@@ -4,6 +4,8 @@ using System.Collections;
 public class MenuBehaviour : MonoBehaviour
 {
     [Header("Game Objects:")]
+
+    [SerializeField] private GameObject buttonsDS;
     [SerializeField] private GameObject firstButtonParking;
     [SerializeField] private GameObject secondButtonParking;
     [SerializeField] private GameObject firstButtonLR;
@@ -12,6 +14,8 @@ public class MenuBehaviour : MonoBehaviour
     [SerializeField] private GameObject secondButtonDS;
     [SerializeField] private GameObject firstButtonPuzzle;
     [SerializeField] private GameObject secondButtonPuzzle;
+    [SerializeField] private GameObject particles1;
+    [SerializeField] private GameObject particles2;
     
     [Header("Variables from GameChecker:")]
     private int amountGamesPlayed;
@@ -23,14 +27,6 @@ public class MenuBehaviour : MonoBehaviour
     private bool puzzlePlayed= false;
 
 
-    //[Header("Variables:")]
-    // // ESTAS VARIABLES NO VALEN PORQUE NO SOBREVIVEN AL CAMBIO DE ESCENA
-    // private bool puzzleReady = false;
-    // private bool parkingChanged = false;    
-    // private bool laneRaceChanged = false;
-    // private bool deduceSignChanged = false;
-    // private bool puzzleChanged = false;
-
 
 
 
@@ -38,72 +34,99 @@ public class MenuBehaviour : MonoBehaviour
     void Start()
     {
         
-
         UpdateVariablesGameChecker();
 
-        // Gestion del movimiento del ultimo boton y cambio de los botones
-        if(!puzzlePlayed){
-            Debug.Log("Entrando a puzzle no jugado");
-            UpdateButtons();
+        UpdateButtons();
 
+        // Gestion del movimiento del ultimo boton
+        if(!puzzlePlayed){
             UpdateMovementDS();
         }
         else{
-            if(!secondButtonPuzzle.activeSelf){
-                StartCoroutine(ChangeButton(firstButtonPuzzle, secondButtonPuzzle));
-            }
+            buttonsDS.transform.localPosition = new Vector3(0, -10.81f, 0);
         }
 
     }
 
 
     private void UpdateButtons(){
-        Debug.Log("Actualizacion de botones");
-        if(parkingPlayed && !secondButtonParking.activeSelf){
-            StartCoroutine(ChangeButton(firstButtonParking, secondButtonParking));
+
+        if(parkingPlayed){
+            secondButtonParking.SetActive(true);
+            firstButtonParking.SetActive(false);
         }
-        if(laneRacePlayed && !secondButtonLR.activeSelf){
-            StartCoroutine(ChangeButton(firstButtonLR, secondButtonLR));
+        if(laneRacePlayed){
+            secondButtonLR.SetActive(true);
+            firstButtonLR.SetActive(false);
         }
-        if(deduceSignPlayed && !secondButtonDS.activeSelf){
-            StartCoroutine(ChangeButton(firstButtonDS, secondButtonDS));
+        if(deduceSignPlayed){
+            secondButtonDS.SetActive(true);
+            firstButtonDS.SetActive(false);
+        }
+        if(puzzlePlayed){
+            secondButtonPuzzle.SetActive(true);
+            firstButtonPuzzle.SetActive(false);
         }
         
     }
 
+    
     private void UpdateMovementDS(){
-        Debug.Log("Actualizacion de movimiento");
 
-        alreadyPlayed = GameChecker.Instance.GetBool(alreadyPlayed);
+        alreadyPlayed = GameChecker.Instance.GetAlreadyPlayed();
 
-        if(amountGamesPlayed == 1 && !alreadyPlayed){
-            
-            Vector3 endPosition = transform.position;
-            float newX = endPosition.x - 71.5f;
-            endPosition.x = newX;
+        if(!alreadyPlayed){
+            // Se ha jugado por primera vez a un minijuego asi que hacemos la animacion correspondiente
+            if(amountGamesPlayed == 1){
+                // Esta en la posicion que debe tener, asi que solo activamos las particulas
+                particles1.SetActive(true);
 
-            StartCoroutine(MoveDSButton(startPosition: transform.position, endPosition));
-
-        }
-        else{
-            if(amountGamesPlayed == 2 && !alreadyPlayed){
-                // Segundo movimiento del boton DeduceSign
-                Vector3 endPosition = transform.position;
-                float newX = endPosition.x - 71.5f;
-                endPosition.x = newX;
-
-                StartCoroutine(MoveDSButton(startPosition: transform.position, endPosition));
+                // Primer movimiento del boton DeduceSign
+                Vector3 endPosition = new Vector3(143.5f, -10.81f, 0);
+                StartCoroutine(MoveDSButton(endPosition));
             }
             else{
-                if(amountGamesPlayed == 3){
-                    // Tercer movimiento del boton DeduceSign y aparicion del boton puzzle
-                    Vector3 endPosition = transform.position;
-                    endPosition.x = 0;
-                    StartCoroutine(MoveDSButton(startPosition: transform.position, endPosition));
+                if(amountGamesPlayed == 2){
+                    // Primero, actualizamos la posicion que debe tener y activamos las particulas
+                    buttonsDS.transform.localPosition = new Vector3(143.5f, -10.81f, 0);
+                    particles1.SetActive(true);
+                    particles2.SetActive(true);
+                    
+                    // Hacemos el segundo movimiento del boton DeduceSign
+                    Vector3 endPosition = new(72, -10.81f, 0);
+                    StartCoroutine(MoveDSButton(endPosition));
+                }
+                else{
+                    if(amountGamesPlayed == 3){
+                        // Primero, actualizamos la posicion que debe tener y activamos las particulas
+                        buttonsDS.transform.localPosition = new Vector3(72, -10.81f, 0);
+                        particles1.SetActive(true);
+                        particles2.SetActive(true);                        
+                    
+                        // Hacemos el tercer movimiento del boton DeduceSign y la aparicion del boton puzzle
+                        Vector3 endPosition = new(0, -10.81f, 0);
+                        StartCoroutine(MoveDSButton(endPosition));
 
-                    StartCoroutine(PuzzleAppearance());
+                        StartCoroutine(PuzzleAppearance());
+                    }
                 }
             }
+        }
+        else{
+            // No se ha jugado a ningun juego nuevo asi que solo actualizamos la posicion correcta del boton de DeduceSign
+            if(amountGamesPlayed == 1)
+                buttonsDS.transform.localPosition = new Vector3(143.5f, -10.81f, 0);
+            else{
+                if(amountGamesPlayed == 2)
+                    buttonsDS.transform.localPosition = new Vector3(72, -10.81f, 0);
+                else
+                    if(amountGamesPlayed == 3){
+                        buttonsDS.transform.localPosition = new Vector3(0, -10.81f, 0);
+                        firstButtonPuzzle.SetActive(true);
+                    }
+                
+            }            
+
         }
     }
 
@@ -111,59 +134,59 @@ public class MenuBehaviour : MonoBehaviour
     private void UpdateVariablesGameChecker(){
         amountGamesPlayed = GameChecker.Instance.GetAmountGamesPlayed();
 
-        parkingPlayed = GameChecker.Instance.GetBool(parkingPlayed);
-        laneRacePlayed = GameChecker.Instance.GetBool(laneRacePlayed);
-        deduceSignPlayed = GameChecker.Instance.GetBool(deduceSignPlayed);
-        puzzlePlayed = GameChecker.Instance.GetBool(puzzlePlayed);
+        parkingPlayed = GameChecker.Instance.GetParkingPlayed();
+        laneRacePlayed = GameChecker.Instance.GetLaneRacePlayed();
+        deduceSignPlayed = GameChecker.Instance.GetDeduceSignPlayed();
+        puzzlePlayed = GameChecker.Instance.GetPuzzlePlayed();
     }
 
 
 
-// EN LAS CORRUTINAS HAY QUE COMPROBAR SI EE MOVIMIENTO YA SE HA HECHO, IGUAL ACCEDIENDO A L BOLL EN EL IF
-    IEnumerator MoveDSButton(Vector3 startPosition, Vector3 endPosition){
+    IEnumerator MoveDSButton(Vector3 endPosition){
 
-        Debug.Log("Moviendo DS");
         // Añadir brillitos
 
+        // Tiempo que tarda el fade in
+        yield return new WaitForSeconds(1.4f);
 
+        // Cuerpo de la corrutina
         float elapsedTime = 0;
         float animationTime = 1;
+        Vector3 startPosition = buttonsDS.transform.localPosition;
         while(elapsedTime < animationTime){
             
-            transform.localPosition = Vector3.Lerp(startPosition, endPosition, elapsedTime / animationTime);
+            buttonsDS.transform.localPosition = Vector3.Lerp(startPosition, endPosition, elapsedTime / animationTime);
 
             elapsedTime += Time.deltaTime;
             yield return 0;
         }
-        transform.position = endPosition;
+        buttonsDS.transform.localPosition = endPosition;
     }
 
 
-    IEnumerator SecondMove(){
-        // Añadir mas brillitos
-        yield return 0;
 
-    }
+
 
     IEnumerator PuzzleAppearance(){
-        firstButtonPuzzle.SetActive(true);
+        yield return new WaitForSeconds(2.5f); // Tiempo (1) que tarda el boton DS en moverse + 1.5 de cambio de escena
 
-        yield return 0;
+        particles2.SetActive(false);
+        particles1.SetActive(false);
+        
+        firstButtonPuzzle.SetActive(true); // Se inicia con la escala en x en 0
 
+        float elapsedTime = 0;
+        float animationTime = 1;
+
+        while(elapsedTime < animationTime){
+            float newScale = Mathf.Lerp(0, 1, elapsedTime / animationTime);
+            
+            firstButtonPuzzle.transform.localScale = new Vector3(newScale, 1, 1);
+            elapsedTime += Time.deltaTime;
+            yield return 0;
+        }
+        firstButtonPuzzle.transform.localScale = new Vector3(1, 1, 1);
     }
-    IEnumerator ChangeButton(GameObject firstButton, GameObject secondButton){
-        Debug.Log("cambiando boton");
-        secondButton.SetActive(true);
-        firstButton.SetActive(false);
-
-        yield return 0;
-
-    }
-
-    
-
-
-
 
 }
 

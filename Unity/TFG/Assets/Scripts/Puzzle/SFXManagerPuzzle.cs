@@ -43,9 +43,9 @@ public class SFXManagerPuzzle : MonoBehaviour
         StageManagerPuzzle.OnFadeToPlay   -= HandleOnFadeToPlay;
         PieceCheck.OnStartingMovement   -= HandleOnStartingMovement;
         PieceCheck.OnShakePiece   -= HandleOnShakePiece;
-        HandAnimation.OnStampSound += HandleOnStampSound;
+        HandAnimation.OnStampSound -= HandleOnStampSound;
         PuzzleCheck.OnGotIt -= HandleOnGotIt;
-        StageManagerPuzzle.OnLastShine += HandleOnLastShine;
+        StageManagerPuzzle.OnLastShine -= HandleOnLastShine;
     }
 
     void Start()

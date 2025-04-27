@@ -56,7 +56,7 @@ public class SFXManagerParking : MonoBehaviour
     // MÉTODOS EN RESPUESTA A EVENTOS
     private void HandleOnPlay(){
         // Sonido de arranque del coche y motor estatico
-        StartCoroutine(WaitAndStartMotor(1f)); // 1f porque el sonido de arranque dura un segundo
+        StartCoroutine(WaitAndStartMotor(1f)); // 1f porque el fade in dura un segundo
 
         // El sonido de acelerar (MotorInMotion) lo reproduce CarMovement.cs porque es cuando se pulsa la tecla de avance o retroceso
     }

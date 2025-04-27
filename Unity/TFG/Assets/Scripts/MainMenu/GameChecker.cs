@@ -10,11 +10,6 @@ public class GameChecker : MonoBehaviour
     public bool alreadyPlayed = false;
     
 
-    private bool parkingChanged = false;    
-    private bool laneRaceChanged = false;
-    private bool deduceSignChanged = false;
-    private bool puzzleChanged = false;
-
 
 
 
@@ -45,9 +40,9 @@ public class GameChecker : MonoBehaviour
     public void ParkingOnPlay(){
         if(!parkingPlayed){
             amountGamesPlayed ++;
-            Debug.Log("Jugados:" + amountGamesPlayed);
             parkingPlayed = true;
             alreadyPlayed = false;
+
         }
         else{
             alreadyPlayed = true;
@@ -59,7 +54,6 @@ public class GameChecker : MonoBehaviour
     public void LaneRaceOnPlay(){
         if(!laneRacePlayed){
             amountGamesPlayed ++;
-            Debug.Log("Jugados:" + amountGamesPlayed);
             laneRacePlayed = true;
             alreadyPlayed = false;
         }
@@ -73,9 +67,9 @@ public class GameChecker : MonoBehaviour
     public void DeduceSignOnPlay(){
         if(!deduceSignPlayed){
             amountGamesPlayed ++;
-            Debug.Log("Jugados:" + amountGamesPlayed);
             deduceSignPlayed = true;
             alreadyPlayed = false;
+
         }
         else{
             alreadyPlayed = true;
@@ -84,18 +78,30 @@ public class GameChecker : MonoBehaviour
     }
     public void PuzzleOnPlay(){
         puzzlePlayed = true;
-
     }
 
 
+
+    // Metodos para que otro script acceda a este valor
     public int GetAmountGamesPlayed(){
         // Metodo para que otro script acceda a este valor
         return amountGamesPlayed;
     }
 
-    public bool GetBool(bool boolToReturn){
-        // Metodo para que otro script acceda a este valor
-        return boolToReturn;
+    public bool GetParkingPlayed(){
+        return parkingPlayed;
+    }
+    public bool GetLaneRacePlayed(){
+        return laneRacePlayed;
+    }
+    public bool GetDeduceSignPlayed(){
+        return deduceSignPlayed;
+    }
+    public bool GetPuzzlePlayed(){
+        return puzzlePlayed;
+    }
+    public bool GetAlreadyPlayed(){
+        return alreadyPlayed;
     }
 
 }

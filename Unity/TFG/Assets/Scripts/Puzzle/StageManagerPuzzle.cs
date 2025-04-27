@@ -108,6 +108,7 @@ public class StageManagerPuzzle : MonoBehaviour
     {
         // Accedemos al singleton para comunicar que se ha iniciado este minijuego
         GameChecker.Instance.PuzzleOnPlay();
+        
         InitializeAll();
     }
 
