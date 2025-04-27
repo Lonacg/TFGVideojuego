@@ -84,8 +84,7 @@ public class SFXManagerPuzzle : MonoBehaviour
         PlaySFX(gotIt, volume: 0.5f);        
     }
     private void HandleOnLastShine(){
-        // Apagamos la musica de fondo y reproducimos el sonido de victoria
-        StartCoroutine(ChangeVolumeMusic(startVolume: audioSourceMusicGame.volume, endVolume: 0, audioSource: audioSourceMusicGame, animationTime: 1));
+        // Sonido brillante al mostrar la imagen del puzzle sin rayas
         PlaySFX(lastShine, volume: 1f);        
     }
 

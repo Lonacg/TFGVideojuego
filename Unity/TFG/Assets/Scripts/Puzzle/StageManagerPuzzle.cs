@@ -106,27 +106,11 @@ public class StageManagerPuzzle : MonoBehaviour
 
     void Awake()
     {
-        // Inicializamos los objetos de la escena como deben estar
-        fadeCircleViewEasy.SetActive(false);
-        fadeCircleViewMedium.SetActive(false);
-        fadeCircleViewHard.SetActive(false);
-        easyPuzzle.SetActive(false);
-        mediumPuzzle.SetActive(false);
-        hardPuzzle.SetActive(false);
-        handStamp.SetActive(true);
-        confettiParticles.SetActive(false);
-        fireworks.SetActive(false);
-
-
-
-        // Inicializamos las variables
-        movingSomePiece = false;
-        counter = 0;
-        counterText.text = counter.ToString();
-        spacePressed = false;
-
-
+        // Accedemos al singleton para comunicar que se ha iniciado este minijuego
+        GameChecker.Instance.PuzzleOnPlay();
+        InitializeAll();
     }
+
 
     void Update()
     {
@@ -182,7 +166,26 @@ public class StageManagerPuzzle : MonoBehaviour
     }
 
 
+    private void InitializeAll(){
+        // Inicializamos los objetos de la escena como deben estar
+        fadeCircleViewEasy.SetActive(false);
+        fadeCircleViewMedium.SetActive(false);
+        fadeCircleViewHard.SetActive(false);
+        easyPuzzle.SetActive(false);
+        mediumPuzzle.SetActive(false);
+        hardPuzzle.SetActive(false);
+        handStamp.SetActive(true);
+        confettiParticles.SetActive(false);
+        fireworks.SetActive(false);
 
+
+
+        // Inicializamos las variables
+        movingSomePiece = false;
+        counter = 0;
+        counterText.text = counter.ToString();
+        spacePressed = false;
+    }
 
 
     IEnumerator WaitAndActiveHand(){

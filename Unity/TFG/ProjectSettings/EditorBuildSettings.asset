@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DeduceSIgn.unity
     guid: a35462fd5d24efd4bb5f208cce463513
+  - enabled: 1
+    path: Assets/Scenes/Puzzle.unity
+    guid: a54d3d17ca02ce44994ebf298015adfb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0

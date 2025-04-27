@@ -2,12 +2,26 @@ using UnityEngine;
 
 public class GameChecker : MonoBehaviour
 {
+    [Header("Bool:")]
+    public bool parkingPlayed = false;
+    public bool laneRacePlayed = false;
+    public bool deduceSignPlayed = false;
+    public bool puzzlePlayed = false;
+    public bool alreadyPlayed = false;
+    
 
-    private bool parkingYes = false;
-    private bool laneRaceYes = false;
-    private bool deduceSignYes = false;
+    private bool parkingChanged = false;    
+    private bool laneRaceChanged = false;
+    private bool deduceSignChanged = false;
+    private bool puzzleChanged = false;
 
-    private int amountGamesPlayed = 0;
+
+
+
+    public int amountGamesPlayed = 0;
+
+
+
 
     public static GameChecker Instance { get; private set; } // Permitimos que se lea desde otros scripst pero solo se puede modificar desde este
 
@@ -24,38 +38,64 @@ public class GameChecker : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this);
         }
-
     }
 
 
 
-    public void ParkingPlayed(){
-        if(!parkingYes){
+    public void ParkingOnPlay(){
+        if(!parkingPlayed){
             amountGamesPlayed ++;
+            Debug.Log("Jugados:" + amountGamesPlayed);
+            parkingPlayed = true;
+            alreadyPlayed = false;
         }
-        parkingYes = true;
+        else{
+            alreadyPlayed = true;
+        }
+        
         
     }
 
-    public void LaneRacePlayed(){
-        if(!laneRaceYes){
+    public void LaneRaceOnPlay(){
+        if(!laneRacePlayed){
             amountGamesPlayed ++;
+            Debug.Log("Jugados:" + amountGamesPlayed);
+            laneRacePlayed = true;
+            alreadyPlayed = false;
         }
-        laneRaceYes = true;
+        else{
+            alreadyPlayed = true;
+        }
+        
 
     }
 
-    public void DeduceSignPlayed(){
-        if(!deduceSignYes){
+    public void DeduceSignOnPlay(){
+        if(!deduceSignPlayed){
             amountGamesPlayed ++;
+            Debug.Log("Jugados:" + amountGamesPlayed);
+            deduceSignPlayed = true;
+            alreadyPlayed = false;
         }
-        deduceSignYes = true;
+        else{
+            alreadyPlayed = true;
+        }        
+        
+    }
+    public void PuzzleOnPlay(){
+        puzzlePlayed = true;
+
     }
 
 
     public int GetAmountGamesPlayed(){
         // Metodo para que otro script acceda a este valor
         return amountGamesPlayed;
+    }
+
+    public bool GetBool(bool boolToReturn){
+        // Metodo para que otro script acceda a este valor
+        return boolToReturn;
     }
 
 }

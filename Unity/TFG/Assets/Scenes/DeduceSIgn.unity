@@ -1469,7 +1469,6 @@ MonoBehaviour:
   victoryView: {fileID: 595819526}
   fadeCircleView: {fileID: 5020492789264759694}
   roundObject: {fileID: 1004098125}
-  linesIntroDialogue: []
 --- !u!1001 &731354086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4448,7 +4447,7 @@ MonoBehaviour:
 
     |
 
-    |'
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d789df4f8ce4574f90c5672ff5fdbb7, type: 2}
   m_sharedMaterial: {fileID: 6553186247260280879, guid: 3d789df4f8ce4574f90c5672ff5fdbb7, type: 2}

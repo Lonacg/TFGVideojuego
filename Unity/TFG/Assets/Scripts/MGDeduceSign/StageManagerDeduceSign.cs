@@ -68,7 +68,7 @@ public class StageManagerDeduceSign : MonoBehaviour
     void Awake()
     {
         // Accedemos al singleton para comunicar que se ha iniciado este minijuego
-        GameChecker.Instance.DeduceSignPlayed();
+        GameChecker.Instance.DeduceSignOnPlay();
 
         // Inicializams las variables
         currentRound = 1;

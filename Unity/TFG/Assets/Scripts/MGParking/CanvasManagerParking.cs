@@ -44,7 +44,7 @@ public class CanvasManagerParking : MonoBehaviour
     void Awake()
     {   
         // Accedemos al singleton para comunicar que se ha iniciado este minijuego
-        GameChecker.Instance.LaneRacePlayed();
+        GameChecker.Instance.ParkingOnPlay();
 
         // Desactivamos el Script de Player para que no se pueda mover mientras esta el tutorial
         player.GetComponent<CarMovement>().enabled = false;

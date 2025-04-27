@@ -57,7 +57,7 @@ public class StageManagerLaneRace : MonoBehaviour
     void Awake()
     {
         // Accedemos al singleton para comunicar que se ha iniciado este minijuego
-        GameChecker.Instance.LaneRacePlayed();
+        GameChecker.Instance.LaneRaceOnPlay();
     }
 
     void OnEnable()
