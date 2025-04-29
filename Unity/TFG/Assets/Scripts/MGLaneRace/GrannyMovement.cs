@@ -216,23 +216,80 @@ public class GrannyMovement : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         ChangeAnimationGranny("StrongGesture", transitionTime: 0.2f); 
-        yield return new WaitForSeconds(0.2f);  // Para cuadran mejor el sonido de Tanan con el gesto de fuerza
+        yield return new WaitForSeconds(0.1f);  //  0.2f en total hasta el lanzamiento de OnGotIt para cuadrar mejor el sonido de Tanan con el gesto de fuerza
+
+        // StartCoroutine(ChangeHeightAnimation());
+        yield return new WaitForSeconds(0.1f);
+
+
         // Musica de conseguido
         if(OnGotIt != null)   
             OnGotIt();
         yield return new WaitForSeconds(1.5f);
 
 
-        ChangeAnimationGranny("Victory", transitionTime: 0.2f);  
+        ChangeAnimationGranny("Victory", transitionTime: 0.2f); 
+
+        // Lanzamos confeti
         yield return new WaitForSeconds(0.3f);
         if(OnParty != null)   
             OnParty();
         yield return new WaitForSeconds(1.1f);
+
 
         ChangeAnimationGranny("Idle");
         yield return new WaitForSeconds(0.2f);
         if(OnQuitGame != null)   
             OnQuitGame();
     }
+
+    // Corrutina descartada porque al mover la posicion de granny la camara que esta mirando hacia ella tambien se mueve y vibra.
+//     IEnumerator ChangeHeightAnimation(){
+
+//         // Bajamos la posicion de Granny en el suelo porque la animacion tiene mal puesto el pivote y parece que granny flota entre StrongGesture y Victory
+//         Vector3 newPosition = lanesParent.position;
+//         newPosition.y = -0.03f;
+//         lanesParent.transform.position = newPosition;  
+//         Debug.Log("0.03") ;
+//         yield return new WaitForSeconds(0.05f); 
+        
+//         newPosition.y = -0.06f;
+//         lanesParent.transform.position = newPosition;   
+//         Debug.Log("0.06") ;
+//         yield return new WaitForSeconds(0.05f); 
+
+//         newPosition.y = -0.08f;
+//         lanesParent.transform.position = newPosition;
+//         Debug.Log("0.08") ;
+//         yield return new WaitForSeconds(0.15f); 
+
+
+//         newPosition.y = -0.05f;
+//         lanesParent.transform.position = newPosition;
+//         Debug.Log("0.05") ;
+//         yield return new WaitForSeconds(0.15f);         
+  
+
+//         newPosition.y = -0.08f;
+//         lanesParent.transform.position = newPosition;
+//         Debug.Log("0.08") ;
+//         yield return new WaitForSeconds(0.75f);            
+
+
+//         newPosition.y = -0.05f;
+//         lanesParent.transform.position = newPosition;
+//         Debug.Log("0.05") ;
+//         yield return new WaitForSeconds(0.2f);
+
+//         newPosition.y = -0.03f;
+//         lanesParent.transform.position = newPosition;
+//         Debug.Log("0.03") ;
+//         yield return new WaitForSeconds(0.65f);
+
+//         // Restauramos la altura
+//         newPosition.y = 0;
+//         lanesParent.transform.position = newPosition;        
+//         Debug.Log("0") ;
+//     }
 
 }

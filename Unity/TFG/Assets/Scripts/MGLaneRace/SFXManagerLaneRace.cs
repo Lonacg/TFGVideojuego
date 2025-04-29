@@ -132,6 +132,7 @@ public class SFXManagerLaneRace : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return 0;
         }
+        audioSourceMusic.volume = 0;
     }
 
 }

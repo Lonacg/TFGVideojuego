@@ -122,6 +122,7 @@ public class SFXManagerDS : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return 0;
         }
+        audioSourceMusic.volume = 0;
     }
     
 }

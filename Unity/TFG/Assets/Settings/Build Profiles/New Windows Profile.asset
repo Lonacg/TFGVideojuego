@@ -16,10 +16,8 @@ MonoBehaviour:
   m_Subtarget: 2
   m_PlatformId: 4e3c793746204150860bf175a9a41a05
   m_PlatformBuildProfile:
-    rid: 6445301503503630408
+    rid: 6445301522235916288
   m_Scenes:
-  - m_enabled: 1
-    m_path: Assets/Scenes/Parking.unity
   - m_enabled: 1
     m_path: Assets/Scenes/LaneRace.unity
   - m_enabled: 1
@@ -32,7 +30,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 6445301503503630408
+    - rid: 6445301522235916288
       type: {class: WindowsPlatformSettings, ns: UnityEditor.WindowsStandalone, asm: UnityEditor.WindowsStandalone.Extensions}
       data:
         m_Development: 0

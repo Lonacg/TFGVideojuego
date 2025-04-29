@@ -27,7 +27,11 @@ public class MenuBehaviour : MonoBehaviour
     private bool puzzlePlayed= false;
 
 
+    public delegate void _OnMoveButtonDS();
+    public static event _OnMoveButtonDS OnMoveButtonDS;
 
+    public delegate void _OnFormulaAppearance();
+    public static event _OnFormulaAppearance OnFormulaAppearance;
 
 
 
@@ -45,6 +49,7 @@ public class MenuBehaviour : MonoBehaviour
         else{
             buttonsDS.transform.localPosition = new Vector3(0, -10.81f, 0);
         }
+
 
     }
 
@@ -144,8 +149,6 @@ public class MenuBehaviour : MonoBehaviour
 
     IEnumerator MoveDSButton(Vector3 endPosition){
 
-        // Añadir brillitos
-
         // Tiempo que tarda el fade in
         yield return new WaitForSeconds(1.4f);
 
@@ -153,6 +156,9 @@ public class MenuBehaviour : MonoBehaviour
         float elapsedTime = 0;
         float animationTime = 1;
         Vector3 startPosition = buttonsDS.transform.localPosition;
+
+        if(OnMoveButtonDS != null)                          
+            OnMoveButtonDS(); 
         while(elapsedTime < animationTime){
             
             buttonsDS.transform.localPosition = Vector3.Lerp(startPosition, endPosition, elapsedTime / animationTime);
@@ -170,13 +176,18 @@ public class MenuBehaviour : MonoBehaviour
     IEnumerator PuzzleAppearance(){
         yield return new WaitForSeconds(2.5f); // Tiempo (1) que tarda el boton DS en moverse + 1.5 de cambio de escena
 
+
+
         particles2.SetActive(false);
         particles1.SetActive(false);
         
-        firstButtonPuzzle.SetActive(true); // Se inicia con la escala en x en 0
+        firstButtonPuzzle.SetActive(true);     // Se inicia con la escala en x en 0
 
         float elapsedTime = 0;
         float animationTime = 1;
+
+        if(OnFormulaAppearance != null)                          
+            OnFormulaAppearance(); 
 
         while(elapsedTime < animationTime){
             float newScale = Mathf.Lerp(0, 1, elapsedTime / animationTime);
@@ -188,6 +199,7 @@ public class MenuBehaviour : MonoBehaviour
         firstButtonPuzzle.transform.localScale = new Vector3(1, 1, 1);
     }
 
+    
 }
 
 

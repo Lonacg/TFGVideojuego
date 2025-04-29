@@ -15,10 +15,11 @@ public class SetOperationParking : MonoBehaviour
     [SerializeField] private List<GameObject> parkingNumbers;
     [SerializeField] private List<GameObject> parkingLots;
     
-    [Header("Texts")]
+    [Header("Texts:")]
     [SerializeField] private TextMeshProUGUI operationFirstTryText;
-    [SerializeField] private TextMeshProUGUI operationSecondTryText;
+    [SerializeField] private GameObject operationSecondTry;
 
+    [Header("Variables:")]
     private int firstNumber;
     private int secondNumber;
     private int sol;
@@ -68,17 +69,14 @@ public class SetOperationParking : MonoBehaviour
             symbol = "-";
         }
 
-        // Establecemos el texto que tendra la operacion en formato lineal y en formato vertical
+        // Establecemos el texto que tendra la operacion en formato lineal
         textFirstTry = firstNumber + " " + symbol + " " + secondNumber;
-        textAfterFail = firstNumber + "\n" + symbol + " " + secondNumber;        
-
-        // Rellenamos con espacios a la izq para que el texto AfterFail quede bien representado (secondPart no es igual a la suma, firstPart si)
-        if(secondNumber < 100)
-            textAfterFail = firstNumber + "\n" + symbol + "  " + secondNumber;  
-
-        // Actualizamos la operacion en forma lineal y vertical
         operationFirstTryText.text = textFirstTry;
-        operationSecondTryText.text = textAfterFail;
+        
+        // Actualizamos la operacion en forma vertical
+        operationSecondTry.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "<mspace=60px>" + firstNumber;  // Poniendo <mspace=XXXpx>" delante monoespaciamos los numeros para que no se descoloquen, porque la fuenteno es monoespaciada (se puede usar gracias a haber importado TMP Essential Resources)
+        operationSecondTry.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "<mspace=60px>" + secondNumber;
+        operationSecondTry.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = symbol;
 
         //Debug.Log("Operacion: " + textFirstTry + " = " + sol);          
     }
