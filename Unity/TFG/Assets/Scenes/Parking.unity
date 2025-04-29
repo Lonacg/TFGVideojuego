@@ -6602,7 +6602,7 @@ MonoBehaviour:
   parkingNumbers: []
   parkingLots: []
   operationFirstTryText: {fileID: 1319238942}
-  operationSecondTry: {fileID: 0}
+  operationSecondTry: {fileID: 1797868050}
 --- !u!1001 &858531878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7315,7 +7315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1319238941
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8809,7 +8809,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1797868051
 RectTransform:
   m_ObjectHideFlags: 0

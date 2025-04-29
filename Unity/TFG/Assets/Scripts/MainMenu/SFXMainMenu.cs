@@ -17,6 +17,7 @@ public class SFXMainMenu : MonoBehaviour
     [SerializeField] private AudioClip clicButton;
     [SerializeField] private AudioClip movementDS;
     [SerializeField] private AudioClip formulaAppearance;
+    [SerializeField] private AudioClip quitButton;
 
     
 
@@ -61,8 +62,14 @@ public class SFXMainMenu : MonoBehaviour
         // Reproducimos el sonido de pulsacion y apagamos la musica de fondo
         StartCoroutine(StopMusic(endVolume: 0));
         PlaySFX(clicButton, volume: 0.3f); 
-
     }
+    
+    public void OnQuitButton(){
+        // Reproducimos el sonido de pulsacion y apagamos la musica de fondo
+        StartCoroutine(StopMusic(endVolume: 0));
+        PlaySFX(quitButton, volume: 1f); 
+    }
+
 
 
     public void PlaySFX(AudioClip audioClip, float volume = 1){

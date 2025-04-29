@@ -19,6 +19,12 @@ MonoBehaviour:
     rid: 6445301522235916288
   m_Scenes:
   - m_enabled: 1
+    m_path: Assets/Scenes/Cover.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/MainMenu.unity
+  - m_enabled: 1
+    m_path: Assets/Scenes/Parking.unity
+  - m_enabled: 1
     m_path: Assets/Scenes/LaneRace.unity
   - m_enabled: 1
     m_path: Assets/Scenes/DeduceSIgn.unity

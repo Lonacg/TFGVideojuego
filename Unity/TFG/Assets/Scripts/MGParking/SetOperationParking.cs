@@ -74,8 +74,8 @@ public class SetOperationParking : MonoBehaviour
         operationFirstTryText.text = textFirstTry;
         
         // Actualizamos la operacion en forma vertical
-        operationSecondTry.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "<mspace=60px>" + firstNumber;  // Poniendo <mspace=XXXpx>" delante monoespaciamos los numeros para que no se descoloquen, porque la fuenteno es monoespaciada (se puede usar gracias a haber importado TMP Essential Resources)
-        operationSecondTry.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "<mspace=60px>" + secondNumber;
+        operationSecondTry.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "<mspace=16px>" + firstNumber;  // Poniendo <mspace=XXXpx>" delante monoespaciamos los numeros para que no se descoloquen, porque la fuenteno es monoespaciada (se puede usar gracias a haber importado TMP Essential Resources)
+        operationSecondTry.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "<mspace=16px>" + secondNumber;
         operationSecondTry.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = symbol;
 
         //Debug.Log("Operacion: " + textFirstTry + " = " + sol);          
