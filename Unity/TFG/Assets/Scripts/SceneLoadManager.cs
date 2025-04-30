@@ -44,7 +44,8 @@ public class SceneLoadManager : MonoBehaviour
 
 
 
-    public void OnStartButton(){
+    public void OnStartButton(GameObject button){
+        StartCoroutine(ClickAnimation(button));
         StartCoroutine(LoadScene(sceneString: "MainMenu"));
     }
 
@@ -66,7 +67,7 @@ public class SceneLoadManager : MonoBehaviour
     }
 
     public void OnQuitButton(GameObject button){
-        StartCoroutine(ClickAnimation(button, seconds: 0.5f));
+        StartCoroutine(ClickAnimation(button));
         StartCoroutine(LoadScene(sceneString: "Cover"));
     }
 
@@ -97,29 +98,29 @@ public class SceneLoadManager : MonoBehaviour
     }
 
 
-    IEnumerator ClickAnimation(GameObject gObject, float seconds){
+    IEnumerator ClickAnimation(GameObject gObject, float scaleDecrease = 0.15f, float seconds = 0.25f){
         // Corrutina reutilizada de DeduceSign
         float originalScale = gObject.transform.localScale.x;
-        float desiredScale = originalScale - 0.15f;
+        float desiredScale = originalScale - scaleDecrease;
 
         float animTime = seconds / 2;
-        StartCoroutine(TransformSizeButtom(startSize: originalScale, endSize: desiredScale, animationTime: animTime));
+        StartCoroutine(TransformSizeButtom(gObject, startSize: originalScale, endSize: desiredScale, animationTime: animTime));
         yield return new WaitForSeconds(animTime);
-        StartCoroutine(TransformSizeButtom(startSize: desiredScale, endSize: originalScale, animationTime: animTime));
+        StartCoroutine(TransformSizeButtom(gObject, startSize: desiredScale, endSize: originalScale, animationTime: animTime));
     }
 
-    IEnumerator TransformSizeButtom(float startSize, float endSize, float animationTime){
+    IEnumerator TransformSizeButtom(GameObject gObject, float startSize, float endSize, float animationTime){
         // Funcion reutilizada de MGLaneRace
         float elapsedTime = 0;
 
         while(elapsedTime < animationTime){
             float newScale = Mathf.Lerp(startSize, endSize, elapsedTime / animationTime);
             
-            gameObject.transform.localScale = new Vector3(newScale, newScale, 1);
+            gObject.transform.localScale = new Vector3(newScale, newScale, 1);
             elapsedTime += Time.deltaTime;
             yield return 0;
         }
-        gameObject.transform.localScale = new Vector3(endSize, endSize, 1);;
+        gObject.transform.localScale = new Vector3(endSize, endSize, 1);;
     }
 
 
