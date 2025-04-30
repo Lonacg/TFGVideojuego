@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+
 public class CarMovement : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES
@@ -64,7 +66,8 @@ public class CarMovement : MonoBehaviour
     }
 
 
-    // MÉTODOS DE ESTA CLASE
+
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     private void SpeedUpEngine(){   
         // Para el sonido del motor en movimiento, clampeamos el valor para luego cambiar el pitch y que se oiga mas fuerte cuanto mas acelere
         engineSpeed = Mathf.Clamp01(engineSpeed + Time.deltaTime * 4);

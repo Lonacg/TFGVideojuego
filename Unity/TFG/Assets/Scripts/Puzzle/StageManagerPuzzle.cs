@@ -3,8 +3,11 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 
+
+
 public class StageManagerPuzzle : MonoBehaviour
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     [Header("Views:")]
     [SerializeField] private GameObject tutorialView;
     [SerializeField] private GameObject fadeCircleViewEasy;
@@ -19,10 +22,8 @@ public class StageManagerPuzzle : MonoBehaviour
     [SerializeField] private GameObject mediumPuzzle;
     [SerializeField] private GameObject hardPuzzle;
     [SerializeField] private GameObject handStamp;
-
     [SerializeField] private GameObject confettiParticles;
     [SerializeField] private GameObject fireworks;
-
 
     [Header("Sprites:")]
     [SerializeField] private Sprite easyBackground;
@@ -37,14 +38,16 @@ public class StageManagerPuzzle : MonoBehaviour
     
     [Header("Text:")]
     [SerializeField] private TextMeshProUGUI counterText;
+
     [Header("Variables:")]
     public bool movingSomePiece;        // Debe ser publica porque PieceCheck accede a ella
-    private int counter;
     public int transpositions;          // Debe ser publica porque PuzzleCheck accede a ella
+    private int counter;
     private bool spacePressed = false;
 
 
 
+    // DECLARACIÓN DE EVENTOS
     public delegate void _OnFadeToLevels();
     public static event _OnFadeToLevels OnFadeToLevels;
 
@@ -57,36 +60,54 @@ public class StageManagerPuzzle : MonoBehaviour
     public delegate void _OnLastShine();          
     public static event _OnLastShine OnLastShine;
 
-    void OnEnable()
+
+
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
+    void Awake()
     {
-        PieceCheck.OnMovingSomePiece += HandleOnMovingSomePiece;
-        PieceCheck.OnStartingMovement += HandleOnStartingMovement;
-        PuzzleCheck.OnGotIt += HandleOnGotIt;
+        // Accedemos al singleton para comunicar que se ha iniciado este minijuego
+        GameChecker.Instance.PuzzleOnPlay();
         
+        InitializeAll();
     }
 
+    void OnEnable()
+    {
+        PieceCheck.OnMovingSomePiece  += HandleOnMovingSomePiece;
+        PieceCheck.OnStartingMovement += HandleOnStartingMovement;
+        PuzzleCheck.OnGotIt           += HandleOnGotIt;
+    }
 
     void OnDisable()
     {
-        PieceCheck.OnMovingSomePiece -= HandleOnMovingSomePiece;
+        PieceCheck.OnMovingSomePiece  -= HandleOnMovingSomePiece;
         PieceCheck.OnStartingMovement -= HandleOnStartingMovement;
-        PuzzleCheck.OnGotIt -= HandleOnGotIt;
-        
+        PuzzleCheck.OnGotIt           -= HandleOnGotIt;
     }
 
+    void Update()
+    {
+        // Si la ventana de tutorial esta activada y pulsan espacio damos paso al inicio del juego (solo escuchamos el primer pulsado, para que no se retipa el lanzamiento del evento)
+        if(tutorialView.activeSelf && Input.GetKeyDown(KeyCode.Space) && !spacePressed){
+            spacePressed = true;
+            if(OnFadeToLevels != null)   
+                OnFadeToLevels();
+        }
+    }    
 
+
+
+    // MÉTODOS EN RESPUESTA A EVENTOS
     private void HandleOnMovingSomePiece(){
         // Cambiamos el bool al que acceden el resto de piezas para impedir o permitir su movimiento
         movingSomePiece = !movingSomePiece;
     }
-
 
     private void HandleOnStartingMovement(){
         // Aumentamos en uno el contador y actualizamos el valor en la escena
         counter += 1;
         counterText.text = counter.ToString();
     }
-
 
     private void HandleOnGotIt(){
         // Bloqueamos el movimiento y lanzamos los confeti
@@ -97,62 +118,31 @@ public class StageManagerPuzzle : MonoBehaviour
 
         // Esperamos y salimos al menu principal
         StartCoroutine(ReturnToMenu());
-
-
     }
 
 
 
-
-    void Awake()
-    {
-        // Accedemos al singleton para comunicar que se ha iniciado este minijuego
-        GameChecker.Instance.PuzzleOnPlay();
-        
-        InitializeAll();
-    }
-
-
-    void Update()
-    {
-        // Si la ventana de tutorial esta activada y pulsan espacio damos paso al inicio del juego (solo escuchamos el primer pulsado, para que no se retipa el lanzamiento del evento)
-        if(tutorialView.activeSelf && Input.GetKeyDown(KeyCode.Space) && !spacePressed){
-            spacePressed = true;
-            if(OnFadeToLevels != null)   
-                OnFadeToLevels();
-        }
-    }
-    
-
-    // Las funciones de respuesta a los botones deben ser publicas para que aparezcan en el inspector
-    public void OnEasyButton(){
-        StartLevelGame(easyPuzzle, easyBackground, sampleEasy, finalPuzzleEasy,fadeCircleViewEasy);
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
+    private void InitializeAll(){
+        // Inicializamos los objetos de la escena como deben estar
+        fadeCircleViewEasy.SetActive(false);
+        fadeCircleViewMedium.SetActive(false);
+        fadeCircleViewHard.SetActive(false);
+        easyPuzzle.SetActive(false);
         mediumPuzzle.SetActive(false);
         hardPuzzle.SetActive(false);
-        transpositions = 8;     // Son 9 piezas
+        handStamp.SetActive(true);
+        confettiParticles.SetActive(false);
+        fireworks.SetActive(false);
 
+        // Inicializamos las variables
+        movingSomePiece = false;
+        counter = 0;
+        counterText.text = counter.ToString();
+        spacePressed = false;
     }
-
-    public void OnMediumButton(){
-        StartLevelGame(mediumPuzzle, mediumBackground, sampleMedium, finalPuzzleMedium, fadeCircleViewMedium);
-        easyPuzzle.SetActive(false);
-        hardPuzzle.SetActive(false);
-        transpositions = 14;     // Son 16 piezas
-    }
-
-
-    public void OnHardButton(){
-        StartLevelGame(hardPuzzle, hardBackground, sampleHard, finalPuzzleHard, fadeCircleViewHard);
-        easyPuzzle.SetActive(false);
-        mediumPuzzle.SetActive(false);   
-        transpositions = 24;     // Son 25 piezas     
-    }
-
-
 
     void StartLevelGame(GameObject puzzle, Sprite background, Sprite sample, Sprite finalPuzzleSprite, GameObject fadeCircleView){
-
-
         // Cambiamos el sprite del fondo de estrellas,la imagen de muestra y la imagen del final del puzzle resuelto
         backgroundPuzzle.GetComponent<SpriteRenderer>().sprite = background;
         samplePuzzle.GetComponent<Image>().sprite = sample;
@@ -166,34 +156,39 @@ public class StageManagerPuzzle : MonoBehaviour
             OnFadeToPlay(fadeCircleView);
     }
 
-
-    private void InitializeAll(){
-        // Inicializamos los objetos de la escena como deben estar
-        fadeCircleViewEasy.SetActive(false);
-        fadeCircleViewMedium.SetActive(false);
-        fadeCircleViewHard.SetActive(false);
-        easyPuzzle.SetActive(false);
+    public void OnEasyButton(){
+        // Funcion en respuesta al boton del canvas, se ejecuta con un evento interno asi que debe ser publica
+        StartLevelGame(easyPuzzle, easyBackground, sampleEasy, finalPuzzleEasy,fadeCircleViewEasy);
         mediumPuzzle.SetActive(false);
         hardPuzzle.SetActive(false);
-        handStamp.SetActive(true);
-        confettiParticles.SetActive(false);
-        fireworks.SetActive(false);
+        transpositions = 8;     // Son 9 piezas
+    }
 
+    public void OnMediumButton(){
+        // Funcion en respuesta al boton del canvas, se ejecuta con un evento interno asi que debe ser publica
+        StartLevelGame(mediumPuzzle, mediumBackground, sampleMedium, finalPuzzleMedium, fadeCircleViewMedium);
+        easyPuzzle.SetActive(false);
+        hardPuzzle.SetActive(false);
+        transpositions = 14;     // Son 16 piezas
+    }
 
-
-        // Inicializamos las variables
-        movingSomePiece = false;
-        counter = 0;
-        counterText.text = counter.ToString();
-        spacePressed = false;
+    public void OnHardButton(){
+        // Funcion en respuesta al boton del canvas, se ejecuta con un evento interno asi que debe ser publica
+        StartLevelGame(hardPuzzle, hardBackground, sampleHard, finalPuzzleHard, fadeCircleViewHard);
+        easyPuzzle.SetActive(false);
+        mediumPuzzle.SetActive(false);   
+        transpositions = 24;     // Son 25 piezas     
     }
 
 
+
+    // CORRUTINAS
     IEnumerator WaitAndActiveHand(){
         yield return new WaitForSeconds(1f);
         
         handStamp.GetComponent<Animator>().SetTrigger("HandIn");
     }
+
     IEnumerator ReturnToMenu(){
         // Espera de 6.5 seg en total antes de salir
         yield return new WaitForSeconds(4f);
@@ -205,7 +200,6 @@ public class StageManagerPuzzle : MonoBehaviour
         
         yield return new WaitForSeconds(3.5f);
         
-
         // Evento para que Load Scene vuelva a la scena del menu principal
         if(OnReturnToMenu != null)  
             OnReturnToMenu();  

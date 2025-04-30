@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
+
+
 public class ButtonBehaviour : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES
@@ -76,13 +78,15 @@ public class ButtonBehaviour : MonoBehaviour
     }
 
 
+
     // MÉTODOS EN RESPUESTA A EVENTOS
     private void HandleOnChangeBoolCanChoose(){
         canChooseButton = !canChooseButton;
     }
 
 
-    // MÉTODOS DE ESTA CLASE
+
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     public void ChangeButtonColor(Color newColor){
         Vector4 blackboardColor = new Vector4(0.063f, 0.29f, 0.386f, 1);
         spriteRendererBase.color = newColor;
@@ -91,6 +95,7 @@ public class ButtonBehaviour : MonoBehaviour
         else
             spriteRendererSign.color = blackboardColor;
     }
+
 
 
     // CORRUTINAS
@@ -106,7 +111,7 @@ public class ButtonBehaviour : MonoBehaviour
     }
 
     IEnumerator TransformSizeButtom(float startSize, float endSize, float animationTime){
-        // Funcion reutilizada de MGLaneRace
+        // Corrutina reutilizada de MGLaneRace
         float elapsedTime = 0;
 
         while(elapsedTime < animationTime){

@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
+
+
 public class SFXManagerLaneRace : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES
@@ -35,7 +37,6 @@ public class SFXManagerLaneRace : MonoBehaviour
         TriggerGate.OnCorrectSol       += HandleOnCorrectSol;
         TriggerGate.OnWrongSol         += HandleOnWrongSol;
         GrannyMovement.OnGotIt         += HandleOnGotIt;
-
     }
 
     private void OnDisable()
@@ -58,10 +59,10 @@ public class SFXManagerLaneRace : MonoBehaviour
 
 
 
-    // MÉTODOS EN RESPUESTA A EVENTOS
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     private void HandleOnHi(){
         // Sonido de saludo
-        // PlaySFX(hi, volume: 0.9f);    // Lo quitamos de momento
+        // PlaySFX(hi, volume: 0.9f);    // Lo dejamos desactivado de momento porque no queda muy bien el sonido, la boca de granny no se mueve
     }
 
     private void HandleOnReady(){
@@ -94,7 +95,6 @@ public class SFXManagerLaneRace : MonoBehaviour
         PlaySFX(wrongAnswer);        
     }
 
-
     private void HandleOnGotIt(){
         // Apagamos la música de fondo y repoducimos el sonido de victoria final con el conseguido
         StartCoroutine(StopMusic(endVolume: 0f));
@@ -103,7 +103,7 @@ public class SFXManagerLaneRace : MonoBehaviour
 
 
 
-    // MÉTODOS DE ESTA CLASE
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     public void PlaySFX(AudioClip audioClip, float volume = 1){
         // Impedimos que dos clips iguales puedan sonar en el mismo momento y se acople el sonido (se multiplicaria el volumen de ese sonido)
         if (previousAudioClip == audioClip){ 

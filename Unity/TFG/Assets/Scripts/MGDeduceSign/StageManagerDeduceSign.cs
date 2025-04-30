@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 
+
 public class StageManagerDeduceSign : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES
@@ -83,14 +84,14 @@ public class StageManagerDeduceSign : MonoBehaviour
     {
         ButtonBehaviour.OnSignChosen += HandleOnSignChosen;
         RoundBehaviour.OnShowAttempt += HandleOnShowAttempt;
-        AttemptBehaviour.OnPlaying += HandleOnPlaying;
+        AttemptBehaviour.OnPlaying   += HandleOnPlaying;
     }
 
     void OnDisable()
     {
         ButtonBehaviour.OnSignChosen -= HandleOnSignChosen;
         RoundBehaviour.OnShowAttempt -= HandleOnShowAttempt;
-        AttemptBehaviour.OnPlaying -= HandleOnPlaying;
+        AttemptBehaviour.OnPlaying   -= HandleOnPlaying;
     }
 
     void Start()
@@ -146,7 +147,7 @@ public class StageManagerDeduceSign : MonoBehaviour
 
 
 
-    // MÉTODOS DE ESTA CLASE
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     public void UpdateNumbers(){  
 
         // Buscamos los nuevos numeros generados en el script SetOperation
@@ -176,7 +177,7 @@ public class StageManagerDeduceSign : MonoBehaviour
     public void CheckAnswer(GameObject goSign){
         
         // Solucion correcta
-        if(goSign.CompareTag(answerSign)){        // Terrible para leer: if((goSign.tag == "Addition" && answerSign == 0) || (goSign.tag == "Subtraction" && answerSign == 1) || (goSign.tag == "Multiplication" && answerSign == 2) || (goSign.tag == "Division" && answerSign == 3));
+        if(goSign.CompareTag(answerSign)){        
 
             ManageCorrectAnswer(goSign);
             
@@ -184,7 +185,8 @@ public class StageManagerDeduceSign : MonoBehaviour
                 OnCorrectAnswer();
             }
         }
-        else{ // Solucion incorrecta
+        else{ 
+            // Solucion incorrecta
             attemptsNumber --;
             ManageWrongAnswer(goSign);
 
@@ -254,7 +256,6 @@ public class StageManagerDeduceSign : MonoBehaviour
         goSign.GetComponent<ButtonBehaviour>().ChangeButtonColor(Color.green);
 
     }
-
 
     public void MakeButtonRed(GameObject goSign){
         // Cambiamos el boton a rojo y deshabilitamos el script
@@ -365,7 +366,6 @@ public class StageManagerDeduceSign : MonoBehaviour
         }
         errorSheet.SetActive(false);
     }
-
 
     IEnumerator LaunchConfetti(){
         yield return new WaitForSeconds(animationsTime * 2);    // 1 segundo

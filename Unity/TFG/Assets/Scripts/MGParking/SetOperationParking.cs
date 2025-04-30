@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
-using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
+
+
 
 public class SetOperationParking : MonoBehaviour
 {
@@ -44,7 +45,7 @@ public class SetOperationParking : MonoBehaviour
 
 
 
-    // MÉTODOS DE ESTA CLASE
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     public void GenerateOperation(){
         // Generamos un numero aleatorio para decidir si sera una suma o una resta
         int i = Random.Range(0,2);

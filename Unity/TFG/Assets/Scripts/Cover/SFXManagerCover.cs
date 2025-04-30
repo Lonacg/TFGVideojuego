@@ -1,19 +1,21 @@
 using UnityEngine;
 
+
+
 public class SFXManagerCover : MonoBehaviour
 {
-
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     [Header("Audio Sources:")]
     private AudioSource audioSourceSFX;
     private AudioClip previousAudioClip;
     private float previousACTimeStamp;
-
 
     [Header("Audio Clips:")]
     [SerializeField] private AudioClip clicButton;
 
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void Start()
     {
         audioSourceSFX = GetComponent<AudioSource>();
@@ -21,13 +23,13 @@ public class SFXManagerCover : MonoBehaviour
 
 
 
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     public void OnPlayPressed(){
         // Reproducimos el sonido de pulsacion
         PlaySFX(clicButton, volume: 0.5f); 
     }
 
-
-        public void PlaySFX(AudioClip audioClip, float volume = 1){
+    public void PlaySFX(AudioClip audioClip, float volume = 1){
         // Impedimos que dos clips iguales puedan sonar en el mismo momento y se acople el sonido (se multiplicaria el volumen de ese sonido)
         if (previousAudioClip == audioClip){ 
             if(Time.time - previousACTimeStamp < 0.05f){

@@ -2,6 +2,8 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
+
+
 public class ErrorXBehaviour : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES

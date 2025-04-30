@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+
 public class SetOperationDeduceSign : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES
@@ -19,7 +21,7 @@ public class SetOperationDeduceSign : MonoBehaviour
 
 
 
-    // MÉTODOS DE ESTA CLASE
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     public void GenerateOperation(){
         int operatorChosen = Random.Range(0,4);
         
@@ -51,7 +53,6 @@ public class SetOperationDeduceSign : MonoBehaviour
                 resultNumber = firstNumber * secondNumber;
 
                 answerSign = "Multiplication";
-
 
                 // DIVISION
                 if(operatorChosen == 3 ){

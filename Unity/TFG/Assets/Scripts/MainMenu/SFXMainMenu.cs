@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
+
+
 public class SFXMainMenu : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES
@@ -19,21 +21,19 @@ public class SFXMainMenu : MonoBehaviour
     [SerializeField] private AudioClip formulaAppearance;
     [SerializeField] private AudioClip quitButton;
 
-    
-
 
 
     // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     private void OnEnable()
     {
-        MenuBehaviour.OnMoveButtonDS      += HandleOnMoveButtonDS;
-        MenuBehaviour.OnFormulaAppearance += HandleOnFormulaAppearance;
+        StageManagerMainMenu.OnMoveButtonDS      += HandleOnMoveButtonDS;
+        StageManagerMainMenu.OnFormulaAppearance += HandleOnFormulaAppearance;
     }
 
     private void OnDisable()
     {
-        MenuBehaviour.OnMoveButtonDS      -= HandleOnMoveButtonDS;
-        MenuBehaviour.OnFormulaAppearance -= HandleOnFormulaAppearance;         
+        StageManagerMainMenu.OnMoveButtonDS      -= HandleOnMoveButtonDS;
+        StageManagerMainMenu.OnFormulaAppearance -= HandleOnFormulaAppearance;         
     }
 
     void Start()
@@ -56,21 +56,18 @@ public class SFXMainMenu : MonoBehaviour
 
 
 
-    // MÉTODOS DE ESTA CLASE
-
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     public void OnButtonPressed(){
-        // Reproducimos el sonido de pulsacion y apagamos la musica de fondo
+        // Se llama internamente desde el evento del boton, luego debe ser publica
         StartCoroutine(StopMusic(endVolume: 0));
         PlaySFX(clicButton, volume: 0.3f); 
     }
     
     public void OnQuitButton(){
-        // Reproducimos el sonido de pulsacion y apagamos la musica de fondo
+        // Se llama internamente desde el evento del boton, luego debe ser publica
         StartCoroutine(StopMusic(endVolume: 0));
         PlaySFX(quitButton, volume: 1f); 
     }
-
-
 
     public void PlaySFX(AudioClip audioClip, float volume = 1){
         // Impedimos que dos clips iguales puedan sonar en el mismo momento y se acople el sonido (se multiplicaria el volumen de ese sonido)
@@ -104,4 +101,3 @@ public class SFXMainMenu : MonoBehaviour
     }
     
 }
-

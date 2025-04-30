@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+
 public class CollisionCone : MonoBehaviour
 {
     // DECLARACIÓN DE EVENTOS

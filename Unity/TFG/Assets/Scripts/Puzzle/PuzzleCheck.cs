@@ -1,84 +1,37 @@
 using System.Collections.Generic;
-using System.Collections;
 using UnityEngine;
+
+
 
 public class PuzzleCheck : MonoBehaviour
 {
-
-
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     [Header("Game Objects:")]
     [SerializeField] private GameObject stageManager;
 
-
-
-
-    public delegate void _OnGotIt();
-    public static event _OnGotIt OnGotIt;
-
-
+    [Header("Dictionarys:")]
     public Dictionary<string, Vector3> puzzleSolution = new();
     public Dictionary<string, Vector3> puzzleMerged = new();
     public Dictionary<string, Vector3> puzzlePlaying = new();   // Añadimos esta variable para guardar la configuracion del empiece, por si queremos poner el boton de deshacer todo en el futuro
 
 
 
+    // DECLARACIÓN DE EVENTOS
+    public delegate void _OnGotIt();
+    public static event _OnGotIt OnGotIt;
+
+
+
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void OnEnable()
     {
         PieceCheck.OnMoveMade += HandleOnMoveMade;
-
-        // StartCoroutine(VictoryProof());
     }
 
     void OnDisable()
     {
         PieceCheck.OnMoveMade -= HandleOnMoveMade;
     }
-
-
-
-    private void HandleOnMoveMade(GameObject pieceMoved){
-        ExchangePositionWithEmpty(pieceMoved);
-
-        bool gotIt = CheckDictionary(newDictionary: puzzlePlaying);
-        if(gotIt){
-            if(OnGotIt != null)                          
-                OnGotIt();
-        }
-
-    }
-
-
-    private bool CheckDictionary(Dictionary<string, Vector3>  newDictionary){
-        // Empezamos a comprobar los primeros numeros, que son las fichas superiores, y las ultimas en ser colocadas para resolverlo
-        for( int piece = 0 ; piece < gameObject.transform.childCount ; piece++ ){
-
-            newDictionary.TryGetValue(piece.ToString(), out Vector3 vectorPiece);
-            puzzleSolution.TryGetValue(piece.ToString(), out Vector3 vectorCorrect);
-
-            // Si una sola clave es diferente paramos de comprobar, ya son distintos
-            if(vectorPiece != vectorCorrect){
-                return false;
-            }
-        }
-        return true;
-
-    }
-
-
-
-    private void ExchangePositionWithEmpty(GameObject pieceMoved){
-
-        // Guardamos los valores de los vectores posicion de cada ficha (tiene los valores de antes de moverse)
-        puzzlePlaying.TryGetValue(pieceMoved.name, out Vector3 vectorPieceMoved);
-        puzzlePlaying.TryGetValue( "0", out Vector3 vectorPieceEmpty );
-
-        // Intercambiamos los vectores posicion de cada ficha en el diccionario (para que tengan los valores de despues de moverse)
-        puzzlePlaying[pieceMoved.name] = vectorPieceEmpty;
-        puzzlePlaying["0"] = vectorPieceMoved; 
-
-    }
-
-
 
     void Start()
     {
@@ -94,9 +47,49 @@ public class PuzzleCheck : MonoBehaviour
         puzzleMerged = new Dictionary<string, Vector3>(puzzleSolution);    // Asignamos a puzzleMerged los mismos datos que puzzleSolution, pero en memoria diferente (si no apuntan a lo mismo, y al modificar uno se modifica el otro)
 
         MergePuzzle();
-
     }
 
+
+
+    // MÉTODOS EN RESPUESTA A EVENTOS
+    private void HandleOnMoveMade(GameObject pieceMoved){
+        ExchangePositionWithEmpty(pieceMoved);
+
+        bool gotIt = CheckDictionary(newDictionary: puzzlePlaying);
+        if(gotIt){
+            if(OnGotIt != null)                          
+                OnGotIt();
+        }
+    }
+
+
+
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
+    private bool CheckDictionary(Dictionary<string, Vector3>  newDictionary){
+        // Empezamos a comprobar los primeros numeros, que son las fichas superiores, y las ultimas en ser colocadas para resolverlo
+        for( int piece = 0 ; piece < gameObject.transform.childCount ; piece++ ){
+
+            newDictionary.TryGetValue(piece.ToString(), out Vector3 vectorPiece);
+            puzzleSolution.TryGetValue(piece.ToString(), out Vector3 vectorCorrect);
+
+            // Si una sola clave es diferente paramos de comprobar, ya son distintos
+            if(vectorPiece != vectorCorrect){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void ExchangePositionWithEmpty(GameObject pieceMoved){
+
+        // Guardamos los valores de los vectores posicion de cada ficha (tiene los valores de antes de moverse)
+        puzzlePlaying.TryGetValue(pieceMoved.name, out Vector3 vectorPieceMoved);
+        puzzlePlaying.TryGetValue( "0", out Vector3 vectorPieceEmpty );
+
+        // Intercambiamos los vectores posicion de cada ficha en el diccionario (para que tengan los valores de despues de moverse)
+        puzzlePlaying[pieceMoved.name] = vectorPieceEmpty;
+        puzzlePlaying["0"] = vectorPieceMoved; 
+    }
 
     private void MergePuzzle(){
 
@@ -130,7 +123,6 @@ public class PuzzleCheck : MonoBehaviour
         if(samePuzzle){
             MergePuzzle();
         }
-
     }
 
     private int ChooseRandom(int samplePiece){
@@ -144,14 +136,6 @@ public class PuzzleCheck : MonoBehaviour
         else{
             return pieceRandom;
         }
-
-    }
-
-
-    IEnumerator VictoryProof(){
-        yield return new WaitForSeconds(2);
-        if(OnGotIt != null)                          
-                OnGotIt();
     }
 
 }

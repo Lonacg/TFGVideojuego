@@ -2,17 +2,20 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+
 public class SceneLoadManager : MonoBehaviour
 {
+    // DECLARACIÓN DE ELEMENTOS GLOBALES    
     private GameObject fadeScene;
 
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void Awake()
     {
         fadeScene = transform.GetChild(0).gameObject;
     }
-
 
     void OnEnable()
     {
@@ -34,21 +37,18 @@ public class SceneLoadManager : MonoBehaviour
 
     
 
+    // MÉTODOS EN RESPUESTA A EVENTOS
     void HandleOnReturnToMenu(){
         StartCoroutine(LoadScene(sceneString: "MainMenu"));
     }
 
-    void HandleOnReturnToCover(){
-        StartCoroutine(LoadScene(sceneString: "Cover"));
-    }
 
 
-
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE (pulsacion de botones de la portada y el menu principal)
     public void OnStartButton(GameObject button){
         StartCoroutine(ClickAnimation(button));
         StartCoroutine(LoadScene(sceneString: "MainMenu"));
     }
-
 
     public void OnLoadParkingButton(){
         StartCoroutine(LoadScene(sceneString: "Parking"));
@@ -68,15 +68,17 @@ public class SceneLoadManager : MonoBehaviour
 
     public void OnQuitButton(GameObject button){
         StartCoroutine(ClickAnimation(button));
+        
+        // Accedemos al singleton para comunicar que se ha iniciado este minijuego
+        GameChecker.Instance.RestartGame();
+
+        // Cargamos la escena con la portada
         StartCoroutine(LoadScene(sceneString: "Cover"));
     }
 
 
 
-
-
-
-
+    // CORRUTINAS
     IEnumerator LoadScene(string sceneString){
         // Situamos el objeto Fade en el orden uno para que se muestre delante del canvas y se vea el oscurecimiento de la pantalla
         fadeScene.GetComponent<Canvas>().sortingOrder = 1;
@@ -87,7 +89,6 @@ public class SceneLoadManager : MonoBehaviour
 
         // Cargamos la escena
         SceneManager.LoadScene(sceneString);
-
     }
 
     IEnumerator HideFadeBehind(){
@@ -96,7 +97,6 @@ public class SceneLoadManager : MonoBehaviour
         // Situamos el Objeto Face en el orden 0 para que se quede detras del canvas con los botones y que estos puedan pulsarse
         fadeScene.GetComponent<Canvas>().sortingOrder = -3;
     }
-
 
     IEnumerator ClickAnimation(GameObject gObject, float scaleDecrease = 0.15f, float seconds = 0.25f){
         // Corrutina reutilizada de DeduceSign
@@ -110,7 +110,7 @@ public class SceneLoadManager : MonoBehaviour
     }
 
     IEnumerator TransformSizeButtom(GameObject gObject, float startSize, float endSize, float animationTime){
-        // Funcion reutilizada de MGLaneRace
+        // Corrutina reutilizada de MGLaneRace
         float elapsedTime = 0;
 
         while(elapsedTime < animationTime){

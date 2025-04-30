@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+
 public class TriggerFinalGate : MonoBehaviour
 {
     // DECLARACIÓN DE EVENTOS

@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
+
+
 public class GrannyMovement : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES
@@ -146,7 +148,7 @@ public class GrannyMovement : MonoBehaviour
 
 
 
-    // MÉTODOS DE ESTA CLASE
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     public void FootstepDone(){
         if(OnFootstepSound != null)   
             OnFootstepSound();

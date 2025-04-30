@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
+
+
 public class GroundMovement : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES

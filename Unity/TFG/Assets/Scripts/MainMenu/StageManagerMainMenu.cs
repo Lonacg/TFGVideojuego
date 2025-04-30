@@ -1,10 +1,12 @@
 using UnityEngine;
 using System.Collections;
 
-public class MenuBehaviour : MonoBehaviour
-{
-    [Header("Game Objects:")]
 
+
+public class StageManagerMainMenu : MonoBehaviour
+{
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
+    [Header("Game Objects:")]
     [SerializeField] private GameObject buttonsDS;
     [SerializeField] private GameObject firstButtonParking;
     [SerializeField] private GameObject secondButtonParking;
@@ -23,10 +25,11 @@ public class MenuBehaviour : MonoBehaviour
     private bool parkingPlayed = false;
     private bool laneRacePlayed = false;
     private bool deduceSignPlayed = false;
-
     private bool puzzlePlayed= false;
 
 
+
+    // DECLARACIÓN DE EVENTOS
     public delegate void _OnMoveButtonDS();
     public static event _OnMoveButtonDS OnMoveButtonDS;
 
@@ -35,9 +38,9 @@ public class MenuBehaviour : MonoBehaviour
 
 
 
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void Start()
     {
-        
         UpdateVariablesGameChecker();
 
         UpdateButtons();
@@ -49,11 +52,11 @@ public class MenuBehaviour : MonoBehaviour
         else{
             buttonsDS.transform.localPosition = new Vector3(0, -10.81f, 0);
         }
-
-
     }
 
 
+
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     private void UpdateButtons(){
 
         if(parkingPlayed){
@@ -72,10 +75,8 @@ public class MenuBehaviour : MonoBehaviour
             secondButtonPuzzle.SetActive(true);
             firstButtonPuzzle.SetActive(false);
         }
-        
     }
 
-    
     private void UpdateMovementDS(){
 
         alreadyPlayed = GameChecker.Instance.GetAlreadyPlayed();
@@ -129,12 +130,9 @@ public class MenuBehaviour : MonoBehaviour
                         buttonsDS.transform.localPosition = new Vector3(0, -10.81f, 0);
                         firstButtonPuzzle.SetActive(true);
                     }
-                
             }            
-
         }
     }
-
 
     private void UpdateVariablesGameChecker(){
         amountGamesPlayed = GameChecker.Instance.GetAmountGamesPlayed();
@@ -147,6 +145,7 @@ public class MenuBehaviour : MonoBehaviour
 
 
 
+    // CORRUTINAS
     IEnumerator MoveDSButton(Vector3 endPosition){
 
         // Tiempo que tarda el fade in
@@ -169,14 +168,8 @@ public class MenuBehaviour : MonoBehaviour
         buttonsDS.transform.localPosition = endPosition;
     }
 
-
-
-
-
     IEnumerator PuzzleAppearance(){
         yield return new WaitForSeconds(2.5f); // Tiempo (1) que tarda el boton DS en moverse + 1.5 de cambio de escena
-
-
 
         particles2.SetActive(false);
         particles1.SetActive(false);
@@ -198,8 +191,5 @@ public class MenuBehaviour : MonoBehaviour
         }
         firstButtonPuzzle.transform.localScale = new Vector3(1, 1, 1);
     }
-
     
 }
-
-

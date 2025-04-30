@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
+
+
 public class SFXManagerParking : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES
@@ -89,7 +91,7 @@ public class SFXManagerParking : MonoBehaviour
 
 
 
-    // MÉTODOS DE ESTA CLASE
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     public void PlaySFX(AudioClip audioClip, float volume = 1){
         // Impedimos que dos clips iguales puedan sonar en el mismo momento y se acople el sonido (se multiplicaria el volumen de ese sonido)
         if (previousAudioClip == audioClip){ 

@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 
 
+
 public class SetOperationLaneRace : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES
@@ -44,7 +45,7 @@ public class SetOperationLaneRace : MonoBehaviour
 
 
 
-    // MÉTODOS DE ESTA CLASE
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     public void GenerateOperation(){
 
         operatorChosen = Random.Range(0,4);
@@ -61,7 +62,6 @@ public class SetOperationLaneRace : MonoBehaviour
 
             // Soluciones incorrectas
             wrongSols = IncorrectAdditionSubtractionOrDivision();
-
         }
         else {
             // RESTA  
@@ -114,7 +114,6 @@ public class SetOperationLaneRace : MonoBehaviour
             i ++;
             num ++;    
         }
-
         wrongSols = ChooseSomeWrong(nElements);
 
         return wrongSols;

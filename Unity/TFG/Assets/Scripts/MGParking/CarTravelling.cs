@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
+
+
 public class CarTravelling : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES
@@ -25,7 +27,7 @@ public class CarTravelling : MonoBehaviour
 
 
 
-    // MÉTODOS DE ESTA CLASE
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     void RestartPosition(){
         transform.localPosition = startPosition;
         gameObject.SetActive(false);

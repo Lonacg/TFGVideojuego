@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 
+
 public class CameraManager : MonoBehaviour  
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES
@@ -95,7 +96,6 @@ public class CameraManager : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return 0;
         }
-
 
         if(firstMovement){
             // Vuelta a la posicion original

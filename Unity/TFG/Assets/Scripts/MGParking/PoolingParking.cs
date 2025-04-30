@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
+
+
 public class PoolingParking : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES
@@ -17,7 +19,7 @@ public class PoolingParking : MonoBehaviour
 
     
 
-    // MÉTODOS DE ESTA CLASE
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     void FillCarsRoadArray(){
         // Rellenamos el array con los hijos que tiene este objeto en la escena
         int maxCars = transform.childCount;

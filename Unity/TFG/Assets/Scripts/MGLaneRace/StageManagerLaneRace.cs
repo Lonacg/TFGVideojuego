@@ -3,6 +3,7 @@ using TMPro;
 using System.Collections;
 
 
+
 public class StageManagerLaneRace : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES
@@ -62,26 +63,26 @@ public class StageManagerLaneRace : MonoBehaviour
 
     void OnEnable()
     {
-        GrannyMovement.OnGo += HandleOnGo;
-        TriggerGate.OnCorrectSol += HandleOnCorrectSol;
-        TriggerGate.OnWrongSol += HandleOnWrongSol;
+        GrannyMovement.OnGo                  += HandleOnGo;
+        TriggerGate.OnCorrectSol             += HandleOnCorrectSol;
+        TriggerGate.OnWrongSol               += HandleOnWrongSol;
         TriggerIncreaseCurrentGround.OnIncreaseCurrentGround += HandleOnIncreaseCurrentGround;
         TriggerNextOperation.OnNextOperation += HandleOnNextOperation;
-        TriggerExtraTerrain.OnNewGround += HandleOnNewGround;
-        GrannyMovement.OnParty += HandleOnParty;
-        GrannyMovement.OnQuitGame += HandleOnQuitGame;
+        TriggerExtraTerrain.OnNewGround      += HandleOnNewGround;
+        GrannyMovement.OnParty               += HandleOnParty;
+        GrannyMovement.OnQuitGame            += HandleOnQuitGame;
     }
 
     void OnDisable()
     {
-        GrannyMovement.OnGo -= HandleOnGo;
-        TriggerGate.OnCorrectSol -= HandleOnCorrectSol;
-        TriggerGate.OnWrongSol -= HandleOnWrongSol;
+        GrannyMovement.OnGo                  -= HandleOnGo;
+        TriggerGate.OnCorrectSol             -= HandleOnCorrectSol;
+        TriggerGate.OnWrongSol               -= HandleOnWrongSol;
         TriggerIncreaseCurrentGround.OnIncreaseCurrentGround -= HandleOnIncreaseCurrentGround;
         TriggerNextOperation.OnNextOperation -= HandleOnNextOperation;
-        TriggerExtraTerrain.OnNewGround -= HandleOnNewGround;
-        GrannyMovement.OnParty -= HandleOnParty;
-        GrannyMovement.OnQuitGame -= HandleOnQuitGame;
+        TriggerExtraTerrain.OnNewGround      -= HandleOnNewGround;
+        GrannyMovement.OnParty               -= HandleOnParty;
+        GrannyMovement.OnQuitGame            -= HandleOnQuitGame;
     }
 
     void Start()
@@ -103,7 +104,7 @@ public class StageManagerLaneRace : MonoBehaviour
     
 
 
-    // MÉTODOS EN RESPUESTA A EVENTOS
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     private void HandleOnGo(){
         StartCoroutine(WaitXSecondAndChangeOperation(seconds: 1.1f));
     }

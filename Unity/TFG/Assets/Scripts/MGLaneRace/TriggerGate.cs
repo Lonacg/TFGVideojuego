@@ -1,6 +1,7 @@
 using UnityEngine;
 
 
+
 public class TriggerGate : MonoBehaviour
 {
     // DECLARACIÓN DE EVENTOS

@@ -4,6 +4,8 @@ using TMPro;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
+
+
 public class CanvasManagerLaneRace : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES

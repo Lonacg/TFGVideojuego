@@ -31,16 +31,16 @@ public class AttemptBehaviour : MonoBehaviour
         ShowAttempt();
 
         // Eventos:
-        StageManagerDeduceSign.OnNewRound += HandleOnNewRound;
+        StageManagerDeduceSign.OnNewRound    += HandleOnNewRound;
         StageManagerDeduceSign.OnWrongAnswer += HandleOnWrongAnswer;
-        StageManagerDeduceSign.OnFadeOutAll += HandleOnFadeOutAll;
+        StageManagerDeduceSign.OnFadeOutAll  += HandleOnFadeOutAll;
     }
 
     void OnDisable()
     {
-        StageManagerDeduceSign.OnNewRound -= HandleOnNewRound;
+        StageManagerDeduceSign.OnNewRound    -= HandleOnNewRound;
         StageManagerDeduceSign.OnWrongAnswer -= HandleOnWrongAnswer;
-        StageManagerDeduceSign.OnFadeOutAll -= HandleOnFadeOutAll;
+        StageManagerDeduceSign.OnFadeOutAll  -= HandleOnFadeOutAll;
     }
 
     void Start()
@@ -65,7 +65,7 @@ public class AttemptBehaviour : MonoBehaviour
 
 
 
-    // MÉTODOS DE ESTA CLASE
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     private void AttemptMovementSFX(){
         // La llama automáticamente un evento puesto en la animacion del movimiento, en el frimer frame
         if(OnAttemptMovementSFX != null)   

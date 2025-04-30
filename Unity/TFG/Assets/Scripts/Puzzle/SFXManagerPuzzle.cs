@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
+
+
 public class SFXManagerPuzzle : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES
@@ -25,27 +27,25 @@ public class SFXManagerPuzzle : MonoBehaviour
 
 
 
-
     // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     private void OnEnable()
     {
-        StageManagerPuzzle.OnFadeToPlay   += HandleOnFadeToPlay;
+        StageManagerPuzzle.OnFadeToPlay += HandleOnFadeToPlay;
         PieceCheck.OnStartingMovement   += HandleOnStartingMovement;
-        PieceCheck.OnShakePiece   += HandleOnShakePiece;
-        HandAnimation.OnStampSound += HandleOnStampSound;
-        PuzzleCheck.OnGotIt += HandleOnGotIt;        
-        StageManagerPuzzle.OnLastShine += HandleOnLastShine;
-
+        PieceCheck.OnShakePiece         += HandleOnShakePiece;
+        HandAnimation.OnStampSound      += HandleOnStampSound;
+        PuzzleCheck.OnGotIt             += HandleOnGotIt;        
+        StageManagerPuzzle.OnLastShine  += HandleOnLastShine;
     }
 
     private void OnDisable()
     {
         StageManagerPuzzle.OnFadeToPlay   -= HandleOnFadeToPlay;
-        PieceCheck.OnStartingMovement   -= HandleOnStartingMovement;
-        PieceCheck.OnShakePiece   -= HandleOnShakePiece;
-        HandAnimation.OnStampSound -= HandleOnStampSound;
-        PuzzleCheck.OnGotIt -= HandleOnGotIt;
-        StageManagerPuzzle.OnLastShine -= HandleOnLastShine;
+        PieceCheck.OnStartingMovement     -= HandleOnStartingMovement;
+        PieceCheck.OnShakePiece           -= HandleOnShakePiece;
+        HandAnimation.OnStampSound        -= HandleOnStampSound;
+        PuzzleCheck.OnGotIt               -= HandleOnGotIt;
+        StageManagerPuzzle.OnLastShine    -= HandleOnLastShine;
     }
 
     void Start()
@@ -61,7 +61,7 @@ public class SFXManagerPuzzle : MonoBehaviour
     private void HandleOnFadeToPlay(GameObject fadeCircleView){
         StartCoroutine(ChangeMusic());
     }
-    // MÉTODOS EN RESPUESTA A EVENTOS
+
     private void HandleOnStartingMovement(){
         // Sonido al mover una pieza
         PlaySFX(movementPiece, volume: 0.8f);
@@ -71,7 +71,6 @@ public class SFXManagerPuzzle : MonoBehaviour
         // Sonido de shake de la pieza
         PlaySFX(shakePiece, volume: 0.8f);
     }
-
 
     private void HandleOnStampSound(){
         // Sonido al poner el sello
@@ -83,13 +82,14 @@ public class SFXManagerPuzzle : MonoBehaviour
         StartCoroutine(ChangeVolumeMusic(startVolume: audioSourceMusicGame.volume, endVolume: 0, audioSource: audioSourceMusicGame, animationTime: 1));
         PlaySFX(gotIt, volume: 0.5f);        
     }
+    
     private void HandleOnLastShine(){
         // Sonido brillante al mostrar la imagen del puzzle sin rayas
         PlaySFX(lastShine, volume: 1f);        
     }
 
 
-    // MÉTODOS DE ESTA CLASE
+     // MÉTODOS ESPEFICICOS DE ESTA CLASE
     public void OnSoundClic(){
         // Sonido de pulsado del boton en la seleccion de dificultad
         PlaySFX(clicLevel, volume: 0.3f);
@@ -124,7 +124,6 @@ public class SFXManagerPuzzle : MonoBehaviour
             yield return 0;
         }
         audioSource.volume = endVolume;
-
     }
 
     IEnumerator ChangeMusic(float animationTime = 0.5f){

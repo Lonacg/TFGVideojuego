@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
-using TMPro;
-using System.Collections.Generic;
+
+
 
 public class CanvasManagerDS : MonoBehaviour
 {
@@ -21,13 +21,13 @@ public class CanvasManagerDS : MonoBehaviour
     void OnEnable()
     {
         StageManagerDeduceSign.OnFadeToPlay += HandleOnFadeToPlay;
-        StageManagerDeduceSign.OnGotIt += HandleOnHasWin;
+        StageManagerDeduceSign.OnGotIt      += HandleOnHasWin;
     }
 
     void OnDisable()
     {
         StageManagerDeduceSign.OnFadeToPlay -= HandleOnFadeToPlay;
-        StageManagerDeduceSign.OnGotIt -= HandleOnHasWin;
+        StageManagerDeduceSign.OnGotIt      -= HandleOnHasWin;
     }
 
     void Start()

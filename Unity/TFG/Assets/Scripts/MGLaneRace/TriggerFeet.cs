@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+
 public class TriggerFeet : MonoBehaviour
 {
     // DECLARACIÓN DE EVENTOS

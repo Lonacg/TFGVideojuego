@@ -25,23 +25,23 @@ public class RoundBehaviour : MonoBehaviour
     public static event _OnRoundMovementSFX OnRoundMovementSFX;
 
 
+
     // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void OnEnable()
     {
-        StageManagerDeduceSign.OnNewRound += HandleOnNewRound;
+        StageManagerDeduceSign.OnNewRound   += HandleOnNewRound;
         StageManagerDeduceSign.OnFadeOutAll += HandleOnFadeOutAll;
     }
 
 
     void OnDisable()
     {
-        StageManagerDeduceSign.OnNewRound -= HandleOnNewRound;
+        StageManagerDeduceSign.OnNewRound   -= HandleOnNewRound;
         StageManagerDeduceSign.OnFadeOutAll -= HandleOnFadeOutAll;
     }
 
     void Start()
     {
-
         // Inicializamos variables
         goingInPositions = new Vector3[2];
         goingOutPositions = new Vector3[2];
@@ -82,7 +82,7 @@ public class RoundBehaviour : MonoBehaviour
 
 
 
-    // MÉTODOS DE ESTA CLASE
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     private void SetPositionsRound(){
         
         Vector3 startPosition = transform.localPosition;
@@ -126,7 +126,6 @@ public class RoundBehaviour : MonoBehaviour
         if(OnRoundMovementSFX != null && mustNotifyAttempt){
             OnRoundMovementSFX();
         }
-
         
         float elapsedTime = 0;
         

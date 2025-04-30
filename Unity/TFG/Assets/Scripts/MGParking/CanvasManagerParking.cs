@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 
 
+
 public class CanvasManagerParking : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES

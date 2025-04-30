@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+
 public class TriggerGround : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES

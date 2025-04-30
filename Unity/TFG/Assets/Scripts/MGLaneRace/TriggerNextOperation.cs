@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+
 public class TriggerNextOperation : MonoBehaviour
 {
     // DECLARACIÓN DE EVENTOS

@@ -1,11 +1,11 @@
 using System.Collections;
-using UnityEditor.ProjectWindowCallback;
 using UnityEngine;
+
+
 
 public class PieceCheck : MonoBehaviour
 {
-
-
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     [Header("Tiles Width:")]
     protected float levelWidth; 
 
@@ -22,6 +22,8 @@ public class PieceCheck : MonoBehaviour
     private StageManagerPuzzle scriptStageManager;
 
 
+
+    // DECLARACIÓN DE EVENTOS
     public delegate void _OnMovingSomePiece();
     public static event _OnMovingSomePiece OnMovingSomePiece;
 
@@ -35,51 +37,27 @@ public class PieceCheck : MonoBehaviour
 
 
 
-    void OnEnable()
-    {
-
-        PuzzleCheck.OnGotIt += HandleOnGotIt;
-        
-    }
-
-
-    void OnDisable()
-    {
-
-        PuzzleCheck.OnGotIt -= HandleOnGotIt;
-        
-    }
-
-
-    private void HandleOnGotIt(){
-        // Impedimos que se pulsen mas piezas
-        movingThisPiece = true;
-    }
-
-
-    public virtual void StartLevel()
-    {
-        // Se sobreescribe en cada clase que hereda de esta
-    }
-
-
-
-
-
-
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void Awake()
     {
         scriptStageManager = stageManager.GetComponent<StageManagerPuzzle>();
         movingThisPiece = false;
     }
 
+    void OnEnable()
+    {
+        PuzzleCheck.OnGotIt += HandleOnGotIt;
+    }
 
+    void OnDisable()
+    {
+        PuzzleCheck.OnGotIt -= HandleOnGotIt;
+    }
 
     void Update()
     {      
         //ShowRaycast();
     }
-
 
     private void OnMouseDown()
     {
@@ -93,6 +71,18 @@ public class PieceCheck : MonoBehaviour
 
 
 
+    // MÉTODOS EN RESPUESTA A EVENTOS
+    private void HandleOnGotIt(){
+        // Impedimos que se pulsen mas piezas
+        movingThisPiece = true;
+    }
+
+
+
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
+    public virtual void StartLevel(){
+        // Se sobreescribe en cada clase que hereda de esta
+    }
 
     private void PieceMovement(){
         
@@ -133,22 +123,17 @@ public class PieceCheck : MonoBehaviour
                     }
                 }
             }
-            
         }
-
     }
 
-    private void UpdateRayOrigin()
-    {
+    private void UpdateRayOrigin(){
         rayOriginUp = (Vector2)transform.position + Vector2.up * levelWidth;
         rayOriginDown = (Vector2)transform.position + Vector2.down * levelWidth;
         rayOriginRight = (Vector2)transform.position + Vector2.right * levelWidth;
         rayOriginLeft = (Vector2)transform.position + Vector2.left * levelWidth;
-
     }
 
     private void ShowRaycast(){
-
         UpdateRayOrigin();
         float rayOffset = levelWidth;
         Debug.DrawLine(rayOriginUp, rayOriginUp + Vector2.up * rayOffset, Color.magenta);
@@ -158,6 +143,8 @@ public class PieceCheck : MonoBehaviour
     }
 
  
+
+    // CORRUTINAS
     IEnumerator MovePiece(Vector3 direction){
         // Notificamos para aumentar el contador de movimientos y reproducir el sonido
         if(OnStartingMovement != null)                          
@@ -191,7 +178,6 @@ public class PieceCheck : MonoBehaviour
             OnMoveMade(gameObject);        
     }
 
-
     IEnumerator ShakePiece(){
         // Notificamos para reproducir el sonido
         if(OnShakePiece != null)                          
@@ -214,12 +200,10 @@ public class PieceCheck : MonoBehaviour
                 elapsedTime += Time.deltaTime;
                 yield return 0;
             }
-            
         }
         transform.position = originalPosition;
 
         movingThisPiece = false;
-
     }
 
 }

@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections;
 
-public class CanvasManagerPuzzle : MonoBehaviour
-{
 
+
+public class CanvasManagerPuzzle : MonoBehaviour
+{    
+    // DECLARACIÓN DE ELEMENTOS GLOBALES
     [Header("Views:")]
     [SerializeField] private GameObject tutorialView;
     [SerializeField] private GameObject levelsView;
@@ -13,27 +15,26 @@ public class CanvasManagerPuzzle : MonoBehaviour
 
 
 
-
+    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void OnEnable()
     {
-
         StageManagerPuzzle.OnFadeToLevels += HandleOnFadeToLevels;
-        StageManagerPuzzle.OnFadeToPlay += HandleOnFadeToPlay;
-        PuzzleCheck.OnGotIt += HandleOnGotIt;
+        StageManagerPuzzle.OnFadeToPlay   += HandleOnFadeToPlay;
+        PuzzleCheck.OnGotIt               += HandleOnGotIt;
     }
 
     void OnDisable()
     {
         StageManagerPuzzle.OnFadeToLevels -= HandleOnFadeToLevels;
-        StageManagerPuzzle.OnFadeToPlay -= HandleOnFadeToPlay;
-        PuzzleCheck.OnGotIt -= HandleOnGotIt;
+        StageManagerPuzzle.OnFadeToPlay   -= HandleOnFadeToPlay;
+        PuzzleCheck.OnGotIt               -= HandleOnGotIt;
     }
 
 
 
+    // MÉTODOS EN RESPUESTA A EVENTOS
     private void HandleOnFadeToLevels(){
         StartCoroutine(FadeToLevels());
-        
     }
 
     private void HandleOnFadeToPlay(GameObject fadecircleView){
@@ -51,15 +52,11 @@ public class CanvasManagerPuzzle : MonoBehaviour
         levelsView.SetActive(false);
         ingameView.SetActive(false);
         victoryView.SetActive(true); // Debe ser true siempre
-
-
     }
 
 
 
-
-
-
+    // CORRUTINAS
     IEnumerator FadeOutFadeIn(GameObject fadeCircleView){
         // Fade Out
         fadeCircleView.SetActive(true);
@@ -73,40 +70,12 @@ public class CanvasManagerPuzzle : MonoBehaviour
         fadeCircleView.GetComponent<Animator>().SetTrigger("FadeInCirclePuzzle");
 
         yield return new WaitForSeconds(1f); // El fade out/in del CircleStatic dura 1,5 seg, quitamos 0.5 para que se visualice como una transicion y vaya fluido al aparecer
-           
-
     }
-
-
-
-
-    IEnumerator FadeCanvasGroup(GameObject view, float fromAlpha, float toAlpha, float animationTime = 0.3f){ 
-        // Corrutina reutilizada de CanvasManagerParking.cs 
-        CanvasGroup canvasGroup = view.GetComponent<CanvasGroup>();
-        if(toAlpha > 0)
-            view.SetActive(true);
-
-        float elapsedTime = 0;
-
-        while(elapsedTime <= animationTime){
-            canvasGroup.alpha = Mathf.Lerp(fromAlpha, toAlpha, elapsedTime / animationTime);
-            elapsedTime += Time.unscaledDeltaTime;
-            yield return 0;
-        }
-
-        canvasGroup.alpha = toAlpha;
-
-        if(toAlpha == 0)
-            view.SetActive(false);
-    }
-
-
 
     IEnumerator StartVictoryView(){
         yield return new WaitForSeconds(1);
         victoryView.SetActive(true);
     }
-
 
     IEnumerator FadeToLevels(){
 
@@ -125,12 +94,5 @@ public class CanvasManagerPuzzle : MonoBehaviour
 
         fadeScene.GetComponent<Canvas>().sortingOrder = -3;
     }
-
-
-
-
-
-
-
 
 }

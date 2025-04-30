@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 public class Instances : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES
@@ -49,7 +50,7 @@ public class Instances : MonoBehaviour
 
 
 
-    // MÉTODOS DE ESTA CLASE
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     public void InstanciateCars(){
 
         // Opcional: asignar el objeto por codigo en vez de en el inspector (es menos coste como esta hecho, por evitar el .Find() )

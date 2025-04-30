@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+
 public class ParkingTrigger : MonoBehaviour
 {
     // DECLARACIÓN DE ELEMENTOS GLOBALES
@@ -34,7 +36,7 @@ public class ParkingTrigger : MonoBehaviour
 
 
 
-    // MÉTODOS DE ESTA CLASE
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
     public void CheckParking(){
         
         if(parkingReferences == 4){
