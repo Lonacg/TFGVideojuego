@@ -2,29 +2,31 @@
 Laura Cano Gómez  
 Tutor: Ignacio Fábregas Alfaro
 
+Facultad de Ciencias Matemáticas, Universidad Complutense de Madrid.
+
 ## Prueba del juego online
 Enlace a Itch.io para jugar en el navegador sin necesidad de descargar ni instalar nada:
 https://lonacg.itch.io/buscando-a-euler
 
+## Clonar repositorio de Git
+- Instalar Git desde su página oficial: https://git-scm.com/
+- Ir a la carpeta donde se quiere clonar el repositorio.
+- Hacer clic derecho dentro de la carpeta y seleccionar "Git Bash Here".
+- Escribir la siguiente línea en la terminal abierta: ```git clone https://github.com/Lonacg/TFGVideojuego.git```
+
 ## Prueba del juego desde Windows
-Descargar la carpeta /Builds/Windows de git y ejecutar el archivo "Buscando_a_Euler.exe"
+Una vez clonado el repositorio de Git en el PC local, acceder a la carpeta /Builds/Windows y ejecutar el archivo "Buscando\_a\_Euler.exe".
 
 ## Prueba del juego desde Linux
-Descargar la carpeta /Builds/Linux de git y ejecutar el archivo "Buscando_a_Euler.x86_64"
+Una vez clonado el repositorio de Git en el PC local, acceder a la carpeta /Builds/Linux y ejecutar el archivo "Buscando\_a\_Euler.x86\_64".
 
 ## Prueba del juego desde Mac
-Descargar la carpeta /Builds/Mac. A continuación, se debe marcar el archivo binario como ejecutable, ya que la build ha sido creada desde Windows. Para ello, hay que seguir los siguientes pasos:
-- Abrir la terminal y navegar hasta la dirección de la carpeta descargada con el comando "cd" (por ejemplo, cd /Builds/Mac)
-- Ejecutar el siguiente comando: chmod +x Buscando_a_Euler.app/Mac.app/Contents/MacOS/Buscando_a_Euler  
+Clonar el repositorio de Git en el PC local para acceder a la carpeta /Builds/Mac. A continuación, se debe marcar el archivo binario como ejecutable, ya que la build ha sido creada desde Windows. Para ello, antes de abrir el ejecutable Buscando\_a\_Euler, hay que seguir los siguientes pasos:
+- Abrir la terminal y navegar hasta la dirección de la carpeta descargada con el comando "cd" (por ejemplo, ```cd /Builds/Mac```)
+- Ejecutar el siguiente comando: ```chmod +x Buscando_a_Euler.app/Mac.app/Contents/MacOS/Buscando_a_Euler ```
 
-Una vez realizado, ya se puede abrir el ejecutable Buscando_a_Euler.
-
-## Clonar repositorio desde Windows para editar en Unity
+## Descargar el editor de Unity y abrir el proyecto
 - Instalar Unity Hub en el ordenador: https://unity.com/es/download
-- Abrirlo y crear una cuenta en Unity, para descargar la versión "6000.0.9f1" de Unity.
-- Instalar Git desde su página oficial: https://git-scm.com/
-- Ir a la carpeta donde quiere clonarse el repositorio.
-- Clic derecho dentro de la carpeta y seleccionar "Git Bash Here".
-- Escribir la siguiente línea en la terminal: git clone https://github.com/Lonacg/TFGVideojuego.git
-- Abrir de nuevo Unity Hub y seleccionar "Add", a continuación "Add Project from Disk" y, por último, seleccionar carpeta donde se ha clonado el repositorio.
+- Abrirlo y crear una cuenta en Unity para descargar la versión "6000.0.9f1".
+- Seleccionar "Add", "Add project from disk" y la carpeta donde se ha clonado el repositorio.
   
