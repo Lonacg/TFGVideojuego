@@ -19,3 +19,12 @@ Descargar la carpeta Unity/TFG/Builds/Mac. A continuación, se debe marcar el ar
 
 Una vez realizado, ya se puede abrir el ejecutable Buscando_a_Euler.
 
+## Clonar repositorio desde Windows para editar en Unity
+- Instalar Unity Hub en el ordenador: https://unity.com/es/download
+- Abrirlo y crear una cuenta en Unity, para descargar la versión "6000.0.9f1" de Unity
+- Instalar Git desde su página oficial: https://git-scm.com/
+- Ir a la carpeta donde quiere clonarse el repositorio
+- Clic derecho dentro de la carpeta y seleccionar Git Bash Here
+- Escribir la siguiente línea en la terminal: git clone https://github.com/Lonacg/TFGVideojuego.git
+- Abrir de nuevo Unity Hub y seleccionar Add -> Add Project from Disk -> Seleccionar carpeta donde se ha clonado el repositorio.
+  
