@@ -123,6 +123,4 @@ public class SceneLoadManager : MonoBehaviour
         gObject.transform.localScale = new Vector3(endSize, endSize, 1);;
     }
 
-
-
 }

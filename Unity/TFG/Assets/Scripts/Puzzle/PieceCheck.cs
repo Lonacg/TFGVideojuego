@@ -161,7 +161,7 @@ public class PieceCheck : MonoBehaviour
             
             transform.position = Vector3.Lerp(startPosition, endPosition, elapsedTime / animationTime);
 
-            // Cuando ya ha hecho mas de la mitad del recorrido, lanzamos el evento para que puedan moverse otras piezas, ya que lo que falta de reorrido no afecta (el rayo de deteccion sale en la mediatriz de cada arista)
+            // Cuando ya ha hecho mas de dos tercios del recorrido, lanzamos el evento para que puedan moverse otras piezas, ya que lo que falta de reorrido no afecta (el rayo de deteccion sale en la mediatriz de cada arista)
             if(!notified && elapsedTime > animationTime * 2 / 3 && OnMovingSomePiece != null){
                 OnMovingSomePiece();
                 notified = true;

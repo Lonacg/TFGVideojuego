@@ -21,7 +21,7 @@ public class CanvasManagerParking : MonoBehaviour
 
     [Header("Texts:")]
     [SerializeField] private TextMeshProUGUI operationFirstTryText;
-    [SerializeField] private TextMeshProUGUI operationSecondTryText;
+    [SerializeField] private GameObject operationSecondTry;
 
     [Header("Variables:")]
     private int errorCount= 0;
@@ -59,7 +59,7 @@ public class CanvasManagerParking : MonoBehaviour
         ingameView.SetActive(false);
         victoryView.SetActive(false);
         fadeCircleView.SetActive(false);
-        operationSecondTryText.gameObject.SetActive(false);
+        operationSecondTry.SetActive(false);
 
         // Inicializacion de variables
         spacePressed = false;
@@ -177,7 +177,7 @@ public class CanvasManagerParking : MonoBehaviour
 
             // Actualizamos la operacion
             operationFirstTryText.gameObject.SetActive(false);
-            operationSecondTryText.gameObject.SetActive(true);
+            operationSecondTry.SetActive(true);
 
             // Hacemos aparecer la imagen de la operacion
             StartCoroutine(FadeCanvasGroup(operationImage, fromAlpha: 0, toAlpha: 1, animationTime: animationsTime));

@@ -501,7 +501,7 @@ MonoBehaviour:
   victoryView: {fileID: 445653416}
   fadeCircleView: {fileID: 8895851911046097571}
   operationFirstTryText: {fileID: 1319238942}
-  operationSecondTryText: {fileID: 1494307500}
+  operationSecondTry: {fileID: 1797868050}
 --- !u!1001 &253240013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10507,7 +10507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3416440459275829797
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11393,7 +11393,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -48.7, y: 75.2}
-  m_SizeDelta: {x: 160000, y: 110000}
+  m_SizeDelta: {x: 1.600016e+10, y: 110000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &6285724820431230646
 RectTransform:
