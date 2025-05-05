@@ -35,17 +35,27 @@ public class CarMovement : MonoBehaviour
     {
         // Movimiento del vehiculo aplicando la fisica y en el FixedUpdate para que sean siempre los mismos frames
         if(inputMovement.y != 0){
-            // Movimiento hacia delante o hacia atras            
-            rb.AddForce(gameObject.transform.forward * inputMovement.y * movSpeed * Time.fixedDeltaTime,  ForceMode.Impulse );
-            
-            // Giro a izquierda y derecha
-            transform.Rotate(xAngle: 0, yAngle: inputMovement.x * Time.deltaTime * rotationSpeed, zAngle: 0);
-
-            // Revolucionamos el motor (sonido)
-            SpeedUpEngine();
+            // Si esta pulsando para ir hacia delante o hacia atras movemos el vehículo
+            UpdateCarMovement();
         }
         
-        // Giro de las ruedas delanteras
+        // Giro de las ruedas delanteras (para el efecto visual)
+        UpdateWheelRotation();
+
+        // Sonido del motor en movimiento
+        engineAudioSource.pitch = engineSpeed;
+        engineSpeed *= 0.9f;
+    }
+
+
+
+    // MÉTODOS ESPEFICICOS DE ESTA CLASE
+    private void SpeedUpEngine(){   
+        // Para el sonido del motor en movimiento, clampeamos el valor para luego cambiar el pitch y que se oiga mas fuerte cuanto mas acelere
+        engineSpeed = Mathf.Clamp01(engineSpeed + Time.deltaTime * 4);
+    }
+
+    private void UpdateWheelRotation(){
         Quaternion wheelTargetRotation = Quaternion.identity;
         if (inputMovement.x < 0){
             // Giro a la izquierda
@@ -59,18 +69,23 @@ public class CarMovement : MonoBehaviour
         foreach (var wheel in frontWheels){
             wheel.localRotation = Quaternion.Lerp(wheel.localRotation, wheelTargetRotation, Time.deltaTime * 10);
         }
-
-        // Sonido del motor en movimiento
-        engineAudioSource.pitch = engineSpeed;
-        engineSpeed *= 0.9f;
     }
 
+    private void UpdateCarMovement(){
+        // Movimiento hacia delante o hacia atras    
+        rb.AddForce(gameObject.transform.forward * inputMovement.y * movSpeed * Time.fixedDeltaTime,  ForceMode.Impulse );
 
+        // Rotacion a izquierda o derecha
+        if(inputMovement.y > 0){        
+            transform.Rotate(xAngle: 0, yAngle: inputMovement.x * Time.deltaTime * rotationSpeed, zAngle: 0);
+        }
+        else{
+            // Si vamos marcha atras el angulo de giro es el contrario
+            transform.Rotate(xAngle: 0, yAngle: -inputMovement.x * Time.deltaTime * rotationSpeed, zAngle: 0);
+        }
 
-    // MÉTODOS ESPEFICICOS DE ESTA CLASE
-    private void SpeedUpEngine(){   
-        // Para el sonido del motor en movimiento, clampeamos el valor para luego cambiar el pitch y que se oiga mas fuerte cuanto mas acelere
-        engineSpeed = Mathf.Clamp01(engineSpeed + Time.deltaTime * 4);
+        // Revolucionamos el motor (sonido)
+        SpeedUpEngine();
     }
 
 }

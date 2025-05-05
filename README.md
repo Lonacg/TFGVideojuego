@@ -29,4 +29,5 @@ Clonar el repositorio de Git en el PC local para acceder a la carpeta /Builds/Ma
 - Instalar Unity Hub en el ordenador: https://unity.com/es/download
 - Abrirlo y crear una cuenta en Unity para descargar la versión "6000.0.9f1".
 - Seleccionar "Add", "Add project from disk" y la carpeta donde se ha clonado el repositorio.
+- Abrir el proyecto "TFG".
   

@@ -93,7 +93,7 @@ public class PuzzleCheck : MonoBehaviour
 
     private void MergePuzzle(){
 
-        // Accedemos al numero de trasposiciones que haremos para mezclar el puzzle, en funcion de la dificultad escogida
+        // Accedemos al numero de transposiciones que haremos para mezclar el puzzle, en funcion de la dificultad escogida
          int transpositions = stageManager.GetComponent<StageManagerPuzzle>().transpositions;
 
 
@@ -129,7 +129,7 @@ public class PuzzleCheck : MonoBehaviour
         
         int pieceRandom = Random.Range(1, gameObject.transform.childCount);  // No cambiamos la posicion de la vacia y es hasta el numero de hijos porque el ultimo no se incluye (Ej para 9 piezas (9 hijos): la 0 no, y de la 1 a la 8 si)
 
-        // Tenemos que impedir las trasposiciones de cada pieza consigo misma, porque eso haria que no cuenten y podriamos obtener un numero total de trasposiciones impar
+        // Tenemos que impedir las transposiciones de cada pieza consigo misma, porque eso haria que no cuenten y podriamos obtener un numero total de transposiciones impar
         if(pieceRandom == samplePiece){
             return ChooseRandom(samplePiece);
         }
