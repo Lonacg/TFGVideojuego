@@ -3612,8 +3612,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 633520532941327768}
-  - component: {fileID: 6227817157957357534}
   - component: {fileID: 6227817157957357535}
+  - component: {fileID: 6227817157957357534}
   m_Layer: 0
   m_Name: SFXManager
   m_TagString: Untagged
@@ -5587,7 +5587,7 @@ MonoBehaviour:
   wrongAnswer: {fileID: 8300000, guid: 61989334f887a714d8d48ec654cde1f3, type: 3}
   gotIt: {fileID: 8300000, guid: c818446a230aa9d4c8aaa3f2d6552c3e, type: 3}
   roundMovement: {fileID: 8300000, guid: 0b0147754ed1ac944a97e7280737065c, type: 3}
-  attemptPresentation: {fileID: 8300000, guid: 9d3b7727618ae3b46b39909622ca8609, type: 3}
+  attemptPresentation: {fileID: 8300000, guid: 531aed27076b58f4eb6b873baf4bf092, type: 3}
   attemptMovement: {fileID: 8300000, guid: 3d4f107ed414ff4448889777ded6a6e4, type: 3}
   failedRound: {fileID: 8300000, guid: d2794afd29a24234b854765ebfe65fef, type: 3}
 --- !u!212 &6416215751993452479
