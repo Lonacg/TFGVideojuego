@@ -67,16 +67,25 @@ public class SceneLoadManager : MonoBehaviour
     }
 
     public void OnQuitButton(GameObject button){
+        // Hacemos solamente el hundidio del boton
+        StartCoroutine(ClickAnimation(button));
+    }
+
+    public void OnConfirmQuitButton(GameObject button){
+        // Hacemos el hundidio del boton
         StartCoroutine(ClickAnimation(button));
         
-        // Accedemos al singleton para comunicar que se ha iniciado este minijuego
+        // Accedemos al singleton para comunicar que hay que borrar los datos
         GameChecker.Instance.RestartGame();
 
         // Cargamos la escena con la portada
         StartCoroutine(LoadScene(sceneString: "Cover"));
     }
 
-
+    public void OnCancelQuitButton(GameObject button){
+        // Hacemos solamente el hundidio del boton
+        StartCoroutine(ClickAnimation(button));
+    }
 
     // CORRUTINAS
     IEnumerator LoadScene(string sceneString){

@@ -5,20 +5,20 @@ using System.Collections;
 
 public class StageManagerMainMenu : MonoBehaviour
 {
-    // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
+    // DECLARACIÓN DE ELEMENTOS GLOBALES 
     [Header("Game Objects:")]
+    [SerializeField] private GameObject buttonsParking;
+    [SerializeField] private GameObject buttonsLR;
     [SerializeField] private GameObject buttonsDS;
-    [SerializeField] private GameObject firstButtonParking;
-    [SerializeField] private GameObject secondButtonParking;
-    [SerializeField] private GameObject firstButtonLR;
-    [SerializeField] private GameObject secondButtonLR;
-    [SerializeField] private GameObject firstButtonDS;
-    [SerializeField] private GameObject secondButtonDS;
-    [SerializeField] private GameObject firstButtonPuzzle;
-    [SerializeField] private GameObject secondButtonPuzzle;
+    [SerializeField] private GameObject buttonsPuzzle;
+    [SerializeField] private GameObject quitButton;
     [SerializeField] private GameObject particles1;
     [SerializeField] private GameObject particles2;
     
+    [Header("Views:")]
+    [SerializeField] private GameObject panelConfirmationView;
+    [SerializeField] private GameObject titleView;
+
     [Header("Variables from GameChecker:")]
     private int amountGamesPlayed;
     private bool alreadyPlayed;
@@ -41,6 +41,7 @@ public class StageManagerMainMenu : MonoBehaviour
     // MÉTODOS HEREDADOS DE MONOBEHAVIOUR
     void Start()
     {
+        panelConfirmationView.SetActive(false);
         UpdateVariablesGameChecker();
 
         UpdateButtons();
@@ -57,23 +58,40 @@ public class StageManagerMainMenu : MonoBehaviour
 
 
     // MÉTODOS ESPEFICICOS DE ESTA CLASE
-    private void UpdateButtons(){
+    public void OnQuitButton(){
+        // Mostramos el panel de confirmacion y desactivamos los botones de los minijuegos
+        StartCoroutine(FadeCanvasGroup(panelConfirmationView, fromAlpha: 0, toAlpha: 1, changeButtons: true));
 
-        if(parkingPlayed){
-            secondButtonParking.SetActive(true);
-            firstButtonParking.SetActive(false);
+        // Hacemos desaparecer el banner del titulo y el boton de salir pulsado
+        StartCoroutine(FadeCanvasGroup(titleView, fromAlpha: 1, toAlpha: 0));
+        StartCoroutine(FadeCanvasGroup(quitButton, fromAlpha: 1, toAlpha: 0));
+    }
+
+    public void OnCancelQuitButton(){
+        // Mostramos el panel de confirmacion y activamos los botones de los minijuegos
+        StartCoroutine(FadeCanvasGroup(panelConfirmationView, fromAlpha: 1, toAlpha: 0, changeButtons: true));
+
+        // Hacemos aparecer el banner del titulo y el boton de salir pulsado
+        StartCoroutine(FadeCanvasGroup(titleView, fromAlpha: 0, toAlpha: 1));
+        StartCoroutine(FadeCanvasGroup(quitButton, fromAlpha: 0, toAlpha: 1));
+    }
+
+    private void UpdateButtons(){
+        if (parkingPlayed){
+            buttonsParking.transform.GetChild(1).gameObject.SetActive(true);
+            buttonsParking.transform.GetChild(0).gameObject.SetActive(false);
         }
-        if(laneRacePlayed){
-            secondButtonLR.SetActive(true);
-            firstButtonLR.SetActive(false);
+        if (laneRacePlayed){
+            buttonsLR.transform.GetChild(1).gameObject.SetActive(true);
+            buttonsLR.transform.GetChild(0).gameObject.SetActive(false);
         }
-        if(deduceSignPlayed){
-            secondButtonDS.SetActive(true);
-            firstButtonDS.SetActive(false);
+        if (deduceSignPlayed){
+            buttonsDS.transform.GetChild(1).gameObject.SetActive(true);
+            buttonsDS.transform.GetChild(0).gameObject.SetActive(false);
         }
-        if(puzzlePlayed){
-            secondButtonPuzzle.SetActive(true);
-            firstButtonPuzzle.SetActive(false);
+        if (puzzlePlayed){
+            buttonsPuzzle.transform.GetChild(1).gameObject.SetActive(true);
+            buttonsPuzzle.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 
@@ -128,10 +146,17 @@ public class StageManagerMainMenu : MonoBehaviour
                 else
                     if(amountGamesPlayed == 3){
                         buttonsDS.transform.localPosition = new Vector3(0, -10.81f, 0);
-                        firstButtonPuzzle.SetActive(true);
+                        buttonsPuzzle.transform.GetChild(0).gameObject.SetActive(true);
                     }
             }            
         }
+    }
+
+    private void ChangeVisibilityButtons(bool boolDesired){
+        buttonsParking.SetActive(boolDesired);
+        buttonsLR.SetActive(boolDesired);
+        buttonsDS.SetActive(boolDesired);
+        buttonsPuzzle.SetActive(boolDesired);
     }
 
     private void UpdateVariablesGameChecker(){
@@ -147,7 +172,6 @@ public class StageManagerMainMenu : MonoBehaviour
 
     // CORRUTINAS
     IEnumerator MoveDSButton(Vector3 endPosition){
-
         // Tiempo que tarda el fade in
         yield return new WaitForSeconds(1.4f);
 
@@ -174,6 +198,7 @@ public class StageManagerMainMenu : MonoBehaviour
         particles2.SetActive(false);
         particles1.SetActive(false);
         
+        GameObject firstButtonPuzzle = buttonsPuzzle.transform.GetChild(0).gameObject;
         firstButtonPuzzle.SetActive(true);     // Se inicia con la escala en x en 0
 
         float elapsedTime = 0;
@@ -192,4 +217,35 @@ public class StageManagerMainMenu : MonoBehaviour
         firstButtonPuzzle.transform.localScale = new Vector3(1, 1, 1);
     }
     
+     IEnumerator FadeCanvasGroup(GameObject view, float fromAlpha, float toAlpha, bool changeButtons = false, float animationTime = 0.5f){ 
+        // Corrutina reutilizada parcialmente del Minijuego Parking
+
+        CanvasGroup canvasGroup = view.GetComponent<CanvasGroup>();
+
+        if(toAlpha > 0){
+            // Queremos activar el panel asi que activamos el panel y desactivamos los botones de los minijuegos
+            view.SetActive(true);
+            if(changeButtons){
+                ChangeVisibilityButtons(false);
+            }
+        }
+        else{
+            if(changeButtons){
+                // Queremos desactivar el panel asi que volvemos a restaurar los botones
+                ChangeVisibilityButtons(true);
+            }
+        }
+
+        float elapsedTime = 0;
+        while(elapsedTime <= animationTime){
+            canvasGroup.alpha = Mathf.Lerp(fromAlpha, toAlpha, elapsedTime / animationTime);
+            elapsedTime += Time.unscaledDeltaTime;
+            yield return 0;
+        }
+        canvasGroup.alpha = toAlpha;
+
+        if(toAlpha == 0)
+            view.SetActive(false);
+    }
+
 }

@@ -6204,8 +6204,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Debes seleccionar el \xFAnico signo \n\nque sustituido en            
-    , haga correcta la operaci\xF3n.\n              "
+  m_text: "Debes seleccionar el \xFAnico signo \n\nque sustituido en             
+    haga correcta la operaci\xF3n.\n              "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d789df4f8ce4574f90c5672ff5fdbb7, type: 2}
   m_sharedMaterial: {fileID: 6553186247260280879, guid: 3d789df4f8ce4574f90c5672ff5fdbb7, type: 2}
