@@ -21,6 +21,8 @@ MonoBehaviour:
   - m_enabled: 1
     m_path: Assets/Scenes/Cover.unity
   - m_enabled: 1
+    m_path: Assets/Scenes/MainMenu.unity
+  - m_enabled: 1
     m_path: Assets/Scenes/Parking.unity
   - m_enabled: 1
     m_path: Assets/Scenes/LaneRace.unity

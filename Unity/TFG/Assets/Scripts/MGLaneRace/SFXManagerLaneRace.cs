@@ -92,13 +92,13 @@ public class SFXManagerLaneRace : MonoBehaviour
 
     private void HandleOnWrongSol(){
         // Sonido de derrota
-        PlaySFX(wrongAnswer);        
+        PlaySFX(wrongAnswer,volume: 0.9f);        
     }
 
     private void HandleOnGotIt(){
         // Apagamos la música de fondo y repoducimos el sonido de victoria final con el conseguido
         StartCoroutine(StopMusic(endVolume: 0f));
-        PlaySFX(gotIt, 0.5f);        
+        PlaySFX(gotIt, 0.4f);        
     }
 
 

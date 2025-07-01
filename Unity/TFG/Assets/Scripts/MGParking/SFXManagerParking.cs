@@ -80,13 +80,13 @@ public class SFXManagerParking : MonoBehaviour
 
     private void HandleOnWrongParked(GameObject go){
         // Sonido de derrota
-        PlaySFX(wrongAnswer, volume: 1);        
+        PlaySFX(wrongAnswer, volume: 0.8f);        
     }
 
     private void HandleOnGotIt(){
         // Apagamos la musica de fondo y reproducimos el sonido de victoria
         StartCoroutine(StopMusic(endVolume: 0, animationTime: 1));
-        PlaySFX(gotIt, volume: 0.5f);        
+        PlaySFX(gotIt, volume: 0.4f);        
     }
 
 

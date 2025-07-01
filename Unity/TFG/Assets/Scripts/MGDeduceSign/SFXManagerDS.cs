@@ -70,27 +70,27 @@ public class SFXManagerDS : MonoBehaviour
 
     private void HandleOnAttemptMovementSFX(){
         // Sonido de movimiento de los intentos
-        PlaySFX(attemptMovement, volume: 0.1f);
+        PlaySFX(attemptMovement, volume: 0.15f);
     }
     private void HandleOnFailedRoundSFX(){
         // Sonido de ronda fallida
-        StartCoroutine(WaitAndFailedRound(secondsToWait: 0.2f));
+        StartCoroutine(WaitAndFailedRound(secondsToWait: 0.3f));
     }
 
     private void HandleOnCorrectAnswer(){
         // Sonido de victoria
-        PlaySFX(correctAnswer, volume: 0.5f);
+        PlaySFX(correctAnswer, volume: 0.3f);
     }
 
     private void HandleOnWrongAnswer(){
         // Sonido de derrota
-        PlaySFX(wrongAnswer, volume: 1f);
+        PlaySFX(wrongAnswer, volume: 0.8f);
     }
 
     private void HandleOnGotIt(){
         // Sonido de victoria final con el conseguido
         StartCoroutine(StopMusic(endVolume: 0f));
-        PlaySFX(gotIt, 0.5f);
+        PlaySFX(gotIt, 0.4f);
     }
 
 
