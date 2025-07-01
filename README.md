@@ -14,10 +14,10 @@ https://lonacg.itch.io/buscando-a-euler
 - Hacer clic derecho dentro de la carpeta y seleccionar "Git Bash Here".
 - Escribir la siguiente línea en la terminal abierta: ```git clone https://github.com/Lonacg/TFGVideojuego.git```
 
-## Prueba del juego desde Windows
+## Prueba del juego con sistema operativo Windows
 Una vez clonado el repositorio de GitHub en el PC local, acceder a la carpeta /Builds/Windows y ejecutar el archivo "Buscando\_a\_Euler.exe".
 
-## Prueba del juego desde Linux
+## Prueba del juego con sistema operativo Linux (no máquina virtual)
 Una vez clonado el repositorio de GitHub en el PC local, acceder a la carpeta /Builds/Linux, dar permiso de ejecución al archivo "Buscando_a_Euler.x86_64" y ejecutarlo.
 
 ## Descargar el editor de Unity y abrir el proyecto
