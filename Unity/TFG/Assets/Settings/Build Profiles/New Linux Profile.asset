@@ -27,6 +27,8 @@ MonoBehaviour:
   - m_enabled: 1
     m_path: Assets/Scenes/LaneRace.unity
   - m_enabled: 1
+    m_path: Assets/Scenes/DeduceSIgn.unity
+  - m_enabled: 1
     m_path: Assets/Scenes/Puzzle.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
