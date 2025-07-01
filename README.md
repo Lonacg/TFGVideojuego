@@ -5,7 +5,7 @@ Tutor: Ignacio Fábregas Alfaro
 Facultad de Ciencias Matemáticas, Universidad Complutense de Madrid.
 
 ## Prueba del juego online
-Enlace a Itch.io para jugar en el navegador sin necesidad de descargar ni instalar nada:
+Enlace a *Itch.io* para jugar en el navegador sin necesidad de descargar ni instalar nada:
 https://lonacg.itch.io/buscando-a-euler
 
 ## Clonar repositorio de GitHub
