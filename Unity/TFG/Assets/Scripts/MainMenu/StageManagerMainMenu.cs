@@ -138,17 +138,24 @@ public class StageManagerMainMenu : MonoBehaviour
         }
         else{
             // No se ha jugado a ningun juego nuevo asi que solo actualizamos la posicion correcta del boton de DeduceSign
-            if(amountGamesPlayed == 1)
+            if(amountGamesPlayed == 1){
                 buttonsDS.transform.localPosition = new Vector3(143.5f, -10.81f, 0);
+                particles1.SetActive(true);
+            }
             else{
-                if(amountGamesPlayed == 2)
+                if(amountGamesPlayed == 2){
                     buttonsDS.transform.localPosition = new Vector3(72, -10.81f, 0);
-                else
+                    particles1.SetActive(true);
+                    particles2.SetActive(true);
+                }
+                else{
                     if(amountGamesPlayed == 3){
                         buttonsDS.transform.localPosition = new Vector3(0, -10.81f, 0);
                         buttonsPuzzle.transform.GetChild(0).gameObject.transform.localScale =  Vector3.one;
                         buttonsPuzzle.transform.GetChild(0).gameObject.SetActive(true);
+
                     }
+                }
             }            
         }
     }
