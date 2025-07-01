@@ -58,43 +58,36 @@ public class SFXManagerDS : MonoBehaviour
 
 
     // MÉTODOS EN RESPUESTA A EVENTOS
-    private void HandleOnRoundMovementSFX()
-    {
+    private void HandleOnRoundMovementSFX(){
         // Sonido de movimiento de la ronda
-        PlaySFX(roundMovement, volume: 1f);
+        PlaySFX(roundMovement, volume: 0.7f);
     }
 
-    private void HandleOnShowAttempt()
-    {
+    private void HandleOnShowAttempt(){
         // Sonido de presentacion de los intentos
-        PlaySFX(attemptPresentation, volume: 0.8f);
+        PlaySFX(attemptPresentation, volume: 0.4f);
     }
 
-    private void HandleOnAttemptMovementSFX()
-    {
+    private void HandleOnAttemptMovementSFX(){
         // Sonido de movimiento de los intentos
         PlaySFX(attemptMovement, volume: 0.1f);
     }
-    private void HandleOnFailedRoundSFX()
-    {
+    private void HandleOnFailedRoundSFX(){
         // Sonido de ronda fallida
         StartCoroutine(WaitAndFailedRound(secondsToWait: 0.2f));
     }
 
-    private void HandleOnCorrectAnswer()
-    {
+    private void HandleOnCorrectAnswer(){
         // Sonido de victoria
         PlaySFX(correctAnswer, volume: 0.5f);
     }
 
-    private void HandleOnWrongAnswer()
-    {
+    private void HandleOnWrongAnswer(){
         // Sonido de derrota
         PlaySFX(wrongAnswer, volume: 1f);
     }
 
-    private void HandleOnGotIt()
-    {
+    private void HandleOnGotIt(){
         // Sonido de victoria final con el conseguido
         StartCoroutine(StopMusic(endVolume: 0f));
         PlaySFX(gotIt, 0.5f);
@@ -103,13 +96,10 @@ public class SFXManagerDS : MonoBehaviour
 
 
     // MÉTODOS ESPEFICICOS DE ESTA CLASE
-    public void PlaySFX(AudioClip audioClip, float volume = 1)
-    {
+    public void PlaySFX(AudioClip audioClip, float volume = 1){
         // Impedimos que dos clips iguales puedan sonar en el mismo momento y se acople el sonido (se multiplicaria el volumen de ese sonido)
-        if (previousAudioClip == audioClip)
-        {
-            if (Time.time - previousACTimeStamp < 0.05f)
-            {
+        if (previousAudioClip == audioClip){
+            if (Time.time - previousACTimeStamp < 0.05f){
                 return;
             }
         }
@@ -124,12 +114,10 @@ public class SFXManagerDS : MonoBehaviour
 
 
     // CORRUTINAS
-    IEnumerator StopMusic(float endVolume, float animationTime = 1f)
-    {
+    IEnumerator StopMusic(float endVolume, float animationTime = 1f){
         float elapsedTime = 0;
         float startVolume = audioSourceMusic.volume;
-        while (elapsedTime < animationTime)
-        {
+        while (elapsedTime < animationTime){
             float newVolume = Mathf.Lerp(startVolume, endVolume, elapsedTime / animationTime);
             audioSourceMusic.volume = newVolume;
             elapsedTime += Time.deltaTime;
@@ -138,8 +126,7 @@ public class SFXManagerDS : MonoBehaviour
         audioSourceMusic.volume = 0;
     }
 
-    IEnumerator WaitAndFailedRound(float secondsToWait)
-    {
+    IEnumerator WaitAndFailedRound(float secondsToWait){
         yield return new WaitForSeconds(secondsToWait);
         PlaySFX(failedRound, volume: 0.3f);
     }

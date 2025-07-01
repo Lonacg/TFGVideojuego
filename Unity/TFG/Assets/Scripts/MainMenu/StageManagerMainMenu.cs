@@ -146,6 +146,7 @@ public class StageManagerMainMenu : MonoBehaviour
                 else
                     if(amountGamesPlayed == 3){
                         buttonsDS.transform.localPosition = new Vector3(0, -10.81f, 0);
+                        buttonsPuzzle.transform.GetChild(0).gameObject.transform.localScale =  Vector3.one;
                         buttonsPuzzle.transform.GetChild(0).gameObject.SetActive(true);
                     }
             }            

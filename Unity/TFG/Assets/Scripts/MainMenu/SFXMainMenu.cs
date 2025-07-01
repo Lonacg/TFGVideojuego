@@ -65,8 +65,12 @@ public class SFXMainMenu : MonoBehaviour
     
     public void OnQuitButton(){
         // Se llama internamente desde el evento del boton, luego debe ser publica
-        StartCoroutine(StopMusic(endVolume: 0));
         PlaySFX(quitButton, volume: 1f); 
+    }
+    
+    public void OnCancelQuitButton(){
+        // Se llama internamente desde el evento del boton, luego debe ser publica
+        PlaySFX(clicButton, volume: 0.2f); 
     }
 
     public void PlaySFX(AudioClip audioClip, float volume = 1){

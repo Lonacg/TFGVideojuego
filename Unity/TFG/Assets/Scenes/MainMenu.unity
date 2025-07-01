@@ -1345,7 +1345,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 242485883}
         m_TargetAssemblyTypeName: SFXMainMenu, Assembly-CSharp
-        m_MethodName: OnButtonPressed
+        m_MethodName: OnCancelQuitButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -67,17 +67,17 @@ public class SFXManagerLaneRace : MonoBehaviour
 
     private void HandleOnReady(){
         // Sonido de preparacion de salida
-        PlaySFX(readySteady, volume: 0.5f);    
+        PlaySFX(readySteady, volume: 0.2f);    
     }
 
     private void HandleOnSteady(){
         // Sonido de preparacion de salida
-        PlaySFX(readySteady, volume: 0.5f);      
+        PlaySFX(readySteady, volume: 0.2f);      
     }
 
     private void HandleOnGo(){
         // Sonido de salida
-        PlaySFX(go, volume: 0.5f);
+        PlaySFX(go, volume: 0.2f);
     }
 
     private void HandleOnFootstepSound(){
